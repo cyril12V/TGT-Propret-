@@ -1,0 +1,26 @@
+# Configuration Netlify — TGT Propreté
+# https://docs.netlify.com/configure-builds/file-based-configuration/
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  # Forcer Node.js 20 LTS (Next.js 16 requiert >= 18.18)
+  NODE_VERSION = "20"
+  NPM_FLAGS = "--legacy-peer-deps=false"
+
+# Plugin officiel Netlify pour Next.js (App Router, ISR, edge functions)
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# Cache long sur les assets statiques (les redirects et le reste viennent de next.config.ts)
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
