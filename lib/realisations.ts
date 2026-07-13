@@ -16,10 +16,6 @@
 //      }
 // 3. C'est tout — la section « Nos Réalisations » et la fiche service se mettent
 //    à jour automatiquement.
-//
-// ⚠️ Les 3 entrées ci-dessous sont des EXEMPLES qui réutilisent des images déjà
-//    présentes pour que la section s'affiche tout de suite. Remplace-les par tes
-//    vraies photos avant / après.
 // ─────────────────────────────────────────────────────────────────────────────
 
 export type Realisation = {
@@ -30,36 +26,69 @@ export type Realisation = {
   location?: string;
   beforeImage: string;
   afterImage: string;
+  /** Ratio du cadre selon l'orientation des photos. "3 / 4" = portrait, "4 / 3" = paysage. */
+  ratio?: string;
 };
 
 export const REALISATIONS: readonly Realisation[] = [
   {
-    id: "fin-de-chantier-demo",
-    title: "Remise en état après travaux",
-    category: "Fin de chantier",
-    serviceSlug: "nettoyage-fin-de-chantier",
-    location: "Paris & IDF",
-    // ⤵ EXEMPLE — à remplacer par tes vraies photos avant / après
-    beforeImage: "/images/bg_nettoyage-fin-de-chantier.jpg",
-    afterImage: "/images/bg-bureaux&entreprise.jpg",
+    id: "conciergerie-microonde",
+    title: "Micro-ondes remis à neuf",
+    category: "Conciergerie",
+    serviceSlug: "prestations-sur-mesure-conciergerie",
+    location: "Île-de-France",
+    beforeImage: "/images/realisations/conciergerie-microonde-avant.jpg",
+    afterImage: "/images/realisations/conciergerie-microonde-apres.jpg",
+    ratio: "3 / 4",
   },
   {
-    id: "canape-demo",
-    title: "Shampouinage canapé tissu",
+    id: "vitre-restaurant",
+    title: "Vitrine de restaurant sans trace",
+    category: "Vitres & Vitrines",
+    serviceSlug: "nettoyage-des-vitres",
+    location: "Paris",
+    beforeImage: "/images/realisations/vitre-restaurant-avant.jpg",
+    afterImage: "/images/realisations/vitre-restaurant-apres.jpg",
+    ratio: "3 / 4",
+  },
+  {
+    id: "chantier-siphon",
+    title: "Plomberie dégraissée après travaux",
+    category: "Fin de chantier",
+    serviceSlug: "nettoyage-fin-de-chantier",
+    location: "Île-de-France",
+    beforeImage: "/images/realisations/chantier-siphon-avant.jpg",
+    afterImage: "/images/realisations/chantier-siphon-apres.jpg",
+    ratio: "3 / 4",
+  },
+  {
+    id: "salle-restaurant",
+    title: "Salle de réception remise en état",
+    category: "Restaurants & Salles",
+    serviceSlug: "nettoyage-restaurants-cuisines",
+    location: "Paris",
+    beforeImage: "/images/realisations/salle-restaurant-avant.jpg",
+    afterImage: "/images/realisations/salle-restaurant-apres.jpg",
+    ratio: "3 / 4",
+  },
+  {
+    id: "cuisine-restaurant",
+    title: "Cuisine professionnelle dégraissée",
+    category: "Restaurants & Cuisines",
+    serviceSlug: "nettoyage-restaurants-cuisines",
+    location: "Paris",
+    beforeImage: "/images/realisations/cuisine-restaurant-avant.jpg",
+    afterImage: "/images/realisations/cuisine-restaurant-apres.jpg",
+    ratio: "4 / 3",
+  },
+  {
+    id: "canape-fauteuil",
+    title: "Fauteuil en velours ravivé",
     category: "Canapés & Fauteuils",
     serviceSlug: "nettoyage-canapes-fauteuils",
     location: "Paris",
-    beforeImage: "/images/bg_nettoyage-canapes-fauteuils.jpeg",
-    afterImage: "/images/bg_nettoyage-approfondi.png",
-  },
-  {
-    id: "vitres-demo",
-    title: "Nettoyage vitrine sans trace",
-    category: "Vitres & Vitrines",
-    serviceSlug: "nettoyage-des-vitres",
-    location: "Île-de-France",
-    beforeImage: "/images/bg_nettoyage-vitres.jpeg",
-    afterImage: "/images/bg_Copropriétés&Immeubles.jpg",
+    beforeImage: "/images/realisations/canape-fauteuil-avant.jpg",
+    afterImage: "/images/realisations/canape-fauteuil-apres.jpg",
   },
 ];
 
