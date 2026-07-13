@@ -104,8 +104,13 @@
       quand une réalisation lui est associée — [app/services/[slug]/page.tsx](../app/services/%5Bslug%5D/page.tsx).
 - [x] Lien **Réalisations** ajouté au menu ([lib/constants.ts](../lib/constants.ts)).
 - [x] Vérif : `tsc --noEmit` clean, `next build` OK (toutes pages générées).
-- [ ] ⏳ **En attente** : vraies photos avant/après du client (les 3 entrées de
-      `lib/realisations.ts` sont des exemples temporaires à remplacer).
+- [x] ✅ **Vraies photos intégrées** : 12 photos client triées → **6 cas avant/après**
+      (conciergerie/micro-ondes, vitres, fin de chantier/siphon, salle & cuisine
+      resto, canapé) copiées dans `public/images/realisations/` et déclarées dans
+      `lib/realisations.ts` avec ratio par orientation. Layout masonry pour gérer
+      portrait/paysage.
+- Non retenues : galeries sans vraie paire (vitres x2 séries, process canapé),
+  doublons et photos ambiguës — proposables plus tard en galerie « résultats ».
 - Note : les photos par service étaient **déjà présentes** dans cette version (rien à restaurer).
 
 ## Revue de session — 2026-05-11
