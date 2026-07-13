@@ -91,6 +91,23 @@
 - [x] `tsc --noEmit` — clean
 - [x] Nettoyage `temp-import/`
 
+## Session 2026-07-08 — Retours client (services, about, réalisations)
+
+- [x] **About « Notre Équipe »** : fond passé de cream (#f5f0e8) à un **bleu nuit**
+      harmonisé à la charte (dégradé navy), textes adaptés en clair, cadres dorés
+      et encadrement conservés — [components/sections/About.tsx](../components/sections/About.tsx).
+- [x] **Comparateur Avant / Après** réutilisable (curseur glissant, souris + tactile
+      + clavier) — [components/ui/BeforeAfter.tsx](../components/ui/BeforeAfter.tsx).
+- [x] **Section « Nos Réalisations »** (accueil, après Services) alimentée par
+      [lib/realisations.ts](../lib/realisations.ts) — [components/sections/Realisations.tsx](../components/sections/Realisations.tsx).
+- [x] **Avant / Après sur les fiches services** : bloc affiché au clic sur un service
+      quand une réalisation lui est associée — [app/services/[slug]/page.tsx](../app/services/%5Bslug%5D/page.tsx).
+- [x] Lien **Réalisations** ajouté au menu ([lib/constants.ts](../lib/constants.ts)).
+- [x] Vérif : `tsc --noEmit` clean, `next build` OK (toutes pages générées).
+- [ ] ⏳ **En attente** : vraies photos avant/après du client (les 3 entrées de
+      `lib/realisations.ts` sont des exemples temporaires à remplacer).
+- Note : les photos par service étaient **déjà présentes** dans cette version (rien à restaurer).
+
 ## Revue de session — 2026-05-11
 
 **Réalisé** : Migration complète du site HTML monolithique (1404 lignes) vers une app Next.js 15/16 structurée. Arborescence pro : `app/` (routes + SEO), `components/` (layout/sections/ui), `lib/` (data + SEO helpers). Tailwind v4 avec design tokens via `@theme`. SSG sur toutes les pages publiques. SEO complet : metadata API, sitemap dynamique avec 8 services + 8 zones, robots.txt, OG image edge, JSON-LD (LocalBusiness, Service, Breadcrumb).

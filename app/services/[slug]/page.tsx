@@ -8,7 +8,9 @@ import { ContactBand } from "@/components/sections/ContactBand";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { ParisLinksFooter } from "@/components/sections/ParisLinksFooter";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { BeforeAfter } from "@/components/ui/BeforeAfter";
 import { SERVICES, getServiceBySlug } from "@/lib/services";
+import { getRealisationsByService } from "@/lib/realisations";
 import { SITE } from "@/lib/constants";
 import { breadcrumbJsonLd, buildMetadata, serviceJsonLd } from "@/lib/seo";
 
@@ -45,6 +47,7 @@ export default async function ServicePage({
   if (!service) notFound();
 
   const others = SERVICES.filter((s) => s.slug !== service.slug).slice(0, 4);
+  const realisations = getRealisationsByService(service.slug);
 
   return (
     <>
@@ -152,7 +155,48 @@ export default async function ServicePage({
               variant="cream"
             />
           </div>
-          
+
+        )}
+
+        {/* BLOC RÉALISATION : Avant / Après du service (si disponible) */}
+        {realisations.length > 0 && (
+          <article className="bg-[var(--color-light)] px-5 py-20 md:px-10">
+            <div className="container-tgt">
+              <SectionLabel>Avant / Après</SectionLabel>
+              <h2 className="mt-3 font-serif text-3xl font-light text-[var(--color-navy)] relative inline-block after:absolute after:bottom-[2px] after:left-0 after:h-[2px] after:w-full after:bg-[linear-gradient(to_right,transparent,var(--color-gold))]">
+                Nos réalisations
+              </h2>
+              <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-[var(--color-muted)]">
+                Faites glisser le curseur pour mesurer la différence avant et
+                après notre intervention.
+              </p>
+
+              <div className="mt-10 grid gap-8 md:grid-cols-2">
+                {realisations.map((r) => (
+                  <figure
+                    key={r.id}
+                    className="overflow-hidden border border-[#c9a84c]/25 bg-white shadow-lg"
+                  >
+                    <BeforeAfter
+                      beforeImage={r.beforeImage}
+                      afterImage={r.afterImage}
+                      beforeAlt={`${r.title} — avant`}
+                      afterAlt={`${r.title} — après`}
+                      ratio="4 / 3"
+                    />
+                    <figcaption className="px-6 py-5">
+                      <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-[var(--color-gold)]">
+                        {r.category}
+                      </span>
+                      <h3 className="mt-1 font-serif text-xl font-semibold text-[var(--color-navy)]">
+                        {r.title}
+                      </h3>
+                    </figcaption>
+                  </figure>
+                ))}
+              </div>
+            </div>
+          </article>
         )}
 
         {/* TROISIÈME BLOC : Section Autres services réalignée proprement */}

@@ -1,0 +1,18 @@
+📸 DOSSIER DES PHOTOS "AVANT / APRÈS"
+=====================================
+
+Dépose ici tes photos de réalisations (paires avant / après).
+
+Conseils :
+- Nomme clairement chaque fichier, ex :
+    resto-avant.jpg   /   resto-apres.jpg
+    canape-avant.jpg  /   canape-apres.jpg
+- Idéalement, les 2 photos d'une même paire doivent avoir le MÊME cadrage
+  (même angle, même distance) pour un effet avant/après réussi.
+- Formats acceptés : .jpg, .jpeg, .png, .webp
+
+Ensuite, ouvre le fichier  lib/realisations.ts  et ajoute un bloc par paire
+(les instructions détaillées sont écrites en haut de ce fichier).
+
+👉 Tu peux aussi simplement m'envoyer les photos : je les place et je remplis
+   le fichier pour toi.
