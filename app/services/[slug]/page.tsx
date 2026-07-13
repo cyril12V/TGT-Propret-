@@ -171,7 +171,7 @@ export default async function ServicePage({
                 après notre intervention.
               </p>
 
-              <div className="mt-10 grid gap-8 md:grid-cols-2">
+              <div className="mt-10 grid items-start gap-8 md:grid-cols-2">
                 {realisations.map((r) => (
                   <figure
                     key={r.id}
@@ -182,7 +182,7 @@ export default async function ServicePage({
                       afterImage={r.afterImage}
                       beforeAlt={`${r.title} — avant`}
                       afterAlt={`${r.title} — après`}
-                      ratio="4 / 3"
+                      ratio={r.ratio ?? "4 / 3"}
                     />
                     <figcaption className="px-6 py-5">
                       <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-[var(--color-gold)]">

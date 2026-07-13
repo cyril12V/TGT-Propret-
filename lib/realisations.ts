@@ -89,6 +89,7 @@ export const REALISATIONS: readonly Realisation[] = [
     location: "Paris",
     beforeImage: "/images/realisations/canape-fauteuil-avant.jpg",
     afterImage: "/images/realisations/canape-fauteuil-apres.jpg",
+    ratio: "3 / 4",
   },
 ];
 

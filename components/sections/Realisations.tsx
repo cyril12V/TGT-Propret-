@@ -46,17 +46,17 @@ export function Realisations() {
           />
         </Reveal>
 
-        {/* Grille de réalisations */}
-        <div className="mt-12 grid gap-8 md:mt-16 md:grid-cols-2">
+        {/* Grille de réalisations (masonry — gère les orientations mixtes) */}
+        <div className="mt-12 gap-8 md:mt-16 md:columns-2">
           {REALISATIONS.map((r, i) => (
-            <Reveal key={r.id} delay={i * 80}>
+            <Reveal key={r.id} delay={i * 80} className="mb-8 break-inside-avoid">
               <figure className="group overflow-hidden border border-[#c9a84c]/25 bg-white shadow-lg">
                 <BeforeAfter
                   beforeImage={r.beforeImage}
                   afterImage={r.afterImage}
                   beforeAlt={`${r.title} — avant intervention`}
                   afterAlt={`${r.title} — après intervention TGT Propreté`}
-                  ratio="4 / 3"
+                  ratio={r.ratio ?? "4 / 3"}
                 />
                 <figcaption className="flex items-start justify-between gap-4 px-6 py-5">
                   <div>
