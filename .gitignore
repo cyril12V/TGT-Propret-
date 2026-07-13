@@ -36,3 +36,6 @@ next-env.d.ts
 
 # Temp / scratch
 temp-import/
+
+# Photos sources brutes (dump WhatsApp) — le site n'utilise que public/images/realisations/
+/realisations/
