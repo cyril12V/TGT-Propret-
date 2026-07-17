@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ArrowRight } from "lucide-react";
 import { Nav } from "@/components/layout/Nav";
@@ -53,10 +54,28 @@ export default async function ServicePage({
     <>
       <Nav />
       <main id="main">
-        {/* PREMIER BLOC : Contenu principal du service et encart Devis */}
-        <article className="bg-[var(--color-light)] px-5 pt-32 pb-16 md:px-10 md:pb-20">
-          <div className="container-tgt">
-            <nav aria-label="Fil d'Ariane" className="mb-8 text-xs text-[var(--color-muted)]">
+        {/* HERO : photo de fond du service (comme l'ancienne version) */}
+        <section className="relative flex min-h-[440px] items-end overflow-hidden pt-32 pb-12 md:min-h-[540px]">
+          <Image
+            src={service.bgImage || "/images/placeholder.jpg"}
+            alt={service.title}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+          {/* Voile dégradé bleu nuit pour la lisibilité du texte */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(to top, rgba(13,34,68,0.94) 0%, rgba(13,34,68,0.72) 45%, rgba(13,34,68,0.35) 100%)",
+            }}
+            aria-hidden="true"
+          />
+
+          <div className="container-tgt relative px-5 md:px-10">
+            <nav aria-label="Fil d'Ariane" className="mb-6 text-xs text-white/60">
               <Link href="/" className="hover:text-[var(--color-gold)]">
                 Accueil
               </Link>
@@ -65,37 +84,39 @@ export default async function ServicePage({
                 Services
               </Link>
               <span aria-hidden="true"> / </span>
-              <span className="text-[var(--color-navy)]">{service.title}</span>
+              <span className="text-white">{service.title}</span>
             </nav>
 
             <SectionLabel>Service {service.num} · Paris &amp; IDF</SectionLabel>
-            <div className="relative inline-block w-full">
-              <h1 className="mt-3 font-serif text-[clamp(36px,5.5vw,72px)] font-light leading-tight">
-                {service.title}{" "}
-                <em className="italic text-[var(--color-gold)]">à Paris</em>
-              </h1>
+            <h1 className="mt-3 font-serif text-[clamp(36px,5.5vw,72px)] font-light leading-tight text-white">
+              {service.title}{" "}
+              <em className="italic text-[var(--color-gold-2)]">à Paris</em>
+            </h1>
+            <div
+              className="mt-2 h-[2px] w-40 bg-gradient-to-r from-[#c9a84c] to-transparent"
+              aria-hidden="true"
+            />
 
-              <span
-                aria-hidden="true"
-                className="absolute left-0 block h-[2px] w-full bg-gradient-to-r from-transparent via-[#c9a84c] to-transparent"
-              />
-            </div>
-
-            <p className="mt-4 max-w-2xl text-lg leading-relaxed text-[var(--color-muted)]">
+            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-white/85">
               {service.shortDesc}
             </p>
             {service.priceRange && (
-              <div className="mt-5 inline-flex items-center gap-2 border border-[var(--color-gold)]/40 bg-white px-4 py-2 text-sm">
-                <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--color-gold)]">
+              <div className="mt-5 inline-flex items-center gap-2 border border-[var(--color-gold)]/50 bg-[var(--color-navy)]/40 px-4 py-2 text-sm backdrop-blur-sm">
+                <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--color-gold-2)]">
                   Tarif indicatif
                 </span>
-                <span className="font-semibold text-[var(--color-navy)]">
+                <span className="font-semibold text-white">
                   {service.priceRange}
                 </span>
               </div>
             )}
+          </div>
+        </section>
 
-            <div className="mt-12 grid gap-12 md:grid-cols-[2fr_1fr]">
+        {/* CONTENU principal du service et encart Devis */}
+        <article className="bg-[var(--color-light)] px-5 py-16 md:px-10 md:py-20">
+          <div className="container-tgt">
+            <div className="grid gap-12 md:grid-cols-[2fr_1fr]">
               <div className="space-y-5">
                 <h2 className="font-serif text-3xl font-light relative inline-block after:absolute after:bottom-[2px] after:left-0 after:h-[2px] after:w-full after:bg-[linear-gradient(to_right,transparent,var(--color-gold))] text-[var(--color-navy)]">
                   En quoi consiste ce service ?
