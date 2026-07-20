@@ -40,7 +40,7 @@ export function About() {
 
               {/* Côté Gauche : L'image du fondateur */}
               <div className="w-full flex justify-center items-center p-4">
-                <div className="relative w-full max-w-[340px] md:max-w-[380px] aspect-square">
+                <div className="relative w-full max-w-[400px] md:max-w-[460px] aspect-square">
                   {/* Cadre doré décalé — encadrement raffiné */}
                   <span
                     className="pointer-events-none absolute -inset-3 rounded-xl border border-[#c9a84c]/40"
@@ -49,7 +49,7 @@ export function About() {
                   <img
                     src="/images/ID_photo.jpg"
                     alt="Portrait de Rabah Ammouche"
-                    className="relative w-full h-full object-cover object-center rounded-xl shadow-[0_25px_50px_-12px_rgba(0,0,0,0.55)] border-[2px] border-[#c9a84c]"
+                    className="relative w-full h-full object-cover object-top rounded-xl shadow-[0_25px_50px_-12px_rgba(0,0,0,0.55)] border-[2px] border-[#c9a84c]"
                   />
                 </div>
               </div>
@@ -117,7 +117,7 @@ export function About() {
 
               {/* Côté Droit : L'image de la co-fondatrice (Effet miroir parfait) */}
               <div className="w-full flex justify-center items-center p-4 order-1 md:order-2">
-                <div className="relative w-full max-w-[340px] md:max-w-[380px] aspect-square">
+                <div className="relative w-full max-w-[400px] md:max-w-[460px] aspect-square">
                   {/* Cadre doré décalé — encadrement raffiné */}
                   <span
                     className="pointer-events-none absolute -inset-3 rounded-xl border border-[#c9a84c]/40"
@@ -126,7 +126,7 @@ export function About() {
                   <img
                     src="/images/ID_photo_M.png"
                     alt="Portrait de Malika Tlili"
-                    className="relative w-full h-full object-cover object-center rounded-xl shadow-[0_25px_50px_-12px_rgba(0,0,0,0.55)] border-[2px] border-[#c9a84c]"
+                    className="relative w-full h-full object-cover object-top rounded-xl shadow-[0_25px_50px_-12px_rgba(0,0,0,0.55)] border-[2px] border-[#c9a84c]"
                   />
                 </div>
               </div>
