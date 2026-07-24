@@ -35,7 +35,7 @@ Dans **Project → Settings → Environment Variables**, ajoute au minimum :
 
 | Nom | Valeur | Environnement |
 |-----|--------|---------------|
-| `NEXT_PUBLIC_SITE_URL` | `https://ton-domaine.fr` (ton vrai domaine) | Production |
+| `NEXT_PUBLIC_SITE_URL` | `https://nettoyagesidf.fr` | Production |
 
 (Voir `.env.example` pour les variables optionnelles : avis Google, emails.)
 Après ajout/modif d'une variable → **Redeploy** pour qu'elle soit prise en compte.

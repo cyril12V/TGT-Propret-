@@ -56,7 +56,7 @@ Fichier source : `index.html` monolithique (1404 lignes, CSS inline, JS vanilla)
 Migration vers Next.js 15 le 2026-05-11.
 
 ## Domaine & présence en ligne
-- **NDD principal** : `tgt-proprete-paris.fr` (à déployer)
+- **NDD principal** : `nettoyagesidf.fr` (Vercel)
 - **Google Business Profile** : déjà créé — fiche TGT Propreté visible sur Google Maps (57 Av. Carnot, Bondy)
 - **Instagram** : @tgt.proprete — https://www.instagram.com/tgt.proprete/
 - **LinkedIn** : https://www.linkedin.com/company/tgt-propret%C3%A9/

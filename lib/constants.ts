@@ -13,7 +13,7 @@ export const SITE = {
   tagline: "Entreprise de Nettoyage Paris & Île-de-France",
   description:
     "Entreprise de nettoyage professionnel à Paris et en Île-de-France. Bureaux, copropriétés, fin de chantier, vitres, canapés, tapis. Devis gratuit sous 24h, sans engagement.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://tgt-proprete-paris.fr",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://nettoyagesidf.fr",
   locale: "fr_FR",
   foundingYear: 2018,
   yearsOfExperience: 6,

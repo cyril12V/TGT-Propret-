@@ -79,7 +79,7 @@ export async function POST(req: Request) {
   // Exemple Resend :
   //   const resend = new Resend(process.env.RESEND_API_KEY);
   //   await resend.emails.send({
-  //     from: "devis@tgt-proprete-paris.fr",
+  //     from: "devis@nettoyagesidf.fr",
   //     to: process.env.DEVIS_INBOX_EMAIL!,
   //     subject: `Devis — ${payload.typeClient} ${payload.zone}`,
   //     text: JSON.stringify(payload, null, 2),

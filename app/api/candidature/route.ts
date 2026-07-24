@@ -103,7 +103,7 @@ export async function POST(req: Request) {
   // Exemple Resend avec pièce jointe :
   //   const resend = new Resend(process.env.RESEND_API_KEY);
   //   await resend.emails.send({
-  //     from: "candidatures@tgt-proprete-paris.fr",
+  //     from: "candidatures@nettoyagesidf.fr",
   //     to: process.env.CANDIDATURE_INBOX_EMAIL!,
   //     subject: `Candidature — ${payload.firstName} ${payload.lastName}`,
   //     text: JSON.stringify(payload, null, 2),
