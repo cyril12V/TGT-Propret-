@@ -1,196 +1,72 @@
-# Guide de déploiement — TGT Propreté (Netlify)
+# Guide de déploiement — TGT Propreté (Vercel)
 
-Pipeline cible : **`git push` → GitHub `ELMDigitalAgency/tgt-proprete-paris` → Netlify auto-deploy** (aucune intervention manuelle après le premier paramétrage).
+Objectif : **`git push` sur la branche `main` → Vercel redéploie automatiquement la prod** (~1 min), sans aucune manip. C'est le comportement natif de Vercel une fois le dépôt connecté.
 
 ---
 
-## 1. Workflow quotidien (après setup initial)
+## 1. Le principe (à comprendre une fois)
 
-Tu modifies un fichier, puis :
-
-```bash
-npm run ship
+```
+Tu modifies le code  →  commit + push sur GitHub (branche main)  →  Vercel détecte le push  →  build + déploiement auto  →  site en ligne à jour
 ```
 
-Ce script enchaîne :
-1. `npm run typecheck` (TypeScript strict)
-2. `npm run lint` (ESLint)
-3. `git add .`
-4. `git commit -m "chore: update <date>"`
-5. `git push`
+- Chaque push sur `main` = déploiement de **production**.
+- Chaque push sur une autre branche / PR = déploiement de **preview** (une URL de test temporaire).
+- Aucun `git pull` ni relance manuelle à faire côté prod : Vercel s'occupe de tout.
 
-Dès que le push touche GitHub, **Netlify reçoit un webhook et déploie automatiquement** (~2 min). Aucune action manuelle.
+---
 
-Si tu veux un message de commit personnalisé, fais le commit toi-même avant `npm run ship` :
+## 2. Setup initial (une seule fois)
+
+### 2.1 Connecter Vercel au dépôt GitHub
+1. Va sur https://vercel.com → connecte-toi **avec GitHub**.
+2. **Add New… → Project**.
+3. Choisis le dépôt **`cyril12V/TGT-Propret-`** (celui qui reçoit tous les changements) → **Import**.
+4. Vercel détecte tout seul **Next.js** — ne touche à rien :
+   - Framework Preset : `Next.js`
+   - Build Command : `next build` (auto)
+   - Output : géré par Vercel (auto)
+5. Clique **Deploy**. Au bout d'~1 min, tu as une URL `xxxxx.vercel.app`.
+
+> Branche de production = `main` par défaut. C'est bon.
+
+### 2.2 Variables d'environnement
+Dans **Project → Settings → Environment Variables**, ajoute au minimum :
+
+| Nom | Valeur | Environnement |
+|-----|--------|---------------|
+| `NEXT_PUBLIC_SITE_URL` | `https://ton-domaine.fr` (ton vrai domaine) | Production |
+
+(Voir `.env.example` pour les variables optionnelles : avis Google, emails.)
+Après ajout/modif d'une variable → **Redeploy** pour qu'elle soit prise en compte.
+
+### 2.3 Brancher le nom de domaine
+1. **Project → Settings → Domains → Add**.
+2. Saisis ton domaine (ex. `tgt-proprete.fr`).
+3. Vercel affiche les enregistrements DNS à créer chez ton registrar (là où tu as acheté le domaine) :
+   - soit un **A record** vers l'IP indiquée,
+   - soit un **CNAME** vers `cname.vercel-dns.com`.
+4. Ajoute ces enregistrements chez ton registrar. Le HTTPS (certificat) est automatique.
+5. Une fois le domaine actif, remets `NEXT_PUBLIC_SITE_URL` sur ce domaine et redeploy.
+
+---
+
+## 3. Workflow quotidien (après setup)
 
 ```bash
-git add . && git commit -m "feat: nouvelle section témoignages"
+# tu modifies des fichiers, puis :
+git add .
+git commit -m "feat: ma modif"
 git push
 ```
 
----
-
-## 2. Setup initial (à faire une seule fois)
-
-### 2.1 GitHub — repo existe déjà
-
-Le repo a été créé sur `github.com/ELMDigitalAgency/tgt-proprete-paris`. Vérifier la connexion locale :
-
-```bash
-git remote -v
-# origin  https://github.com/ELMDigitalAgency/tgt-proprete-paris.git (fetch)
-# origin  https://github.com/ELMDigitalAgency/tgt-proprete-paris.git (push)
-```
-
-### 2.2 Connexion Netlify
-
-1. Aller sur https://app.netlify.com/start
-2. **Import an existing project** → **Deploy with GitHub**
-3. Autoriser Netlify à accéder à l'org `ELMDigitalAgency` si demandé
-4. Sélectionner le repo `tgt-proprete-paris`
-5. Branch to deploy : `main`
-6. Build settings (auto-détectés grâce à `netlify.toml`) :
-   - Build command : `npm run build`
-   - Publish directory : `.next`
-   - Plugin : `@netlify/plugin-nextjs` (auto-installé)
-7. **Variables d'environnement** (Site settings → Environment variables) :
-
-   | Variable | Valeur |
-   |---|---|
-   | `NEXT_PUBLIC_SITE_URL` | `https://tgt-proprete-paris.fr` |
-   | `CANDIDATURE_INBOX_EMAIL` | `Tgtproprete@gmail.com` |
-
-8. **Deploy site**. Premier build ~2 min. URL provisoire : `<nom-random>.netlify.app`.
-
-### 2.3 Domaine personnalisé
-
-#### Côté Netlify
-- Site settings → **Domain management** → **Add custom domain** → `tgt-proprete-paris.fr`
-- Ajouter aussi `www.tgt-proprete-paris.fr` (Netlify gère la redirection automatiquement)
-
-#### Côté registrar (OVH/Gandi/IONOS — selon où le client achète le domaine)
-
-Option A — Netlify DNS (recommandé, le plus simple) :
-- Dans Netlify : **Set up Netlify DNS**
-- Netlify fournit 4 nameservers (ex. `dns1.p01.nsone.net`, etc.)
-- Chez le registrar : remplacer les nameservers du domaine par ceux de Netlify
-- Tout le reste (HTTPS, sous-domaines) est géré automatiquement
-
-Option B — DNS chez le registrar :
-- Type `A` : `@` → `75.2.60.5` (IP Netlify, à confirmer dans l'UI)
-- Type `CNAME` : `www` → `<nom-site>.netlify.app`
-
-**HTTPS** : Netlify génère automatiquement un certificat Let's Encrypt dans les 5 minutes suivant la propagation DNS.
+→ Vercel redéploie la prod tout seul. Tu peux suivre le build en direct sur le dashboard Vercel (onglet **Deployments**).
 
 ---
 
-## 3. Google Search Console
+## 4. Bon à savoir
 
-1. https://search.google.com/search-console → **Ajouter une propriété** → Préfixe URL : `https://tgt-proprete-paris.fr`
-2. Méthode **Balise HTML** → copier le code de vérification
-3. Dans [app/layout.tsx](app/layout.tsx) ligne 55, décommenter :
-   ```tsx
-   verification: {
-     google: "le-code-copié",
-   },
-   ```
-4. `npm run ship` → Netlify redéploie → cliquer **Vérifier** dans Search Console
-5. Search Console → **Sitemaps** → ajouter `sitemap.xml`
-
----
-
-## 4. Google Business Profile (priorité absolue côté client)
-
-Sa fiche existe déjà (lien Google Maps fourni). À optimiser :
-
-- [ ] **Photos** : 10+ photos (équipe, locaux, chantiers). Booste fortement le classement Local Pack.
-- [ ] **Description** : reprendre celle du site (mots-clés "entreprise de nettoyage Paris", services)
-- [ ] **Catégorie principale** : "Service de nettoyage" + secondaires (bureaux, tapis, etc.)
-- [ ] **Services + tarifs** : ajouter chaque service avec fourchette de prix
-- [ ] **Zone de service** : étendre à Paris + arrondissements
-- [ ] **Lien site web** : `https://tgt-proprete-paris.fr` une fois en ligne
-- [ ] **Avis** : viser 5-10 avis 5 étoiles rapidement (envoyer le lien d'avis aux clients existants)
-- [ ] **Posts hebdomadaires** : Google indexe les posts GMB (1/semaine minimum)
-
-**Pourquoi c'est critique** : 60 % des clics sur "entreprise de nettoyage Paris [N]" vont au Local Pack, pas aux résultats organiques. Sans GBP optimisée, on perd la majorité du trafic.
-
----
-
-## 5. Branchement email candidatures et devis
-
-Actuellement, les API `/api/devis` et `/api/candidature` valident les données puis **loggent dans la console Netlify** (visibles dans Functions → Logs) sans envoyer d'email.
-
-Pour activer Resend (recommandé, gratuit 3 000 emails/mois) :
-
-1. Créer compte https://resend.com
-2. Domains → Add `tgt-proprete-paris.fr` → ajouter les DNS DKIM fournis
-3. Générer une API key (Settings → API keys)
-4. Netlify → Site settings → Environment variables → ajouter `RESEND_API_KEY=re_...`
-5. En local : `npm install resend && git add . && git commit -m "feat: branchement Resend"`
-6. Décommenter les blocs Resend dans :
-   - [app/api/devis/route.ts](app/api/devis/route.ts) (lignes 78-86)
-   - [app/api/candidature/route.ts](app/api/candidature/route.ts) (lignes 66-74)
-7. `npm run ship` → Netlify redéploie
-
----
-
-## 6. Checklist post-déploiement
-
-À faire dans les 24h après mise en ligne :
-
-- [ ] `https://tgt-proprete-paris.fr` charge en HTTPS
-- [ ] `https://www.tgt-proprete-paris.fr` redirige vers la version sans `www`
-- [ ] Sitemap accessible : `https://tgt-proprete-paris.fr/sitemap.xml`
-- [ ] Robots.txt OK : `https://tgt-proprete-paris.fr/robots.txt`
-- [ ] OG image fonctionne : tester un partage WhatsApp/LinkedIn du lien
-- [ ] Lighthouse ≥ 90 sur les 4 critères : https://pagespeed.web.dev/?url=https%3A%2F%2Ftgt-proprete-paris.fr%2F
-- [ ] Rich Results Test : https://search.google.com/test/rich-results
-- [ ] Sitemap soumis dans Search Console
-- [ ] Fiche Google Business mise à jour avec le nouveau lien site
-- [ ] Test formulaire `/devis` (vérifier réception côté inbox)
-- [ ] Navigation mobile testée (sticky CTA, formulaire, menu hamburger)
-
----
-
-## 7. Surveillance & monitoring
-
-### Netlify Analytics (payant ~9 $/mois)
-Pas nécessaire au démarrage. Plausible (~9 €/mois) ou Google Analytics 4 (gratuit avec bannière cookies) sont des alternatives plus économiques.
-
-### Google Search Console (gratuit)
-- Onglet **Performance** : suivre les positions sur les mots-clés cibles ("entreprise de nettoyage Paris", "Paris 17", etc.)
-- **Premiers résultats** attendus : 4 à 8 semaines après l'indexation
-- **Top 10** sur "entreprise de nettoyage Paris" : 3 à 6 mois (combiné GBP + backlinks)
-
----
-
-## 8. Prochaines optimisations (post-déploiement)
-
-Non bloquant pour la mise en ligne, mais booste le SEO :
-
-1. **Backlinks** : annuaires pro (Pages Jaunes Pro, Yelp, Yellow Pages, BNI, associations de syndic). Cible : 50–80 domaines référents en 6 mois.
-2. **Photos réelles** : remplacer `/public/images/aspirateur.jpg` et le logo placeholder par des photos d'équipe et de chantiers.
-3. **Avis Google** : viser 30+ avis 5 étoiles dans 6 mois.
-4. **Articles blog** : 2 nouveaux articles/mois (longue traîne). Idées : "Nettoyage Airbnb Paris", "Désinfection bureaux", "Sortie containers : guide syndic".
-5. **Plausible** ou **GA4** pour le monitoring trafic.
-
----
-
-## En cas de problème
-
-| Symptôme | Cause probable | Solution |
-|---|---|---|
-| Build Netlify échoue | Variable d'env manquante | Site settings → Environment variables |
-| Page blanche après push | Erreur runtime | Netlify → Deploys → Function logs |
-| HTTPS pas généré | DNS non propagé | Attendre 5min–24h, vérifier https://dnschecker.org |
-| Formulaire ne reçoit rien | Email pas branché | Voir section 5 (Resend) |
-| `npm run ship` échoue | TS ou lint erreur | Corriger, relancer |
-| Lighthouse < 90 | Image lourde ou JS non utilisé | Audit complet via Lighthouse CI |
-
----
-
-## Astuce : déploiements preview pour chaque branche
-
-Si tu crées une branche (`git checkout -b feature/x`) puis tu push, Netlify déploie automatiquement une **URL de preview** distincte (ex. `feature-x--tgt-proprete-paris.netlify.app`). Pratique pour montrer une nouveauté au client avant de merger sur `main`.
-
-Configuration par défaut, rien à faire.
+- **Rollback** : dans Vercel → Deployments, tu peux remettre en prod une version précédente en 1 clic.
+- **Preview par PR** : chaque Pull Request obtient automatiquement une URL de preview pour valider avant de merger.
+- **Emails** : l'envoi (candidature/devis) n'est pas encore branché — placeholder Resend dans `app/api/*/route.ts`. À activer si besoin.
+- **Rate-limiting API** : en mémoire (se réinitialise entre les instances serverless) — suffisant pour un site vitrine, à remplacer par un store externe (Upstash) si le trafic grimpe.
