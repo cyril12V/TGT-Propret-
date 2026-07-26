@@ -299,12 +299,29 @@ function ClientsTrack() {
 
 // ─── Composant : Carrousel avis ───────────────────────────────────────────────
 
-const VISIBLE = 3; // cartes visibles simultanément
+// Nombre de cartes visibles selon la largeur d'écran (responsive)
+function useVisibleCount() {
+  const [count, setCount] = useState(1);
+  useEffect(() => {
+    const compute = () =>
+      setCount(window.innerWidth < 640 ? 1 : window.innerWidth < 1024 ? 2 : 3);
+    compute();
+    window.addEventListener("resize", compute);
+    return () => window.removeEventListener("resize", compute);
+  }, []);
+  return count;
+}
 
 function ReviewsCarousel({ reviews }: { reviews: GoogleReview[] }) {
+  const visible = useVisibleCount();
   const [index, setIndex] = useState(0);
   const total = reviews.length;
-  const maxIndex = Math.max(0, total - VISIBLE);
+  const maxIndex = Math.max(0, total - visible);
+
+  // Reclampe l'index quand le nombre de cartes visibles change (rotation d'écran…)
+  useEffect(() => {
+    setIndex((i) => Math.min(i, maxIndex));
+  }, [maxIndex]);
 
   const prev = useCallback(
     () => setIndex((i) => Math.max(0, i - 1)),
@@ -336,14 +353,14 @@ function ReviewsCarousel({ reviews }: { reviews: GoogleReview[] }) {
         <div
           className="flex gap-6 transition-transform duration-500 ease-in-out"
           style={{
-            transform: `translateX(calc(-${index} * (100% / ${VISIBLE} + ${24 / VISIBLE}px)))`,
+            transform: `translateX(calc(-${index} * (100% / ${visible} + ${24 / visible}px)))`,
           }}
         >
           {reviews.map((review, i) => (
             <div
               key={i}
               className="min-w-0"
-              style={{ flex: `0 0 calc(${100 / VISIBLE}% - ${(24 * (VISIBLE - 1)) / VISIBLE}px)` }}
+              style={{ flex: `0 0 calc(${100 / visible}% - ${(24 * (visible - 1)) / visible}px)` }}
             >
               <ReviewCard review={review} />
             </div>

@@ -26,6 +26,14 @@ export function Nav() {
         href="/"
         className="flex items-center gap-2 sm:gap-3"
         aria-label={`${SITE.name} — Accueil`}
+        onClick={(e) => {
+          setOpen(false);
+          // Déjà sur l'accueil : un Link vers "/" ne rescrolle pas → on force le retour en haut
+          if (window.location.pathname === "/") {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }
+        }}
       >
         <span className="inline-block shrink-0 overflow-hidden rounded-full border-2 border-[var(--color-gold)]">
           <Image
