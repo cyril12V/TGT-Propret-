@@ -72,10 +72,6 @@ export function Hero() {
         </div>
       </div>
 
-      import CountUp from 'react-countup';
-
-      // ... (ton code au-dessus reste identique)
-
       <ul
         className="relative z-10 mt-14 grid w-full max-w-[820px] grid-cols-2 gap-y-7 sm:grid-cols-4 sm:gap-x-4 md:mt-16"
         aria-label="Chiffres clés"
