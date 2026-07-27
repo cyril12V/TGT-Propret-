@@ -30,14 +30,15 @@ type GoogleReview = {
 };
 
 // ─── Données clients (logos) ──────────────────────────────────────────────────
-// Remplacez src par vos vrais logos dans /public/logos/
-// Format recommandé : PNG transparent, ~200×80px
+// Logos dans /public/images/. Ils sont affichés dans un masque circulaire :
+// privilégier un visuel carré, sujet centré, avec de la marge sur les bords.
+// `fallbackInitials` s'affiche si le fichier est absent ou illisible.
 
 const CLIENTS = [
   {
     id: 1,
     name: "YEMA",
-    src: "/images/YEMA_logo.jpg",
+    src: "/images/yema_logo.jpg",
     fallbackInitials: "YE",
   },
   {
@@ -45,6 +46,12 @@ const CLIENTS = [
     name: "L'Italien",
     src: "/images/Litalien_logo.jpg",
     fallbackInitials: "LI",
+  },
+  {
+    id: 3,
+    name: "Sunny Smoker",
+    src: "/images/sunny-smoker_logo.jpg",
+    fallbackInitials: "SS",
   },
 ] as const;
 
