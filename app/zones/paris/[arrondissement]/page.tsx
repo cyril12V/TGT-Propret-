@@ -61,6 +61,10 @@ export default async function ArrondissementPage({
                 Accueil
               </Link>
               <span aria-hidden="true"> / </span>
+              <Link href="/zones" className="hover:text-[var(--color-gold)]">
+                Zones
+              </Link>
+              <span aria-hidden="true"> / </span>
               <Link
                 href="/zones/paris"
                 className="hover:text-[var(--color-gold)]"
@@ -219,6 +223,7 @@ export default async function ArrondissementPage({
           __html: JSON.stringify(
             breadcrumbJsonLd([
               { name: "Accueil", url: SITE.url },
+              { name: "Zones", url: `${SITE.url}/zones` },
               { name: "Paris", url: `${SITE.url}/zones/paris` },
               { name: arr.name, url: `${SITE.url}/zones/paris/${arr.slug}` },
             ]),

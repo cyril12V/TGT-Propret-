@@ -16,7 +16,7 @@ import { aggregateRatingFromTestimonials, breadcrumbJsonLd, buildMetadata } from
 const PARIS_FAQS = [
   {
     q: "Intervenez-vous dans tous les arrondissements de Paris ?",
-    a: "Oui. TGT Propreté intervient dans les 20 arrondissements de Paris. Nous disposons de pages dédiées pour les arrondissements les plus demandés (1er, 5e, 6e, 7e, 8e, 18e, 19e, 20e) et nous traitons les autres sur demande avec le même niveau de service.",
+    a: "Oui. TGT Propreté intervient dans les 20 arrondissements de Paris, et chacun dispose de sa page dédiée détaillant le bâti local, les types de clients que nous y servons et les contraintes d'accès propres au secteur.",
   },
   {
     q: "Quel est le délai pour un devis de nettoyage à Paris ?",
@@ -59,16 +59,16 @@ export const metadata: Metadata = buildMetadata({
 export default function ParisHubPage() {
   const rating = aggregateRatingFromTestimonials();
 
-  // Liste des numéros d'arrondissements prioritaires (7e, 8e, 9e, 13e, 15e, 16e, 17e, 18e)
-  const priorityNumbers = [1, 5, 6, 7, 8, 18, 19, 20];
+  // Mise en avant visuelle uniquement : les 20 arrondissements ont tous leur page
+  // dédiée et sont tous liés depuis ce hub.
+  const featuredNumbers = [1, 5, 6, 7, 8, 18, 19, 20];
 
-  // Séparation des arrondissements
   const priorityArrondissements = PARIS_ARRONDISSEMENTS.filter((arr) =>
-    priorityNumbers.includes(Number(arr.number))
+    featuredNumbers.includes(Number(arr.number))
   );
 
   const secondaryArrondissements = PARIS_ARRONDISSEMENTS.filter((arr) =>
-    !priorityNumbers.includes(Number(arr.number))
+    !featuredNumbers.includes(Number(arr.number))
   );
 
   return (
@@ -153,10 +153,10 @@ export default function ParisHubPage() {
                 Devis gratuit sous 24h <ArrowRight size={14} aria-hidden="true" />
               </Link>
               <Link
-                href="/#services"
+                href="/services"
                 className="inline-flex items-center gap-2 rounded-[2px] border border-white/25 bg-[rgba(13,34,68,0.35)] px-8 py-4 text-xs font-semibold uppercase tracking-[0.2em] text-white backdrop-blur-[2px] transition-all hover:border-[var(--color-gold)] hover:text-[var(--color-gold)]"
               >
-                Voir nos 12 services
+                Voir nos {SERVICES.length} services
               </Link>
             </div>
           </div>
@@ -166,8 +166,14 @@ export default function ParisHubPage() {
         <div className="bg-[var(--color-gold)] text-center">
           <div className="container-tgt grid grid-cols-2 divide-x divide-[rgba(13,34,68,0.15)] md:grid-cols-4">
             {[
-              { number: "20", label: "Arrondissements couverts" },
-              { number: "13", label: "Prestations disponibles" },
+              {
+                number: String(PARIS_ARRONDISSEMENTS.length),
+                label: "Arrondissements couverts",
+              },
+              {
+                number: String(SERVICES.length),
+                label: "Prestations disponibles",
+              },
               { number: "24h", label: "Délai devis garanti" },
               { number: "5.0★", label: "Note moyenne clients" },
             ].map((s) => (
@@ -255,7 +261,10 @@ export default function ParisHubPage() {
               </h2>
 
               <p className="mt-6 max-w-3xl text-[15px] leading-relaxed text-[var(--color-muted)]">
-                Votre arrondissement n&apos;est pas dans la liste principale ? Rassurez-vous : nos équipes se déplacent quotidiennement dans tout Paris. Nous vous garantissons la même réactivité et la même qualité de service, sur simple demande.
+                Nos équipes se déplacent quotidiennement dans tout Paris, avec la
+                même réactivité et la même qualité de service. Chaque
+                arrondissement dispose de sa page dédiée : cliquez sur le vôtre
+                pour découvrir le détail de nos interventions locales.
               </p>
 
               {/* OPTIMISATION : Même effet de bordure périphérique pour la seconde grille */}
@@ -263,7 +272,7 @@ export default function ParisHubPage() {
                 {secondaryArrondissements.map((arr) => (
                   <li key={arr.slug}>
                     <Link
-                      href="/devis"
+                      href={`/zones/paris/${arr.slug}`}
                       className="group relative flex h-full flex-col gap-3 overflow-hidden bg-white/90 p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(13,34,68,0.08)]"
                     >
                       <span
@@ -289,7 +298,7 @@ export default function ParisHubPage() {
                       <p className="text-sm text-[var(--color-muted)] leading-relaxed">{arr.district}</p>
 
                       <span className="mt-auto inline-flex items-center gap-1.5 pt-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--color-navy)] group-hover:text-[var(--color-gold)] transition-colors">
-                        Sur simple demande
+                        Voir la page
                         <ArrowRight size={12} className="transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
                       </span>
                     </Link>
@@ -306,7 +315,7 @@ export default function ParisHubPage() {
             <SectionLabel>Services à Paris</SectionLabel>
 
             <h2 className="relative mt-3 inline-block font-serif text-[clamp(32px,4.5vw,52px)] font-light leading-tight">
-              12 prestations couvertes,{" "}
+              {SERVICES.length} prestations couvertes,{" "}
               <em className="italic text-[var(--color-gold)]">un seul interlocuteur</em>
               <span
                 aria-hidden="true"

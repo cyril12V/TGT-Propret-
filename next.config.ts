@@ -12,8 +12,7 @@ const nextConfig: NextConfig = {
     return [
       { source: "/contact", destination: "/devis", permanent: true },
       { source: "/contacts", destination: "/devis", permanent: true },
-      { source: "/services", destination: "/#services", permanent: false },
-      { source: "/zones", destination: "/zones/paris", permanent: false },
+      // /services et /zones sont désormais de vraies pages hub, plus des redirections.
     ];
   },
   async headers() {

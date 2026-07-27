@@ -80,7 +80,7 @@ export default async function ServicePage({
                 Accueil
               </Link>
               <span aria-hidden="true"> / </span>
-              <Link href="/#services" className="hover:text-[var(--color-gold)]">
+              <Link href="/services" className="hover:text-[var(--color-gold)]">
                 Services
               </Link>
               <span aria-hidden="true"> / </span>
@@ -279,7 +279,7 @@ export default async function ServicePage({
           __html: JSON.stringify(
             breadcrumbJsonLd([
               { name: "Accueil", url: SITE.url },
-              { name: "Services", url: `${SITE.url}/#services` },
+              { name: "Services", url: `${SITE.url}/services` },
               {
                 name: service.title,
                 url: `${SITE.url}/services/${service.slug}`,

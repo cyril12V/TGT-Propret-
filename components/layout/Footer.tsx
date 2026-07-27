@@ -3,6 +3,7 @@ import { Mail, MapPin, Phone } from "lucide-react";
 import { CONTACT, IDF_DEPARTMENTS, SITE } from "@/lib/constants";
 import { SERVICES } from "@/lib/services";
 import { PARIS_ARRONDISSEMENTS } from "@/lib/zones-paris";
+import { ZONES } from "@/lib/zones";
 import { SocialIcon } from "@/components/ui/SocialIcon";
 import { ScrollTopLogo } from "@/components/ui/ScrollTopLogo";
 
@@ -57,8 +58,14 @@ export function Footer() {
             <h4 className="mb-5 text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--color-gold)]">
               Services
             </h4>
+            <Link
+              href="/services"
+              className="mb-3 inline-block text-sm font-semibold text-white/80 transition-colors hover:text-[var(--color-gold)]"
+            >
+              Toutes nos prestations →
+            </Link>
             <ul className="space-y-2.5 text-sm text-white/50">
-              {SERVICES.slice(0, 7).map((s) => (
+              {SERVICES.map((s) => (
                 <li key={s.slug}>
                   <Link
                     href={`/services/${s.slug}`}
@@ -121,13 +128,28 @@ export function Footer() {
             <h4 className="mb-3 mt-6 text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--color-gold)]">
               Île-de-France
             </h4>
-            <ul className="flex flex-wrap gap-x-3 gap-y-1.5 text-xs text-white/45">
-              {IDF_DEPARTMENTS.map((d) => (
-                <li key={d.code} title={`${d.name} (${d.code})`}>
-                  <span className="text-white/30">{d.code}</span> {d.name}
+            <Link
+              href="/zones"
+              className="mb-3 inline-block text-sm font-semibold text-white/80 transition-colors hover:text-[var(--color-gold)]"
+            >
+              Toutes nos zones →
+            </Link>
+            <ul className="columns-2 gap-x-4 space-y-1.5 text-xs text-white/45">
+              {ZONES.map((z) => (
+                <li key={z.slug} className="break-inside-avoid">
+                  <Link
+                    href={`/zones/${z.slug}`}
+                    className="transition-colors hover:text-[var(--color-gold)]"
+                  >
+                    {z.name}
+                  </Link>
                 </li>
               ))}
             </ul>
+            <p className="mt-4 text-xs text-white/30">
+              Départements desservis :{" "}
+              {IDF_DEPARTMENTS.map((d) => d.code).join(" · ")}
+            </p>
           </div>
 
           <div>

@@ -67,11 +67,11 @@ export const IDF_DEPARTMENTS: readonly { code: string; name: string }[] = [
 
 export const NAV_LINKS = [
   { label: "Notre équipe", href: "/#about" },
-  { label: "Prestations & Tarifs", href: "/#services" },
+  { label: "Prestations & Tarifs", href: "/services" },
+  { label: "Zones", href: "/zones" },
   { label: "Réalisations", href: "/#realisations" },
   { label: "Avis", href: "/#avis" },
   { label: "Conseils", href: "/#blog" },
-  { label: "Paris", href: "/zones/paris" },
   { label: "Contact", href: "/devis" },
 ] as const;
 
