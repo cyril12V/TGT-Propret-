@@ -277,6 +277,45 @@ aucun lien mort, 1 h1 et 1 canonical par page.
 
 ---
 
+## Session 2026-07-28 (mise en ligne) — Logos, avis Google, déploiement
+
+### Logos partenaires
+- [x] `yema_logo.jpg` et `sunny-smoker_logo.jpg` ajoutés dans `public/images/`
+- [x] `CLIENTS` de `Testimonials.tsx` passe à 3 entrées
+- [x] **Bug trouvé** : l'ancien `YEMA_logo.jpg` n'était pas une image mais une page
+      HTML enregistrée par erreur — le logo était cassé en production depuis l'origine
+- [x] **Bug trouvé** : `logo_rect.jpg` était au format HEIF, illisible par les
+      navigateurs, et référencé nulle part. Supprimé.
+- [x] **Piège de casse** : Windows ne distingue pas `YEMA_logo.jpg` de `yema_logo.jpg`,
+      Linux si. Git avait conservé l'ancienne casse alors que le code pointait vers la
+      nouvelle : le logo aurait renvoyé un 404 sur Vercel. Corrigé par `git mv` explicite
+      via un nom temporaire. Les 37 références d'images ont été vérifiées une à une
+      contre les noms réels de l'index git — aucune autre divergence.
+
+### Avis Google
+- [x] `GOOGLE_REVIEWS` renseigné : **5,0 sur 11 avis** (relevé du 28/07/2026)
+- [x] L'`aggregateRating` est donc à nouveau émis, cette fois adossé à une source
+      vérifiable — voir la leçon du jour sur les avis auto-déclarés
+- [x] **Bloc note Google ajouté au footer**, donc présent sur les 71 pages. Le balisage
+      étant émis site-wide depuis le layout, Google exige que la note corresponde à un
+      contenu réellement affiché. Sans ce bloc, le balisage aurait été non conforme.
+- [x] La note codée en dur « 5.0★ » du hub Paris est désormais dérivée de `GOOGLE_REVIEWS`
+- [x] Les `TESTIMONIALS` restent volontairement non balisés en `Review`
+
+### Déploiement
+Poussé sur `main`, Vercel a redéployé. Vérifié en production sur `nettoyagesidf.fr` :
+71 URLs au sitemap, les 4 crawlers IA autorisés dans `robots.txt`, les nouvelles pages
+services et zones en 200, les 3 logos servis en `image/jpeg`, `aggregateRating` présent
+et note visible sur toutes les pages testées.
+
+### À surveiller
+- Mettre à jour `GOOGLE_REVIEWS` à chaque palier d'avis — la valeur doit rester
+  strictement égale à celle de la fiche Google Business Profile.
+- Le dépôt s'auto-commite avec des messages illisibles. Les seuls commits lisibles de
+  la session sont ceux rédigés à la main.
+
+---
+
 ## Revue de session — 2026-05-11
 
 **Réalisé** : Migration complète du site HTML monolithique (1404 lignes) vers une app Next.js 15/16 structurée. Arborescence pro : `app/` (routes + SEO), `components/` (layout/sections/ui), `lib/` (data + SEO helpers). Tailwind v4 avec design tokens via `@theme`. SSG sur toutes les pages publiques. SEO complet : metadata API, sitemap dynamique avec 8 services + 8 zones, robots.txt, OG image edge, JSON-LD (LocalBusiness, Service, Breadcrumb).

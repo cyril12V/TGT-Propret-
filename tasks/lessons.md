@@ -81,6 +81,54 @@ En l'absence de source, ne rien émettre plutôt qu'émettre une valeur plausibl
 
 ---
 
+## 2026-07-28 — La casse des fichiers ne pardonne pas au déploiement
+
+**Contexte** : remplacement du logo YEMA, renommé de `YEMA_logo.jpg` en `yema_logo.jpg`.
+
+**Piège** : Windows et macOS ignorent la casse des noms de fichiers, Linux non. En local
+tout fonctionnait. Git, avec `core.ignorecase=true`, avait conservé l'ancienne casse dans
+son index alors que le code référençait la nouvelle. Sur Vercel, qui build sous Linux,
+l'image aurait renvoyé un 404 — un bug invisible jusqu'à la mise en production.
+
+Corollaire du même problème : supprimer `YEMA_logo.jpg` juste après avoir créé
+`yema_logo.jpg` efface le nouveau fichier, puisque le système les considère identiques.
+
+**Leçon** : un renommage qui ne change que la casse doit être fait explicitement dans
+l'index git, via un nom temporaire intermédiaire :
+
+```bash
+git mv public/images/ANCIEN.jpg public/images/__tmp.jpg
+git mv public/images/__tmp.jpg public/images/nouveau.jpg
+```
+
+**Règle** : avant tout déploiement sur un hébergeur Linux, comparer les chemins d'assets
+référencés dans le code aux noms exacts de `git ls-files`. Utiliser
+`git -c core.quotePath=false ls-files` : par défaut git échappe les caractères non-ASCII
+en octal, ce qui fait passer des noms accentués corrects pour des divergences.
+
+---
+
+## 2026-07-28 — Une donnée structurée doit correspondre à du contenu visible
+
+**Contexte** : activation de l'`aggregateRating` avec les vrais avis Google (5,0 sur 11).
+
+**Point manqué au premier passage** : le JSON-LD `CleaningService` est émis depuis le
+layout racine, donc sur les 71 pages. Or Google exige que la note déclarée corresponde à
+un contenu réellement affiché sur la page qui la déclare. Elle n'était visible que sur le
+hub Paris : 70 pages déclaraient une note invisible pour le visiteur.
+
+**Correction** : bloc note Google ajouté au footer, présent partout, et lié à la fiche.
+
+**Leçon** : le périmètre d'un balisage doit être aligné sur le périmètre du contenu qu'il
+décrit. Un JSON-LD placé dans un layout s'applique à toutes les pages — il ne doit donc
+contenir que des affirmations vraies et visibles sur toutes les pages.
+
+**Règle** : après avoir ajouté un enrichissement au JSON-LD du layout, vérifier que
+l'information correspondante est affichée sur toutes les pages, pas seulement sur celle
+où on l'a conçue.
+
+---
+
 ## 2026-07-28 — Deux mots-clés, une seule intention : une seule page
 
 **Contexte** : le plan SEO demandait une page `/shampouinage-moquette-paris` alors que
