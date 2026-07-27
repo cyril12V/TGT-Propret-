@@ -239,6 +239,44 @@ couverts par l'accueil et le hub `/services`.
 
 ---
 
+## Session 2026-07-28 (fin) — Contenus rédigés Bureaux et Fin de Chantier
+
+Deux documents de contenu reçus, intégrés intégralement.
+
+### Nouveaux champs sur le type `Service`
+- [x] `h1: { lead, accent }` — H1 sur mesure, `accent` en doré italique
+- [x] `metaTitle` / `metaDescription` — title tag et meta description sur mesure
+- [x] `sources: { label, url }[]` — bloc « Sources utiles » avec liens externes (E-E-A-T)
+- [x] `ServiceTable` sur `ServiceSection` — grille tarifaire, conteneur `overflow-x-auto`
+      pour que le tableau défile sur mobile sans faire défiler la page
+- [x] `items` et `outro` sur `ServiceSection` — liste et paragraphe rattachés au H2
+
+### Contenus
+- [x] **Bureaux** — 2 078 mots, 14 H2. Statistiques sourcées (92 % des salariés,
+      14 Md€/an), obligations du Code du travail (art. R. 4228-1), grille tarifaire
+      3 lignes, 3 sources externes (INRS, Légifrance, FEP), 9 questions FAQ
+- [x] **Fin de chantier** — 2 289 mots, 15 H2. Norme NF P 03-001, 3 sources externes
+      (CAPEB, Artisan du Bâtiment, Archipad), 8 questions FAQ
+
+### Arbitrages tranchés avec le client
+| Point | Décision |
+|---|---|
+| Grille tarifaire fin de chantier | **Non intégrée.** Le tableau du document (2-3 €/m²) contredisait le tarif du site (4,50-8,50 €/m²). Tarif du site conservé. |
+| Devis « sous 2 heures » | **Non retenu.** 24h partout, cohérent avec les 71 pages. |
+| « Vitres jusqu'au R+3 sans nacelle » | **Non retenu.** Capacité technique non confirmée. |
+| Interventions 7j/7 | Confirmé, intégré. |
+| Garantie de retour sans frais | Confirmé, intégré. |
+| Évacuation gravats incluse + tri sélectif | Confirmé. **La FAQ disait l'inverse** (facturation en sus) — corrigée. |
+
+### Fichiers de documentation remis à jour
+- [x] `README.md` — Next.js 16, arborescence réelle, 71 URLs, JSON-LD, section avis Google
+- [x] `DEPLOY.md` — le SMTP Hostinger est branché (la doc annonçait encore un placeholder Resend)
+
+`npm run preflight` : 0 erreur. Build : 77 pages. Sitemap : 71 URLs toutes en 200,
+aucun lien mort, 1 h1 et 1 canonical par page.
+
+---
+
 ## Revue de session — 2026-05-11
 
 **Réalisé** : Migration complète du site HTML monolithique (1404 lignes) vers une app Next.js 15/16 structurée. Arborescence pro : `app/` (routes + SEO), `components/` (layout/sections/ui), `lib/` (data + SEO helpers). Tailwind v4 avec design tokens via `@theme`. SSG sur toutes les pages publiques. SEO complet : metadata API, sitemap dynamique avec 8 services + 8 zones, robots.txt, OG image edge, JSON-LD (LocalBusiness, Service, Breadcrumb).

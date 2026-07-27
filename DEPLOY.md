@@ -68,5 +68,7 @@ git push
 
 - **Rollback** : dans Vercel → Deployments, tu peux remettre en prod une version précédente en 1 clic.
 - **Preview par PR** : chaque Pull Request obtient automatiquement une URL de preview pour valider avant de merger.
-- **Emails** : l'envoi (candidature/devis) n'est pas encore branché — placeholder Resend dans `app/api/*/route.ts`. À activer si besoin.
+- **Emails** : l'envoi est branché sur le SMTP Hostinger via `lib/mailer.ts`. Les variables `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASSWORD`, `MAIL_TO` et `MAIL_FROM` doivent être définies dans Vercel → Settings → Environment Variables. Si elles manquent, les routes `/api/devis` et `/api/candidature` répondent `503` au lieu d'accepter la demande sans l'envoyer.
+- **Avis Google** : `aggregateRating` n'est pas émis tant que `GOOGLE_REVIEWS` vaut `null` dans `lib/constants.ts`. À renseigner avec la vraie note et le vrai nombre d'avis de la fiche Google Business Profile.
+- **Search Console** : le code de vérification est commenté dans `app/layout.tsx`. À décommenter avant de soumettre le sitemap.
 - **Rate-limiting API** : en mémoire (se réinitialise entre les instances serverless) — suffisant pour un site vitrine, à remplacer par un store externe (Upstash) si le trafic grimpe.

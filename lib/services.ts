@@ -312,119 +312,153 @@ export const SERVICES: readonly Service[] = [
       "Gestion des consommables sanitaires",
       "Nettoyage en horaires décalés",
     ],
-    tldr: "Le nettoyage de bureaux consiste à entretenir quotidiennement ou plusieurs fois par semaine les postes de travail, les espaces communs et les sanitaires d'une entreprise. TGT Propreté intervient à Paris et en Île-de-France en horaires décalés, avant 8h ou après 18h, avec un cahier des charges établi sur mesure et un devis gratuit sous 24h.",
+    tldr: "TGT Propreté intervient dans les 20 arrondissements parisiens pour le nettoyage de bureaux : entretien quotidien, prestation ponctuelle ou contrat annuel. Équipes formées, produits écolabellisés, intervention avant 9h ou après 18h pour ne pas perturber votre activité. Devis gratuit sous 24h.",
+    h1: {
+      lead: "Nettoyage de bureaux à Paris :",
+      accent: "service professionnel et fiable",
+    },
+    metaTitle: "Nettoyage Bureaux Paris | Entreprise Professionnelle | TGT Propreté",
+    metaDescription:
+      "Nettoyage de bureaux à Paris : entretien quotidien, ponctuel ou sous contrat. Équipes formées, produits écolabellisés, devis gratuit 24h. TGT Propreté.",
     relatedSlugs: [
       "nettoyage-des-vitres",
       "nettoyage-tapis-moquettes",
+      "desinfection-locaux",
       "nettoyage-fin-de-chantier",
-      "nettoyage-coproprietes-immeubles",
+    ],
+    sources: [
+      {
+        label: "INRS — FAQ sur le nettoyage en entreprise",
+        url: "https://www.inrs.fr/actualites/faq-nettoyage-entreprise.html",
+      },
+      {
+        label:
+          "Légifrance — Code du travail, entretien des locaux (art. R. 4228-1 et suivants)",
+        url: "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006158025/1992-04-01",
+      },
+      {
+        label: "Fédération des Entreprises de Propreté et Services Associés",
+        url: "https://www.federation-proprete.com/",
+      },
     ],
     sections: [
       {
-        h2: "Pourquoi confier le nettoyage de ses bureaux à un professionnel ?",
+        h2: "Pourquoi le nettoyage de bureaux est indispensable",
         intro:
-          "Un bureau propre agit sur trois plans simultanément : la santé des collaborateurs, l'image renvoyée aux visiteurs, et la durée de vie des équipements. Les postes de travail, claviers, téléphones et poignées concentrent une part importante des transmissions en open space, et les sanitaires partagés en sont le point le plus sensible. Confier cet entretien à une équipe formée évite aussi de faire porter la tâche par vos salariés, avec des résultats irréguliers et un matériel inadapté.",
+          "Un bureau propre n'est pas un confort, c'est une condition de travail. Selon une enquête de 2021 relayée par Le Nouvel Économiste, 92 % des salariés estiment qu'un environnement propre et rangé contribue directement à leur performance. Côté coûts, le manque d'hygiène en entreprise représenterait plus de 14 milliards d'euros par an pour les employeurs français, absentéisme compris.",
         blocks: [
           {
-            h3: "Une hygiène maîtrisée sur les points de contact",
-            text: "Les surfaces les plus touchées d'un bureau ne sont pas les plus visibles. Notre protocole traite systématiquement les zones où la contamination circule, indépendamment de leur aspect apparent.",
+            h3: "Trois enjeux pour un office manager ou un DRH",
             items: [
-              "Poignées de porte, interrupteurs et boutons d'ascenseur",
-              "Claviers, souris, téléphones fixes et écrans partagés",
-              "Robinetterie, chasses d'eau et distributeurs sanitaires",
-              "Tables de réunion, machines à café et micro-ondes des espaces communs",
+              "Productivité : un poste de travail sain réduit les arrêts courts et les gênes quotidiennes",
+              "Image : l'accueil et les salles de réunion sont ce que voient d'abord clients et candidats",
+              "Conformité : le Code du travail impose des locaux propres et entretenus (art. R. 4228-1 et suivants)",
             ],
           },
           {
-            h3: "Une image cohérente avec votre activité",
-            text: "L'accueil, la salle de réunion et les vitres intérieures sont les premières choses que voit un client ou un candidat. Un hall impeccable et des vitres sans trace pèsent davantage sur la perception de votre entreprise que la plupart des budgets de communication.",
-          },
-          {
-            h3: "Des équipements qui durent plus longtemps",
-            text: "Une moquette non entretenue s'encrasse en profondeur et devient impossible à récupérer après quelques années de trafic. Un sol souple non protégé se raye. L'entretien régulier repousse le renouvellement de ces revêtements de plusieurs années.",
+            h3: "Ce qu'apporte un prestataire spécialisé",
+            text: "Au-delà du résultat visible, c'est le respect des protocoles qui distingue une prestation professionnelle : sens de balayage recommandé par l'INRS, produit adapté à chaque revêtement, dosage contrôlé, matériel changé entre les zones. Confier l'entretien à une équipe formée évite aussi de faire porter la tâche par vos salariés, avec des résultats irréguliers et un matériel inadapté.",
           },
         ],
       },
       {
-        h2: "Que comprend notre prestation de nettoyage de bureaux ?",
+        h2: "Nos prestations de nettoyage de bureaux à Paris",
         intro:
-          "Notre prestation de base couvre les postes de travail, les circulations, les espaces communs et les sanitaires. Elle se complète d'interventions périodiques et de services optionnels que nous calons sur votre organisation plutôt que sur un forfait standard.",
+          "Notre prestation s'articule autour de trois niveaux : l'entretien de fond qui rythme la semaine, les interventions ponctuelles hors cycle, et les services complémentaires qui évitent de multiplier les prestataires.",
         blocks: [
           {
-            h3: "Entretien courant, quotidien ou hebdomadaire",
-            text: "C'est le socle de tout contrat. La fréquence est définie ensemble en fonction de votre effectif et du passage réel dans les locaux.",
+            h3: "Nettoyage quotidien et entretien régulier",
+            text: "L'entretien de fond, celui qui fait la différence au quotidien. Nos équipes interviennent selon un planning défini avec vous et couvrent l'ensemble des zones de travail.",
             items: [
-              "Dépoussiérage des bureaux, mobiliers, plinthes et rebords",
-              "Aspiration et lavage des sols selon le revêtement (carrelage, moquette, parquet, souple)",
-              "Désinfection complète des sanitaires et réapprovisionnement des consommables",
-              "Vidage des corbeilles avec respect du tri sélectif",
-              "Nettoyage des espaces de pause, cuisines et salles de réunion",
+              "Dépoussiérage des bureaux, étagères, cloisons et mobilier",
+              "Aspiration et lavage des sols selon le revêtement : parquet, carrelage, vinyle, moquette",
+              "Nettoyage des sanitaires et réapprovisionnement en consommables",
+              "Vidage des corbeilles et remplacement des sacs, avec tri sélectif",
+              "Désinfection des points de contact : poignées, interrupteurs, claviers, téléphones",
+              "Aération et remise en ordre des espaces communs",
             ],
           },
           {
-            h3: "Interventions périodiques",
-            text: "Certaines opérations n'ont pas de sens en quotidien mais deviennent indispensables à intervalle régulier. Elles sont planifiées à l'avance et intégrées au contrat.",
+            h3: "Nettoyage ponctuel et remise en état",
+            text: "Certaines situations exigent une intervention ciblée, hors du cycle habituel. Ces prestations sont planifiables sous 48h sur Paris et la proche couronne.",
             items: [
-              "Lavage des vitres intérieures et extérieures, châssis inclus",
-              "Traitement des moquettes par injection-extraction",
-              "Décapage et protection des sols durs",
-              "Dépoussiérage en hauteur : luminaires, bouches de ventilation, dessus d'armoires",
+              "Nettoyage avant emménagement ou après déménagement",
+              "Remise en état après travaux : poussières de chantier, résidus de peinture, traces de colle",
+              "Nettoyage approfondi saisonnier, en général au printemps et à la rentrée",
+              "Préparation d'espaces avant un événement : séminaire, visite client, audit",
+              "Grand nettoyage après événement ou après sinistre",
             ],
           },
           {
             h3: "Services complémentaires",
-            text: "Sur demande, nous prenons en charge des prestations qui débordent du nettoyage proprement dit et simplifient votre gestion quotidienne.",
+            text: "Pour une prise en charge complète de vos locaux professionnels, sans multiplier les interlocuteurs.",
             items: [
-              "Gestion des stocks et réassort des consommables sanitaires",
-              "Remise en état après travaux ou réaménagement de plateau",
-              "Nettoyage avant ou après un événement d'entreprise",
-              "Entretien des espaces extérieurs et abords d'entrée",
+              "Lavage des vitres intérieures et extérieures, châssis et rails inclus",
+              "Nettoyage et shampouinage des moquettes et tapis de sol",
+              "Désinfection renforcée des surfaces avec des produits virucides",
+              "Entretien de la cuisine et de la salle de pause : électroménager, plan de travail, réfrigérateur",
+              "Nettoyage des parties communes d'immeubles de bureaux",
             ],
           },
         ],
+        outro:
+          "Chaque passage est tracé. Un responsable de site supervise la qualité des interventions et reste votre interlocuteur unique pour le suivi, les ajustements et les urgences.",
       },
       {
-        h2: "À quelle fréquence faut-il nettoyer des bureaux ?",
-        intro:
-          "La règle utile n'est pas la surface mais le nombre de passages quotidiens. Pour un bureau occupé cinq jours sur sept, un entretien quotidien ou trois à quatre passages hebdomadaires couvrent la majorité des besoins. Les sanitaires, eux, demandent un passage quotidien dès lors qu'ils sont partagés par plus d'une dizaine de personnes : c'est le seul poste sur lequel nous déconseillons de réduire la fréquence pour des raisons budgétaires. À l'inverse, un plateau en télétravail partiel avec une occupation concentrée sur deux ou trois jours n'a pas besoin de cinq passages : nous calons les interventions sur les jours réellement occupés.",
-      },
-      {
-        h2: "Comment est calculé le prix du nettoyage de bureaux ?",
-        intro:
-          "Notre tarif indicatif démarre à 2,5 € du mètre carré, mais le chiffrage réel dépend de quatre facteurs que nous évaluons lors d'une visite gratuite. Aucun devis sérieux ne peut être établi uniquement sur une surface communiquée par téléphone.",
+        h2: "Quels types de locaux traitons-nous ?",
         blocks: [
           {
-            h3: "Les quatre facteurs qui font varier le prix",
-            items: [
-              "La surface et la configuration : un open space se traite plus vite que le même métrage découpé en bureaux fermés",
-              "La fréquence : le coût au passage baisse à mesure que la fréquence augmente",
-              "Le revêtement de sol : moquette, parquet massif et sols techniques demandent des protocoles et des temps différents",
-              "Les horaires : une intervention de nuit ou le week-end se valorise différemment d'un passage en début de matinée",
-            ],
+            h3: "Bureaux et open spaces",
+            text: "Le nettoyage d'un open space demande méthode et discrétion. Postes rapprochés, câbles, écrans multiples : nos agents sont formés pour intervenir sans déplacer ni endommager le matériel informatique. Le plateau est propre chaque matin, sans friction avec les équipes.",
           },
           {
-            h3: "Ce qui est toujours compris",
-            text: "Le matériel professionnel, les produits de nettoyage et l'encadrement de l'agent sont inclus dans le tarif, sans supplément. Seuls les consommables sanitaires font l'objet d'une option de gestion de stock si vous souhaitez nous en confier l'approvisionnement.",
+            h3: "Salles de réunion et espaces de coworking",
+            text: "Ces espaces changent de mains plusieurs fois par jour. Nous assurons un passage systématique entre les sessions si votre organisation le demande : tables essuyées, tableau nettoyé, sol balayé, corbeilles vidées.",
+          },
+          {
+            h3: "Cabinets et professions libérales",
+            text: "Médecins, avocats, experts-comptables et architectes ont des contraintes propres : confidentialité des dossiers, matériel sensible. Nos agents ont pour consigne de ne jamais manipuler ni déplacer un document, et nous signons un accord de confidentialité si votre activité l'exige.",
+          },
+          {
+            h3: "Locaux mixtes : bureaux et zones d'activité",
+            text: "Bureaux couplés à du stockage ou à un atelier ? Nous traitons l'ensemble : sols industriels, zones de circulation, vestiaires et bureaux administratifs attenants. Un seul prestataire, un seul interlocuteur.",
           },
         ],
       },
-    ],
-    process: [
       {
-        step: "Visite sur place",
-        text: "Nous venons voir vos locaux, relevons les surfaces, les revêtements et les contraintes d'accès. Gratuit et sans engagement.",
+        h2: "Où et quand intervenons-nous ?",
+        intro:
+          "Nous couvrons Paris intra-muros dans ses 20 arrondissements, ainsi que la proche couronne : Boulogne-Billancourt, Levallois-Perret, Neuilly-sur-Seine, Saint-Denis, Montreuil, Vincennes, Issy-les-Moulineaux. La flexibilité horaire est totale : nos équipes interviennent le matin avant 9h, le soir après 18h, ou la nuit pour les sites sensibles. Aucun agent n'est présent pendant vos heures de bureau si vous le souhaitez. Des interventions 7j/7 sont possibles selon le contrat.",
       },
       {
-        step: "Cahier des charges",
-        text: "Nous rédigeons le détail des tâches, leur fréquence et les horaires d'intervention. Vous validez avant tout démarrage.",
+        h2: "Combien coûte le nettoyage de bureaux à Paris ?",
+        intro:
+          "Le prix dépend de la surface, de la fréquence de passage et des prestations incluses. Voici les fourchettes que nous constatons sur nos contrats parisiens en entretien régulier.",
+        table: {
+          headers: ["Surface", "Fréquence", "Budget mensuel estimé"],
+          rows: [
+            ["Petit bureau, environ 50 m²", "3 × / semaine", "150 – 300 € / mois"],
+            ["Bureau moyen, environ 200 m²", "5 × / semaine", "500 – 900 € / mois"],
+            [
+              "Grand plateau, environ 500 m²",
+              "5 × / semaine",
+              "1 200 – 2 000 € / mois",
+            ],
+          ],
+          note: "Fourchettes indicatives. Le prix final dépend aussi de l'accessibilité du site, des services complémentaires comme les vitres ou les moquettes, et des horaires d'intervention.",
+        },
+        outro:
+          "Le matériel professionnel, les produits et l'encadrement de l'agent sont toujours inclus. Seuls les consommables sanitaires font l'objet d'une option de gestion de stock. Un responsable de secteur se déplace pour évaluer vos locaux avant toute proposition chiffrée : la visite est gratuite et le devis vous parvient sous 24h.",
       },
       {
-        step: "Agent attitré",
-        text: "Un agent référent est affecté à votre site et briefé sur vos spécificités. En cas d'absence, un remplaçant briefé prend le relais aux mêmes horaires.",
-      },
-      {
-        step: "Contrôle qualité",
-        text: "Un responsable passe régulièrement vérifier le respect du cahier des charges et reste votre interlocuteur unique en cas de remarque.",
+        h2: "Nos engagements",
+        items: [
+          "Équipes formées et encadrées, couvertes par notre assurance responsabilité civile professionnelle",
+          "Produits écolabellisés, dosage contrôlé, adaptés à chaque type de surface",
+          "Flexibilité horaire : matin, soir, nuit ou week-end selon vos besoins",
+          "Un responsable de site dédié, interlocuteur unique pour le suivi et les urgences",
+          "Devis gratuit sous 24h, visite sur site incluse, sans engagement",
+        ],
       },
     ],
     faqs: [
@@ -447,6 +481,22 @@ export const SERVICES: readonly Service[] = [
       {
         q: "Que se passe-t-il si notre agent habituel est malade ou en congé ?",
         a: "Nous garantissons la continuité de votre service. En cas d'absence de votre agent attitré, un agent de remplacement, briefé en amont sur votre cahier des charges et vos spécificités, prend le relais aux horaires convenus. Vous n'avez aucune coupure dans votre entretien.",
+      },
+      {
+        q: "À quelle fréquence faut-il nettoyer des bureaux ?",
+        a: "Pour des bureaux occupés en semaine, trois à cinq passages hebdomadaires sont recommandés. Les sanitaires et les zones de restauration demandent un passage quotidien dès lors qu'ils sont partagés par plus d'une dizaine de personnes. L'INRS préconise d'adapter le protocole à l'usage réel des locaux et au nombre d'occupants plutôt qu'à la seule surface.",
+      },
+      {
+        q: "Quel est le coût du nettoyage de bureaux à Paris ?",
+        a: "Comptez 150 à 300 € par mois pour un petit bureau de 50 m² avec trois passages hebdomadaires, 500 à 900 € par mois pour 200 m² en entretien quotidien, et 1 200 à 2 000 € par mois pour un plateau de 500 m². Le tarif exact dépend de la surface, de la fréquence, du revêtement de sol et des horaires d'intervention. Devis gratuit sous 24h après visite.",
+      },
+      {
+        q: "Proposez-vous des contrats d'entretien pour les bureaux ?",
+        a: "Oui, des contrats mensuels ou annuels avec planning fixe, agent attitré et contrôle qualité régulier. Le contrat est résiliable avec un préavis raisonnable, sans pénalité excessive. Les prestations ponctuelles hors contrat restent possibles en complément.",
+      },
+      {
+        q: "Quels produits utilisez-vous dans les bureaux ?",
+        a: "Des détergents écolabellisés adaptés à chaque type de surface, avec un dosage contrôlé. La désinfection renforcée, lorsqu'elle est justifiée, fait appel à des produits virucides répondant aux normes européennes en vigueur. Aucun produit agressif n'est appliqué sur un revêtement sans validation préalable.",
       },
     ],
   },
@@ -881,65 +931,98 @@ export const SERVICES: readonly Service[] = [
       "Grattage des traces de peinture et de colle",
       "Lavage des vitres de fin de chantier",
     ],
-    tldr: "Le nettoyage de fin de chantier est la remise en état complète d'un local après travaux, avant sa livraison ou son emménagement. Il élimine la poussière de plâtre, le voile de ciment, les traces de peinture, de colle et de silicone. TGT Propreté intervient à Paris et en Île-de-France, avec un devis établi après visite ou sur plans.",
+    tldr: "TGT Propreté prend en charge le nettoyage de fin de chantier à Paris et dans toute l'Île-de-France : évacuation des gravats, dépoussiérage complet, traitement des sols et des vitrages. Nous livrons un espace prêt pour la réception, avec une intervention sous 24 à 48 heures après la fin des travaux.",
+    h1: {
+      lead: "Nettoyage fin de chantier à Paris :",
+      accent: "remise en état professionnelle",
+    },
+    metaTitle: "Nettoyage Fin de Chantier Paris | Remise en État | TGT Propreté",
+    metaDescription:
+      "Nettoyage fin de chantier à Paris et en IDF : gravats, poussières, sols, vitrages. Intervention sous 24 à 48h, équipes formées au BTP. Devis gratuit.",
     relatedSlugs: [
       "nettoyage-des-vitres",
-      "nettoyage-approfondi",
-      "nettoyage-bureaux-entreprises",
+      "renovation-sols-decapage",
+      "nettoyage-agences-immobilieres",
       "nettoyage-apres-sinistre",
+    ],
+    sources: [
+      {
+        label: "Norme NF P 03-001 — Marchés privés de travaux de bâtiment (CAPEB)",
+        url: "https://www.capeb.fr/www/capeb/media/aube/document/afnor_marchesprives.pdf",
+      },
+      {
+        label: "Nettoyage de fin de chantier : que dit la loi ?",
+        url: "https://www.artisandubatiment.fr/trouver-chantiers/nettoyage-fin-chantier-loi/",
+      },
+      {
+        label: "Nettoyage fin de chantier : les 6 étapes pour le réussir",
+        url: "https://archipad.com/fr/nettoyage-fin-chantier/",
+      },
     ],
     sections: [
       {
         h2: "Qu'est-ce que le nettoyage de fin de chantier ?",
         intro:
-          "Le nettoyage de fin de chantier est une remise en état intégrale, pas un ménage renforcé. Il traite des salissures que l'entretien courant n'attaque pas : poussière de plâtre logée dans les rainures et les grilles de ventilation, voile de ciment sur les carrelages neufs, projections de peinture, résidus de colle et de silicone sur les vitres et les menuiseries. Ces salissures durcissent avec le temps, ce qui rend l'intervention plus difficile et plus coûteuse au fil des semaines. C'est la raison pour laquelle elle se planifie dès l'arrêt des travaux.",
+          "Le nettoyage de fin de chantier est l'étape qui transforme un site de travaux en espace habitable ou exploitable. Ce n'est pas un coup de balai renforcé : c'est une remise en état complète qui comprend l'évacuation des gravats, le dépoussiérage de toutes les surfaces, le traitement des sols et le nettoyage des éléments fixes. Il mobilise du matériel industriel — aspirateurs haute puissance, autolaveuses, décapants professionnels — et une équipe formée aux spécificités du BTP.",
         blocks: [
           {
-            h3: "La différence avec un nettoyage classique",
+            h3: "Une obligation avant la réception des travaux",
+            text: "La norme NF P 03-001, qui régit les marchés privés de travaux de bâtiment, impose que chaque entrepreneur laisse les lieux propres et libres de tout déchet avant la réception. Confier cette mission à un prestataire spécialisé sécurise la réception et limite le risque de litige au moment des opérations préalables.",
+          },
+          {
+            h3: "Ce qui la distingue d'un entretien courant",
             text: "Un nettoyage courant travaille sur des surfaces déjà propres à l'origine. Une fin de chantier part de surfaces neuves mais souillées par des matériaux de construction, avec un risque de dégradation permanente si la méthode est mauvaise : un grattoir mal utilisé raye une vitre neuve, un décapant acide ternit définitivement un marbre.",
           },
           {
             h3: "Deux moments d'intervention possibles",
-            text: "Nous intervenons en cours de chantier pour réguler la poussière et libérer les accès entre corps de métier, puis à la toute fin pour la remise en état finale avant livraison des clés. Les deux se chiffrent séparément.",
+            text: "Nous intervenons en cours de chantier pour réguler la poussière et libérer les accès entre corps de métier, puis à la toute fin pour la remise en état avant livraison des clés. Les deux se chiffrent séparément.",
           },
         ],
       },
       {
-        h2: "Que comprend une prestation de fin de chantier ?",
+        h2: "Nos prestations de nettoyage fin de chantier à Paris",
         intro:
-          "Notre prestation couvre l'ensemble des surfaces du local, du sol au plafond, y compris l'intérieur des rangements et les menuiseries. Voici le détail de ce que nous traitons systématiquement.",
+          "L'intervention se déroule dans un ordre précis, du dégagement des déchets jusqu'aux finitions. Chaque étape conditionne la suivante : dépoussiérer avant d'avoir évacué les gravats revient à travailler deux fois.",
         blocks: [
           {
-            h3: "Élimination des poussières de construction",
+            h3: "Enlèvement des décombres et gravats",
+            text: "Première étape incontournable avant tout nettoyage en profondeur. Nous dégageons l'intégralité des résidus de chantier pour libérer les surfaces de travail.",
             items: [
-              "Aspiration industrielle de la poussière de plâtre, y compris dans les rainures et les angles",
-              "Dépoussiérage des murs, plafonds et retombées",
-              "Nettoyage des grilles de ventilation et des bouches d'aération",
-              "Traitement des radiateurs, gaines et éléments techniques apparents",
+              "Évacuation des gravats, plâtras, chutes de bois et de PVC",
+              "Retrait des bâches de protection, films plastiques et rubans de masquage",
+              "Tri sélectif des déchets selon les filières réglementaires",
+              "Transport vers les centres de collecte agréés d'Île-de-France",
+            ],
+          },
+          {
+            h3: "Dépoussiérage et nettoyage en profondeur",
+            text: "La poussière de chantier s'infiltre partout : plafonds, moulures, prises électriques, radiateurs. Elle contient des particules fines issues du plâtre, du béton ou des isolants, et un dépoussiérage superficiel ne suffit pas à l'éliminer.",
+            items: [
+              "Aspiration industrielle de toutes les surfaces : sols, murs, plafonds",
+              "Dépoussiérage des plinthes, encadrements de portes et appuis de fenêtres",
+              "Nettoyage des équipements techniques : prises, interrupteurs, bouches de ventilation",
+              "Lessivage des murs et des plafonds lorsque l'état le nécessite",
             ],
           },
           {
             h3: "Traitement des sols",
-            text: "Chaque revêtement demande un produit et un matériel différents. Nous identifions la nature du sol avant d'intervenir, en particulier sur les matériaux poreux ou fragiles.",
+            text: "Chaque revêtement demande une approche spécifique. Un parquet ne se traite pas comme un carrelage, et une résine industrielle pas comme un béton ciré. Nous identifions la nature du sol avant d'intervenir, en particulier sur les matériaux poreux ou fragiles.",
             items: [
-              "Élimination du voile de ciment sur les carrelages neufs",
-              "Décapage et lavage des sols souples et thermoplastiques",
-              "Traitement doux du marbre, de la pierre et des résines, sans produit acide",
-              "Nettoyage des parquets massifs au pH neutre",
+              "Décapage des traces de colle, de ciment, de peinture et de résine",
+              "Lavage humide ou passage autolaveuse selon le type de sol",
+              "Traitement des joints et des recoins souvent négligés",
+              "Protection ou cristallisation selon les finitions demandées",
             ],
           },
           {
-            h3: "Menuiseries, vitrages et éléments fixes",
+            h3: "Nettoyage des éléments fixes",
+            text: "Ce sont souvent les détails qui font la différence lors de la réception. Un vitrage maculé de projections ou un radiateur encrassé de poussière de plâtre laisse une mauvaise impression, même si les travaux sont irréprochables.",
             items: [
-              "Lavage haute performance des vitres, châssis, rails et joints inclus",
-              "Grattage des traces de peinture, de colle et de silicone au grattoir de vitrier",
-              "Nettoyage intérieur et extérieur des placards, tiroirs et rangements",
-              "Portes, plinthes, poignées, interrupteurs et prises",
+              "Nettoyage intérieur et extérieur des vitrages, encadrements et joints",
+              "Dégraissage et lustrage des menuiseries : aluminium, PVC, bois",
+              "Nettoyage complet des radiateurs, convecteurs et grilles de ventilation",
+              "Remise en état des sanitaires et de la robinetterie",
             ],
-          },
-          {
-            h3: "Sanitaires et cuisine",
-            text: "Les pièces d'eau concentrent les résidus de pose : joints, silicone, étiquettes d'usine sur les appareils. Nous les livrons prêtes à l'usage, robinetterie détartrée et appareils sanitaires désinfectés.",
           },
         ],
       },
@@ -949,43 +1032,48 @@ export const SERVICES: readonly Service[] = [
           "Le bon moment se situe après l'arrêt complet des travaux et avant la réception, idéalement dans les 24 à 48 heures qui suivent le départ du dernier corps de métier. Passé ce délai, la poussière en suspension se redépose sur toutes les surfaces déjà traitées, ce qui oblige à reprendre le travail. Si un artisan doit encore repasser, mieux vaut nous prévenir : nous décalons l'intervention plutôt que de la refaire deux fois. Sur les chantiers longs, une intervention intermédiaire de régulation de la poussière permet aux corps de métier suivants de travailler dans de meilleures conditions et réduit le volume de la remise en état finale.",
       },
       {
-        h2: "Comment est calculé le prix d'un nettoyage de fin de chantier ?",
+        h2: "Où intervenons-nous et sous quel délai ?",
+        intro:
+          "Nous couvrons l'ensemble de la région Île-de-France, sans surcoût de déplacement pour les chantiers parisiens et de proche couronne.",
+        items: [
+          "Paris (75) — tous arrondissements",
+          "Hauts-de-Seine (92), Seine-Saint-Denis (93), Val-de-Marne (94)",
+          "Yvelines (78), Essonne (91), Seine-et-Marne (77), Val-d'Oise (95)",
+        ],
+        outro:
+          "Nos équipes sont mobilisables sous 24 à 48 heures après la fin des travaux. Pour les chantiers sous contrainte — livraison VEFA, réception promoteur, remise de clés — nous proposons des créneaux en semaine comme le week-end. Le devis reste gratuit sous 24h.",
+      },
+      {
+        h2: "Combien coûte un nettoyage de fin de chantier ?",
         intro:
           "Notre fourchette indicative va de 4,50 € à 8,50 € du mètre carré. L'écart entre ces deux bornes tient à l'état réel du chantier, que seule une visite ou l'examen des plans permet d'évaluer. Un plateau de bureaux livré propre par les entreprises se situe en bas de fourchette ; un logement rénové avec dépose de cloisons, ponçage et reprise de peinture se situe en haut.",
         blocks: [
           {
-            h3: "Ce qui fait monter le devis",
+            h3: "Les facteurs qui font varier le devis",
             items: [
-              "Un chantier laissé en l'état, avec gravats et emballages non évacués",
-              "Des travaux de ponçage ou de plâtrerie, qui génèrent une poussière très fine et diffuse",
-              "Une forte proportion de surfaces vitrées et de menuiseries à gratter",
-              "Des matériaux fragiles imposant des méthodes lentes : marbre, parquet massif, résine, inox brossé",
-              "Un accès contraint : étage sans ascenseur, stationnement impossible, créneau horaire imposé",
+              "La nature des travaux : rénovation légère ou démolition et reconstruction",
+              "Le volume de gravats à évacuer et la nécessité éventuelle d'une benne",
+              "Le type de revêtement de sol, certains traitements étant plus lents que d'autres",
+              "L'accessibilité : étage sans ascenseur, stationnement impossible, accès restreint",
+              "Le délai demandé, une intervention en urgence mobilisant plus d'agents",
             ],
           },
           {
-            h3: "L'évacuation des déchets",
-            text: "Notre prestation porte sur la mise en propreté. L'évacuation des petits déchets de finition et des cartons d'emballage peut être intégrée sur demande, avec une facturation complémentaire indexée sur les frais d'accès et de dépôt en déchetterie professionnelle.",
+            h3: "Ce qui est compris",
+            text: "Le matériel industriel, les produits et la main-d'œuvre sont inclus dans le tarif au mètre carré. L'évacuation des gravats et le tri sélectif font partie de la prestation ; seuls les volumes importants nécessitant la location d'une benne font l'objet d'un supplément, chiffré à l'avance.",
           },
         ],
       },
-    ],
-    process: [
       {
-        step: "Visite ou plans",
-        text: "Nous évaluons l'état du chantier sur place ou sur plans, et relevons les matériaux à protéger. Gratuit et sans engagement.",
-      },
-      {
-        step: "Devis et date de livraison",
-        text: "Nous chiffrons la prestation et dimensionnons l'équipe pour tenir la date de réception que vous nous donnez.",
-      },
-      {
-        step: "Remise en état",
-        text: "Intervention du haut vers le bas : plafonds et hauteurs, murs et menuiseries, vitrages, puis sols en dernier.",
-      },
-      {
-        step: "Réception avec vous",
-        text: "Nous parcourons le local ensemble avant de partir. Les points de reprise sont traités sur place, pas lors d'un second passage.",
+        h2: "Pourquoi nous confier votre fin de chantier ?",
+        intro:
+          "Nous intervenons en Île-de-France sur des chantiers de toutes tailles : appartements en rénovation, immeubles de bureaux, programmes neufs et locaux commerciaux.",
+        items: [
+          "Équipes formées aux spécificités du nettoyage après construction et après rénovation, avec aspirateurs industriels, autolaveuses et produits homologués",
+          "Réactivité : intervention sous 24 à 48h, créneaux week-end disponibles pour les livraisons sous contrainte",
+          "Assurance responsabilité civile professionnelle couvrant les dommages éventuels sur votre chantier",
+          "Contrôle qualité systématique avant remise des clés : si un point ne convient pas, nous revenons sans frais supplémentaires",
+        ],
       },
     ],
     faqs: [
@@ -1006,8 +1094,20 @@ export const SERVICES: readonly Service[] = [
         a: "C'est tout le savoir-faire de nos équipes. Nous n'utilisons aucun produit ou matériel abrasif agressif. Les vitres neuves sont traitées avec des grattoirs de vitrier professionnels spécifiques, et nous adaptons nos détergents (pH neutre, décapants doux) selon la nature de vos revêtements (marbre, parquet massif, inox, résines).",
       },
       {
-        q: "Prenez-vous en charge l'évacuation des derniers gravats et déchets de chantier ?",
-        a: "Notre prestation principale se concentre sur le nettoyage et la mise en propreté. Cependant, nous pouvons intégrer sur demande l'évacuation des petits déchets de finition ou des cartons d'emballage restants vers la déchetterie professionnelle. Cette prestation fera l'objet d'une facturation supplémentaire, indexée sur les frais d'accès et de dépôt de la déchetterie.",
+        q: "Prenez-vous en charge l'évacuation des gravats et déchets de chantier ?",
+        a: "Oui, l'enlèvement et l'évacuation des gravats et décombres font partie de notre prestation de remise en état. Nous assurons le tri sélectif selon les filières réglementaires et le transport vers les centres de collecte agréés d'Île-de-France. Un supplément peut s'appliquer pour les volumes importants nécessitant la location d'une benne : il est chiffré à l'avance, jamais découvert sur la facture.",
+      },
+      {
+        q: "Quand faut-il faire le nettoyage de fin de chantier ?",
+        a: "Après la fin de tous les travaux et juste avant la réception officielle. Il doit précéder les opérations préalables à la réception, afin que le maître d'ouvrage constate l'état réel des ouvrages sans les masques de poussière et de résidus. Idéalement dans les 24 à 48 heures suivant le départ du dernier corps de métier, avant que la poussière en suspension ne se redépose.",
+      },
+      {
+        q: "Qui paie le nettoyage de fin de chantier ?",
+        a: "En principe, l'entreprise qui réalise les travaux est responsable du nettoyage de ses propres ouvrages, conformément à la norme NF P 03-001. En pratique, le maître d'ouvrage ou le promoteur mandate souvent directement une société spécialisée — notamment sur les chantiers multi-corps d'état — et intègre ce poste au budget global de l'opération. Le point est à clarifier dans le contrat de travaux avant le démarrage.",
+      },
+      {
+        q: "Intervenez-vous sur tous types de chantiers ?",
+        a: "Oui, aussi bien en rénovation (appartements, maisons, bureaux) qu'en construction neuve (programmes immobiliers, locaux commerciaux et industriels). Nos équipes s'adaptent aux contraintes de chaque site : horaires décalés, accès sécurisés, chantiers encore partiellement occupés.",
       },
     ],
   },
