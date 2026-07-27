@@ -112,6 +112,116 @@ export const SERVICES: readonly Service[] = [
       "dégraissage hotte restaurant",
     ],
     priceRange: "Dès 35€/h • Sur Devis",
+    tldr: "Le nettoyage de restaurant couvre deux zones aux exigences distinctes : la cuisine, où le dégraissage des hottes et des équipements de cuisson répond à la méthode HACCP, et la salle, où la remise en état des sols, du bar et des sanitaires conditionne l'accueil des clients. TGT Propreté intervient de nuit ou tôt le matin à Paris et en Île-de-France.",
+    relatedSlugs: [
+      "nettoyage-des-vitres",
+      "nettoyage-tapis-moquettes",
+      "nettoyage-fin-de-chantier",
+      "nettoyage-bureaux-entreprises",
+    ],
+    sections: [
+      {
+        h2: "Pourquoi le nettoyage d'un restaurant ne s'improvise pas",
+        intro:
+          "Un établissement de restauration cumule deux contraintes que l'on retrouve rarement ensemble : une obligation sanitaire opposable lors d'un contrôle, et une exigence esthétique permanente côté salle. Les deux se traitent avec des produits, des protocoles et des niveaux de finition différents, dans une fenêtre horaire étroite entre la fermeture et le service suivant.",
+        blocks: [
+          {
+            h3: "Le risque sanitaire est concret",
+            text: "Les graisses cuites accumulées dans une hotte constituent un risque d'incendie documenté. Les résidus organiques sur les plans de travail, les siphons et les joints de carrelage sont les premiers points examinés lors d'un contrôle des services vétérinaires. Un manquement peut entraîner une mise en demeure, voire une fermeture administrative.",
+          },
+          {
+            h3: "La salle est votre vitrine",
+            text: "Un sol collant, une banquette tachée ou des sanitaires négligés pèsent davantage sur les avis en ligne que la plupart des critiques portant sur la cuisine. C'est le poste sur lequel un client se forge une opinion avant même d'avoir été servi.",
+          },
+          {
+            h3: "Une fenêtre d'intervention étroite",
+            text: "Un restaurant se nettoie quand il est vide. Nos équipes interviennent après la fermeture ou avant l'arrivée de la brigade, avec un temps de séchage compatible avec la reprise du service.",
+          },
+        ],
+      },
+      {
+        h2: "Que comprend notre prestation en cuisine professionnelle ?",
+        intro:
+          "Nous appliquons des dégraissants et désinfectants professionnels homologués pour le contact alimentaire, selon un protocole conforme à la méthode HACCP. L'intervention traite les équipements, les surfaces et les points critiques.",
+        blocks: [
+          {
+            h3: "Équipements de cuisson",
+            text: "Nous utilisons des traitements dégraissants et décarbonisants à haute température, sans altérer les matériaux nobles comme l'inox ou la fonte.",
+            items: [
+              "Pianos, plaques et feux vifs : récurage en profondeur des brûleurs et grilles",
+              "Friteuses : vidange, nettoyage de la cuve et rinçage",
+              "Fours et salamandres : décarbonisation intérieure et extérieure",
+              "Plancha, grills et rôtissoires",
+            ],
+          },
+          {
+            h3: "Hottes et systèmes d'extraction",
+            text: "Nous ne nous limitons pas au bandeau visible. Le dégraissage porte sur l'intérieur comme l'extérieur de la hotte, avec lavage intensif des filtres amovibles pour éliminer les accumulations de graisses cuites.",
+          },
+          {
+            h3: "Surfaces, sols et points critiques",
+            items: [
+              "Plans de travail, étagères et desserte inox",
+              "Récurage des sols antidérapants et détartrage des siphons",
+              "Nettoyage des joints de carrelage et des plinthes à gorge",
+              "Désinfection des poignées, robinetteries et commandes",
+              "Extérieur des chambres froides et des armoires réfrigérées",
+            ],
+          },
+        ],
+      },
+      {
+        h2: "Que comprend notre prestation en salle ?",
+        intro:
+          "La salle demande un niveau de finition visible, obtenu avec des produits différents de ceux de la cuisine. L'objectif est un espace qui paraît neuf à l'ouverture.",
+        blocks: [
+          {
+            h3: "Sols et mobilier",
+            items: [
+              "Lavage et remise en éclat des sols, quel que soit le revêtement",
+              "Nettoyage des tables, chaises, pieds de table et dessous de plateau",
+              "Traitement des banquettes et assises textiles par injection-extraction",
+              "Dépoussiérage des luminaires, étagères et éléments de décoration",
+            ],
+          },
+          {
+            h3: "Bar et espace de service",
+            text: "Astiquage du comptoir, nettoyage des tireuses, des bacs et des dessous de bar, détartrage de la plonge et des évaporateurs, dégraissage des surfaces verticales exposées aux projections.",
+          },
+          {
+            h3: "Sanitaires clients",
+            text: "Désinfection complète, détartrage de la robinetterie et des cuvettes, traitement des odeurs, nettoyage des miroirs et des distributeurs. C'est le poste le plus commenté par les clients après la cuisine.",
+          },
+          {
+            h3: "Vitrines et devanture",
+            text: "Lavage sans trace des vitrages intérieurs et extérieurs, châssis et rails inclus, avec méthode adaptée aux vitrophanies et marquages publicitaires pour ne pas les décoller.",
+          },
+        ],
+      },
+      {
+        h2: "À quelle fréquence nettoyer un restaurant ?",
+        intro:
+          "L'entretien quotidien reste à la charge de la brigade : c'est une obligation d'exploitation. Notre intervention se positionne sur ce que ce nettoyage courant ne traite pas. Concrètement, un passage hebdomadaire ou bihebdomadaire couvre la remise à niveau de la salle et des sanitaires, tandis que le dégraissage complet des hottes et la décarbonisation des équipements de cuisson se planifient à intervalle plus long, selon l'intensité du service. Un établissement qui tourne midi et soir sept jours sur sept sature ses filtres bien plus vite qu'une table ouverte cinq services par semaine. Nous calons le calendrier sur votre activité réelle après une première visite.",
+      },
+    ],
+    process: [
+      {
+        step: "Visite de l'établissement",
+        text: "Nous examinons la cuisine, la salle et les sanitaires, et relevons l'état des hottes et des équipements. Gratuit et sans engagement.",
+      },
+      {
+        step: "Protocole et créneau",
+        text: "Nous définissons le détail des postes, la fréquence et le créneau d'intervention compatible avec vos services.",
+      },
+      {
+        step: "Intervention hors service",
+        text: "Passage de nuit ou tôt le matin, avec un temps de séchage calculé pour que l'établissement soit opérationnel à l'ouverture.",
+      },
+      {
+        step: "Contrôle avant départ",
+        text: "Vérification poste par poste. L'équipe ne quitte pas les lieux avant que la cuisine et la salle soient prêtes pour le service.",
+      },
+    ],
     faqs: [
       {
         q: "Intervenez-vous en dehors de nos heures d'ouverture ?",
@@ -150,6 +260,121 @@ export const SERVICES: readonly Service[] = [
       "nettoyage cabinet avocat Paris",
     ],
     priceRange: "Dès 2,5€/m² • Sur Devis",
+    tldr: "Le nettoyage de bureaux consiste à entretenir quotidiennement ou plusieurs fois par semaine les postes de travail, les espaces communs et les sanitaires d'une entreprise. TGT Propreté intervient à Paris et en Île-de-France en horaires décalés, avant 8h ou après 18h, avec un cahier des charges établi sur mesure et un devis gratuit sous 24h.",
+    relatedSlugs: [
+      "nettoyage-des-vitres",
+      "nettoyage-tapis-moquettes",
+      "nettoyage-fin-de-chantier",
+      "nettoyage-coproprietes-immeubles",
+    ],
+    sections: [
+      {
+        h2: "Pourquoi confier le nettoyage de ses bureaux à un professionnel ?",
+        intro:
+          "Un bureau propre agit sur trois plans simultanément : la santé des collaborateurs, l'image renvoyée aux visiteurs, et la durée de vie des équipements. Les postes de travail, claviers, téléphones et poignées concentrent une part importante des transmissions en open space, et les sanitaires partagés en sont le point le plus sensible. Confier cet entretien à une équipe formée évite aussi de faire porter la tâche par vos salariés, avec des résultats irréguliers et un matériel inadapté.",
+        blocks: [
+          {
+            h3: "Une hygiène maîtrisée sur les points de contact",
+            text: "Les surfaces les plus touchées d'un bureau ne sont pas les plus visibles. Notre protocole traite systématiquement les zones où la contamination circule, indépendamment de leur aspect apparent.",
+            items: [
+              "Poignées de porte, interrupteurs et boutons d'ascenseur",
+              "Claviers, souris, téléphones fixes et écrans partagés",
+              "Robinetterie, chasses d'eau et distributeurs sanitaires",
+              "Tables de réunion, machines à café et micro-ondes des espaces communs",
+            ],
+          },
+          {
+            h3: "Une image cohérente avec votre activité",
+            text: "L'accueil, la salle de réunion et les vitres intérieures sont les premières choses que voit un client ou un candidat. Un hall impeccable et des vitres sans trace pèsent davantage sur la perception de votre entreprise que la plupart des budgets de communication.",
+          },
+          {
+            h3: "Des équipements qui durent plus longtemps",
+            text: "Une moquette non entretenue s'encrasse en profondeur et devient impossible à récupérer après quelques années de trafic. Un sol souple non protégé se raye. L'entretien régulier repousse le renouvellement de ces revêtements de plusieurs années.",
+          },
+        ],
+      },
+      {
+        h2: "Que comprend notre prestation de nettoyage de bureaux ?",
+        intro:
+          "Notre prestation de base couvre les postes de travail, les circulations, les espaces communs et les sanitaires. Elle se complète d'interventions périodiques et de services optionnels que nous calons sur votre organisation plutôt que sur un forfait standard.",
+        blocks: [
+          {
+            h3: "Entretien courant, quotidien ou hebdomadaire",
+            text: "C'est le socle de tout contrat. La fréquence est définie ensemble en fonction de votre effectif et du passage réel dans les locaux.",
+            items: [
+              "Dépoussiérage des bureaux, mobiliers, plinthes et rebords",
+              "Aspiration et lavage des sols selon le revêtement (carrelage, moquette, parquet, souple)",
+              "Désinfection complète des sanitaires et réapprovisionnement des consommables",
+              "Vidage des corbeilles avec respect du tri sélectif",
+              "Nettoyage des espaces de pause, cuisines et salles de réunion",
+            ],
+          },
+          {
+            h3: "Interventions périodiques",
+            text: "Certaines opérations n'ont pas de sens en quotidien mais deviennent indispensables à intervalle régulier. Elles sont planifiées à l'avance et intégrées au contrat.",
+            items: [
+              "Lavage des vitres intérieures et extérieures, châssis inclus",
+              "Traitement des moquettes par injection-extraction",
+              "Décapage et protection des sols durs",
+              "Dépoussiérage en hauteur : luminaires, bouches de ventilation, dessus d'armoires",
+            ],
+          },
+          {
+            h3: "Services complémentaires",
+            text: "Sur demande, nous prenons en charge des prestations qui débordent du nettoyage proprement dit et simplifient votre gestion quotidienne.",
+            items: [
+              "Gestion des stocks et réassort des consommables sanitaires",
+              "Remise en état après travaux ou réaménagement de plateau",
+              "Nettoyage avant ou après un événement d'entreprise",
+              "Entretien des espaces extérieurs et abords d'entrée",
+            ],
+          },
+        ],
+      },
+      {
+        h2: "À quelle fréquence faut-il nettoyer des bureaux ?",
+        intro:
+          "La règle utile n'est pas la surface mais le nombre de passages quotidiens. Pour un bureau occupé cinq jours sur sept, un entretien quotidien ou trois à quatre passages hebdomadaires couvrent la majorité des besoins. Les sanitaires, eux, demandent un passage quotidien dès lors qu'ils sont partagés par plus d'une dizaine de personnes : c'est le seul poste sur lequel nous déconseillons de réduire la fréquence pour des raisons budgétaires. À l'inverse, un plateau en télétravail partiel avec une occupation concentrée sur deux ou trois jours n'a pas besoin de cinq passages : nous calons les interventions sur les jours réellement occupés.",
+      },
+      {
+        h2: "Comment est calculé le prix du nettoyage de bureaux ?",
+        intro:
+          "Notre tarif indicatif démarre à 2,5 € du mètre carré, mais le chiffrage réel dépend de quatre facteurs que nous évaluons lors d'une visite gratuite. Aucun devis sérieux ne peut être établi uniquement sur une surface communiquée par téléphone.",
+        blocks: [
+          {
+            h3: "Les quatre facteurs qui font varier le prix",
+            items: [
+              "La surface et la configuration : un open space se traite plus vite que le même métrage découpé en bureaux fermés",
+              "La fréquence : le coût au passage baisse à mesure que la fréquence augmente",
+              "Le revêtement de sol : moquette, parquet massif et sols techniques demandent des protocoles et des temps différents",
+              "Les horaires : une intervention de nuit ou le week-end se valorise différemment d'un passage en début de matinée",
+            ],
+          },
+          {
+            h3: "Ce qui est toujours compris",
+            text: "Le matériel professionnel, les produits de nettoyage et l'encadrement de l'agent sont inclus dans le tarif, sans supplément. Seuls les consommables sanitaires font l'objet d'une option de gestion de stock si vous souhaitez nous en confier l'approvisionnement.",
+          },
+        ],
+      },
+    ],
+    process: [
+      {
+        step: "Visite sur place",
+        text: "Nous venons voir vos locaux, relevons les surfaces, les revêtements et les contraintes d'accès. Gratuit et sans engagement.",
+      },
+      {
+        step: "Cahier des charges",
+        text: "Nous rédigeons le détail des tâches, leur fréquence et les horaires d'intervention. Vous validez avant tout démarrage.",
+      },
+      {
+        step: "Agent attitré",
+        text: "Un agent référent est affecté à votre site et briefé sur vos spécificités. En cas d'absence, un remplaçant briefé prend le relais aux mêmes horaires.",
+      },
+      {
+        step: "Contrôle qualité",
+        text: "Un responsable passe régulièrement vérifier le respect du cahier des charges et reste votre interlocuteur unique en cas de remarque.",
+      },
+    ],
     faqs: [
       {
         q: "Proposez-vous des interventions en horaires décalés (soir ou matin) ?",
@@ -192,7 +417,236 @@ export const SERVICES: readonly Service[] = [
       "nettoyage hall entrée immeuble",
     ],
     priceRange: "Forfait Annuel • Sur-Mesure",
+    tldr: "Le nettoyage de copropriété regroupe l'entretien régulier des parties communes d'un immeuble : hall, escaliers, paliers, ascenseur, local poubelles et parkings. TGT Propreté travaille avec les syndics et conseils syndicaux à Paris et en Île-de-France sur des contrats annuels sur mesure, avec fiche de passage horodatée et contrôle qualité régulier.",
+    relatedSlugs: [
+      "nettoyage-des-vitres",
+      "nettoyage-bureaux-entreprises",
+      "nettoyage-apres-sinistre",
+      "nettoyage-fin-de-chantier",
+    ],
+    sections: [
+      {
+        h2: "Qu'est-ce que le nettoyage de copropriété ?",
+        intro:
+          "Le nettoyage de copropriété désigne l'entretien des espaces partagés d'un immeuble d'habitation : tout ce qui n'appartient à personne en particulier et donc à tous les copropriétaires. Il couvre le hall d'entrée, les cages d'escalier, les paliers, l'ascenseur, les couloirs de cave, le local poubelles, les parkings et les abords extérieurs. C'est une charge commune, votée en assemblée générale et répartie entre les copropriétaires selon les tantièmes.",
+        blocks: [
+          {
+            h3: "Une obligation d'entretien, pas une option de confort",
+            text: "Le syndic est tenu d'assurer la conservation et l'entretien de l'immeuble. Des parties communes laissées à l'abandon engagent sa responsabilité, créent des risques sanitaires réels dans les locaux poubelles et les vide-ordures, et constituent un motif récurrent de contestation en assemblée générale.",
+          },
+          {
+            h3: "Un effet direct sur la valeur des lots",
+            text: "Un hall entretenu, des escaliers propres et un local poubelles sans odeur pèsent sur la première impression d'un acquéreur ou d'un locataire potentiel. À prestation égale sur le logement, un immeuble mal tenu se négocie moins bien. C'est le poste de charge dont le retour est le plus visible pour les résidents.",
+          },
+          {
+            h3: "Trois modes de gestion possibles",
+            text: "Une copropriété peut employer un gardien, salarier directement un agent d'entretien, ou passer par un prestataire. Le prestataire évite la gestion sociale, les remplacements en cas d'absence, l'achat de matériel et la responsabilité d'employeur, ce qui explique qu'il soit le mode dominant sur les immeubles de taille moyenne.",
+          },
+        ],
+      },
+      {
+        h2: "Que comprend l'entretien des parties communes ?",
+        intro:
+          "Le contenu exact figure dans le cahier des charges annexé au contrat. Voici le périmètre que nous couvrons par défaut, avant adaptation à votre immeuble.",
+        blocks: [
+          {
+            h3: "Hall d'entrée et espaces d'accueil",
+            text: "C'est la zone la plus visible et la plus fréquentée. Elle conditionne la perception de l'immeuble entier et justifie la fréquence la plus élevée du contrat.",
+            items: [
+              "Balayage et lavage des sols, avec traitement adapté au revêtement (marbre, carrelage, tomettes, pierre)",
+              "Nettoyage des portes vitrées, intérieur et extérieur",
+              "Entretien des boîtes aux lettres, interphone et digicode",
+              "Vidage des corbeilles à prospectus",
+              "Dépoussiérage des miroirs, ferronneries et éléments décoratifs",
+            ],
+          },
+          {
+            h3: "Cages d'escalier, paliers et couloirs",
+            text: "Le nettoyage se fait du haut vers le bas, étage par étage, pour éviter de resalir les niveaux déjà traités. Sur le bâti ancien parisien, nous travaillons au pH neutre : la pierre, les tomettes et les carreaux de ciment se marquent définitivement au contact d'un produit acide.",
+            items: [
+              "Balayage humide et lavage des marches et des paliers",
+              "Nettoyage des rampes, mains courantes et barreaudages",
+              "Dépoussiérage des plinthes, appuis de fenêtre et luminaires accessibles",
+              "Nettoyage des vitrages de cage d'escalier",
+            ],
+          },
+          {
+            h3: "Ascenseurs",
+            text: "La cabine d'ascenseur est le point de contact le plus partagé d'un immeuble, et l'un des plus négligés. Nous la traitons à chaque passage.",
+            items: [
+              "Nettoyage du sol et des parois, avec produit adapté à l'inox brossé ou aux boiseries",
+              "Désinfection du tableau de commande et des boutons de palier",
+              "Nettoyage des miroirs et des seuils de porte",
+              "Dépoussiérage des rails de guidage accessibles",
+            ],
+          },
+          {
+            h3: "Local poubelles et gestion des containers",
+            text: "C'est le poste qui génère le plus de remontées de résidents, et celui où l'écart entre un prestataire sérieux et un passage superficiel se voit le plus vite. Nous calons la rotation sur le calendrier de collecte de votre commune.",
+            items: [
+              "Sortie et rentrée des containers aux jours et horaires de collecte",
+              "Lavage et désinfection des sols et parois du local",
+              "Nettoyage extérieur des bacs et traitement des odeurs",
+              "Ramassage des déchets déposés en parties communes",
+            ],
+          },
+          {
+            h3: "Parkings, caves et sous-sols",
+            text: "Ces espaces se traitent en général une à deux fois par an, en complément de l'entretien courant, avec un matériel de lavage mécanisé adapté aux grandes surfaces de béton.",
+            items: [
+              "Balayage et lavage mécanisé des sols",
+              "Traitement des taches d'huile et d'hydrocarbures",
+              "Nettoyage des murs, piliers et portes de box accessibles",
+              "Dégagement et nettoyage des couloirs de cave",
+            ],
+          },
+          {
+            h3: "Abords extérieurs et espaces communs",
+            text: "Selon la configuration de l'immeuble, le contrat peut inclure le balayage des allées et des entrées, le nettoyage des cours intérieures, des terrasses communes et des façades accessibles depuis le sol.",
+          },
+        ],
+      },
+      {
+        h2: "À quelle fréquence nettoyer les parties communes d'une copropriété ?",
+        intro:
+          "La fréquence se détermine à partir du nombre de lots et du passage réel, pas de la surface. Un immeuble de 20 lots avec une seule cage d'escalier n'a pas les mêmes besoins qu'une résidence de 120 lots répartis sur quatre bâtiments.",
+        blocks: [
+          {
+            h3: "Repères par typologie d'immeuble",
+            items: [
+              "Petit collectif, moins de 20 lots : un à deux passages par semaine sur le hall et les escaliers",
+              "Immeuble moyen, 20 à 60 lots : deux à trois passages hebdomadaires, hall traité à chaque passage",
+              "Grande résidence, plus de 60 lots : passage quotidien ou quasi quotidien sur les zones à fort trafic",
+              "Local poubelles : rotation des containers calée sur les jours de collecte, quel que soit l'immeuble",
+            ],
+          },
+          {
+            h3: "Les facteurs qui font monter la fréquence",
+            items: [
+              "Présence de commerces ou de professions libérales en rez-de-chaussée",
+              "Immeuble sans ascenseur, où tout le trafic passe par l'escalier",
+              "Nombre élevé de logements meublés ou en location courte durée",
+              "Cour intérieure ou espace vert générant des apports de terre et de feuilles",
+            ],
+          },
+          {
+            h3: "Ajuster sans dégrader",
+            text: "Quand le budget voté impose de réduire la voilure, mieux vaut concentrer les passages sur le hall et le local poubelles plutôt que de diluer une fréquence faible sur l'ensemble des espaces. Un hall impeccable deux fois par semaine produit un meilleur ressenti qu'un passage superficiel partout une seule fois.",
+          },
+        ],
+      },
+      {
+        h2: "Comment le syndic contrôle-t-il la qualité de la prestation ?",
+        intro:
+          "C'est la principale difficulté d'un contrat de copropriété : le syndic n'est presque jamais sur place au moment du passage, et le conseil syndical ne dispose souvent que du ressenti des résidents. Nous mettons en place trois dispositifs pour que la vérification soit factuelle.",
+        blocks: [
+          {
+            h3: "Fiche de passage horodatée",
+            text: "Une fiche affichée dans le hall ou le local technique est datée et signée par l'agent à chaque intervention. Elle est consultable par tous les résidents, ce qui met fin aux discussions sur la réalité des passages.",
+          },
+          {
+            h3: "Contrôle qualité par un responsable",
+            text: "Un responsable indépendant de l'agent passe régulièrement vérifier le respect du cahier des charges, poste par poste. Les écarts sont corrigés sans que vous ayez à les signaler.",
+          },
+          {
+            h3: "Interlocuteur unique et réactivité",
+            text: "Vous disposez d'un référent unique côté TGT Propreté, joignable directement. Nous nous engageons sur une réactivité de 24 heures sur les signalements, qu'ils viennent du syndic, du conseil syndical ou du gardien.",
+          },
+          {
+            h3: "Continuité de service",
+            text: "En cas d'absence de votre agent attitré, un agent de remplacement briefé en amont sur votre cahier des charges prend le relais aux horaires convenus. Le contrat ne prévoit aucune coupure de service.",
+          },
+        ],
+      },
+      {
+        h2: "Comment est établi un contrat de nettoyage de copropriété ?",
+        intro:
+          "Nous fonctionnons au forfait annuel, calculé après visite de l'immeuble. Le forfait couvre l'ensemble des passages prévus au cahier des charges, le matériel, les produits et l'encadrement de l'agent.",
+        blocks: [
+          {
+            h3: "Les éléments relevés lors de la visite",
+            items: [
+              "Surface réelle des parties communes, cages de cave et parkings inclus",
+              "Nombre d'étages, de cages d'escalier et de bâtiments",
+              "Présence et type d'ascenseur",
+              "Nature des revêtements : marbre, tomettes, carreaux de ciment, thermoplastique, moquette de palier",
+              "Configuration du local poubelles et calendrier de collecte de la commune",
+              "Contraintes d'accès : digicode, gardien, horaires imposés, stationnement",
+            ],
+          },
+          {
+            h3: "Prestations ponctuelles hors forfait",
+            text: "Certaines opérations sortent du contrat régulier et se chiffrent à la prestation : évacuation d'encombrants, nettoyage haute pression des parkings ou des cours, cristallisation d'un hall en marbre, remise en état après un dégât des eaux ou des travaux dans les communs.",
+          },
+          {
+            h3: "Documents fournis",
+            text: "Nous transmettons systématiquement l'attestation de vigilance URSSAF et l'attestation d'assurance responsabilité civile professionnelle, que le syndic doit pouvoir présenter au conseil syndical. Nous adaptons également notre calendrier de proposition au rythme budgétaire de votre assemblée générale.",
+          },
+        ],
+      },
+      {
+        h2: "Pourquoi choisir TGT Propreté pour votre copropriété ?",
+        intro:
+          "Nous travaillons avec des syndics et des conseils syndicaux depuis 2018, sur des immeubles allant du petit collectif ancien à la résidence de plus de cent lots. Notre approche tient en quatre points.",
+        blocks: [
+          {
+            h3: "Des équipes stables",
+            text: "Un agent attitré par immeuble, qui connaît les codes, les horaires de collecte et les particularités du bâtiment. La rotation permanente d'agents est la première cause de baisse de qualité sur un contrat de copropriété.",
+          },
+          {
+            h3: "Le respect du bâti",
+            text: "Nous identifions les revêtements avant la première intervention et travaillons au pH neutre sur les matériaux anciens. Aucun décapant ni produit acide sur un marbre, une pierre, des tomettes ou des carreaux de ciment.",
+          },
+          {
+            h3: "Une traçabilité vérifiable",
+            text: "Fiche de passage horodatée, contrôle qualité régulier et référent unique. Le conseil syndical dispose d'éléments concrets pour rendre compte en assemblée générale.",
+          },
+          {
+            h3: "Des produits écoresponsables",
+            text: "Nous privilégions des produits écolabellisés, sans danger pour les résidents, les enfants et les animaux qui circulent quotidiennement dans les parties communes.",
+          },
+        ],
+      },
+    ],
+    process: [
+      {
+        step: "Visite de l'immeuble",
+        text: "Nous parcourons les parties communes avec le syndic ou un membre du conseil syndical, du sous-sol aux derniers étages. Gratuit et sans engagement.",
+      },
+      {
+        step: "Cahier des charges et forfait annuel",
+        text: "Nous détaillons les tâches, leur fréquence et les horaires, puis chiffrons un forfait annuel. Le document est présentable tel quel en assemblée générale.",
+      },
+      {
+        step: "Mise en place",
+        text: "Affectation d'un agent attitré, briefing sur les codes d'accès et le calendrier de collecte, pose de la fiche de passage dans le hall.",
+      },
+      {
+        step: "Suivi et contrôle",
+        text: "Passages de contrôle qualité réguliers et référent unique joignable. Réactivité de 24 heures sur tout signalement.",
+      },
+    ],
     faqs: [
+      {
+        q: "À quelle fréquence faut-il nettoyer les parties communes d'une copropriété ?",
+        a: "Cela dépend du nombre de lots et du passage réel, pas de la surface. Comptez un à deux passages hebdomadaires pour un petit collectif de moins de 20 lots, deux à trois pour un immeuble de 20 à 60 lots, et un passage quotidien ou quasi quotidien au-delà de 60 lots. Le local poubelles suit toujours le calendrier de collecte de la commune, quelle que soit la taille de l'immeuble.",
+      },
+      {
+        q: "Qui paie le nettoyage des parties communes ?",
+        a: "C'est une charge commune, répartie entre tous les copropriétaires selon les tantièmes et votée en assemblée générale. Le syndic gère le budget et signe le contrat avec le prestataire.",
+      },
+      {
+        q: "Combien coûte le nettoyage d'une copropriété ?",
+        a: "Nous fonctionnons au forfait annuel, établi après visite de l'immeuble. Le chiffrage dépend de la surface des parties communes, du nombre d'étages et de cages d'escalier, de la présence d'un ascenseur, de la nature des revêtements et de la fréquence retenue. Un devis à distance sur la seule base du nombre de lots n'est pas fiable : la visite est gratuite et sans engagement.",
+      },
+      {
+        q: "Comment les résidents et le syndic peuvent-ils vérifier le passage de l'agent ?",
+        a: "Par une fiche de passage horodatée et signée par l'agent, affichée de manière visible dans le hall ou le local technique. Un contrôle qualité est en outre effectué régulièrement par un responsable indépendant de l'agent, pour veiller au respect du cahier des charges.",
+      },
+      {
+        q: "Que se passe-t-il si notre agent habituel est absent ?",
+        a: "Un agent de remplacement, briefé en amont sur votre cahier des charges, vos codes d'accès et vos spécificités, prend le relais aux horaires convenus. Le contrat ne prévoit aucune coupure de service.",
+      },
       {
         q: "Gérez-vous la rotation et la sortie des poubelles ?",
         a: "Oui, nous intégrons la sortie et la rentrée des containers en parfaite conformité avec les horaires de ramassage de votre commune.",
@@ -231,6 +685,95 @@ export const SERVICES: readonly Service[] = [
       "hygiène milieu médical",
     ],
     priceRange: "Protocole strict • Sur Devis",
+    tldr: "Le bionettoyage est un protocole en deux temps — nettoyage puis désinfection — appliqué en milieu de soins pour éliminer le risque de contamination croisée. TGT Propreté intervient dans les cabinets médicaux, dentaires, paramédicaux et cliniques privées à Paris et en Île-de-France, avec des détergents-désinfectants aux normes européennes virucides, bactéricides et fongicides.",
+    relatedSlugs: [
+      "nettoyage-bureaux-entreprises",
+      "nettoyage-des-vitres",
+      "nettoyage-apres-sinistre",
+      "nettoyage-tapis-moquettes",
+    ],
+    sections: [
+      {
+        h2: "Qu'est-ce que le bionettoyage en milieu médical ?",
+        intro:
+          "Le bionettoyage se distingue d'un nettoyage courant sur un point précis : il enchaîne systématiquement une phase de nettoyage, qui retire les salissures et la matière organique, puis une phase de désinfection, qui élimine les micro-organismes restants. L'ordre compte. Un désinfectant appliqué sur une surface encore souillée perd une grande partie de son efficacité, car la matière organique le neutralise avant qu'il n'atteigne les micro-organismes.",
+        blocks: [
+          {
+            h3: "Le principe de la marche en avant",
+            text: "Le nettoyage progresse du plus propre vers le plus sale, et jamais l'inverse. Les salles d'examen sont traitées avant les sanitaires, et le matériel utilisé dans une zone contaminée ne repasse jamais dans une zone propre. Cette règle évite le transport de germes d'une pièce à l'autre.",
+          },
+          {
+            h3: "Un matériel dédié par zone",
+            text: "Chiffonnettes et franges sont codées par couleur et changées entre chaque zone. Un même support ne sert pas successivement à une paillasse de soin et à une cuvette de sanitaire.",
+          },
+          {
+            h3: "Des produits aux normes opposables",
+            text: "Nous utilisons exclusivement des détergents-désinfectants de qualité hospitalière répondant aux normes européennes virucides, bactéricides et fongicides, avec respect strict des temps de contact indiqués par le fabricant.",
+          },
+        ],
+      },
+      {
+        h2: "Quels espaces traitons-nous dans un cabinet médical ?",
+        intro:
+          "Chaque zone d'un cabinet appelle un niveau de traitement différent, du plus exigeant en salle de soins au plus courant dans les espaces administratifs.",
+        blocks: [
+          {
+            h3: "Salles d'examen et de soins",
+            items: [
+              "Bionettoyage des paillasses, plans de travail et dessertes",
+              "Traitement du fauteuil ou de la table d'examen, accoudoirs et commandes inclus",
+              "Désinfection des équipements fixes et de leurs surfaces de contact",
+              "Sols traités en dernier, avec matériel dédié à la zone",
+            ],
+          },
+          {
+            h3: "Salle d'attente",
+            text: "C'est le lieu où se croisent le plus grand nombre de personnes, dont certaines contagieuses. Nous y traitons systématiquement les accoudoirs de sièges, les poignées, les tables basses et les jouets ou présentoirs éventuels.",
+          },
+          {
+            h3: "Accueil et espace administratif",
+            items: [
+              "Comptoir d'accueil et vitre de séparation",
+              "Lecteurs de cartes bancaires et de cartes Vitale",
+              "Claviers, téléphones et terminaux partagés",
+              "Vidage des corbeilles avec respect des circuits de tri",
+            ],
+          },
+          {
+            h3: "Sanitaires et locaux techniques",
+            text: "Désinfection complète, détartrage, réapprovisionnement des consommables et traitement des points de contact. Ces espaces sont toujours traités en dernier, avec un matériel qui ne repasse dans aucune autre zone.",
+          },
+        ],
+      },
+      {
+        h2: "Comment garantissez-vous la confidentialité dans un cabinet ?",
+        intro:
+          "Un agent d'entretien en cabinet médical circule au milieu de dossiers patients, d'écrans allumés et de documents en cours de traitement. Nos consignes sont explicites sur ce point : nos agents ne manipulent, ne déplacent et ne lisent aucun document, aucun dossier et aucun écran. Ils sont sensibilisés à la nature de l'environnement médical et au secret professionnel qui s'y attache. Les corbeilles sont vidées sans tri ni examen du contenu, et nous respectons les circuits de collecte que vous avez mis en place pour les déchets d'activité de soins. Si votre activité l'exige, nous signons un accord de confidentialité formalisé avant le démarrage du contrat.",
+      },
+      {
+        h2: "À quelle fréquence faire nettoyer un cabinet médical ?",
+        intro:
+          "En milieu de soins, la question de la fréquence se pose différemment d'un bureau classique : ce n'est pas l'aspect visuel qui commande, mais le nombre de patients reçus. Un cabinet en activité doit être bionettoyé quotidiennement, salle d'attente et sanitaires compris. Les surfaces de contact en salle d'examen relèvent, elles, d'une désinfection entre chaque patient, qui reste à la charge du praticien : notre intervention complète ce geste, elle ne le remplace pas. Pour les structures à forte affluence, cliniques privées et cabinets de groupe, nous proposons un second passage en milieu de journée sur les zones les plus exposées. Le calendrier est défini après visite, en fonction de votre file active et de vos horaires de consultation.",
+      },
+    ],
+    process: [
+      {
+        step: "Visite et protocole",
+        text: "Nous relevons le zonage du cabinet, les circuits de déchets et les contraintes horaires, puis rédigeons un protocole de bionettoyage propre à votre structure.",
+      },
+      {
+        step: "Agent sensibilisé",
+        text: "Un agent attitré, formé au bionettoyage et à la confidentialité du milieu médical, est affecté à votre cabinet.",
+      },
+      {
+        step: "Marche en avant",
+        text: "Nettoyage puis désinfection, du plus propre vers le plus sale, avec matériel codé par couleur et respect des temps de contact.",
+      },
+      {
+        step: "Contrôle et traçabilité",
+        text: "Passages de contrôle qualité réguliers et référent unique joignable pour tout ajustement du protocole.",
+      },
+    ],
     faqs: [
       {
         q: "Quels types de désinfectants utilisez-vous ?",
@@ -265,6 +808,113 @@ export const SERVICES: readonly Service[] = [
       "nettoyage fin de chantier Île-de-France",
     ],
     priceRange: "4,50€ à 8,50€ / m² • Sur Devis (après visite ou plans)",
+    tldr: "Le nettoyage de fin de chantier est la remise en état complète d'un local après travaux, avant sa livraison ou son emménagement. Il élimine la poussière de plâtre, le voile de ciment, les traces de peinture, de colle et de silicone. TGT Propreté intervient à Paris et en Île-de-France, avec un devis établi après visite ou sur plans.",
+    relatedSlugs: [
+      "nettoyage-des-vitres",
+      "nettoyage-approfondi",
+      "nettoyage-bureaux-entreprises",
+      "nettoyage-apres-sinistre",
+    ],
+    sections: [
+      {
+        h2: "Qu'est-ce que le nettoyage de fin de chantier ?",
+        intro:
+          "Le nettoyage de fin de chantier est une remise en état intégrale, pas un ménage renforcé. Il traite des salissures que l'entretien courant n'attaque pas : poussière de plâtre logée dans les rainures et les grilles de ventilation, voile de ciment sur les carrelages neufs, projections de peinture, résidus de colle et de silicone sur les vitres et les menuiseries. Ces salissures durcissent avec le temps, ce qui rend l'intervention plus difficile et plus coûteuse au fil des semaines. C'est la raison pour laquelle elle se planifie dès l'arrêt des travaux.",
+        blocks: [
+          {
+            h3: "La différence avec un nettoyage classique",
+            text: "Un nettoyage courant travaille sur des surfaces déjà propres à l'origine. Une fin de chantier part de surfaces neuves mais souillées par des matériaux de construction, avec un risque de dégradation permanente si la méthode est mauvaise : un grattoir mal utilisé raye une vitre neuve, un décapant acide ternit définitivement un marbre.",
+          },
+          {
+            h3: "Deux moments d'intervention possibles",
+            text: "Nous intervenons en cours de chantier pour réguler la poussière et libérer les accès entre corps de métier, puis à la toute fin pour la remise en état finale avant livraison des clés. Les deux se chiffrent séparément.",
+          },
+        ],
+      },
+      {
+        h2: "Que comprend une prestation de fin de chantier ?",
+        intro:
+          "Notre prestation couvre l'ensemble des surfaces du local, du sol au plafond, y compris l'intérieur des rangements et les menuiseries. Voici le détail de ce que nous traitons systématiquement.",
+        blocks: [
+          {
+            h3: "Élimination des poussières de construction",
+            items: [
+              "Aspiration industrielle de la poussière de plâtre, y compris dans les rainures et les angles",
+              "Dépoussiérage des murs, plafonds et retombées",
+              "Nettoyage des grilles de ventilation et des bouches d'aération",
+              "Traitement des radiateurs, gaines et éléments techniques apparents",
+            ],
+          },
+          {
+            h3: "Traitement des sols",
+            text: "Chaque revêtement demande un produit et un matériel différents. Nous identifions la nature du sol avant d'intervenir, en particulier sur les matériaux poreux ou fragiles.",
+            items: [
+              "Élimination du voile de ciment sur les carrelages neufs",
+              "Décapage et lavage des sols souples et thermoplastiques",
+              "Traitement doux du marbre, de la pierre et des résines, sans produit acide",
+              "Nettoyage des parquets massifs au pH neutre",
+            ],
+          },
+          {
+            h3: "Menuiseries, vitrages et éléments fixes",
+            items: [
+              "Lavage haute performance des vitres, châssis, rails et joints inclus",
+              "Grattage des traces de peinture, de colle et de silicone au grattoir de vitrier",
+              "Nettoyage intérieur et extérieur des placards, tiroirs et rangements",
+              "Portes, plinthes, poignées, interrupteurs et prises",
+            ],
+          },
+          {
+            h3: "Sanitaires et cuisine",
+            text: "Les pièces d'eau concentrent les résidus de pose : joints, silicone, étiquettes d'usine sur les appareils. Nous les livrons prêtes à l'usage, robinetterie détartrée et appareils sanitaires désinfectés.",
+          },
+        ],
+      },
+      {
+        h2: "Quand faut-il faire intervenir une entreprise de nettoyage de fin de chantier ?",
+        intro:
+          "Le bon moment se situe après l'arrêt complet des travaux et avant la réception, idéalement dans les 24 à 48 heures qui suivent le départ du dernier corps de métier. Passé ce délai, la poussière en suspension se redépose sur toutes les surfaces déjà traitées, ce qui oblige à reprendre le travail. Si un artisan doit encore repasser, mieux vaut nous prévenir : nous décalons l'intervention plutôt que de la refaire deux fois. Sur les chantiers longs, une intervention intermédiaire de régulation de la poussière permet aux corps de métier suivants de travailler dans de meilleures conditions et réduit le volume de la remise en état finale.",
+      },
+      {
+        h2: "Comment est calculé le prix d'un nettoyage de fin de chantier ?",
+        intro:
+          "Notre fourchette indicative va de 4,50 € à 8,50 € du mètre carré. L'écart entre ces deux bornes tient à l'état réel du chantier, que seule une visite ou l'examen des plans permet d'évaluer. Un plateau de bureaux livré propre par les entreprises se situe en bas de fourchette ; un logement rénové avec dépose de cloisons, ponçage et reprise de peinture se situe en haut.",
+        blocks: [
+          {
+            h3: "Ce qui fait monter le devis",
+            items: [
+              "Un chantier laissé en l'état, avec gravats et emballages non évacués",
+              "Des travaux de ponçage ou de plâtrerie, qui génèrent une poussière très fine et diffuse",
+              "Une forte proportion de surfaces vitrées et de menuiseries à gratter",
+              "Des matériaux fragiles imposant des méthodes lentes : marbre, parquet massif, résine, inox brossé",
+              "Un accès contraint : étage sans ascenseur, stationnement impossible, créneau horaire imposé",
+            ],
+          },
+          {
+            h3: "L'évacuation des déchets",
+            text: "Notre prestation porte sur la mise en propreté. L'évacuation des petits déchets de finition et des cartons d'emballage peut être intégrée sur demande, avec une facturation complémentaire indexée sur les frais d'accès et de dépôt en déchetterie professionnelle.",
+          },
+        ],
+      },
+    ],
+    process: [
+      {
+        step: "Visite ou plans",
+        text: "Nous évaluons l'état du chantier sur place ou sur plans, et relevons les matériaux à protéger. Gratuit et sans engagement.",
+      },
+      {
+        step: "Devis et date de livraison",
+        text: "Nous chiffrons la prestation et dimensionnons l'équipe pour tenir la date de réception que vous nous donnez.",
+      },
+      {
+        step: "Remise en état",
+        text: "Intervention du haut vers le bas : plafonds et hauteurs, murs et menuiseries, vitrages, puis sols en dernier.",
+      },
+      {
+        step: "Réception avec vous",
+        text: "Nous parcourons le local ensemble avant de partir. Les points de reprise sont traités sur place, pas lors d'un second passage.",
+      },
+    ],
     faqs: [
       {
         q: "À quel moment de votre chantier intervenez-vous ?",
@@ -307,6 +957,107 @@ export const SERVICES: readonly Service[] = [
       "nettoyage vitres Île-de-France",
     ],
     priceRange: "2,50€ à 4,00€ / m² ou au Forfait",
+    tldr: "Le nettoyage professionnel de vitres se fait à la raclette et au mouilleur sur les surfaces accessibles, et à la perche télescopique alimentée en eau pure pour la hauteur. TGT Propreté traite vitrines, baies vitrées et verrières à Paris et en Île-de-France, châssis, rails et joints inclus, avec une finition sans trace.",
+    relatedSlugs: [
+      "nettoyage-bureaux-entreprises",
+      "nettoyage-coproprietes-immeubles",
+      "nettoyage-fin-de-chantier",
+      "nettoyage-restaurants-cuisines",
+    ],
+    sections: [
+      {
+        h2: "Pourquoi confier le lavage de vitres à un professionnel ?",
+        intro:
+          "Une vitre nettoyée avec un produit ménager et du papier laisse presque toujours des traces, pour une raison simple : le produit sèche plus vite qu'il n'est retiré, et le film qu'il laisse devient visible dès que la lumière change d'angle. La méthode professionnelle inverse la logique. On mouille abondamment pour décoller la salissure, puis on retire l'eau d'un seul geste à la raclette, avant tout début de séchage.",
+        blocks: [
+          {
+            h3: "La technique classique : mouilleur et raclette",
+            text: "Le mouilleur imbibe la surface d'une solution faiblement dosée, ce qui dissout le film gras. La raclette, dont le caoutchouc est changé dès qu'il s'émousse, retire l'eau en un passage continu. C'est la vitesse d'exécution qui produit l'absence de trace, pas la quantité de produit.",
+          },
+          {
+            h3: "L'eau pure pour la hauteur",
+            text: "Au-delà de la portée du bras, nous utilisons une perche télescopique alimentée en eau déminéralisée. Cette eau, débarrassée de ses sels minéraux, sèche sans laisser de dépôt : la vitre n'a pas besoin d'être essuyée, ce qui rend le nettoyage en hauteur possible depuis le sol et en toute sécurité.",
+          },
+          {
+            h3: "Ce que le nettoyage improvisé abîme",
+            text: "Un grattoir mal orienté raye définitivement un vitrage neuf. Un produit acide attaque les joints en silicone et corrode les châssis en aluminium anodisé. Sur les vitrines pourvues de vitrophanies, un solvant standard décolle le vinyle en quelques passages.",
+          },
+        ],
+      },
+      {
+        h2: "Que comprend une prestation de nettoyage de vitres ?",
+        intro:
+          "Une vitre sans trace posée dans un châssis encrassé ne donne pas le résultat attendu. Notre prestation traite l'ensemble de l'ouvrant, pas seulement la surface vitrée.",
+        blocks: [
+          {
+            h3: "Les surfaces vitrées",
+            items: [
+              "Vitres intérieures et extérieures",
+              "Baies vitrées et fenêtres à grands vantaux",
+              "Verrières et puits de lumière accessibles",
+              "Vitrines et devantures commerciales",
+              "Cloisons vitrées intérieures et portes en verre",
+            ],
+          },
+          {
+            h3: "Les encadrements et les périphériques",
+            items: [
+              "Châssis et encadrements, aluminium, PVC ou bois",
+              "Rails de coulissants et gorges de guidage",
+              "Joints et silicones",
+              "Appuis de fenêtre et rebords extérieurs",
+            ],
+          },
+          {
+            h3: "Cas particuliers",
+            text: "Nous adaptons la méthode aux vitrines pourvues de marquages publicitaires ou de vitrophanies, en utilisant des produits non corrosifs qui préservent le vinyle, et aux vitrages neufs de fin de chantier, qui demandent un grattoir de vitrier professionnel pour retirer les résidus de silicone et les projections de peinture.",
+          },
+        ],
+      },
+      {
+        h2: "À quelle fréquence faire laver ses vitres ?",
+        intro:
+          "La fréquence dépend surtout de l'exposition et de l'usage du local. Une vitrine commerciale sur un axe passant se salit en quelques jours et demande un passage hebdomadaire pour rester présentable. Des bureaux en étage, moins exposés aux projections de la rue, tiennent un rythme trimestriel ou semestriel selon leur orientation. Les vitrages d'un immeuble d'habitation, cages d'escalier et hall compris, se traitent généralement deux à quatre fois par an dans le cadre du contrat de copropriété. Les façades exposées au nord et à la pluie battante se salissent plus vite que les autres : sur un même bâtiment, il est courant de retenir deux fréquences différentes selon l'orientation plutôt qu'un rythme unique.",
+      },
+      {
+        h2: "Comment est calculé le prix du nettoyage de vitres ?",
+        intro:
+          "Notre tarif indicatif va de 2,50 € à 4,00 € du mètre carré de surface vitrée, ou au forfait pour les interventions récurrentes. Le positionnement dans cette fourchette dépend de quatre facteurs que nous relevons lors de la visite.",
+        blocks: [
+          {
+            h3: "Les facteurs de chiffrage",
+            items: [
+              "L'accessibilité : une baie de plain-pied se traite bien plus vite qu'un vitrage en hauteur nécessitant perche et eau pure",
+              "Le découpage : dix petits carreaux à petits-bois demandent plus de temps qu'une seule grande surface équivalente",
+              "L'état de départ : un vitrage jamais nettoyé ou sortant de chantier appelle un premier passage renforcé",
+              "La fréquence : un contrat récurrent abaisse le coût unitaire de chaque passage",
+            ],
+          },
+          {
+            h3: "La question de la hauteur",
+            text: "Notre matériel couvre les vitrages accessibles depuis le sol avec perche télescopique. Au-delà, l'intervention nécessite des moyens d'accès spécifiques dont la faisabilité et le coût sont évalués lors de la visite préalable.",
+          },
+        ],
+      },
+    ],
+    process: [
+      {
+        step: "Relevé des surfaces",
+        text: "Nous mesurons les surfaces vitrées, identifions les accès et repérons les vitrophanies ou vitrages fragiles. Gratuit et sans engagement.",
+      },
+      {
+        step: "Choix de la méthode",
+        text: "Mouilleur et raclette pour les surfaces accessibles, perche télescopique et eau pure pour la hauteur.",
+      },
+      {
+        step: "Vitres, châssis et rails",
+        text: "Passage complet sur la surface vitrée puis sur l'encadrement, les rails et les joints. Une vitre propre dans un châssis sale ne compte pas comme terminée.",
+      },
+      {
+        step: "Contrôle en lumière rasante",
+        text: "Vérification finale sous un angle de lumière défavorable, celui qui révèle les traces. C'est le seul contrôle qui vaut.",
+      },
+    ],
     faqs: [
       {
         q: "Intervenez-vous sur des vitrages difficiles d'accès ?",
@@ -343,6 +1094,102 @@ export const SERVICES: readonly Service[] = [
       "femme de ménage Paris",
     ],
     priceRange: "À partir de 28€/h",
+    tldr: "Le nettoyage approfondi, ou grand ménage, va au-delà de l'entretien courant : déplacement du mobilier léger, lessivage des plinthes, dégraissage de l'intérieur du four et de la hotte, détartrage complet des sanitaires. TGT Propreté intervient à domicile à Paris et en Île-de-France à partir de 28 € de l'heure, matériel et produits inclus.",
+    relatedSlugs: [
+      "nettoyage-canapes-fauteuils",
+      "nettoyage-tapis-moquettes",
+      "nettoyage-des-vitres",
+      "repassage-rangement-domicile",
+    ],
+    sections: [
+      {
+        h2: "Quelle différence entre un ménage classique et un nettoyage approfondi ?",
+        intro:
+          "Un ménage classique entretient ce qui est visible et accessible : poussière de surface, aspirateur, lavage des sols dégagés, sanitaires rafraîchis. Un nettoyage approfondi s'attaque à ce que l'entretien courant laisse s'accumuler depuis des mois : le calcaire incrusté dans la robinetterie, la graisse cuite dans le four, la poussière derrière les meubles et sur les plinthes, le film gras sur les carrelages muraux de cuisine.",
+        blocks: [
+          {
+            h3: "Ce que l'entretien courant ne traite pas",
+            items: [
+              "Intérieur du four, de la hotte et du micro-ondes",
+              "Dessus d'armoires, plinthes et huisseries",
+              "Sous et derrière le mobilier léger",
+              "Calcaire incrusté sur robinetteries, parois de douche et cuvettes",
+              "Joints de carrelage et coulures dans les pièces d'eau",
+              "Intérieur des placards et des tiroirs",
+            ],
+          },
+          {
+            h3: "Quand le programmer",
+            text: "Le nettoyage approfondi se justifie à des moments précis plutôt qu'à intervalle fixe : avant une remise de clés, à l'entrée dans un logement, après une longue absence, avant ou après une réception, ou en remise à niveau annuelle quand l'entretien courant a pris du retard.",
+          },
+        ],
+      },
+      {
+        h2: "Que comprend un grand ménage, pièce par pièce ?",
+        intro:
+          "Nous établissons un plan d'action avant de commencer, en fonction de l'état réel du logement et du temps disponible. Voici le périmètre couvert par pièce.",
+        blocks: [
+          {
+            h3: "Cuisine",
+            items: [
+              "Dégraissage intérieur et extérieur du four, de la hotte et du micro-ondes",
+              "Nettoyage des plaques de cuisson et de la crédence",
+              "Extérieur des appareils électroménagers et dessus de réfrigérateur",
+              "Détartrage de l'évier et de la robinetterie",
+              "Nettoyage des façades de placards, intérieur sur demande",
+            ],
+          },
+          {
+            h3: "Salle de bain et sanitaires",
+            items: [
+              "Détartrage complet de la douche, de la baignoire et des parois",
+              "Traitement des joints et des coulures",
+              "Robinetteries, pommeaux et flexibles",
+              "Cuvette, abattant et pourtour des WC",
+              "Miroirs, meubles vasque et rangements",
+            ],
+          },
+          {
+            h3: "Pièces de vie et chambres",
+            items: [
+              "Dépoussiérage complet, dessus d'armoires et luminaires compris",
+              "Lessivage des plinthes, interrupteurs et poignées de porte",
+              "Déplacement du mobilier léger pour traiter le sol en dessous",
+              "Nettoyage des vitres intérieures et des rebords de fenêtre",
+              "Lavage des sols avec un produit adapté au revêtement",
+            ],
+          },
+        ],
+      },
+      {
+        h2: "Combien de temps prévoir pour un nettoyage approfondi ?",
+        intro:
+          "Le temps dépend de la superficie et surtout de l'état de départ. À titre de repère, comptez en moyenne 4 à 5 heures pour un appartement de 60 m² lors d'un premier grand nettoyage. Un studio se traite en 2 à 3 heures, un logement familial de 100 m² demande une journée à deux intervenants. Ces durées augmentent sensiblement si le logement n'a pas été entretenu depuis longtemps, s'il comporte beaucoup de surfaces vitrées ou si les pièces d'eau présentent un entartrage ancien. Nous vous donnons une estimation après un échange sur la configuration du logement, et nous établissons un plan d'action avec vous avant de démarrer, de façon à traiter en priorité ce qui compte le plus pour vous si le temps venait à manquer.",
+      },
+      {
+        h2: "Qui fournit le matériel et les produits ?",
+        intro:
+          "Nos équipes arrivent entièrement équipées, avec leur matériel professionnel et leurs produits, dont des références écolabellisées. Vous n'avez rien à prévoir et rien à acheter. Ce point mérite d'être vérifié quand vous comparez des devis : un tarif horaire plus bas qui suppose l'usage de votre propre matériel et de vos produits ne se compare pas à un tarif qui inclut tout. Nos produits sont sélectionnés pour être performants sans agresser les surfaces délicates. Sur le marbre, le parquet massif, la pierre naturelle et les résines, nous travaillons au pH neutre, sans décapant ni produit acide. Si votre logement comporte des matériaux particuliers, signalez-le avant l'intervention : nous adaptons la sélection en conséquence.",
+      },
+    ],
+    process: [
+      {
+        step: "Échange préalable",
+        text: "Nous faisons le point sur la superficie, l'état de départ et vos priorités, puis nous vous donnons une estimation de durée.",
+      },
+      {
+        step: "Plan d'action",
+        text: "Nous établissons avec vous l'ordre de traitement des pièces avant de démarrer, pour que l'essentiel soit couvert en priorité.",
+      },
+      {
+        step: "Intervention équipée",
+        text: "Nos intervenants arrivent avec leur matériel professionnel et leurs produits écolabellisés. Rien à fournir de votre côté.",
+      },
+      {
+        step: "Tour final",
+        text: "Nous parcourons le logement avec vous avant de partir. Les points de reprise sont traités sur place.",
+      },
+    ],
     faqs: [
       {
         q: "Quelle est la différence entre un ménage classique et un nettoyage approfondi ?",
@@ -381,7 +1228,131 @@ export const SERVICES: readonly Service[] = [
       "nettoyage textile ameublement",
     ],
     priceRange: "À la pièce (sur photo ou modèle)",
+    tldr: "Le nettoyage de canapé par injection-extraction consiste à injecter une solution nettoyante au cœur des fibres puis à l'extraire immédiatement avec la saleté dissoute. TGT Propreté intervient à domicile à Paris et en Île-de-France sur les canapés en tissu, cuir et microfibre, avec un séchage de 4 à 12 heures et un devis établi sur photo.",
+    relatedSlugs: [
+      "nettoyage-tapis-moquettes",
+      "nettoyage-approfondi",
+      "nettoyage-apres-sinistre",
+      "prestations-sur-mesure-conciergerie",
+    ],
+    sections: [
+      {
+        h2: "Pourquoi faire nettoyer son canapé par un professionnel ?",
+        intro:
+          "Un canapé accumule en quelques années ce qu'un aspirateur domestique ne retire pas : squames, acariens, poussière fine descendue au cœur du rembourrage, transpiration, résidus alimentaires et odeurs. Ces dépôts ne se voient pas immédiatement mais ternissent progressivement la couleur d'origine et rendent le tissu rêche au toucher. Le nettoyage domestique ne fait qu'agir en surface : sans extraction, l'eau et le produit restent dans la mousse et favorisent les auréoles et les moisissures.",
+        blocks: [
+          {
+            h3: "Ce que l'aspirateur ne retire pas",
+            items: [
+              "Acariens et allergènes logés dans le rembourrage",
+              "Poussière fine descendue sous la trame du tissu",
+              "Transpiration et corps gras incrustés sur les accoudoirs et les têtières",
+              "Odeurs de tabac, de cuisine et d'animaux fixées dans la mousse",
+            ],
+          },
+          {
+            h3: "Le risque du nettoyage improvisé",
+            text: "Frotter une tache avec un produit inadapté est la principale cause d'échec définitif. Le frottement fait pénétrer la tache plus profondément et abîme la trame ; certains détachants du commerce décolorent le tissu en séchant. Une tache déjà frottée reste traitable, mais avec un taux de réussite nettement inférieur.",
+          },
+          {
+            h3: "Un arbitrage économique simple",
+            text: "Un nettoyage professionnel coûte une fraction du prix d'un canapé neuf et prolonge sa durée de vie de plusieurs années. Sur un modèle de qualité, l'opération se rentabilise dès la première intervention.",
+          },
+        ],
+      },
+      {
+        h2: "Comment se déroule un nettoyage de canapé par injection-extraction ?",
+        intro:
+          "L'injection-extraction est le procédé de référence pour les textiles d'ameublement. La machine injecte une solution nettoyante sous pression au cœur des fibres, puis l'aspire immédiatement avec la saleté qu'elle a dissoute. Le textile ressort à peine humide, jamais détrempé.",
+        blocks: [
+          {
+            h3: "1. Identification du textile",
+            text: "Nous commençons par lire l'étiquette d'entretien et tester le produit sur une zone cachée. Un velours, un lin, une microfibre et un similicuir ne se traitent pas de la même façon, et certains tissus dits « nettoyage à sec uniquement » excluent l'injection-extraction.",
+          },
+          {
+            h3: "2. Aspiration et brossage",
+            text: "Aspiration à haute dépression de l'ensemble de l'assise, du dossier, des accoudoirs et des interstices, complétée d'un brossage mécanique qui décolle les particules accrochées à la trame.",
+          },
+          {
+            h3: "3. Détachage ciblé",
+            text: "Les taches identifiées sont prétraitées une par une avec un produit choisi selon leur nature : corps gras, tanins, protéines ou pigments ne réagissent pas aux mêmes agents.",
+          },
+          {
+            h3: "4. Injection-extraction",
+            text: "Passage complet sur toutes les surfaces textiles, avec une pression adaptée à la résistance de la fibre. C'est l'étape qui retire les auréoles, les allergènes et les odeurs.",
+          },
+          {
+            h3: "5. Finition et séchage",
+            text: "Extraction renforcée pour retirer un maximum d'humidité résiduelle, puis remise en forme des coussins. Nous vous indiquons le délai avant réutilisation et les consignes de ventilation.",
+          },
+        ],
+      },
+      {
+        h2: "Quels types de canapés et de textiles traitons-nous ?",
+        intro:
+          "Nous intervenons sur l'ensemble des mobiliers textiles d'un logement ou d'un bureau, avec une méthode adaptée à chaque matière.",
+        blocks: [
+          {
+            h3: "Canapés et fauteuils en tissu",
+            text: "Coton, polyester, velours, lin, chenille : c'est le cas le plus courant et celui où l'injection-extraction donne les résultats les plus visibles. La pression est ajustée à la résistance de la trame.",
+          },
+          {
+            h3: "Cuir et similicuir",
+            text: "Le cuir ne se traite pas par injection-extraction. Nous procédons par nettoyage doux, produit spécifique et nourrissage pour éviter le dessèchement et les craquelures.",
+          },
+          {
+            h3: "Microfibre et alcantara",
+            text: "Ces matières marquent facilement à l'eau et demandent un dosage précis pour éviter les auréoles de séchage. Le test préalable sur zone cachée est ici indispensable.",
+          },
+          {
+            h3: "Autres mobiliers textiles",
+            items: [
+              "Chaises et fauteuils de bureau, y compris en parc d'entreprise",
+              "Têtes de lit en tissu",
+              "Banquettes de restaurant et assises de salle d'attente",
+              "Chaises de salle à manger et poufs",
+            ],
+          },
+        ],
+      },
+      {
+        h2: "Combien de temps sèche un canapé après nettoyage ?",
+        intro:
+          "Comptez entre 4 et 12 heures selon l'épaisseur du rembourrage, la nature du tissu et la ventilation de la pièce. Un canapé fin en tissu léger sèche en une demi-journée ; une assise épaisse en velours dans une pièce peu ventilée peut demander une nuit complète. Le nettoyage se planifie donc idéalement en matinée pour une réutilisation le soir même. Aérer la pièce et faire fonctionner le chauffage en hiver accélère nettement le séchage. Nous déconseillons de replacer les housses ou les plaids tant que le rembourrage n'est pas parfaitement sec.",
+      },
+      {
+        h2: "Comment obtenir un devis pour un nettoyage de canapé ?",
+        intro:
+          "Nous chiffrons à la pièce, sur photo ou sur indication du modèle. Envoyez-nous une photo d'ensemble, une photo des taches éventuelles et le nombre de places : vous recevez un prix fixe avant l'intervention, sans surprise le jour J. Trois éléments font varier le tarif : le nombre de places et la présence d'une méridienne ou d'un angle, la nature du textile, et l'état de départ. Un canapé simplement encrassé par l'usage se traite plus vite qu'un modèle présentant des taches anciennes déjà frottées. Précisez également si l'accès se fait par un étage sans ascenseur, cela conditionne le matériel que nous montons.",
+      },
+    ],
+    process: [
+      {
+        step: "Devis sur photo",
+        text: "Envoyez une photo d'ensemble, une photo des taches et le nombre de places. Vous recevez un prix fixe avant l'intervention.",
+      },
+      {
+        step: "Test préalable",
+        text: "Lecture de l'étiquette d'entretien et test du produit sur une zone cachée. C'est ce qui évite toute mauvaise surprise sur les matières délicates.",
+      },
+      {
+        step: "Détachage puis extraction",
+        text: "Aspiration, brossage mécanique, prétraitement des taches une par une, puis injection-extraction sur l'ensemble des surfaces.",
+      },
+      {
+        step: "Séchage accompagné",
+        text: "Extraction renforcée, remise en forme des coussins et consignes de ventilation. Réutilisation sous 4 à 12 heures.",
+      },
+    ],
     faqs: [
+      {
+        q: "À quelle fréquence faut-il faire nettoyer son canapé ?",
+        a: "Un nettoyage professionnel une à deux fois par an suffit pour un usage courant. Comptez deux à trois fois par an en présence d'enfants en bas âge, d'animaux ou de fumeurs. Entre deux interventions, un passage d'aspirateur hebdomadaire avec l'embout textile et un brossage régulier retardent nettement l'encrassement.",
+      },
+      {
+        q: "Le nettoyage élimine-t-il les acariens et les allergènes ?",
+        a: "Oui. L'aspiration à haute dépression combinée à l'injection-extraction retire les acariens, leurs déjections et la poussière fine logée dans le rembourrage. C'est la raison pour laquelle nous recommandons deux passages par an aux personnes allergiques.",
+      },
       {
         q: "Combien de temps faut-il pour le séchage ?",
         a: "Entre 4h et 12h selon le tissu et la température de la pièce.",
@@ -411,7 +1382,116 @@ export const SERVICES: readonly Service[] = [
       "nettoyage moquette bureau",
     ],
     priceRange: "Tarif au m² ou forfait tapis",
+    tldr: "Le nettoyage de tapis et de moquettes combine aspiration industrielle, brossage mécanique et injection-extraction pour retirer le trafic incrusté, les taches et les odeurs. TGT Propreté intervient sur place à Paris et en Île-de-France, chez les particuliers comme en bureaux et commerces, avec un séchage de 4 à 8 heures.",
+    relatedSlugs: [
+      "nettoyage-canapes-fauteuils",
+      "nettoyage-bureaux-entreprises",
+      "nettoyage-approfondi",
+      "nettoyage-coproprietes-immeubles",
+    ],
+    sections: [
+      {
+        h2: "Pourquoi faire nettoyer ses tapis et moquettes ?",
+        intro:
+          "Une moquette agit comme un filtre : elle piège la poussière, les allergènes et les particules apportées par les chaussures, ce qui améliore la qualité de l'air tant qu'elle est entretenue, et la dégrade dès qu'elle est saturée. Passé ce point, l'aspirateur ne retire plus que la surface. Les fibres se couchent sous le passage répété, la couleur s'assombrit dans les zones de trafic, et les odeurs s'installent durablement.",
+        blocks: [
+          {
+            h3: "Le trafic, principale cause de dégradation",
+            text: "Dans un bureau ou un commerce, les couloirs et les abords d'ascenseur s'assombrissent bien avant le reste de la surface. Ce marquage n'est pas une usure définitive : il s'agit dans la majorité des cas de particules abrasives incrustées entre les fibres, que l'extraction retire.",
+          },
+          {
+            h3: "Un enjeu de durée de vie",
+            text: "Un revêtement textile non entretenu se remplace au bout de quelques années. Traité une à deux fois par an, il tient nettement plus longtemps. Sur un plateau de bureaux, l'écart de coût entre l'entretien et le remplacement est considérable.",
+          },
+          {
+            h3: "Les tapis anciens et les fibres naturelles",
+            text: "Un tapis en laine, en soie ou d'origine orientale demande un examen de la fibre avant toute intervention. Ces pièces supportent mal les procédés standardisés et les températures élevées : le protocole se définit après examen, pas avant.",
+          },
+        ],
+      },
+      {
+        h2: "Comment nettoyons-nous les tapis et les moquettes ?",
+        intro:
+          "Notre méthode enchaîne trois opérations complémentaires. Aucune ne suffit seule : c'est leur combinaison qui permet de retirer à la fois la poussière sèche et les salissures liées.",
+        blocks: [
+          {
+            h3: "1. Aspiration industrielle",
+            text: "Un aspirateur professionnel à haute dépression retire la poussière sèche et les particules abrasives logées à la base des fibres, celles qui coupent la trame à chaque pas et abrègent la durée de vie du revêtement.",
+          },
+          {
+            h3: "2. Brossage mécanique",
+            text: "La brosse redresse les fibres couchées par le passage et décolle les salissures accrochées à la trame, ce qu'une simple aspiration ne fait pas. C'est cette étape qui rend visible la différence sur les zones de trafic.",
+          },
+          {
+            h3: "3. Injection-extraction",
+            text: "Une solution nettoyante est injectée au cœur du textile puis immédiatement aspirée avec la saleté dissoute. Le revêtement ressort à peine humide, ce qui évite les auréoles de séchage et le risque de moisissure sous la moquette.",
+          },
+          {
+            h3: "Traitements complémentaires",
+            items: [
+              "Prétraitement ciblé des taches selon leur nature",
+              "Traitement désodorisant sur les odeurs installées",
+              "Protection anti-taches sur demande, après nettoyage",
+              "Traitement antimicrobien pour les espaces recevant du public",
+            ],
+          },
+        ],
+      },
+      {
+        h2: "Quels revêtements traitons-nous ?",
+        blocks: [
+          {
+            h3: "Moquettes de bureaux et de commerces",
+            text: "Dalles ou moquettes pleines, en fibre synthétique le plus souvent. C'est le cas le plus fréquent en entreprise, et celui qui se prête le mieux à l'injection-extraction. L'intervention se planifie en soirée ou le week-end pour une réouverture normale le lendemain.",
+          },
+          {
+            h3: "Moquettes de résidences et de parties communes",
+            text: "Paliers, couloirs et escaliers moquettés d'immeubles d'habitation. Ces surfaces cumulent trafic et apports extérieurs, et se traitent généralement une à deux fois par an en complément de l'entretien courant.",
+          },
+          {
+            h3: "Tapis synthétiques",
+            text: "Polypropylène, polyamide, polyester : ces fibres supportent bien l'injection-extraction et se traitent au forfait, à la pièce.",
+          },
+          {
+            h3: "Tapis en laine et tapis d'orient",
+            text: "Fibres naturelles sensibles à la température et à l'humidité, avec un risque de dégorgement des couleurs sur les pièces anciennes. Nous procédons après examen de la fibre et test de solidité des teintures, avec une pression et un dosage réduits.",
+          },
+        ],
+      },
+      {
+        h2: "Combien de temps sèche une moquette après nettoyage ?",
+        intro:
+          "Comptez entre 4 et 8 heures selon la ventilation et la température des locaux. Nos extracteurs professionnels laissent le textile à peine humide, jamais détrempé : c'est ce qui rend possible un traitement en soirée dans des bureaux pour une réouverture le lendemain matin. En entreprise, le créneau le plus efficace reste le vendredi soir ou le samedi, qui laisse le week-end complet pour un séchage sans contrainte. Aérer les locaux et maintenir le chauffage en hiver réduit sensiblement le délai. Nous déconseillons de replacer le mobilier lourd tant que la moquette n'est pas parfaitement sèche.",
+      },
+      {
+        h2: "Comment est calculé le prix du nettoyage de tapis et moquettes ?",
+        intro:
+          "Deux modes de tarification s'appliquent selon le type de revêtement. Pour les moquettes, le tarif se calcule au mètre carré sur la surface totale à traiter. Pour les tapis, nous fonctionnons au forfait à la pièce : envoyez-nous les dimensions et une photo, ou indiquez le modèle et la matière, et vous recevez un prix fixe avant l'intervention. Trois éléments font varier le chiffrage : la nature de la fibre, l'état de départ, et l'accessibilité de la surface. Une moquette de bureaux dégagée se traite plus vite qu'une surface encombrée de mobilier à déplacer, et un tapis en laine ancienne demande un protocole plus lent qu'un tapis synthétique récent.",
+      },
+    ],
+    process: [
+      {
+        step: "Examen de la fibre",
+        text: "Identification du revêtement et test de solidité des teintures sur une zone cachée, en particulier sur les fibres naturelles.",
+      },
+      {
+        step: "Aspiration et brossage",
+        text: "Aspiration industrielle à haute dépression, puis brossage mécanique pour redresser les fibres et décoller les salissures liées.",
+      },
+      {
+        step: "Injection-extraction",
+        text: "Prétraitement des taches, puis passage complet avec pression et dosage adaptés à la fibre.",
+      },
+      {
+        step: "Séchage et remise en place",
+        text: "Extraction renforcée pour limiter l'humidité résiduelle, consignes de ventilation, réutilisation sous 4 à 8 heures.",
+      },
+    ],
     faqs: [
+      {
+        q: "Faut-il déplacer les meubles avant votre intervention ?",
+        a: "Nous déplaçons le mobilier léger dans le cadre de la prestation. Pour les meubles lourds, les armoires pleines et le matériel informatique, prévoyez un dégagement en amont : cela nous permet de traiter la totalité de la surface plutôt que de contourner les obstacles.",
+      },
       {
         q: "Est-ce que cela abîme les fibres des tapis précieux ?",
         a: "Pas du tout. Nous adaptons la pression et les shampoings au type de textile pour préserver les fibres.",
@@ -451,10 +1531,101 @@ export const SERVICES: readonly Service[] = [
       "nettoyage suie incendie"
     ],
     priceRange: "SUR DEVIS (PRISE EN CHARGE ASSURANCES)",
+    tldr: "Le nettoyage après sinistre consiste à assainir un local touché par un dégât des eaux, une inondation ou un début d'incendie : aspiration des eaux résiduelles, assèchement, traitement anti-moisissures, nettoyage des suies et désodorisation. TGT Propreté mobilise une équipe sous 24 à 48 heures à Paris et en Île-de-France, avec des documents transmissibles à votre assurance.",
+    relatedSlugs: [
+      "nettoyage-approfondi",
+      "nettoyage-fin-de-chantier",
+      "nettoyage-tapis-moquettes",
+      "nettoyage-coproprietes-immeubles",
+    ],
+    sections: [
+      {
+        h2: "Pourquoi intervenir vite après un sinistre ?",
+        intro:
+          "Le délai est le facteur décisif. Après un dégât des eaux, les moisissures se développent en 24 à 72 heures sur les matériaux poreux restés humides : cloisons en plaque de plâtre, sous-couches de parquet, isolants, moquettes. Passé ce stade, le problème change de nature. On ne parle plus de nettoyage mais de dépose et de remplacement, avec un coût sans commune mesure.",
+        blocks: [
+          {
+            h3: "Ce que produit l'attente",
+            items: [
+              "Développement de moisissures dans les cloisons et les isolants",
+              "Gonflement irréversible des parquets et des panneaux de particules",
+              "Odeurs qui s'installent durablement dans les textiles et les revêtements",
+              "Fixation des suies acides sur les peintures et les surfaces métalliques",
+            ],
+          },
+          {
+            h3: "Le cas particulier des suies",
+            text: "Après un début d'incendie, les suies sont chimiquement acides. Elles continuent d'attaquer les peintures, les métaux et les plastiques tant qu'elles ne sont pas retirées. Chaque jour d'attente augmente la part des surfaces qui devront être refaites plutôt que nettoyées.",
+          },
+        ],
+      },
+      {
+        h2: "Que comprend notre intervention après sinistre ?",
+        intro:
+          "Nous procédons par étapes, du plus urgent au plus fin. L'objectif est d'arrêter la dégradation avant de traiter l'aspect.",
+        blocks: [
+          {
+            h3: "Dégât des eaux et inondation",
+            items: [
+              "Aspiration motopompée des eaux résiduelles",
+              "Retrait des revêtements textiles gorgés d'eau",
+              "Assèchement des surfaces et des supports",
+              "Traitement anti-moisissures des zones exposées",
+              "Nettoyage et désinfection des sols, murs et mobiliers récupérables",
+            ],
+          },
+          {
+            h3: "Après incendie",
+            items: [
+              "Retrait des suies sur les murs, plafonds et surfaces",
+              "Nettoyage des résidus de combustion sur les menuiseries et les métaux",
+              "Traitement des textiles et revêtements imprégnés",
+              "Désodorisation complète des volumes",
+            ],
+          },
+          {
+            h3: "Assainissement et finition",
+            text: "Une fois les dommages traités, nous procédons au nettoyage complet du local pour qu'il redevienne utilisable : sols, sanitaires, cuisine, menuiseries et vitrages.",
+          },
+        ],
+      },
+      {
+        h2: "Comment se passe la prise en charge par l'assurance ?",
+        intro:
+          "Notre rôle est de vous fournir les pièces dont votre assureur a besoin, dans la forme attendue. Après le diagnostic sur place, nous établissons un devis détaillé qui décrit poste par poste les opérations nécessaires : c'est ce document que vous transmettez à votre compagnie dans le cadre de votre déclaration de sinistre. À l'issue de l'intervention, nous vous remettons une facture acquittée, également transmissible. Nous vous recommandons de photographier les lieux avant notre passage, dès la découverte du sinistre : ces clichés constituent l'élément de preuve le plus solide pour l'expert. Nous ne nous substituons pas à votre assureur et n'intervenons pas dans la négociation de votre indemnisation : nous fournissons les documents, la décision de prise en charge relève de votre contrat.",
+      },
+      {
+        h2: "Dans quel délai intervenez-vous ?",
+        intro:
+          "Nous traitons les demandes après sinistre en priorité absolue et mobilisons une équipe technique sous 24 à 48 heures à Paris et en Île-de-France. Pour ce type de demande, appelez-nous directement plutôt que de passer par le formulaire : le téléphone reste le canal le plus rapide, et un échange de quelques minutes nous permet d'évaluer les moyens à engager et de vous donner un créneau ferme. Si vous ne pouvez pas nous joindre immédiatement, quelques gestes utiles en attendant : coupez l'arrivée d'eau ou l'alimentation électrique de la zone si c'est possible sans risque, ventilez largement, et surtout ne jetez rien avant le passage de l'expert.",
+      },
+    ],
+    process: [
+      {
+        step: "Appel et diagnostic",
+        text: "Échange téléphonique immédiat pour évaluer l'ampleur, puis diagnostic sur place sous 24 à 48 heures.",
+      },
+      {
+        step: "Devis détaillé",
+        text: "Nous chiffrons poste par poste. Le document est directement transmissible à votre assurance.",
+      },
+      {
+        step: "Assainissement",
+        text: "Aspiration, assèchement, traitement anti-moisissures ou retrait des suies selon la nature du sinistre.",
+      },
+      {
+        step: "Remise en état et facture",
+        text: "Nettoyage complet du local et désodorisation, puis remise d'une facture acquittée pour votre dossier.",
+      },
+    ],
     faqs: [
       {
-        q: "Comment puis-je me faire remboursement l'intervention ?",
-        a: "Après notre diagnostic, nous vous fournissons un devis détaillé et une facture acquittée. Vous pourrez transmettre ces documents directement à votre compagnie d'assurance dans le cadre de votre déclaration de sinistre pour obtenir votre prise en charge."
+        q: "Comment puis-je obtenir le remboursement de l'intervention ?",
+        a: "Après notre diagnostic, nous vous fournissons un devis détaillé et, à l'issue de l'intervention, une facture acquittée. Vous transmettez ces documents à votre compagnie d'assurance dans le cadre de votre déclaration de sinistre. La décision de prise en charge relève de votre contrat : nous fournissons les pièces, nous n'intervenons pas dans la négociation."
+      },
+      {
+        q: "Que faire en attendant votre arrivée ?",
+        a: "Coupez l'arrivée d'eau ou l'alimentation électrique de la zone si vous pouvez le faire sans risque, ventilez largement pour limiter l'humidité, et photographiez les lieux en l'état. Surtout, ne jetez rien avant le passage de l'expert : les biens endommagés font partie du dossier d'indemnisation.",
       },
       {
         q: "Dans quel délai pouvez-vous intervenir après un dégât des eaux ?",
@@ -480,7 +1651,123 @@ export const SERVICES: readonly Service[] = [
       "blanchisserie conciergerie paris",
     ],
     priceRange: "Sur étude privée (FORFAITS DISPONIBLES)",
+    tldr: "Le ménage de conciergerie sécurise la rotation entre deux séjours en location courte durée : nettoyage de départ, désinfection, gestion du linge, réassort des consommables et reporting photo. TGT Propreté intervient 7 jours sur 7 à Paris et en Île-de-France, au forfait par typologie de logement, week-end inclus sans surcoût.",
+    relatedSlugs: [
+      "nettoyage-approfondi",
+      "nettoyage-canapes-fauteuils",
+      "repassage-rangement-domicile",
+      "nettoyage-des-vitres",
+    ],
+    sections: [
+      {
+        h2: "Pourquoi la rotation en location courte durée est un métier à part",
+        intro:
+          "Une rotation Airbnb n'a rien d'un ménage ordinaire. Elle se joue dans une fenêtre de quelques heures entre le départ d'un voyageur et l'arrivée du suivant, sans possibilité de report, et le résultat est noté publiquement quelques heures plus tard. Une rotation manquée ne se rattrape pas : elle se traduit par un commentaire qui pèse sur votre classement pendant des mois.",
+        blocks: [
+          {
+            h3: "La contrainte de la fenêtre critique",
+            text: "Entre le check-out et le check-in, tout doit être fait : ménage complet, changement du linge, réassort, vérification de l'état du logement. Un retard n'est pas absorbable, ce qui exige une organisation dimensionnée pour les week-ends et les jours de forte rotation.",
+          },
+          {
+            h3: "Un niveau d'exigence hôtelier",
+            text: "Le voyageur compare votre logement à un hôtel, pas à une location classique. Les points qui déclenchent les commentaires négatifs sont toujours les mêmes : cheveux dans la douche, poussière sur les plinthes, four ou micro-ondes sales, linge froissé, odeur de renfermé.",
+          },
+          {
+            h3: "La détection d'incidents",
+            text: "L'agent de ménage est la seule personne à entrer dans le logement entre deux séjours. C'est donc lui qui constate une casse, une dégradation ou un dysfonctionnement. Encore faut-il que l'information vous remonte immédiatement et avec une preuve.",
+          },
+        ],
+      },
+      {
+        h2: "Que comprend une prestation de conciergerie ?",
+        intro:
+          "Notre offre couvre l'ensemble de la rotation. Elle se décline en deux niveaux selon que vous nous confiez ou non la gestion du linge.",
+        blocks: [
+          {
+            h3: "Ménage de départ",
+            items: [
+              "Nettoyage complet de toutes les pièces, sols, surfaces et menuiseries",
+              "Désinfection de la salle de bain et des sanitaires",
+              "Cuisine : plaques, four, micro-ondes, réfrigérateur vidé et nettoyé",
+              "Vaisselle en attente, rangement et remise en configuration d'origine",
+              "Vidage des poubelles et sortie des déchets",
+              "Aération et traitement des odeurs",
+            ],
+          },
+          {
+            h3: "Gestion du linge",
+            text: "Nous assurons le retrait du linge sale et la mise en place du linge propre, qu'il soit fourni par vos soins ou via notre système de location. Lits faits, serviettes disposées, linge de cuisine renouvelé.",
+          },
+          {
+            h3: "Réassort des consommables",
+            items: [
+              "Papier toilette, essuie-tout et sacs poubelle",
+              "Savon, gel douche et produits d'accueil",
+              "Éponges, liquide vaisselle et produits d'entretien de base",
+              "Café, thé et sucre selon votre standard d'accueil",
+            ],
+          },
+          {
+            h3: "Reporting photo avant et après",
+            text: "Chaque rotation donne lieu à un reporting photographique systématique. Il documente l'état à l'arrivée de l'agent et le résultat après intervention, ce qui vous donne une preuve exploitable en cas de litige avec un voyageur et une visibilité sur l'état réel de votre parc.",
+          },
+        ],
+      },
+      {
+        h2: "Comment fonctionne la tarification en conciergerie ?",
+        intro:
+          "Nous fonctionnons au forfait par typologie de logement, du studio au T4 et plus, plutôt qu'au temps passé. C'est le seul mode compatible avec une gestion locative : vous connaissez votre coût par rotation à l'avance et pouvez le répercuter dans votre calcul de rentabilité.",
+        blocks: [
+          {
+            h3: "Deux niveaux de forfait",
+            items: [
+              "Forfait Light : ménage professionnel complet, hors gestion du linge",
+              "Forfait Premium : ménage, gestion du linge et réassort des consommables",
+            ],
+          },
+          {
+            h3: "Ce qui est inclus sans supplément",
+            text: "Les interventions du samedi et du dimanche sont comprises dans le forfait, sans majoration. C'est un point à vérifier systématiquement lorsque vous comparez des prestataires : le week-end concentre l'essentiel des rotations, et une majoration sur ces jours change complètement l'économie du contrat.",
+          },
+          {
+            h3: "Volume et ajustement",
+            text: "Les tarifs de base sont ajustés selon le volume annuel de rotations. Un parc de plusieurs logements ou une forte saisonnalité se négocient différemment d'un bien unique loué ponctuellement.",
+          },
+        ],
+      },
+      {
+        h2: "Comment se passe la coordination au quotidien ?",
+        intro:
+          "Vous nous transmettez votre calendrier de réservations et nous nous chargeons du reste. Les rotations sont planifiées à l'avance sur la base de vos horaires de check-out et de check-in, et nous vous alertons dès qu'un enchaînement paraît trop serré pour être tenu correctement. En cas d'incident constaté dans le logement — casse, dégradation, équipement en panne — vous êtes prévenu immédiatement, photo à l'appui, avant l'arrivée du voyageur suivant. Cela vous laisse le temps de déclencher une réparation, d'ouvrir un litige sur la plateforme ou d'informer le voyageur. Pour les demandes urgentes ou les changements de dernière minute, nous faisons notre maximum en fonction de la charge du planning : plus votre calendrier nous parvient tôt, plus notre marge de manœuvre est grande.",
+      },
+    ],
+    process: [
+      {
+        step: "Étude de votre parc",
+        text: "Nous évaluons la typologie des logements, le volume de rotations et vos standards d'accueil, puis établissons les forfaits.",
+      },
+      {
+        step: "Calendrier de rotations",
+        text: "Vous nous transmettez vos réservations, nous planifions les interventions et signalons les enchaînements trop serrés.",
+      },
+      {
+        step: "Rotation complète",
+        text: "Ménage, linge, réassort et remise en configuration d'origine, dans la fenêtre entre check-out et check-in, 7 jours sur 7.",
+      },
+      {
+        step: "Reporting photo",
+        text: "Envoi systématique des photos avant et après, avec signalement immédiat de tout incident constaté.",
+      },
+    ],
     faqs: [
+      {
+        q: "Intervenez-vous le week-end sans majoration ?",
+        a: "Oui. Les interventions du samedi et du dimanche sont comprises dans le forfait, sans surcoût. Le week-end concentrant l'essentiel des rotations en location courte durée, une majoration sur ces jours viderait le forfait de son intérêt.",
+      },
+      {
+        q: "Que se passe-t-il si l'agent constate une dégradation ?",
+        a: "Vous êtes prévenu immédiatement, photos à l'appui, avant l'arrivée du voyageur suivant. Le reporting photo systématique de chaque rotation vous donne une preuve exploitable si vous devez ouvrir un litige sur la plateforme.",
+      },
       {
         q: "Comment faire une demande spécifique ?",
         a: "Contactez-nous directement par téléphone ou via notre formulaire. Notre équipe vous recontacte en moins d'une heure.",
@@ -520,7 +1807,96 @@ export const SERVICES: readonly Service[] = [
       "repassage chemises à domicile",
     ],
     priceRange: "À partir de 23€/h",
+    tldr: "Le service de repassage et rangement à domicile prend en charge le repassage des vêtements et du linge de maison, le pliage et le rangement méthodique des armoires et dressings. TGT Propreté intervient à Paris et en Île-de-France à partir de 23 € de l'heure, avec votre matériel de repassage.",
+    relatedSlugs: [
+      "nettoyage-approfondi",
+      "prestations-sur-mesure-conciergerie",
+      "nettoyage-canapes-fauteuils",
+      "nettoyage-tapis-moquettes",
+    ],
+    sections: [
+      {
+        h2: "Que comprend le service de repassage à domicile ?",
+        intro:
+          "Notre intervenant prend en charge le linge propre et sec que vous avez préparé, le repasse, le plie et le range à sa place. Le service se déroule chez vous, sur le créneau que vous avez défini, sans que votre linge quitte le domicile.",
+        blocks: [
+          {
+            h3: "Le linge traité",
+            items: [
+              "Chemises, chemisiers et hauts de ville",
+              "Pantalons, jupes et robes",
+              "Linge de maison : draps, housses, taies et nappes",
+              "Torchons et serviettes de table",
+            ],
+          },
+          {
+            h3: "Pliage et rangement",
+            text: "Le repassage ne s'arrête pas au fer. Le linge est plié selon vos habitudes et rangé à sa place dans les armoires et les dressings, ce qui évite la pile qui attend une semaine sur une chaise avant d'être rangée.",
+          },
+          {
+            h3: "Ce qui n'est pas inclus",
+            text: "Nous ne prenons pas en charge le lavage ni le séchage : le linge doit être propre et sec au moment de l'intervention. Nous ne traitons pas non plus les pièces relevant du nettoyage à sec, comme les costumes structurés ou les manteaux doublés.",
+          },
+        ],
+      },
+      {
+        h2: "Traitez-vous les tissus délicats ?",
+        intro:
+          "Oui, et c'est précisément ce qui distingue un repassage professionnel. Nos intervenants sont formés à la lecture des étiquettes d'entretien et adaptent la température, la vapeur et l'usage de la pattemouille à chaque matière. La soie se repasse à basse température et sur l'envers, le lin demande au contraire une forte chaleur et une humidité importante, la laine se traite à la vapeur sans appui direct du fer, et les synthétiques brillent définitivement si la semelle est trop chaude. Les brûlures et les lustrages irréversibles viennent presque toujours d'une température appliquée sans vérification préalable de l'étiquette. Si vous avez des pièces auxquelles vous tenez particulièrement, signalez-les en début d'intervention : elles seront traitées avec une attention spécifique, voire écartées si l'étiquette exclut le repassage.",
+      },
+      {
+        h2: "Comment organiser une intervention de repassage ?",
+        intro:
+          "Quelques points pratiques permettent de tirer le meilleur parti du temps réservé, puisque la prestation se facture à l'heure.",
+        blocks: [
+          {
+            h3: "Le matériel reste le vôtre",
+            text: "L'intervenant utilise votre centrale vapeur ou votre fer, ainsi que votre table à repasser. Un matériel en bon état et bien détartré fait une différence réelle sur le rendu comme sur la vitesse d'exécution.",
+          },
+          {
+            h3: "Préparer le linge en amont",
+            items: [
+              "Linge propre, sec et sorti de la machine sans avoir séjourné en boule",
+              "Panier accessible et espace dégagé pour installer la table",
+              "Cintres disponibles pour les pièces à suspendre",
+              "Pièces délicates ou fragiles signalées à part",
+            ],
+          },
+          {
+            h3: "Combiner avec du ménage",
+            text: "Beaucoup de nos clients répartissent leur forfait horaire entre l'entretien du logement et le soin du linge sur une même intervention. C'est possible sans surcoût d'organisation : il suffit de nous indiquer la répartition souhaitée.",
+          },
+        ],
+      },
+      {
+        h2: "En quoi consiste le rangement de dressing ?",
+        intro:
+          "Le rangement va au-delà du simple retour du linge dans l'armoire. Il s'agit de remettre de l'ordre dans un espace de rangement qui s'est progressivement désorganisé : regrouper les pièces par catégorie et par saison, uniformiser les pliages, dégager ce qui encombre les étagères hautes, rendre visible ce qui était enfoui au fond d'une pile. Le résultat tient dans le temps parce qu'il repose sur une logique simple : chaque type de vêtement a un emplacement, et le rangement suivant reproduit le même schéma. Cette prestation se combine naturellement avec le repassage, puisque le linge repassé est directement intégré au nouveau classement plutôt qu'empilé sur l'existant. Elle se justifie particulièrement lors d'un changement de saison, d'un emménagement ou après une période où l'entretien courant a pris du retard.",
+      },
+    ],
+    process: [
+      {
+        step: "Définition du besoin",
+        text: "Nous convenons du volume de linge, du créneau et de la répartition éventuelle entre repassage et ménage.",
+      },
+      {
+        step: "Préparation",
+        text: "Vous mettez à disposition le linge propre et sec, votre centrale vapeur et votre table à repasser.",
+      },
+      {
+        step: "Repassage adapté",
+        text: "Lecture des étiquettes et réglage de la température matière par matière, avec traitement à part des pièces signalées comme fragiles.",
+      },
+      {
+        step: "Pliage et rangement",
+        text: "Pliage selon vos habitudes et rangement à sa place dans l'armoire ou le dressing.",
+      },
+    ],
     faqs: [
+      {
+        q: "Que se passe-t-il si une pièce ne peut pas être repassée ?",
+        a: "L'intervenant écarte les pièces dont l'étiquette exclut le repassage ou dont la matière présente un risque, et vous les signale plutôt que de prendre le risque d'une brûlure ou d'un lustrage irréversible. Les costumes structurés et les manteaux doublés relèvent du nettoyage à sec et ne sont pas traités à domicile.",
+      },
       {
         q: "Proposez-vous le crédit d'impôt de 50 % (Services à la Personne) pour le repassage ?",
         a: "Malheureusement non. En tant qu'entreprise de nettoyage et de services multisectorielle (SARL), nous ne bénéficions pas de l'agrément Services à la Personne. Nos tarifs affichés sont transparents et incluent l'intégralité de nos charges sociales, nos assurances professionnelles ainsi que la garantie d'un travail rigoureux et encadré.",

@@ -23,7 +23,9 @@ const jost = Jost({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   ...buildMetadata({
-    title: `${SITE.name} — ${SITE.tagline}`,
+    // Mot-clé en tête, marque en fin : c'est la partie gauche du title que
+    // Google tronque le moins et que l'utilisateur lit en premier.
+    title: `${SITE.tagline} | ${SITE.name}`,
     description: SITE.description,
     path: "/",
     keywords: [

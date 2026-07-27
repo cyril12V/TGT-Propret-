@@ -7,6 +7,7 @@ import { About } from "@/components/sections/About";
 import { Services } from "@/components/sections/Services";
 import { Realisations } from "@/components/sections/Realisations";
 import { WhyUs } from "@/components/sections/WhyUs";
+import { ZonesBand } from "@/components/sections/ZonesBand";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { BlogPreview } from "@/components/sections/BlogPreview";
 import { ContactBand } from "@/components/sections/ContactBand";
@@ -25,6 +26,7 @@ export default function HomePage() {
         <Services />
         <Realisations />
         <WhyUs />
+        <ZonesBand />
         <Testimonials />
         <BlogPreview />
         <ContactBand />
@@ -37,7 +39,7 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
             webPageJsonLd({
-              title: `${SITE.name} — ${SITE.tagline}`,
+              title: `${SITE.tagline} | ${SITE.name}`,
               description: SITE.description,
               path: "/",
               speakableSelectors: ["h1", ".hero-sub", "[data-speakable]"],

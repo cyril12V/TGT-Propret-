@@ -184,13 +184,15 @@ export function Services() {
           <SectionLabel centered>Ce Que Nous Faisons</SectionLabel>
 
           <h2 className="font-serif text-[clamp(40px,5vw,68px)] font-semibold leading-none tracking-tight text-[var(--color-navy)]">
-            Nos{" "}
-            <em className="italic text-[var(--color-gold)]">Services</em>
+            Nos services de{" "}
+            <em className="italic text-[var(--color-gold)]">
+              nettoyage professionnel
+            </em>
           </h2>
 
           <p className="mt-3 text-[15px] leading-relaxed text-[var(--color-muted)]">
             De votre salon à votre chantier, nous couvrons l&apos;ensemble de
-            vos besoins en nettoyage professionnel.
+            vos besoins en nettoyage à Paris et en Île-de-France.
           </p>
 
           <div
@@ -266,6 +268,16 @@ export function Services() {
               );
             })}
           </div>
+        </Reveal>
+
+        <Reveal className="mt-12 text-center">
+          <Link
+            href="/services"
+            className="inline-flex items-center gap-2 border border-[var(--color-navy)]/20 bg-white px-7 py-4 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-navy)] transition-all hover:-translate-y-0.5 hover:border-[var(--color-gold)] hover:text-[var(--color-gold)]"
+          >
+            Voir le détail de nos prestations
+            <ArrowRight size={14} aria-hidden="true" />
+          </Link>
         </Reveal>
 
       </div>
