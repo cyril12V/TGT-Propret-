@@ -34,7 +34,8 @@ export function DevisForm() {
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const formData = new FormData(e.currentTarget);
+    const form = e.currentTarget; // capturé AVANT l'await (sinon null après)
+    const formData = new FormData(form);
     const payload = {
       firstName: String(formData.get("firstName") ?? ""),
       lastName: String(formData.get("lastName") ?? ""),
@@ -68,7 +69,7 @@ export function DevisForm() {
       }
 
       setStatus("success");
-      e.currentTarget.reset();
+      form.reset();
     } catch (err) {
       setStatus("error");
       setErrorMsg(err instanceof Error ? err.message : "Erreur inconnue");
