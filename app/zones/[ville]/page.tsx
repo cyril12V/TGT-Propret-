@@ -9,7 +9,12 @@ import { FaqSection } from "@/components/sections/FaqSection";
 import { ParisLinksFooter } from "@/components/sections/ParisLinksFooter";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { SERVICES } from "@/lib/services";
-import { ZONES, getZoneBySlug, getNearbyZones } from "@/lib/zones";
+import {
+  ZONES,
+  getZoneBySlug,
+  getNearbyZones,
+  zonePreposition,
+} from "@/lib/zones";
 import { SITE, getYearsOfExperience } from "@/lib/constants";
 import {
   breadcrumbJsonLd,
@@ -35,7 +40,7 @@ export async function generateMetadata({
 
   return buildMetadata({
     title: `Entreprise de nettoyage ${zone.name} (${zone.postalCode}) — TGT Propreté`,
-    description: `Nettoyage professionnel à ${zone.name} : bureaux, copropriétés, fin de chantier, vitres, textiles. Devis gratuit sous 24h. TGT Propreté intervient dans tout le ${zone.department}.`,
+    description: `Nettoyage professionnel ${zonePreposition(zone)} ${zone.name} : bureaux, copropriétés, fin de chantier, vitres, textiles. Devis gratuit sous 24h. TGT Propreté intervient dans tout le ${zone.department}.`,
     path: `/zones/${zone.slug}`,
     keywords: zone.keywords,
   });
@@ -52,9 +57,10 @@ export default async function ZonePage({
 
   const paragraphs = zone.intro.split(/\n\n+/).filter(Boolean);
   const nearby = getNearbyZones(zone);
+  const prep = zonePreposition(zone); // « à Bondy » vs « en Seine-Saint-Denis »
   const years = getYearsOfExperience();
 
-  const metaDescription = `Nettoyage professionnel à ${zone.name} (${zone.postalCode}) : bureaux, copropriétés, fin de chantier, vitres et textiles. Devis gratuit sous 24h.`;
+  const metaDescription = `Nettoyage professionnel ${prep} ${zone.name} (${zone.postalCode}) : bureaux, copropriétés, commerces, fin de chantier, vitres et textiles. Devis gratuit sous 24h.`;
 
   return (
     <>
@@ -78,17 +84,21 @@ export default async function ZonePage({
               {zone.department} · {zone.postalCode}
             </SectionLabel>
             <h1 className="mt-3 font-serif text-[clamp(36px,5.5vw,68px)] font-light leading-[1.05]">
-              Entreprise de nettoyage à{" "}
+              Entreprise de nettoyage {prep}{" "}
               <em className="italic text-[var(--color-gold)]">{zone.name}</em>
             </h1>
 
             {/* Résumé autonome : c'est le passage que les moteurs de réponse extraient. */}
             <p className="mt-4 max-w-3xl text-lg leading-relaxed text-white/70">
               TGT Propreté est une entreprise de nettoyage professionnel qui
-              intervient à {zone.name} ({zone.postalCode}, {zone.department})
+              intervient {prep} {zone.name}{" "}
+              {zone.isDepartment
+                ? `(${zone.postalCode})`
+                : `(${zone.postalCode}, ${zone.department})`}{" "}
               auprès des entreprises, syndics de copropriété, commerçants et
-              particuliers. {SERVICES.length} prestations disponibles, {years}+
-              ans d&apos;expérience, devis gratuit sous 24h.
+              particuliers. {SERVICES.length}{" "}
+              prestations disponibles, {years}+ ans d&apos;expérience, devis
+              gratuit sous 24h.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -112,7 +122,7 @@ export default async function ZonePage({
           <div className="container-tgt grid gap-12 lg:grid-cols-[2fr_1fr] lg:gap-16">
             <div className="space-y-5 text-[16px] leading-relaxed text-[var(--color-muted)]">
               <h2 className="font-serif text-3xl font-light text-[var(--color-navy)] md:text-4xl">
-                Notre intervention à {zone.name}
+                Notre intervention {prep} {zone.name}
               </h2>
               {paragraphs.map((p, i) => (
                 <p key={i}>{p}</p>
@@ -161,9 +171,11 @@ export default async function ZonePage({
 
         <section className="bg-[var(--color-cream)] px-5 py-16 md:px-10 md:py-20">
           <div className="container-tgt">
-            <SectionLabel>Nos services à {zone.name}</SectionLabel>
+            <SectionLabel>
+              Nos services {prep} {zone.name}
+            </SectionLabel>
             <h2 className="mt-3 font-serif text-[clamp(28px,4vw,48px)] font-light leading-tight">
-              Toutes nos prestations à {zone.name}
+              Toutes nos prestations {prep} {zone.name}
             </h2>
 
             <ul className="mt-10 grid gap-px bg-[rgba(13,34,68,0.08)] sm:grid-cols-2 lg:grid-cols-3">
@@ -184,7 +196,7 @@ export default async function ZonePage({
                       <h3 className="font-serif text-lg font-semibold text-[var(--color-navy)]">
                         {s.title}{" "}
                         <span className="font-sans text-xs text-[var(--color-muted)]">
-                          à {zone.name}
+                          {prep} {zone.name}
                         </span>
                       </h3>
                       {/* Pas de shortDesc ici : répété sur 40 pages géo, il
@@ -204,7 +216,7 @@ export default async function ZonePage({
 
         <div className="w-full bg-[var(--color-light)] py-16 border-t border-b border-[rgba(13,34,68,0.06)]">
           <FaqSection
-            title={`Nettoyage à ${zone.name} — vos questions`}
+            title={`Nettoyage ${prep} ${zone.name} — vos questions`}
             items={zone.faqs}
             variant="light"
           />
@@ -214,11 +226,14 @@ export default async function ZonePage({
           <section className="bg-[var(--color-cream)] px-5 py-16 md:px-10 md:py-20">
             <div className="container-tgt">
               <h2 className="font-serif text-3xl font-light text-[var(--color-navy)]">
-                Communes voisines desservies
+                {zone.isDepartment
+                  ? "Communes du département"
+                  : "Communes voisines desservies"}
               </h2>
               <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-[var(--color-muted)]">
-                Nos équipes couvrent également les communes limitrophes de{" "}
-                {zone.name}, avec le même niveau de service.
+                {zone.isDepartment
+                  ? "Voici les communes du département qui disposent de leur page dédiée."
+                  : `Nos équipes couvrent également les communes limitrophes de ${zone.name}, avec le même niveau de service.`}
               </p>
               <ul className="mt-6 flex flex-wrap gap-2">
                 {nearby.map((z) => (
@@ -240,8 +255,8 @@ export default async function ZonePage({
         )}
 
         <ParisLinksFooter
-          title={`À deux pas de ${zone.name} : Paris`}
-          intro={`${zone.name} est proche de Paris. Découvrez nos prestations dans les arrondissements parisiens voisins.`}
+          title={`Nos prestations à Paris`}
+          intro={`Nous intervenons aussi dans les 20 arrondissements de Paris. Sélectionnez le vôtre pour découvrir nos prestations locales.`}
           variant="light"
         />
 
@@ -271,6 +286,7 @@ export default async function ZonePage({
               department: zone.department,
               slug: zone.slug,
               description: metaDescription,
+              isDepartment: zone.isDepartment,
             }),
           ),
         }}

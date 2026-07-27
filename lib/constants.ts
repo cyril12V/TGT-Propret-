@@ -26,6 +26,31 @@ export function getYearsOfExperience(): number {
   return new Date().getFullYear() - SITE.foundingYear;
 }
 
+/**
+ * Avis Google Business Profile — À RENSEIGNER AVEC LES VRAIES DONNÉES.
+ *
+ * Tant que cette valeur est `null`, aucun `aggregateRating` n'est émis dans le
+ * JSON-LD. C'est volontaire : Google sanctionne les notes agrégées qui ne
+ * correspondent à aucun avis vérifiable, et les `TESTIMONIALS` ci-dessous sont
+ * des témoignages affichés sur le site, pas des avis Google collectés.
+ *
+ * Pour activer les étoiles dans les résultats de recherche, relever la note et
+ * le nombre d'avis sur la fiche Google Business Profile de TGT Propreté, puis :
+ *
+ *   export const GOOGLE_REVIEWS: GoogleReviews | null = {
+ *     ratingValue: 4.8,
+ *     reviewCount: 27,
+ *     url: "https://www.google.com/maps/place/TGT+propret%C3%A9/...",
+ *   };
+ */
+export type GoogleReviews = {
+  ratingValue: number;
+  reviewCount: number;
+  url: string;
+};
+
+export const GOOGLE_REVIEWS: GoogleReviews | null = null;
+
 export const MALIKA = {
   gérante: "Malika Tlili",
   initials: "MT",

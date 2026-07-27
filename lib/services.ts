@@ -22,6 +22,12 @@ import {
   Shirt,           // Repassage & Rangement
   Sliders,         // Prestations Sur-Mesure
 
+  // Ajouts plan SEO
+  Store,           // Commerces & Boutiques
+  KeyRound,        // Agences Immobilières & États des Lieux
+  ShieldPlus,      // Désinfection de Locaux
+  Layers3,         // Rénovation de Sols & Décapage
+
   type LucideIcon,
 } from "lucide-react";
 
@@ -78,6 +84,8 @@ export type Service = {
   process?: ServiceStep[];
   /** Slugs de services complémentaires, pour le maillage interne. */
   relatedSlugs?: string[];
+  /** Prestations nommées → `hasOfferCatalog` dans le JSON-LD. */
+  offers?: string[];
 };
 
 // ─── Pôles ────────────────────────────────────────────────────────────────────
@@ -112,6 +120,13 @@ export const SERVICES: readonly Service[] = [
       "dégraissage hotte restaurant",
     ],
     priceRange: "Dès 35€/h • Sur Devis",
+    offers: [
+      "Nettoyage HACCP de cuisine professionnelle",
+      "Dégraissage de hottes et filtres",
+      "Décarbonisation des équipements de cuisson",
+      "Remise en état de salle et bar",
+      "Désinfection des sanitaires clients",
+    ],
     tldr: "Le nettoyage de restaurant couvre deux zones aux exigences distinctes : la cuisine, où le dégraissage des hottes et des équipements de cuisson répond à la méthode HACCP, et la salle, où la remise en état des sols, du bar et des sanitaires conditionne l'accueil des clients. TGT Propreté intervient de nuit ou tôt le matin à Paris et en Île-de-France.",
     relatedSlugs: [
       "nettoyage-des-vitres",
@@ -260,6 +275,13 @@ export const SERVICES: readonly Service[] = [
       "nettoyage cabinet avocat Paris",
     ],
     priceRange: "Dès 2,5€/m² • Sur Devis",
+    offers: [
+      "Nettoyage quotidien de bureaux",
+      "Entretien d'open space et salles de réunion",
+      "Désinfection des points de contact",
+      "Gestion des consommables sanitaires",
+      "Nettoyage en horaires décalés",
+    ],
     tldr: "Le nettoyage de bureaux consiste à entretenir quotidiennement ou plusieurs fois par semaine les postes de travail, les espaces communs et les sanitaires d'une entreprise. TGT Propreté intervient à Paris et en Île-de-France en horaires décalés, avant 8h ou après 18h, avec un cahier des charges établi sur mesure et un devis gratuit sous 24h.",
     relatedSlugs: [
       "nettoyage-des-vitres",
@@ -417,6 +439,13 @@ export const SERVICES: readonly Service[] = [
       "nettoyage hall entrée immeuble",
     ],
     priceRange: "Forfait Annuel • Sur-Mesure",
+    offers: [
+      "Entretien des parties communes",
+      "Nettoyage des cages d'escalier et paliers",
+      "Désinfection des ascenseurs",
+      "Sortie et rentrée des containers",
+      "Nettoyage des parkings et sous-sols",
+    ],
     tldr: "Le nettoyage de copropriété regroupe l'entretien régulier des parties communes d'un immeuble : hall, escaliers, paliers, ascenseur, local poubelles et parkings. TGT Propreté travaille avec les syndics et conseils syndicaux à Paris et en Île-de-France sur des contrats annuels sur mesure, avec fiche de passage horodatée et contrôle qualité régulier.",
     relatedSlugs: [
       "nettoyage-des-vitres",
@@ -685,6 +714,13 @@ export const SERVICES: readonly Service[] = [
       "hygiène milieu médical",
     ],
     priceRange: "Protocole strict • Sur Devis",
+    offers: [
+      "Bionettoyage de salle de soins",
+      "Désinfection virucide et bactéricide",
+      "Traitement des points de contact",
+      "Entretien de salle d'attente",
+      "Nettoyage de cabinet dentaire",
+    ],
     tldr: "Le bionettoyage est un protocole en deux temps — nettoyage puis désinfection — appliqué en milieu de soins pour éliminer le risque de contamination croisée. TGT Propreté intervient dans les cabinets médicaux, dentaires, paramédicaux et cliniques privées à Paris et en Île-de-France, avec des détergents-désinfectants aux normes européennes virucides, bactéricides et fongicides.",
     relatedSlugs: [
       "nettoyage-bureaux-entreprises",
@@ -808,6 +844,13 @@ export const SERVICES: readonly Service[] = [
       "nettoyage fin de chantier Île-de-France",
     ],
     priceRange: "4,50€ à 8,50€ / m² • Sur Devis (après visite ou plans)",
+    offers: [
+      "Remise en état après travaux",
+      "Élimination des poussières de plâtre",
+      "Retrait du voile de ciment",
+      "Grattage des traces de peinture et de colle",
+      "Lavage des vitres de fin de chantier",
+    ],
     tldr: "Le nettoyage de fin de chantier est la remise en état complète d'un local après travaux, avant sa livraison ou son emménagement. Il élimine la poussière de plâtre, le voile de ciment, les traces de peinture, de colle et de silicone. TGT Propreté intervient à Paris et en Île-de-France, avec un devis établi après visite ou sur plans.",
     relatedSlugs: [
       "nettoyage-des-vitres",
@@ -957,6 +1000,13 @@ export const SERVICES: readonly Service[] = [
       "nettoyage vitres Île-de-France",
     ],
     priceRange: "2,50€ à 4,00€ / m² ou au Forfait",
+    offers: [
+      "Lavage de vitres sans trace",
+      "Nettoyage de vitrines et devantures",
+      "Lavage de baies vitrées et verrières",
+      "Nettoyage à l'eau pure en hauteur",
+      "Nettoyage des châssis et encadrements",
+    ],
     tldr: "Le nettoyage professionnel de vitres se fait à la raclette et au mouilleur sur les surfaces accessibles, et à la perche télescopique alimentée en eau pure pour la hauteur. TGT Propreté traite vitrines, baies vitrées et verrières à Paris et en Île-de-France, châssis, rails et joints inclus, avec une finition sans trace.",
     relatedSlugs: [
       "nettoyage-bureaux-entreprises",
@@ -1094,6 +1144,13 @@ export const SERVICES: readonly Service[] = [
       "femme de ménage Paris",
     ],
     priceRange: "À partir de 28€/h",
+    offers: [
+      "Grand ménage de logement",
+      "Dégraissage de four et de hotte",
+      "Détartrage de salle de bain",
+      "Lessivage des plinthes et huisseries",
+      "Nettoyage des vitres intérieures",
+    ],
     tldr: "Le nettoyage approfondi, ou grand ménage, va au-delà de l'entretien courant : déplacement du mobilier léger, lessivage des plinthes, dégraissage de l'intérieur du four et de la hotte, détartrage complet des sanitaires. TGT Propreté intervient à domicile à Paris et en Île-de-France à partir de 28 € de l'heure, matériel et produits inclus.",
     relatedSlugs: [
       "nettoyage-canapes-fauteuils",
@@ -1228,6 +1285,13 @@ export const SERVICES: readonly Service[] = [
       "nettoyage textile ameublement",
     ],
     priceRange: "À la pièce (sur photo ou modèle)",
+    offers: [
+      "Shampouinage de canapé",
+      "Détachage professionnel",
+      "Nettoyage par injection-extraction",
+      "Traitement du cuir et du similicuir",
+      "Élimination des acariens et allergènes",
+    ],
     tldr: "Le nettoyage de canapé par injection-extraction consiste à injecter une solution nettoyante au cœur des fibres puis à l'extraire immédiatement avec la saleté dissoute. TGT Propreté intervient à domicile à Paris et en Île-de-France sur les canapés en tissu, cuir et microfibre, avec un séchage de 4 à 12 heures et un devis établi sur photo.",
     relatedSlugs: [
       "nettoyage-tapis-moquettes",
@@ -1382,6 +1446,13 @@ export const SERVICES: readonly Service[] = [
       "nettoyage moquette bureau",
     ],
     priceRange: "Tarif au m² ou forfait tapis",
+    offers: [
+      "Shampouinage de moquette",
+      "Nettoyage de moquette par injection-extraction",
+      "Nettoyage de tapis en laine et d'orient",
+      "Traitement anti-taches",
+      "Désodorisation des textiles de sol",
+    ],
     tldr: "Le nettoyage de tapis et de moquettes combine aspiration industrielle, brossage mécanique et injection-extraction pour retirer le trafic incrusté, les taches et les odeurs. TGT Propreté intervient sur place à Paris et en Île-de-France, chez les particuliers comme en bureaux et commerces, avec un séchage de 4 à 8 heures.",
     relatedSlugs: [
       "nettoyage-canapes-fauteuils",
@@ -1531,6 +1602,13 @@ export const SERVICES: readonly Service[] = [
       "nettoyage suie incendie"
     ],
     priceRange: "SUR DEVIS (PRISE EN CHARGE ASSURANCES)",
+    offers: [
+      "Intervention après dégât des eaux",
+      "Aspiration motopompée des eaux résiduelles",
+      "Traitement anti-moisissures",
+      "Nettoyage des suies après incendie",
+      "Désodorisation des locaux sinistrés",
+    ],
     tldr: "Le nettoyage après sinistre consiste à assainir un local touché par un dégât des eaux, une inondation ou un début d'incendie : aspiration des eaux résiduelles, assèchement, traitement anti-moisissures, nettoyage des suies et désodorisation. TGT Propreté mobilise une équipe sous 24 à 48 heures à Paris et en Île-de-France, avec des documents transmissibles à votre assurance.",
     relatedSlugs: [
       "nettoyage-approfondi",
@@ -1651,6 +1729,13 @@ export const SERVICES: readonly Service[] = [
       "blanchisserie conciergerie paris",
     ],
     priceRange: "Sur étude privée (FORFAITS DISPONIBLES)",
+    offers: [
+      "Ménage de rotation Airbnb",
+      "Gestion du linge de location courte durée",
+      "Réassort des consommables d'accueil",
+      "Reporting photo avant et après",
+      "Intervention 7j/7 week-end inclus",
+    ],
     tldr: "Le ménage de conciergerie sécurise la rotation entre deux séjours en location courte durée : nettoyage de départ, désinfection, gestion du linge, réassort des consommables et reporting photo. TGT Propreté intervient 7 jours sur 7 à Paris et en Île-de-France, au forfait par typologie de logement, week-end inclus sans surcoût.",
     relatedSlugs: [
       "nettoyage-approfondi",
@@ -1807,6 +1892,13 @@ export const SERVICES: readonly Service[] = [
       "repassage chemises à domicile",
     ],
     priceRange: "À partir de 23€/h",
+    offers: [
+      "Repassage à domicile",
+      "Repassage de linge de maison",
+      "Pliage et rangement du linge",
+      "Organisation de dressing",
+      "Traitement des tissus délicats",
+    ],
     tldr: "Le service de repassage et rangement à domicile prend en charge le repassage des vêtements et du linge de maison, le pliage et le rangement méthodique des armoires et dressings. TGT Propreté intervient à Paris et en Île-de-France à partir de 23 € de l'heure, avec votre matériel de repassage.",
     relatedSlugs: [
       "nettoyage-approfondi",
@@ -1916,6 +2008,658 @@ export const SERVICES: readonly Service[] = [
     ],
   },
 
+  /* ══════════════════  IV. AJOUTS PLAN SEO — B2B  ══════════════════ */
+
+  {
+    slug: "nettoyage-commerces-boutiques",
+    num: "13",
+    pole: "b2b",
+    bgImage: "/images/bg_nettoyage-vitres.jpeg",
+    Icon: Store,
+    title: "Commerces & Boutiques",
+    shortDesc:
+      "Entretien de points de vente à Paris : sols, vitrines, cabines d'essayage, réserves et sanitaires clients. Intervention avant ouverture.",
+    longDesc:
+      "TGT Propreté assure la propreté quotidienne des commerces et boutiques à Paris et en Île-de-France. Nous intervenons avant l'ouverture, entre 6h et 9h, pour livrer un point de vente prêt à accueillir vos clients : sols traités selon leur revêtement, vitrines et devantures sans trace, comptoirs et caisses désinfectés, cabines d'essayage remises en ordre, réserves et arrière-boutiques entretenues.",
+    keywords: [
+      "nettoyage commerces Paris",
+      "nettoyage boutique Paris",
+      "nettoyage magasin Paris",
+      "entretien point de vente Paris",
+      "nettoyage vitrine commerce",
+    ],
+    priceRange: "Dès 2,5€/m² • Sur Devis",
+    offers: [
+      "Nettoyage de commerce avant ouverture",
+      "Nettoyage de vitrines et devantures",
+      "Entretien de cabines d'essayage",
+      "Nettoyage de réserves et arrière-boutiques",
+      "Désinfection des caisses et points de contact",
+    ],
+    tldr: "Le nettoyage de commerce couvre l'entretien quotidien d'un point de vente avant son ouverture : sols, vitrines, comptoirs, cabines d'essayage et sanitaires clients. TGT Propreté intervient dès 6h à Paris et en Île-de-France, pour que la boutique soit prête à l'arrivée du premier client.",
+    relatedSlugs: [
+      "nettoyage-des-vitres",
+      "nettoyage-restaurants-cuisines",
+      "renovation-sols-decapage",
+      "desinfection-locaux",
+    ],
+    sections: [
+      {
+        h2: "Pourquoi la propreté d'un commerce pèse sur le chiffre d'affaires",
+        intro:
+          "Un client se fait une opinion de votre boutique en quelques secondes, avant même d'avoir regardé un produit. Une vitrine marquée de traces, un sol collant à l'entrée ou une cabine d'essayage laissée en désordre pèsent immédiatement sur la perception de vos prix et de votre sérieux. C'est le seul poste de dépense dont l'effet se voit dès la porte franchie.",
+        blocks: [
+          {
+            h3: "La vitrine est votre première vendeuse",
+            text: "Elle est vue par tous les passants, pas seulement par ceux qui entrent. Une vitrine impeccable travaille pour vous en continu ; une vitrine sale annule l'effet du merchandising que vous y avez investi.",
+          },
+          {
+            h3: "Les zones qui déclenchent les avis négatifs",
+            text: "Dans le commerce, les commentaires en ligne portent presque toujours sur les mêmes points : les cabines d'essayage, les sanitaires clients et l'état du sol dans les allées. Ce sont ceux que nous traitons en priorité.",
+          },
+          {
+            h3: "Une contrainte d'horaire non négociable",
+            text: "Un commerce se nettoie quand il est vide. Nos équipes interviennent dès 6h du matin, avant l'arrivée du personnel et des clients, avec un temps de séchage compatible avec l'heure d'ouverture.",
+          },
+        ],
+      },
+      {
+        h2: "Que comprend notre prestation pour un commerce ?",
+        intro:
+          "L'entretien courant couvre la surface de vente et les zones clients. Il se complète d'interventions périodiques sur les postes qui n'ont pas de sens en quotidien.",
+        blocks: [
+          {
+            h3: "Entretien quotidien avant ouverture",
+            items: [
+              "Balayage et lavage des sols de la surface de vente",
+              "Nettoyage des vitrines intérieures et extérieures",
+              "Comptoirs, caisses, terminaux de paiement et points de contact",
+              "Cabines d'essayage : miroirs, tabourets, portants, sol",
+              "Sanitaires clients et personnel",
+              "Vidage des corbeilles et évacuation des déchets",
+            ],
+          },
+          {
+            h3: "Réserves et arrière-boutiques",
+            text: "Ces espaces échappent souvent à l'entretien parce qu'ils ne sont pas vus des clients. Ils concentrent pourtant la poussière et les cartons, et remontent dans la surface de vente à chaque réassort.",
+            items: [
+              "Balayage et lavage des sols de réserve",
+              "Dépoussiérage des rayonnages et zones de stockage",
+              "Entretien des espaces de pause du personnel",
+            ],
+          },
+          {
+            h3: "Interventions périodiques",
+            items: [
+              "Décapage et protection des sols durs",
+              "Traitement des moquettes et tapis d'accueil par injection-extraction",
+              "Nettoyage des enseignes et devantures accessibles",
+              "Dépoussiérage en hauteur : luminaires, gaines, dessus de rayonnage",
+            ],
+          },
+        ],
+      },
+      {
+        h2: "Quels types de commerces traitons-nous ?",
+        intro:
+          "Chaque secteur a ses points sensibles, et le protocole s'adapte à la nature du point de vente plutôt qu'à sa seule surface.",
+        blocks: [
+          {
+            h3: "Prêt-à-porter et boutiques de mode",
+            text: "Cabines d'essayage, miroirs pleine hauteur, portants et sols clairs qui marquent vite. C'est le secteur où l'exigence visuelle est la plus forte.",
+          },
+          {
+            h3: "Alimentation, épiceries et supérettes",
+            text: "Sols soumis aux projections, meubles réfrigérés et zones de préparation qui appellent une désinfection régulière et des produits homologués pour le contact alimentaire.",
+          },
+          {
+            h3: "Pharmacies et parapharmacies",
+            text: "Comptoirs, points de contact et sanitaires demandent un niveau de désinfection proche du milieu médical, avec une clientèle souvent fragile.",
+          },
+          {
+            h3: "Salons de coiffure et instituts",
+            text: "Cheveux et produits capillaires saturent rapidement les sols et les siphons. Les bacs, fauteuils et postes de coupe demandent un traitement quotidien.",
+          },
+          {
+            h3: "Galeries marchandes et centres commerciaux",
+            text: "Ces implantations imposent des créneaux et des accès définis par le gestionnaire du centre. Nos équipes travaillent avec ces contraintes.",
+          },
+        ],
+      },
+      {
+        h2: "Comment est calculé le prix du nettoyage d'un commerce ?",
+        intro:
+          "Notre tarif indicatif démarre à 2,5 € du mètre carré. Le chiffrage réel dépend de la surface de vente, de la fréquence retenue, du revêtement de sol et de la présence de zones spécifiques comme les cabines d'essayage ou une réserve importante. Un commerce ouvert sept jours sur sept avec un fort passage n'a pas les mêmes besoins qu'une boutique ouverte cinq jours. La visite préalable est gratuite et permet un chiffrage ferme : le matériel, les produits et l'encadrement de l'agent sont toujours inclus, seuls les consommables sanitaires font l'objet d'une option de gestion de stock.",
+      },
+    ],
+    process: [
+      {
+        step: "Visite du point de vente",
+        text: "Nous relevons la surface, les revêtements, les zones spécifiques et votre heure d'ouverture. Gratuit et sans engagement.",
+      },
+      {
+        step: "Créneau avant ouverture",
+        text: "Nous calons l'intervention sur un créneau matinal compatible avec votre ouverture et le temps de séchage des sols.",
+      },
+      {
+        step: "Agent attitré",
+        text: "Un agent référent connaît votre boutique, vos codes d'accès et vos points sensibles. Un remplaçant briefé prend le relais en cas d'absence.",
+      },
+      {
+        step: "Contrôle qualité",
+        text: "Passages de contrôle réguliers et référent unique joignable pour tout ajustement.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Pouvez-vous intervenir avant l'ouverture du commerce ?",
+        a: "Oui, nous intervenons dès 6h du matin, avant l'arrivée du personnel et des clients. Le créneau est calé pour que les sols soient secs à l'heure d'ouverture.",
+      },
+      {
+        q: "Nettoyez-vous aussi les vitrines extérieures ?",
+        a: "Oui, le lavage des vitrines et devantures est inclus. Nous adaptons la méthode aux vitrophanies et marquages publicitaires, avec des produits non corrosifs qui préservent le vinyle.",
+      },
+      {
+        q: "Intervenez-vous dans les commerces en galerie marchande ?",
+        a: "Oui. Ces implantations imposent des créneaux et des procédures d'accès définis par le gestionnaire du centre : nos équipes sont habituées à travailler avec ces contraintes.",
+      },
+      {
+        q: "Proposez-vous des contrats autres que quotidiens ?",
+        a: "Oui, nous établissons des contrats quotidiens, hebdomadaires ou sur mesure selon votre activité et votre passage réel. Le coût au passage baisse à mesure que la fréquence augmente.",
+      },
+      {
+        q: "Prenez-vous en charge les réserves et arrière-boutiques ?",
+        a: "Oui, et nous le recommandons. Une réserve poussiéreuse remonte dans la surface de vente à chaque réassort : la traiter évite de refaire le travail côté client.",
+      },
+    ],
+  },
+
+  {
+    slug: "nettoyage-agences-immobilieres",
+    num: "14",
+    pole: "b2b",
+    bgImage: "/images/bg_nettoyage-approfondi.png",
+    Icon: KeyRound,
+    title: "Agences Immobilières & États des Lieux",
+    shortDesc:
+      "Remise en état de logements avant état des lieux, entre deux locataires ou avant mise en vente. Intervention sous 24 à 48h à Paris et en IDF.",
+    longDesc:
+      "Destiné aux agences immobilières, administrateurs de biens et bailleurs, ce service remet un logement en état de relocation ou de vente. Nous intervenons avant un état des lieux de sortie, entre deux locataires ou avant les visites : détartrage complet des pièces d'eau, dégraissage de la cuisine et de l'électroménager, lessivage des murs lavables et des plinthes, traitement des sols et des textiles, élimination des odeurs. Facturation possible à l'agence, au propriétaire ou au locataire.",
+    keywords: [
+      "nettoyage agence immobilière Paris",
+      "nettoyage avant état des lieux Paris",
+      "remise en état appartement Paris",
+      "nettoyage fin de bail Paris",
+      "nettoyage locatif Île-de-France",
+    ],
+    priceRange: "Au logement • Sur Devis",
+    offers: [
+      "Nettoyage avant état des lieux de sortie",
+      "Remise en état entre deux locataires",
+      "Nettoyage de fin de bail",
+      "Préparation d'un bien avant visites",
+      "Remise en état après travaux locatifs",
+    ],
+    tldr: "Le nettoyage pour agences immobilières remet un logement en état avant un état des lieux, une relocation ou une mise en vente. TGT Propreté intervient sous 24 à 48h à Paris et en Île-de-France, avec facturation à l'agence, au propriétaire ou au locataire selon votre organisation.",
+    relatedSlugs: [
+      "nettoyage-approfondi",
+      "nettoyage-fin-de-chantier",
+      "nettoyage-tapis-moquettes",
+      "prestations-sur-mesure-conciergerie",
+    ],
+    sections: [
+      {
+        h2: "Pourquoi les agences externalisent la remise en état",
+        intro:
+          "Un logement qui n'est pas prêt bloque une transaction. Entre le départ d'un locataire et l'entrée du suivant, chaque jour de vacance est un loyer perdu, et un état des lieux qui tourne au litige mobilise votre équipe bien au-delà du coût d'un nettoyage. Externaliser transforme un aléa en poste budgété.",
+        blocks: [
+          {
+            h3: "Le délai prime sur tout le reste",
+            text: "Une date d'état des lieux ne se déplace pas facilement. Nous traitons ces demandes en priorité et intervenons sous 24 à 48h, avec une équipe dimensionnée pour tenir la date que vous nous donnez.",
+          },
+          {
+            h3: "Un état neutre limite les litiges",
+            text: "Un logement livré propre déplace la discussion sur les seules dégradations réelles. C'est ce qui rend l'état des lieux plus rapide et moins conflictuel, pour vous comme pour le locataire sortant.",
+          },
+          {
+            h3: "Une facturation qui s'adapte à votre organisation",
+            text: "Nous facturons directement l'agence, le propriétaire ou le locataire sortant selon le montage retenu, avec un devis en amont et une facture détaillée exploitable dans votre comptabilité.",
+          },
+        ],
+      },
+      {
+        h2: "Que comprend une remise en état de logement ?",
+        intro:
+          "La prestation couvre l'intégralité du logement, y compris l'intérieur des rangements et des appareils. C'est la différence avec un ménage courant, qui ne descend pas à ce niveau de détail.",
+        blocks: [
+          {
+            h3: "Cuisine",
+            items: [
+              "Dégraissage intérieur et extérieur du four, de la hotte et du micro-ondes",
+              "Nettoyage des plaques, de la crédence et des joints",
+              "Réfrigérateur vidé, dégivré si nécessaire et désinfecté",
+              "Intérieur et extérieur des placards et tiroirs",
+              "Détartrage de l'évier et de la robinetterie",
+            ],
+          },
+          {
+            h3: "Salle de bain et sanitaires",
+            items: [
+              "Détartrage complet de la douche, de la baignoire et des parois",
+              "Traitement des joints, des silicones et des coulures",
+              "Robinetteries, pommeaux, flexibles et bondes",
+              "Cuvette, réservoir, abattant et pourtour des WC",
+              "Miroirs, meubles vasque et rangements",
+            ],
+          },
+          {
+            h3: "Pièces de vie et chambres",
+            items: [
+              "Lessivage des plinthes, portes, huisseries et interrupteurs",
+              "Nettoyage des vitres, châssis et rebords de fenêtre",
+              "Traitement des sols selon le revêtement",
+              "Intérieur des placards et des rangements intégrés",
+              "Radiateurs, bouches de ventilation et volets accessibles",
+            ],
+          },
+          {
+            h3: "Traitements complémentaires",
+            text: "Selon l'état du bien, nous ajoutons le traitement des moquettes par injection-extraction, la désodorisation en cas d'odeurs de tabac ou d'animaux, et la remise en état après travaux si une rénovation a précédé.",
+          },
+        ],
+      },
+      {
+        h2: "Sous quel délai intervenez-vous ?",
+        intro:
+          "Nous mobilisons une équipe sous 24 à 48 heures sur Paris et l'Île-de-France, et nous traitons ces demandes en priorité parce qu'une date d'état des lieux ne se reporte pas. Le plus utile de votre côté est de nous prévenir dès que la date est connue, même si l'accès n'est pas encore possible : cela nous permet de réserver le créneau et de dimensionner l'équipe. Pour les biens de grande surface ou très dégradés, une visite préalable ou quelques photos nous suffisent à évaluer le temps nécessaire et à vous confirmer que la date est tenable. Nous préférons vous dire tout de suite qu'un délai est trop court plutôt que de livrer un travail incomplet la veille de l'état des lieux.",
+      },
+      {
+        h2: "Comment est calculé le prix d'une remise en état ?",
+        intro:
+          "Nous chiffrons au logement, après description ou visite. Trois éléments déterminent le devis, et la surface n'est que le premier.",
+        blocks: [
+          {
+            h3: "Les facteurs de chiffrage",
+            items: [
+              "La surface et le nombre de pièces d'eau, qui concentrent l'essentiel du temps",
+              "L'état de départ : un logement entretenu se traite bien plus vite qu'un bien laissé plusieurs mois sans entretien",
+              "La présence de moquettes, d'odeurs installées ou de traces de travaux",
+              "L'accès : étage sans ascenseur, stationnement, disponibilité des clés",
+            ],
+          },
+          {
+            h3: "Ce que nous ne promettons pas",
+            text: "Nous garantissons un nettoyage de qualité professionnelle, pas la restitution du dépôt de garantie. Celle-ci dépend de l'état global du bien et des dégradations constatées, qui relèvent de la réparation et non du nettoyage.",
+          },
+        ],
+      },
+    ],
+    process: [
+      {
+        step: "Prise de rendez-vous",
+        text: "Vous nous donnez la date de l'état des lieux et l'accès au bien. Nous confirmons le créneau et vous alertons si le délai est trop court.",
+      },
+      {
+        step: "Devis au logement",
+        text: "Chiffrage sur description ou après visite, selon la surface, l'état de départ et les traitements nécessaires.",
+      },
+      {
+        step: "Remise en état",
+        text: "Intervention complète du haut vers le bas, pièces d'eau et cuisine traitées en priorité, sols en dernier.",
+      },
+      {
+        step: "Livraison et facturation",
+        text: "Nous vous confirmons la fin d'intervention et facturons l'agence, le propriétaire ou le locataire selon votre organisation.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Pouvez-vous intervenir en urgence avant un état des lieux ?",
+        a: "Oui, nous traitons ces demandes en priorité et mobilisons une équipe sous 24 à 48h. Prévenez-nous dès que la date est connue, même si l'accès au bien n'est pas encore possible : cela nous permet de réserver le créneau.",
+      },
+      {
+        q: "Garantissez-vous la restitution du dépôt de garantie ?",
+        a: "Non, et aucun prestataire sérieux ne peut le garantir. Nous garantissons un nettoyage de qualité professionnelle. La restitution dépend de l'état global du bien et des dégradations éventuelles, qui relèvent de la réparation, pas du nettoyage.",
+      },
+      {
+        q: "Facturez-vous directement l'agence immobilière ?",
+        a: "Oui. Nous facturons l'agence, le propriétaire ou le locataire sortant selon le montage que vous avez retenu, avec un devis en amont et une facture détaillée.",
+      },
+      {
+        q: "Intervenez-vous sur des biens en vente et pas seulement en location ?",
+        a: "Oui. Nous préparons également les biens avant les visites ou avant la remise des clés à l'acquéreur, avec le même niveau de remise en état.",
+      },
+      {
+        q: "Que se passe-t-il si le logement est dans un état bien pire que prévu ?",
+        a: "Nous vous appelons avant de commencer plutôt que de dépasser silencieusement le devis. Vous décidez alors d'étendre la prestation ou de prioriser certaines pièces dans le temps initialement prévu.",
+      },
+    ],
+  },
+
+  {
+    slug: "desinfection-locaux",
+    num: "15",
+    pole: "b2b",
+    bgImage: "/images/bg_CabinetsMédicaux&Cliniques.jpg",
+    Icon: ShieldPlus,
+    title: "Désinfection de Locaux",
+    shortDesc:
+      "Désinfection professionnelle de locaux à Paris : traitement des points de contact et désinfection de surface avec des produits virucides, bactéricides et fongicides.",
+    longDesc:
+      "La désinfection de locaux complète le nettoyage en éliminant les micro-organismes que le détergent seul ne détruit pas. TGT Propreté intervient dans les bureaux, commerces, cabinets et établissements recevant du public à Paris et en Île-de-France, avec des détergents-désinfectants professionnels répondant aux normes européennes virucides, bactéricides et fongicides. L'intervention peut être ponctuelle, après un épisode infectieux dans vos locaux, ou intégrée à un contrat d'entretien régulier.",
+    keywords: [
+      "désinfection locaux Paris",
+      "désinfection bureaux Paris",
+      "désinfection professionnelle Île-de-France",
+      "traitement antimicrobien locaux",
+      "désinfection locaux professionnels",
+    ],
+    priceRange: "Selon surface et protocole • Sur Devis",
+    offers: [
+      "Désinfection de surfaces professionnelles",
+      "Traitement des points de contact",
+      "Désinfection après épisode infectieux",
+      "Désinfection de sanitaires et zones humides",
+      "Désinfection intégrée à un contrat d'entretien",
+    ],
+    tldr: "La désinfection de locaux élimine les micro-organismes après un nettoyage préalable, à l'aide de produits virucides, bactéricides et fongicides aux normes européennes. TGT Propreté intervient à Paris et en Île-de-France, en prestation ponctuelle après un épisode infectieux ou intégrée à un contrat d'entretien régulier.",
+    relatedSlugs: [
+      "nettoyage-bureaux-entreprises",
+      "nettoyage-cabinets-medicaux-cliniques",
+      "nettoyage-commerces-boutiques",
+      "nettoyage-apres-sinistre",
+    ],
+    sections: [
+      {
+        h2: "Quelle différence entre nettoyer et désinfecter ?",
+        intro:
+          "Nettoyer retire les salissures visibles et la matière organique. Désinfecter détruit les micro-organismes qui restent sur une surface déjà propre. Les deux opérations sont complémentaires et leur ordre n'est pas interchangeable : un désinfectant appliqué sur une surface encore sale est neutralisé par la matière organique avant d'avoir agi. C'est l'erreur la plus fréquente, et elle donne une fausse impression de sécurité.",
+        blocks: [
+          {
+            h3: "La désinfection ne remplace pas le nettoyage",
+            text: "Elle le complète. Un protocole efficace enchaîne toujours nettoyage puis désinfection, avec respect du temps de contact indiqué par le fabricant du produit. Un désinfectant essuyé trop tôt n'a pas fini d'agir.",
+          },
+          {
+            h3: "Le temps de contact est la variable critique",
+            text: "Chaque produit a une durée pendant laquelle il doit rester humide sur la surface pour être efficace. C'est ce paramètre, plus que le produit lui-même, qui distingue une désinfection réelle d'un simple passage de chiffon.",
+          },
+          {
+            h3: "Toutes les surfaces ne se valent pas",
+            text: "Les points de contact concentrent la transmission. Une désinfection utile cible d'abord ces surfaces, plutôt que de traiter uniformément des zones que personne ne touche.",
+          },
+        ],
+      },
+      {
+        h2: "Que comprend notre prestation de désinfection ?",
+        intro:
+          "Nous intervenons après une phase de nettoyage, sur les surfaces et les zones où le risque de transmission est réel.",
+        blocks: [
+          {
+            h3: "Points de contact",
+            text: "C'est le cœur de la prestation, et la partie qui produit le plus d'effet par rapport au temps investi.",
+            items: [
+              "Poignées de porte, boutons d'ascenseur et interrupteurs",
+              "Claviers, souris, téléphones et écrans partagés",
+              "Rampes, mains courantes et barres d'appui",
+              "Terminaux de paiement, distributeurs et machines à café",
+              "Accoudoirs de sièges et tables de réunion",
+            ],
+          },
+          {
+            h3: "Sanitaires et zones humides",
+            items: [
+              "Cuvettes, réservoirs, abattants et commandes de chasse",
+              "Lavabos, robinetteries et distributeurs",
+              "Douches, siphons et sols antidérapants",
+              "Traitement des joints et des zones de stagnation",
+            ],
+          },
+          {
+            h3: "Surfaces et espaces communs",
+            items: [
+              "Plans de travail, comptoirs et banques d'accueil",
+              "Espaces de pause, réfectoires et vestiaires",
+              "Salles de réunion et espaces d'attente",
+              "Sols des zones à fort passage",
+            ],
+          },
+        ],
+      },
+      {
+        h2: "Quels produits utilisons-nous ?",
+        intro:
+          "Nous utilisons exclusivement des détergents-désinfectants professionnels répondant aux normes européennes en vigueur, virucides, bactéricides et fongicides. Ce sont les mêmes familles de produits que celles employées dans nos interventions en cabinet médical. Les fiches de données de sécurité sont disponibles sur demande, ce qui vous permet de les intégrer à votre document unique d'évaluation des risques ou de les présenter à votre médecine du travail. Ces produits sont sans danger pour les occupants dès lors que les temps de contact et les consignes d'aération sont respectés : c'est précisément ce que garantit une application professionnelle, là où un usage approximatif expose soit à une inefficacité, soit à une exposition inutile.",
+      },
+      {
+        h2: "Dans quels cas faire désinfecter ses locaux ?",
+        intro:
+          "La désinfection se justifie dans deux situations distinctes, qui n'appellent pas la même organisation.",
+        blocks: [
+          {
+            h3: "En intervention ponctuelle",
+            items: [
+              "Après un épisode infectieux avéré dans vos locaux",
+              "À la reprise d'activité après une fermeture prolongée",
+              "Avant l'installation dans des locaux repris d'un précédent occupant",
+              "Après un sinistre ayant exposé les surfaces à des eaux usées",
+            ],
+          },
+          {
+            h3: "En prestation récurrente",
+            text: "Intégrée au contrat d'entretien, la désinfection des points de contact devient une opération de routine plutôt qu'une réaction. C'est le mode retenu par la plupart de nos clients tertiaires, avec une fréquence calée sur l'effectif et le passage.",
+          },
+          {
+            h3: "Les secteurs les plus concernés",
+            items: [
+              "Bureaux et open spaces à forte densité",
+              "Cabinets médicaux et paramédicaux",
+              "Commerces et établissements recevant du public",
+              "Restauration et cuisines professionnelles",
+              "Établissements accueillant des publics fragiles",
+            ],
+          },
+        ],
+      },
+    ],
+    process: [
+      {
+        step: "Évaluation des besoins",
+        text: "Nous identifions les zones à risque, les points de contact et le niveau de traitement adapté à votre activité. Gratuit et sans engagement.",
+      },
+      {
+        step: "Nettoyage préalable",
+        text: "Retrait des salissures et de la matière organique. Sans cette étape, le désinfectant est neutralisé avant d'agir.",
+      },
+      {
+        step: "Désinfection",
+        text: "Application du produit avec respect strict du temps de contact, du plus propre vers le plus sale, matériel dédié par zone.",
+      },
+      {
+        step: "Consignes de réoccupation",
+        text: "Nous vous indiquons le délai d'aération et de réoccupation. Les fiches de données de sécurité sont fournies sur demande.",
+      },
+    ],
+    faqs: [
+      {
+        q: "La désinfection remplace-t-elle le nettoyage classique ?",
+        a: "Non. Elle le complète mais ne s'y substitue pas. Un désinfectant appliqué sur une surface encore sale est neutralisé par la matière organique avant d'avoir agi. Un protocole efficace enchaîne toujours nettoyage puis désinfection.",
+      },
+      {
+        q: "Faut-il évacuer les locaux pendant l'intervention ?",
+        a: "Pour la désinfection des surfaces et des points de contact, une évacuation n'est pas nécessaire : nous intervenons en dehors des heures d'occupation. Nous vous indiquons dans tous les cas le délai d'aération à respecter avant réoccupation normale.",
+      },
+      {
+        q: "Vos produits sont-ils sans danger pour les occupants ?",
+        a: "Oui, dès lors que les temps de contact et les consignes d'aération sont respectés. Nous utilisons des détergents-désinfectants professionnels aux normes européennes virucides, bactéricides et fongicides, et les fiches de données de sécurité sont disponibles sur demande.",
+      },
+      {
+        q: "Pouvez-vous intervenir rapidement après un cas déclaré dans nos locaux ?",
+        a: "Oui, nous traitons ces demandes en priorité. Appelez-nous directement plutôt que de passer par le formulaire : un échange de quelques minutes nous permet d'évaluer les zones à traiter et de vous donner un créneau ferme.",
+      },
+      {
+        q: "La désinfection peut-elle être intégrée à notre contrat d'entretien ?",
+        a: "Oui, et c'est le mode retenu par la plupart de nos clients tertiaires. La désinfection des points de contact devient une opération de routine intégrée aux passages réguliers, avec une fréquence calée sur votre effectif et votre passage.",
+      },
+    ],
+  },
+
+  {
+    slug: "renovation-sols-decapage",
+    num: "16",
+    pole: "b2b",
+    bgImage: "/images/bg_nettoyage-moquettes.png",
+    Icon: Layers3,
+    title: "Rénovation de Sols & Décapage",
+    shortDesc:
+      "Décapage, remise en éclat et protection des sols durs à Paris : thermoplastique, carrelage, marbre, pierre naturelle et béton. Traitement des halls et surfaces à fort passage.",
+    longDesc:
+      "Un sol dur ne s'use pas uniformément : il perd d'abord sa couche de protection, puis se raye et se ternit dans les zones de passage. Notre prestation de rénovation retire l'ancienne protection encrassée, remet la surface en éclat et applique une nouvelle protection adaptée au revêtement. Nous intervenons sur les halls d'immeuble, plateaux de bureaux, commerces et locaux d'activité à Paris et en Île-de-France, sur thermoplastique, carrelage, marbre, pierre naturelle et béton.",
+    keywords: [
+      "décapage sol Paris",
+      "rénovation sol professionnel Paris",
+      "cristallisation marbre Paris",
+      "remise en éclat sol Île-de-France",
+      "métallisation sol thermoplastique",
+    ],
+    priceRange: "Tarif au m² • Sur Devis (après visite)",
+    offers: [
+      "Décapage de sol thermoplastique",
+      "Métallisation et protection de sol",
+      "Cristallisation de marbre",
+      "Remise en éclat de hall d'immeuble",
+      "Lavage mécanisé de sols béton",
+    ],
+    tldr: "La rénovation de sol consiste à retirer l'ancienne protection encrassée, à remettre la surface en éclat puis à appliquer une nouvelle protection adaptée au revêtement. TGT Propreté traite thermoplastique, carrelage, marbre, pierre naturelle et béton à Paris et en Île-de-France, sur devis après visite.",
+    relatedSlugs: [
+      "nettoyage-coproprietes-immeubles",
+      "nettoyage-tapis-moquettes",
+      "nettoyage-bureaux-entreprises",
+      "nettoyage-fin-de-chantier",
+    ],
+    sections: [
+      {
+        h2: "Pourquoi un sol dur se ternit malgré un entretien régulier",
+        intro:
+          "Un sol protégé porte une couche sacrificielle — émulsion, cire ou cristallisant — qui prend l'usure à la place du revêtement. Cette couche s'encrasse et se raye avec le passage, et aucun lavage courant ne la restaure : la laver revient à nettoyer une protection abîmée. Passé un certain seuil, la seule voie est de la retirer entièrement et d'en poser une neuve.",
+        blocks: [
+          {
+            h3: "Le lavage ne récupère pas une protection usée",
+            text: "C'est la confusion la plus fréquente. Une autolaveuse passée sur un sol dont l'émulsion est rayée redonne un aspect propre mais pas de brillance : les rayures diffusent la lumière quel que soit le niveau de propreté.",
+          },
+          {
+            h3: "L'usure est concentrée, pas uniforme",
+            text: "Sur un hall ou un plateau, les couloirs et les abords d'ascenseur s'usent bien plus vite que les périphéries. C'est ce contraste qui donne l'impression d'un sol sale alors qu'il est simplement dépoli localement.",
+          },
+          {
+            h3: "Un arbitrage face au remplacement",
+            text: "Rénover coûte une fraction du remplacement d'un revêtement et évite l'immobilisation des locaux que suppose une repose. Sur un marbre ou une pierre naturelle, la rénovation est le plus souvent la seule option raisonnable.",
+          },
+        ],
+      },
+      {
+        h2: "Quels traitements appliquons-nous selon le revêtement ?",
+        intro:
+          "Chaque famille de sol appelle un procédé distinct. Appliquer le mauvais traitement dégrade le revêtement de façon irréversible : c'est pourquoi nous identifions systématiquement la nature du sol avant d'intervenir.",
+        blocks: [
+          {
+            h3: "Thermoplastique, PVC et linoléum",
+            text: "Décapage de l'ancienne émulsion, rinçage neutralisant, puis métallisation par application de couches successives d'émulsion protectrice. C'est le traitement le plus courant en tertiaire et en copropriété.",
+            items: [
+              "Décapage mécanique de l'ancienne protection",
+              "Rinçage et neutralisation du support",
+              "Application de deux à quatre couches d'émulsion",
+              "Lustrage haute vitesse en finition",
+            ],
+          },
+          {
+            h3: "Marbre et pierre naturelle",
+            text: "Cristallisation : un traitement chimique et mécanique qui durcit la surface de la pierre et lui rend sa brillance d'origine. Aucun produit acide n'est appliqué en amont, sous peine d'attaquer définitivement le calcaire.",
+            items: [
+              "Ponçage léger si la surface est rayée",
+              "Cristallisation à la monobrosse",
+              "Lustrage et protection",
+            ],
+          },
+          {
+            h3: "Carrelage et grès cérame",
+            text: "Décapage en profondeur, détartrage des joints et remise en état des zones de stagnation. Sur les carrelages poreux, une imperméabilisation limite la reprise d'encrassement.",
+          },
+          {
+            h3: "Béton et sols d'activité",
+            text: "Lavage mécanisé sur grande surface, traitement des taches d'huile et d'hydrocarbures. Pour les entrepôts et locaux d'activité, le passage machine est la seule approche économiquement viable.",
+          },
+        ],
+      },
+      {
+        h2: "Où cette prestation est-elle la plus utile ?",
+        intro:
+          "La rénovation de sol se justifie partout où la surface est vue et où l'usure est concentrée sur des zones de passage identifiables.",
+        blocks: [
+          {
+            h3: "Halls d'immeuble et parties communes",
+            text: "C'est la première chose que voient les résidents et les visiteurs, et souvent la seule surface noble d'une copropriété. Une remise en éclat de hall transforme la perception de l'immeuble entier pour un budget sans commune mesure avec des travaux.",
+          },
+          {
+            h3: "Plateaux de bureaux et espaces d'accueil",
+            text: "Les sols souples des plateaux tertiaires se traitent le plus souvent en dehors des heures ouvrées ou le week-end, ce qui laisse le temps de séchage nécessaire entre les couches.",
+          },
+          {
+            h3: "Commerces et surfaces de vente",
+            text: "Un sol remis en éclat change l'impression de gamme d'un point de vente. L'intervention se planifie sur une fermeture ou une nuit complète.",
+          },
+          {
+            h3: "Locaux d'activité et entrepôts",
+            text: "Lavage mécanisé et traitement des taches, sur des surfaces où seul le passage machine est réaliste.",
+          },
+        ],
+      },
+      {
+        h2: "Comment se planifie une rénovation de sol ?",
+        intro:
+          "C'est une intervention lourde qui immobilise la surface, contrairement à un entretien courant. Le décapage, le rinçage et l'application des couches de protection demandent plusieurs heures, auxquelles s'ajoute un temps de séchage entre chaque couche pendant lequel le sol ne doit être ni foulé ni remis sous mobilier. Sur un plateau de bureaux ou un commerce, cela conduit presque toujours à intervenir un week-end ou sur une fermeture, ce qui laisse la marge nécessaire sans perturber l'activité. Dans une copropriété, un hall se traite en une intervention, avec un balisage permettant le passage des résidents. La visite préalable est indispensable : elle permet d'identifier le revêtement, de mesurer l'épaisseur de protection restante et de vérifier qu'un décapage est réalisable sans risque pour le support.",
+      },
+    ],
+    process: [
+      {
+        step: "Visite et identification",
+        text: "Nous identifions la nature du revêtement et l'état de la protection existante. Un traitement inadapté abîme un sol de façon irréversible.",
+      },
+      {
+        step: "Décapage",
+        text: "Retrait mécanique de l'ancienne protection encrassée, puis rinçage et neutralisation du support.",
+      },
+      {
+        step: "Protection ou cristallisation",
+        text: "Application des couches d'émulsion, ou cristallisation pour le marbre et la pierre, avec séchage entre chaque passe.",
+      },
+      {
+        step: "Lustrage et remise en service",
+        text: "Lustrage de finition, puis consignes de délai avant remise du mobilier et reprise du passage.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Quelle différence entre un décapage et un lavage classique ?",
+        a: "Un lavage retire les salissures posées sur la protection du sol. Un décapage retire la protection elle-même, quand elle est trop rayée ou encrassée pour être récupérée, avant d'en appliquer une neuve. Aucun lavage ne redonne de la brillance à une émulsion usée.",
+      },
+      {
+        q: "Peut-on cristalliser n'importe quel sol en pierre ?",
+        a: "Non. La cristallisation s'applique aux pierres calcaires comme le marbre. Sur d'autres pierres naturelles, le traitement adapté diffère. C'est la raison pour laquelle nous identifions systématiquement le revêtement lors de la visite avant de proposer un procédé.",
+      },
+      {
+        q: "Combien de temps les locaux sont-ils immobilisés ?",
+        a: "Cela dépend de la surface et du nombre de couches, mais il faut compter le temps de séchage entre chaque passe, pendant lequel le sol ne doit être ni foulé ni remis sous mobilier. Sur un plateau ou un commerce, nous intervenons donc en général un week-end ou sur une fermeture.",
+      },
+      {
+        q: "À quelle fréquence faut-il rénover un sol protégé ?",
+        a: "Cela dépend entièrement du passage. Un hall d'immeuble ou un plateau à fort trafic demande une rénovation à intervalle plus rapproché qu'un local peu fréquenté. Un entretien courant adapté, avec des produits qui n'attaquent pas l'émulsion, allonge nettement le délai entre deux décapages.",
+      },
+      {
+        q: "Intervenez-vous sur les parkings et sols béton ?",
+        a: "Oui, avec un matériel de lavage mécanisé dimensionné à la surface, et un traitement spécifique des taches d'huile et d'hydrocarbures. C'est une prestation qui se planifie généralement une à deux fois par an.",
+      },
+    ],
+  },
 
 ] as const;
 

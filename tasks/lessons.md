@@ -59,6 +59,50 @@ visiteurs et par Google.
 
 ---
 
+## 2026-07-28 — Un avis qu'on écrit sur soi-même n'est pas un avis
+
+**Contexte** : le site émettait un `aggregateRating` de 5.0/5 sur 4 avis dans son JSON-LD
+`LocalBusiness`, calculé à partir du tableau `TESTIMONIALS`.
+
+**Problème** : ces témoignages sont publiés par TGT Propreté sur son propre site. Les
+baliser en `Review` avec une note agrégée revient à déclarer à Google des avis
+auto-promotionnels, ce que ses consignes sur les données structurées interdisent
+explicitement. Le risque n'est pas l'absence d'étoiles, c'est une action manuelle sur
+l'ensemble des données structurées du domaine.
+
+**Leçon** : `aggregateRating` et `Review` ne se remplissent qu'avec des avis collectés
+et vérifiables par un tiers — fiche Google Business Profile, plateforme d'avis. Un
+témoignage client reste parfaitement légitime sur la page, il ne doit simplement pas
+être déclaré en donnée structurée.
+
+**Règle** : toute donnée structurée qui déclenche un enrichissement visuel dans les
+résultats (étoiles, prix, disponibilité) doit être adossée à une source vérifiable.
+En l'absence de source, ne rien émettre plutôt qu'émettre une valeur plausible.
+
+---
+
+## 2026-07-28 — Deux mots-clés, une seule intention : une seule page
+
+**Contexte** : le plan SEO demandait une page `/shampouinage-moquette-paris` alors que
+`nettoyage-tapis-moquettes` existait déjà.
+
+**Analyse** : « shampouinage moquette » (10 vol/mois) et « nettoyage tapis » (480
+vol/mois) renvoient à la même prestation et à la même intention d'achat. Deux pages
+distinctes se seraient disputé les mêmes requêtes, chacune affaiblissant l'autre, pour
+capter un volume marginal. En revanche, la seconde moitié du besoin décrit dans le
+document — décapage, cristallisation, sols durs — est un métier différent, avec un
+matériel et un protocole distincts.
+
+**Leçon** : un plan SEO raisonne par mot-clé, un site doit raisonner par intention. Deux
+mots-clés qui appellent la même réponse se traitent sur une seule page ; c'est la
+différence de prestation, pas la différence de formulation, qui justifie une page.
+
+**Règle** : avant de créer une page pour un mot-clé, vérifier qu'aucune page existante
+ne répond déjà à la même intention. Si c'est le cas, renforcer la page existante et
+ajouter le terme à ses `keywords` et `offers` plutôt que d'en créer une seconde.
+
+---
+
 ## 2026-07-28 — Les liens profonds doivent correspondre aux valeurs du formulaire
 
 **Contexte** : les pages villes pointent vers `/devis?zone={slug}` pour pré-remplir le formulaire.

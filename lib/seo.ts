@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { CONTACT, SITE, TESTIMONIALS } from "@/lib/constants";
+import { CONTACT, GOOGLE_REVIEWS, SITE, TESTIMONIALS } from "@/lib/constants";
 
 type BuildMetadataInput = {
   title: string;
@@ -61,16 +61,22 @@ const PARIS_ARRONDISSEMENT_NUMBERS = [
   1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
 ] as const;
 
+/**
+ * Note agrégée émise uniquement si `GOOGLE_REVIEWS` contient de vraies données
+ * de fiche Google Business Profile.
+ *
+ * Les `TESTIMONIALS` du site sont des témoignages éditoriaux, pas des avis
+ * collectés et vérifiables : les agréger en `AggregateRating` expose à une
+ * pénalité pour données structurées trompeuses. On préfère ne rien émettre.
+ */
 export function aggregateRatingFromTestimonials() {
-  if (TESTIMONIALS.length === 0) return null;
-  const sum = TESTIMONIALS.reduce((acc, t) => acc + t.rating, 0);
-  const avg = sum / TESTIMONIALS.length;
+  if (!GOOGLE_REVIEWS) return null;
   return {
     "@type": "AggregateRating" as const,
-    ratingValue: avg.toFixed(1),
+    ratingValue: GOOGLE_REVIEWS.ratingValue.toFixed(1),
     bestRating: "5",
     worstRating: "1",
-    reviewCount: TESTIMONIALS.length,
+    reviewCount: GOOGLE_REVIEWS.reviewCount,
   };
 }
 
@@ -132,18 +138,13 @@ export function localBusinessJsonLd() {
       },
     ],
     ...(rating ? { aggregateRating: rating } : {}),
-    review: TESTIMONIALS.map((t) => ({
-      "@type": "Review",
-      author: { "@type": "Person", name: t.name },
-      reviewBody: t.text,
-      reviewRating: {
-        "@type": "Rating",
-        ratingValue: t.rating,
-        bestRating: 5,
-        worstRating: 1,
-      },
-    })),
-    sameAs: CONTACT.socials.map((s) => s.url),
+    // Les témoignages du site ne sont pas balisés en `Review` : Google considère
+    // comme trompeurs les avis qu'une entreprise publie sur elle-même. Ils restent
+    // affichés pour les visiteurs, ils ne sont simplement pas déclarés en JSON-LD.
+    sameAs: [
+      ...CONTACT.socials.map((s) => s.url),
+      ...(GOOGLE_REVIEWS ? [GOOGLE_REVIEWS.url] : []),
+    ],
   };
 }
 
@@ -152,10 +153,12 @@ type ServiceJsonLdInput = {
   longDesc: string;
   slug: string;
   priceRange?: string;
+  /** Prestations détaillées → `hasOfferCatalog`, exploité par les moteurs de réponse. */
+  offers?: readonly string[];
 };
 
 export function serviceJsonLd(service: ServiceJsonLdInput) {
-  const offers = service.priceRange
+  const priceOffer = service.priceRange
     ? {
         offers: {
           "@type": "Offer",
@@ -171,10 +174,27 @@ export function serviceJsonLd(service: ServiceJsonLdInput) {
       }
     : {};
 
+  const offerCatalog =
+    service.offers && service.offers.length > 0
+      ? {
+          hasOfferCatalog: {
+            "@type": "OfferCatalog",
+            name: `Prestations — ${service.title}`,
+            itemListElement: service.offers.map((name) => ({
+              "@type": "Offer",
+              itemOffered: { "@type": "Service", name },
+            })),
+          },
+        }
+      : {};
+
   return {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: service.title,
+    "@id": `${SITE.url}/services/${service.slug}#service`,
+    // Le libellé du site est court pour l'interface ; le JSON-LD porte la
+    // formulation complète avec la qualification géographique.
+    name: `${service.title} à Paris et en Île-de-France`,
     description: service.longDesc,
     serviceType: service.title,
     url: `${SITE.url}/services/${service.slug}`,
@@ -183,7 +203,8 @@ export function serviceJsonLd(service: ServiceJsonLdInput) {
       { "@type": "City", name: "Paris" },
       { "@type": "AdministrativeArea", name: "Île-de-France" },
     ],
-    ...offers,
+    ...priceOffer,
+    ...offerCatalog,
   };
 }
 
@@ -193,6 +214,8 @@ type ZoneServiceJsonLdInput = {
   department: string;
   slug: string;
   description: string;
+  /** Département entier : AdministrativeArea au lieu de City. */
+  isDepartment?: boolean;
 };
 
 /**
@@ -209,15 +232,24 @@ export function zoneServiceJsonLd(zone: ZoneServiceJsonLdInput) {
     serviceType: "Nettoyage professionnel",
     url: `${SITE.url}/zones/${zone.slug}`,
     provider: { "@id": `${SITE.url}#business` },
-    areaServed: {
-      "@type": "City",
-      name: zone.name,
-      postalCode: zone.postalCode,
-      containedInPlace: {
-        "@type": "AdministrativeArea",
-        name: zone.department,
-      },
-    },
+    areaServed: zone.isDepartment
+      ? {
+          "@type": "AdministrativeArea",
+          name: zone.department,
+          containedInPlace: {
+            "@type": "AdministrativeArea",
+            name: "Île-de-France",
+          },
+        }
+      : {
+          "@type": "City",
+          name: zone.name,
+          postalCode: zone.postalCode,
+          containedInPlace: {
+            "@type": "AdministrativeArea",
+            name: zone.department,
+          },
+        },
   };
 }
 

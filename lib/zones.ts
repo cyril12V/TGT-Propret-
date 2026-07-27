@@ -22,10 +22,59 @@ export type Zone = {
   faqs: { q: string; a: string }[];
   /** 3-4 communes réellement proches, pour le maillage géographique. */
   nearbySlugs: string[];
+  /**
+   * Page couvrant un département entier plutôt qu'une commune.
+   * Change le libellé affiché et le type schema.org émis (AdministrativeArea
+   * au lieu de City).
+   */
+  isDepartment?: boolean;
 };
 
 export const ZONES: readonly Zone[] = [
   /* ══════════════════  SEINE-SAINT-DENIS (93)  ══════════════════ */
+
+  {
+    slug: "seine-saint-denis",
+    name: "Seine-Saint-Denis",
+    postalCode: "93",
+    department: "Seine-Saint-Denis",
+    departmentCode: "93",
+    isDepartment: true,
+    intro:
+      "La Seine-Saint-Denis est le département d'implantation de TGT Propreté : notre siège se trouve au 57 avenue Carnot à Bondy, et c'est depuis là que partent nos équipes et notre matériel. C'est donc le territoire sur lequel nos délais sont les plus courts et notre connaissance du terrain la plus fine. Le 93 est aussi le département francilien le plus contrasté pour un prestataire de propreté. Il concentre le pôle tertiaire de la Plaine Saint-Denis et ses plateaux de bureaux, les quartiers en transformation autour des nouvelles gares du Grand Paris Express, un parc de copropriétés des années 1960-1970 aux grands volumes de parties communes, des zones d'activité et logistiques au nord vers Aulnay et Le Bourget, un tissu dense de commerces et de restaurants de proximité, et un pavillonnaire important à l'est. TGT Propreté intervient sur l'ensemble du département auprès d'entreprises, de syndics de copropriété, de commerçants, d'artisans du bâtiment pour les fins de chantier et de particuliers. Sept communes disposent de leur page dédiée, mais notre couverture ne s'y limite pas : nous nous déplaçons dans tout le 93, avec un devis gratuit sous 24h.",
+    highlights: [
+      "Siège social à Bondy (93140) — délais les plus courts du réseau",
+      "Plateaux de bureaux de la Plaine Saint-Denis et quartiers Grand Paris Express",
+      "Copropriétés des années 1960-1970 : grands volumes de parties communes",
+      "Zones d'activité et logistiques au nord, pavillonnaire à l'est",
+    ],
+    keywords: [
+      "nettoyage Seine-Saint-Denis",
+      "entreprise de nettoyage 93",
+      "société de nettoyage Seine-Saint-Denis",
+      "nettoyage bureaux 93",
+      "nettoyage copropriété Seine-Saint-Denis",
+    ],
+    faqs: [
+      {
+        q: "Couvrez-vous tout le département de la Seine-Saint-Denis ?",
+        a: "Oui, l'ensemble du 93. Sept communes disposent d'une page dédiée sur ce site — Bondy, Saint-Denis, Noisy-le-Sec, Pantin, Montreuil, Aulnay-sous-Bois et Le Raincy — mais notre couverture ne s'y limite pas. Les autres communes du département sont traitées avec le même niveau de service.",
+      },
+      {
+        q: "Pourquoi vos délais sont-ils plus courts en Seine-Saint-Denis ?",
+        a: "Parce que notre siège et notre matériel sont à Bondy, au centre du département. Là où une intervention ponctuelle demande plus de délai dans les Yvelines ou l'Essonne, nous pouvons généralement intervenir sous 24 à 48h dans le 93.",
+      },
+      {
+        q: "Travaillez-vous avec les syndics du 93 ?",
+        a: "Oui, nous avons des contrats récurrents avec plusieurs cabinets gérant des résidences sur le département. Nous fournissons l'attestation de vigilance URSSAF et l'attestation d'assurance RC professionnelle, et nous adaptons notre calendrier au rythme budgétaire des assemblées générales.",
+      },
+      {
+        q: "Intervenez-vous dans les zones d'activité et les entrepôts du 93 ?",
+        a: "Oui, notamment sur les secteurs d'Aulnay-sous-Bois et du nord du département. Nous prenons en charge les bureaux rattachés aux sites, les vestiaires, les réfectoires et les sanitaires collectifs, avec un lavage mécanisé pour les grandes surfaces de sol béton.",
+      },
+    ],
+    nearbySlugs: ["bondy", "saint-denis", "montreuil", "pantin"],
+  },
 
   {
     slug: "bondy",
@@ -878,6 +927,11 @@ export const ZONES: readonly Zone[] = [
 
 export function getZoneBySlug(slug: string): Zone | undefined {
   return ZONES.find((z) => z.slug === slug);
+}
+
+/** « à Bondy » pour une commune, « en Seine-Saint-Denis » pour un département. */
+export function zonePreposition(zone: Zone): "à" | "en" {
+  return zone.isDepartment ? "en" : "à";
 }
 
 /** Communes proches déclarées via `nearbySlugs`, pour le maillage géographique. */

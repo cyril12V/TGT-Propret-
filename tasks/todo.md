@@ -173,6 +173,72 @@ Un seul `<h1>` et un seul canonical sur chacune des 66 pages.
 
 ---
 
+## Session 2026-07-28 (suite) — Plan SEO v2 + JSON-LD complet
+
+Deux documents reçus : `Plan SEO Complet ... (1).md` (13 pages services au lieu de 9,
++ page Seine-Saint-Denis) et `JSON-LD Schema.org ... .md` (format `@graph` avec
+`hasOfferCatalog`).
+
+### Nouvelles pages services — 12 → 16
+- [x] `nettoyage-commerces-boutiques` — commerces, boutiques, points de vente
+- [x] `nettoyage-agences-immobilieres` — états des lieux, fin de bail, relocation
+- [x] `desinfection-locaux` — désinfection professionnelle, points de contact
+- [x] `renovation-sols-decapage` — décapage, métallisation, cristallisation marbre
+
+**Non créé volontairement** : `/shampouinage-moquette-paris`. Le mot-clé
+« shampouinage moquette » (10 vol/mois) vise la même intention que
+`nettoyage-tapis-moquettes` (480 vol/mois), qui le couvre déjà et le cite dans ses
+`offers`. Une page dédiée aurait cannibalisé la page forte. La moitié réellement
+distincte du besoin — sols durs, décapage, cristallisation — est traitée par
+`renovation-sols-decapage`.
+
+### JSON-LD
+- [x] `hasOfferCatalog` ajouté à `serviceJsonLd`, alimenté par un champ `offers[]`
+      renseigné sur les **16** services (5 prestations nommées chacun)
+- [x] `@id` stable sur chaque Service (`{url}#service`)
+- [x] `name` du JSON-LD qualifié géographiquement (« … à Paris et en Île-de-France »)
+- [x] Placeholders du document sans objet : téléphone, adresse et code postal réels
+      étaient déjà câblés depuis `lib/constants.ts` (57 Av. Carnot, 93140 Bondy).
+      Les `sameAs` du document contenaient des URLs erronées (`tgtpropreteparis`,
+      `tgtpropretepark`) — les vraies sont dans `CONTACT.socials`.
+
+### aggregateRating — risque de pénalité levé
+Le site émettait une note agrégée de 5.0/5 sur 4 avis, calculée à partir des
+`TESTIMONIALS`, c'est-à-dire de témoignages publiés par l'entreprise sur elle-même.
+C'est exactement le cas que Google qualifie d'avis auto-promotionnels.
+
+- [x] Nouvelle constante `GOOGLE_REVIEWS` dans `lib/constants.ts`, à `null` par défaut
+- [x] `aggregateRating` n'est émis que si elle contient de vraies données de fiche GBP
+- [x] Balisage `Review` des témoignages supprimé du JSON-LD — ils restent affichés
+      pour les visiteurs, ils ne sont plus déclarés en données structurées
+- [ ] **À faire côté TGT** : relever la note et le nombre d'avis sur la fiche Google
+      Business Profile, puis renseigner `GOOGLE_REVIEWS` (une seule ligne à éditer,
+      le mode d'emploi est en commentaire au-dessus)
+
+### Page département
+- [x] `/zones/seine-saint-denis` — page couvrant le 93 entier. Champ `isDepartment`
+      ajouté au type `Zone` : change la préposition affichée (« en » au lieu de « à »)
+      et le type schema.org émis (`AdministrativeArea` au lieu de `City`).
+
+### Mots-clés génériques
+Conformément à la note stratégique du document, aucune page dédiée n'a été créée pour
+« nettoyage Paris », « entreprise de nettoyage », « services de propreté ». Ils sont
+couverts par l'accueil et le hub `/services`.
+
+### Résultats mesurés
+| Indicateur | Avant cette étape | Après |
+|---|---|---|
+| Pages statiques | 72 | **77** |
+| URLs au sitemap | 66 | **71** |
+| Pages services | 12 | **16** |
+| Pages géo | 40 | **41** |
+| Mots — 4 nouveaux services | — | **1 463 à 1 628** |
+| Duplication entre nouveaux services | — | **19 à 23 %** |
+| `hasOfferCatalog` | absent | **16 services** |
+| `aggregateRating` non vérifiable | présent | **supprimé** |
+
+---
+
 ## Revue de session — 2026-05-11
 
 **Réalisé** : Migration complète du site HTML monolithique (1404 lignes) vers une app Next.js 15/16 structurée. Arborescence pro : `app/` (routes + SEO), `components/` (layout/sections/ui), `lib/` (data + SEO helpers). Tailwind v4 avec design tokens via `@theme`. SSG sur toutes les pages publiques. SEO complet : metadata API, sitemap dynamique avec 8 services + 8 zones, robots.txt, OG image edge, JSON-LD (LocalBusiness, Service, Breadcrumb).

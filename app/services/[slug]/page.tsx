@@ -370,7 +370,15 @@ export default async function ServicePage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(serviceJsonLd(service)),
+          __html: JSON.stringify(
+            serviceJsonLd({
+              title: service.title,
+              longDesc: service.longDesc,
+              slug: service.slug,
+              priceRange: service.priceRange,
+              offers: service.offers,
+            }),
+          ),
         }}
       />
       <script
