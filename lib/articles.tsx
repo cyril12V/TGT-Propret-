@@ -204,7 +204,7 @@ export const ARTICLES: readonly Article[] = [
           </Link>{" "}
           ou consultez{" "}
           <Link
-            href="/services/entreprises-bureaux"
+            href="/services/nettoyage-bureaux-entreprises"
             className="text-[var(--color-gold)] underline"
           >
             notre page Nettoyage Bureaux
@@ -412,7 +412,7 @@ export const ARTICLES: readonly Article[] = [
         <p>
           Pour un devis détaillé sur votre immeuble, consultez{" "}
           <Link
-            href="/services/nettoyage-copropriete"
+            href="/services/nettoyage-coproprietes-immeubles"
             className="text-[var(--color-gold)] underline"
           >
             notre page Nettoyage Copropriété

@@ -13,7 +13,12 @@ import {
   PARIS_ARRONDISSEMENTS,
   getArrondissementBySlug,
 } from "@/lib/zones-paris";
-import { breadcrumbJsonLd, buildMetadata } from "@/lib/seo";
+import {
+  breadcrumbJsonLd,
+  buildMetadata,
+  webPageJsonLd,
+  zoneServiceJsonLd,
+} from "@/lib/seo";
 
 type Params = { arrondissement: string };
 
@@ -49,6 +54,8 @@ export default async function ArrondissementPage({
 
   const intro = arr.intro;
   const paragraphs = intro.split(/\n\n+/).filter(Boolean);
+
+  const metaDescription = `Société de nettoyage professionnel dans le ${arr.number}e arrondissement de Paris (${arr.district}). Bureaux, copropriétés, particuliers, fin de chantier. Devis gratuit sous 24h.`;
 
   return (
     <>
@@ -195,9 +202,13 @@ export default async function ArrondissementPage({
                           <sup>e</sup>
                         </span>
                       </h3>
-                      <p className="text-sm text-[var(--color-muted)]">
-                        {s.shortDesc}
-                      </p>
+                      {/* Pas de shortDesc ici : répété sur 40 pages géo, il
+                          diluait la part de contenu propre à l'arrondissement. */}
+                      {s.priceRange && (
+                        <span className="mt-auto pt-2 text-[11px] font-semibold uppercase tracking-[0.15em] text-[var(--color-gold)]">
+                          {s.priceRange}
+                        </span>
+                      )}
                     </Link>
                   </li>
                 );
@@ -227,6 +238,33 @@ export default async function ArrondissementPage({
               { name: "Paris", url: `${SITE.url}/zones/paris` },
               { name: arr.name, url: `${SITE.url}/zones/paris/${arr.slug}` },
             ]),
+          ),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            zoneServiceJsonLd({
+              name: `Paris ${arr.number}e arrondissement`,
+              postalCode: arr.postalCode,
+              department: "Paris",
+              slug: `paris/${arr.slug}`,
+              description: metaDescription,
+            }),
+          ),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            webPageJsonLd({
+              title: `Entreprise de nettoyage Paris ${arr.number}e (${arr.postalCode})`,
+              description: metaDescription,
+              path: `/zones/paris/${arr.slug}`,
+              speakableSelectors: ["h1"],
+            }),
           ),
         }}
       />

@@ -187,9 +187,13 @@ export default async function ZonePage({
                           à {zone.name}
                         </span>
                       </h3>
-                      <p className="text-sm text-[var(--color-muted)]">
-                        {s.shortDesc}
-                      </p>
+                      {/* Pas de shortDesc ici : répété sur 40 pages géo, il
+                          diluait la part de contenu propre à la commune. */}
+                      {s.priceRange && (
+                        <span className="mt-auto pt-2 text-[11px] font-semibold uppercase tracking-[0.15em] text-[var(--color-gold)]">
+                          {s.priceRange}
+                        </span>
+                      )}
                     </Link>
                   </li>
                 );
