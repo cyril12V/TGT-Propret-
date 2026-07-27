@@ -146,6 +146,12 @@ export function CandidatureForm() {
             aria-describedby={status === "error" ? "form-error" : undefined}
             noValidate
           >
+            {/* Honeypot anti-bot : invisible pour les humains, piège pour les robots */}
+            <div className="absolute left-[-9999px] top-[-9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
+              <label htmlFor="website">Ne pas remplir ce champ</label>
+              <input type="text" id="website" name="website" tabIndex={-1} autoComplete="off" />
+            </div>
+
             <div className="grid gap-5 md:grid-cols-2">
               <Field
                 name="firstName"

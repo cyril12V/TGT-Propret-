@@ -1,7 +1,12 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
+import { sendMail, rowsToHtml, isMailConfigured } from "@/lib/mailer";
+
+export const runtime = "nodejs";
 
 const DevisSchema = z.object({
+  // Honeypot anti-bot : champ invisible qui doit rester vide (rempli = bot)
+  website: z.string().max(200).optional().default(""),
   firstName: z.string().trim().min(2, "Prénom trop court").max(60),
   lastName: z.string().trim().min(2, "Nom trop court").max(60),
   phone: z
@@ -75,23 +80,52 @@ export async function POST(req: Request) {
 
   const payload = parsed.data;
 
-  // INTÉGRATION EMAIL : brancher ici Resend, Mailgun, SendGrid ou SMTP.
-  // Exemple Resend :
-  //   const resend = new Resend(process.env.RESEND_API_KEY);
-  //   await resend.emails.send({
-  //     from: "devis@nettoyagesidf.fr",
-  //     to: process.env.DEVIS_INBOX_EMAIL!,
-  //     subject: `Devis — ${payload.typeClient} ${payload.zone}`,
-  //     text: JSON.stringify(payload, null, 2),
-  //   });
-  console.info("[devis]", {
-    from: `${payload.firstName} ${payload.lastName}`,
-    email: payload.email,
-    type: payload.typeClient,
-    service: payload.typeService,
-    zone: payload.zone,
-    surface: payload.surface,
-  });
+  // Anti-bot : si le honeypot est rempli, on fait comme si tout allait bien
+  // (pas d'email envoyé, pas d'indice donné au bot).
+  if (payload.website) {
+    return NextResponse.json({ ok: true }, { status: 200 });
+  }
+
+  if (!isMailConfigured()) {
+    console.error("[devis] SMTP non configuré — email non envoyé");
+    return NextResponse.json(
+      { error: "Service d'envoi indisponible pour le moment." },
+      { status: 503 },
+    );
+  }
+
+  const fullName = `${payload.firstName} ${payload.lastName}`;
+  const rows: [string, string][] = [
+    ["Nom", fullName],
+    ["Téléphone", payload.phone],
+    ["Email", payload.email],
+    ["Type de client", payload.typeClient],
+    ["Service souhaité", payload.typeService],
+    ["Zone", payload.zone],
+    ["Surface", payload.surface],
+    ["Fréquence", payload.frequence],
+    ["Message", payload.message],
+  ];
+
+  try {
+    await sendMail({
+      subject: `Nouvelle demande de devis — ${fullName} (${payload.zone})`,
+      replyTo: payload.email,
+      text: rows
+        .filter(([, v]) => v)
+        .map(([l, v]) => `${l}: ${v}`)
+        .join("\n"),
+      html: `<h2 style="font-family:Arial,Helvetica,sans-serif;color:#0d2244;">Nouvelle demande de devis</h2>${rowsToHtml(
+        rows,
+      )}`,
+    });
+  } catch (err) {
+    console.error("[devis] échec d'envoi email:", err);
+    return NextResponse.json(
+      { error: "L'envoi a échoué. Réessayez ou appelez-nous." },
+      { status: 502 },
+    );
+  }
 
   return NextResponse.json({ ok: true }, { status: 200 });
 }
