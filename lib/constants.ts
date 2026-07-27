@@ -27,21 +27,18 @@ export function getYearsOfExperience(): number {
 }
 
 /**
- * Avis Google Business Profile — À RENSEIGNER AVEC LES VRAIES DONNÉES.
+ * Avis Google Business Profile.
  *
- * Tant que cette valeur est `null`, aucun `aggregateRating` n'est émis dans le
- * JSON-LD. C'est volontaire : Google sanctionne les notes agrégées qui ne
- * correspondent à aucun avis vérifiable, et les `TESTIMONIALS` ci-dessous sont
- * des témoignages affichés sur le site, pas des avis Google collectés.
+ * Ces valeurs alimentent l'`aggregateRating` du JSON-LD `CleaningService` et
+ * déclenchent l'affichage des étoiles dans les résultats de recherche.
  *
- * Pour activer les étoiles dans les résultats de recherche, relever la note et
- * le nombre d'avis sur la fiche Google Business Profile de TGT Propreté, puis :
+ * Elles doivent correspondre **exactement** à la fiche Google Business Profile :
+ * Google sanctionne les notes agrégées qui ne se retrouvent nulle part. Les
+ * `TESTIMONIALS` plus bas sont des témoignages éditoriaux, jamais balisés en
+ * `Review` pour cette raison.
  *
- *   export const GOOGLE_REVIEWS: GoogleReviews | null = {
- *     ratingValue: 4.8,
- *     reviewCount: 27,
- *     url: "https://www.google.com/maps/place/TGT+propret%C3%A9/...",
- *   };
+ * → À mettre à jour à chaque palier d'avis (relevé du 28/07/2026 : 5,0 sur 11 avis).
+ * Passer la constante à `null` retire proprement l'`aggregateRating` du site.
  */
 export type GoogleReviews = {
   ratingValue: number;
@@ -49,7 +46,11 @@ export type GoogleReviews = {
   url: string;
 };
 
-export const GOOGLE_REVIEWS: GoogleReviews | null = null;
+export const GOOGLE_REVIEWS: GoogleReviews | null = {
+  ratingValue: 5.0,
+  reviewCount: 11,
+  url: "https://www.google.com/maps/place/TGT+propret%C3%A9/@48.8999832,2.4817104,17z/data=!3m1!4b1!4m6!3m5!1s0x47e61332850736f1:0x6906ec8716523c4f!8m2!3d48.8999832!4d2.4817104",
+};
 
 export const MALIKA = {
   gérante: "Malika Tlili",

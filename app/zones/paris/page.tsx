@@ -140,7 +140,7 @@ export default function ParisHubPage() {
                   <strong className="text-[var(--color-gold)]">
                     {rating.ratingValue}/5
                   </strong>{" "}
-                  · {rating.reviewCount} avis clients vérifiés
+                  · {rating.reviewCount} avis Google
                 </span>
               </div>
             )}
@@ -175,7 +175,10 @@ export default function ParisHubPage() {
                 label: "Prestations disponibles",
               },
               { number: "24h", label: "Délai devis garanti" },
-              { number: "5.0★", label: "Note moyenne clients" },
+              {
+                number: rating ? `${rating.ratingValue}★` : "24h/24",
+                label: rating ? "Note moyenne Google" : "Demande en ligne",
+              },
             ].map((s) => (
               <div key={s.label} className="flex flex-col gap-1 px-6 py-6 md:px-8">
                 <span className="font-serif text-3xl font-light text-[var(--color-navy)]">

@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { Mail, MapPin, Phone } from "lucide-react";
-import { CONTACT, IDF_DEPARTMENTS, SITE } from "@/lib/constants";
+import { Mail, MapPin, Phone, Star } from "lucide-react";
+import { CONTACT, GOOGLE_REVIEWS, IDF_DEPARTMENTS, SITE } from "@/lib/constants";
 import { SERVICES } from "@/lib/services";
 import { PARIS_ARRONDISSEMENTS } from "@/lib/zones-paris";
 import { ZONES } from "@/lib/zones";
@@ -25,6 +25,33 @@ export function Footer() {
               Entreprise de nettoyage professionnel à Paris et en Île-de-France.
               Devis gratuit sous 24h.
             </p>
+
+            {/* Note Google visible sur toutes les pages : l'`aggregateRating` du
+                JSON-LD est émis site-wide, il doit correspondre à un contenu réel
+                affiché au visiteur. */}
+            {GOOGLE_REVIEWS && (
+              <a
+                href={GOOGLE_REVIEWS.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-5 inline-flex items-center gap-2.5 border border-white/15 px-4 py-2.5 transition-colors hover:border-[var(--color-gold)]"
+              >
+                <span
+                  className="flex gap-0.5 text-[var(--color-gold)]"
+                  aria-hidden="true"
+                >
+                  {Array.from({ length: 5 }, (_, i) => (
+                    <Star key={i} size={13} fill="currentColor" strokeWidth={0} />
+                  ))}
+                </span>
+                <span className="text-xs text-white/70">
+                  <strong className="font-semibold text-white">
+                    {GOOGLE_REVIEWS.ratingValue.toFixed(1).replace(".", ",")}/5
+                  </strong>{" "}
+                  · {GOOGLE_REVIEWS.reviewCount} avis Google
+                </span>
+              </a>
+            )}
             <ul className="mt-6 flex gap-3" aria-label="Réseaux sociaux">
               {CONTACT.socials.map((s, i) => {
                 // On vérifie si c'est le deuxième élément (index === 1)
