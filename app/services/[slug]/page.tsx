@@ -56,8 +56,11 @@ export async function generateMetadata({
   if (!service) return { title: "Service introuvable" };
 
   return buildMetadata({
-    title: `${service.title} à Paris — TGT Propreté Île-de-France`,
-    description: `${service.shortDesc} Devis gratuit sous 24h à Paris et en Île-de-France.`,
+    title:
+      service.metaTitle ?? `${service.title} à Paris — TGT Propreté Île-de-France`,
+    description:
+      service.metaDescription ??
+      `${service.shortDesc} Devis gratuit sous 24h à Paris et en Île-de-France.`,
     path: `/services/${service.slug}`,
     keywords: service.keywords,
   });
@@ -118,8 +121,19 @@ export default async function ServicePage({
 
             <SectionLabel>Service {service.num} · Paris &amp; IDF</SectionLabel>
             <h1 className="mt-3 font-serif text-[clamp(36px,5.5vw,72px)] font-light leading-tight text-white">
-              {service.title}{" "}
-              <em className="italic text-[var(--color-gold-2)]">à Paris</em>
+              {service.h1 ? (
+                <>
+                  {service.h1.lead}{" "}
+                  <em className="italic text-[var(--color-gold-2)]">
+                    {service.h1.accent}
+                  </em>
+                </>
+              ) : (
+                <>
+                  {service.title}{" "}
+                  <em className="italic text-[var(--color-gold-2)]">à Paris</em>
+                </>
+              )}
             </h1>
             <div
               className="mt-2 h-[2px] w-40 bg-gradient-to-r from-[#c9a84c] to-transparent"
@@ -166,6 +180,20 @@ export default async function ServicePage({
                         {section.intro}
                       </p>
                     )}
+                    {section.items && section.items.length > 0 && (
+                      <ul className="mt-5 space-y-2 text-[15px] text-[var(--color-muted)]">
+                        {section.items.map((item) => (
+                          <li key={item} className="flex gap-3">
+                            <span
+                              className="mt-[9px] h-1 w-3 flex-shrink-0 bg-[var(--color-gold)]"
+                              aria-hidden="true"
+                            />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+
                     {section.blocks?.map((block) => (
                       <div key={block.h3} className="mt-7">
                         <h3 className="font-serif text-xl font-semibold text-[var(--color-navy)]">
@@ -191,6 +219,62 @@ export default async function ServicePage({
                         )}
                       </div>
                     ))}
+
+                    {section.table && (
+                      <div className="mt-7">
+                        {/* Le conteneur scrolle horizontalement : sur mobile, c'est
+                            le tableau qui défile, jamais la page entière. */}
+                        <div className="overflow-x-auto">
+                          <table className="w-full min-w-[420px] border-collapse text-left text-[15px]">
+                            <thead>
+                              <tr className="border-b-2 border-[var(--color-gold)]">
+                                {section.table.headers.map((h) => (
+                                  <th
+                                    key={h}
+                                    scope="col"
+                                    className="py-3 pr-4 text-[11px] font-semibold uppercase tracking-[0.15em] text-[var(--color-navy)]"
+                                  >
+                                    {h}
+                                  </th>
+                                ))}
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {section.table.rows.map((row) => (
+                                <tr
+                                  key={row.join("|")}
+                                  className="border-b border-[rgba(13,34,68,0.08)]"
+                                >
+                                  {row.map((cell, i) => (
+                                    <td
+                                      key={cell}
+                                      className={`py-3 pr-4 ${
+                                        i === row.length - 1
+                                          ? "font-semibold text-[var(--color-navy)]"
+                                          : "text-[var(--color-muted)]"
+                                      }`}
+                                    >
+                                      {cell}
+                                    </td>
+                                  ))}
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                        {section.table.note && (
+                          <p className="mt-3 text-[13px] italic leading-relaxed text-[var(--color-muted)]">
+                            {section.table.note}
+                          </p>
+                        )}
+                      </div>
+                    )}
+
+                    {section.outro && (
+                      <p className="mt-6 text-[15px] leading-relaxed text-[var(--color-muted)]">
+                        {section.outro}
+                      </p>
+                    )}
                   </section>
                 ))}
 
@@ -277,6 +361,41 @@ export default async function ServicePage({
             />
           </div>
 
+        )}
+
+        {/* SOURCES : signal E-E-A-T, les affirmations chiffrées sont vérifiables */}
+        {service.sources && service.sources.length > 0 && (
+          <aside
+            className="bg-[var(--color-light)] px-5 py-12 md:px-10"
+            aria-labelledby="sources-heading"
+          >
+            <div className="container-tgt">
+              <h2
+                id="sources-heading"
+                className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--color-gold)]"
+              >
+                Sources utiles
+              </h2>
+              <ul className="mt-4 space-y-2 text-[14px] text-[var(--color-muted)]">
+                {service.sources.map((s) => (
+                  <li key={s.url} className="flex gap-3">
+                    <span
+                      className="mt-[9px] h-1 w-3 flex-shrink-0 bg-[var(--color-gold)]"
+                      aria-hidden="true"
+                    />
+                    <a
+                      href={s.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline decoration-[var(--color-gold)] underline-offset-4 transition-colors hover:text-[var(--color-gold)]"
+                    >
+                      {s.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </aside>
         )}
 
         {/* BLOC RÉALISATION : Avant / Après du service (si disponible) */}

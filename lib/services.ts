@@ -48,6 +48,14 @@ export type ServiceBlock = {
   items?: string[];
 };
 
+/** Tableau comparatif ou grille tarifaire. Format directement extractible par les IA. */
+export type ServiceTable = {
+  headers: string[];
+  rows: string[][];
+  /** Précision affichée sous le tableau (mentions, conditions). */
+  note?: string;
+};
+
 /**
  * Section H2 du corps de page.
  * `intro` doit répondre directement à la question du H2 dès la première phrase :
@@ -57,6 +65,17 @@ export type ServiceSection = {
   h2: string;
   intro?: string;
   blocks?: ServiceBlock[];
+  table?: ServiceTable;
+  /** Liste à puces rattachée directement au H2, sans passer par un H3. */
+  items?: string[];
+  /** Paragraphe de clôture, après les blocs et le tableau. */
+  outro?: string;
+};
+
+/** Source externe citée en bas de page — signal E-E-A-T. */
+export type ServiceSource = {
+  label: string;
+  url: string;
 };
 
 export type ServiceStep = {
@@ -86,6 +105,17 @@ export type Service = {
   relatedSlugs?: string[];
   /** Prestations nommées → `hasOfferCatalog` dans le JSON-LD. */
   offers?: string[];
+  /**
+   * H1 sur mesure, en deux parties : `lead` en blanc, `accent` en doré italique.
+   * Sans lui, le template retombe sur « {title} à Paris ».
+   */
+  h1?: { lead: string; accent: string };
+  /** Title tag sur mesure. Sinon composé depuis `title`. */
+  metaTitle?: string;
+  /** Meta description sur mesure. Sinon composée depuis `shortDesc`. */
+  metaDescription?: string;
+  /** Sources externes citées en fin de page. */
+  sources?: ServiceSource[];
 };
 
 // ─── Pôles ────────────────────────────────────────────────────────────────────
