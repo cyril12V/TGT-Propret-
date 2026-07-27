@@ -62,7 +62,8 @@ export default function ZonesHubPage() {
 
             <SectionLabel>
               {PARIS_ARRONDISSEMENTS.length} arrondissements ·{" "}
-              {ZONES.length} communes
+              {ZONES.length}{" "}
+              communes
             </SectionLabel>
             <h1 className="mt-3 font-serif text-[clamp(36px,5.5vw,68px)] font-light leading-[1.05]">
               Nos zones{" "}
@@ -74,7 +75,8 @@ export default function ZonesHubPage() {
             <p className="mt-4 max-w-3xl text-lg leading-relaxed text-white/70">
               TGT Propreté intervient dans les{" "}
               {PARIS_ARRONDISSEMENTS.length} arrondissements de Paris et dans{" "}
-              {ZONES.length} communes d&apos;Île-de-France. Notre siège est
+              {ZONES.length}{" "}
+              communes d&apos;Île-de-France. Notre siège est
               situé au {CONTACT.address.street}, {CONTACT.address.postalCode}{" "}
               {CONTACT.address.city}. Devis gratuit sous 24h, quelle que soit la
               commune.

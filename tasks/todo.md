@@ -113,6 +113,66 @@
   doublons et photos ambiguës — proposables plus tard en galerie « résultats ».
 - Note : les photos par service étaient **déjà présentes** dans cette version (rien à restaurer).
 
+## Session 2026-07-28 — Refonte SEO (services + géo)
+
+Point de départ : le document `Plan SEO Complet TGT Propreté nettoyagesidffr.md` décrivait
+une « architecture mono-page critique » et demandait de créer 9 pages services. Diagnostic
+périmé : les 12 pages services existaient déjà. Les vrais blocages étaient la profondeur du
+contenu et la couverture géographique.
+
+### Fondations
+- [x] Type `Service` étendu : `tldr`, `sections` (H2 + intro + blocs H3), `process`, `relatedSlugs`
+- [x] Type `Zone` aligné sur `ParisArrondissement` : `intro` long, `highlights`, `keywords`, `faqs`, `nearbySlugs`, `departmentCode`
+- [x] Pages hub `/services` et `/zones` créées — c'étaient des redirections 302 vers des ancres
+- [x] Fils d'Ariane recâblés : `/#services` → `/services`, ajout du niveau `Zones`
+- [x] `getYearsOfExperience()` dérivé de `SITE.foundingYear` — quatre sources divergentes auparavant (6 vs 8 ans)
+- [x] Compteurs de prestations dérivés de `SERVICES.length` — le hub Paris affichait 13 et 12 sur la même page
+- [x] `robots.ts` : règles explicites GPTBot, ClaudeBot, PerplexityBot, Google-Extended, Applebot-Extended
+- [x] Fautes en production corrigées (elles partaient dans le JSON-LD `FAQPage`) : « Malheuresement », « vous on des vitrages », « tâches » → « taches »
+
+### Correctifs structurels
+- [x] **12 arrondissements orphelins** : `app/zones/paris/page.tsx` codait en dur 8 arrondissements
+      « prioritaires » ; les 12 autres affichaient une carte pointant vers `/devis` alors que leur
+      page existait et figurait au sitemap. Les 20 sont désormais liés.
+- [x] Deux liens morts dans les articles de blog (`/services/entreprises-bureaux`, `/services/nettoyage-copropriete`)
+- [x] `DevisForm` : le select « zone » ne listait que les arrondissements, donc `?zone={ville}` retombait
+      silencieusement sur « Sélectionner ». Les 20 communes ajoutées.
+- [x] Lint remis au vert : 2 erreurs `react-hooks/set-state-in-effect` préexistantes dans `Testimonials.tsx`
+      (index de carrousel reclampé au rendu, `loading` initialisé depuis la config au lieu d'un effet)
+
+### Contenu
+- [x] 12 pages services réécrites en profondeur — 1 340 à 2 606 mots (contre ~350)
+- [x] 13 nouvelles communes : 92 (Boulogne-Billancourt, Nanterre, Levallois, Neuilly, Issy, Courbevoie,
+      Asnières, Colombes, Rueil-Malmaison), 78 (Versailles), 94 (Créteil, Vincennes), 91 (Massy)
+- [x] 7 communes existantes réécrites au même standard (~40 mots d'intro → 150-250 mots uniques)
+- [x] Bloc `ZonesBand` sur l'accueil — la home ne pointait vers aucune page géo
+- [x] H2 de l'accueil orientés mots-clés, title accueil passé en mot-clé d'abord
+
+### Résultats mesurés
+| Indicateur | Avant | Après |
+|---|---|---|
+| Pages statiques | 51 | **72** |
+| URLs au sitemap | 51 | **66** |
+| Pages villes | 7 (toutes en 93) | **20** (93, 92, 94, 78, 91) |
+| Mots / page service | ~350 | **1 340 – 2 606** |
+| Mots / page ville | ~200 | **~920** |
+| Duplication entre villes voisines | 46 % | **36 %** |
+| Duplication entre arrondissements | 56 % | **46 %** |
+| JSON-LD page ville | BreadcrumbList | **FAQPage + Service + WebPage + BreadcrumbList** |
+| Liens morts | 2 | **0** |
+
+`npm run preflight` : 0 erreur. `npm run build` : 72 pages. Sitemap : 66 URLs toutes en 200.
+Un seul `<h1>` et un seul canonical sur chacune des 66 pages.
+
+### Reste à faire (hors code)
+1. Code de vérification Search Console → décommenter `app/layout.tsx` et soumettre le sitemap
+2. Décider du tracking analytics (GA4 ou Vercel Analytics) — rien n'est en place
+3. Avis Google : les `TESTIMONIALS` sont 4 avis internes, pas des avis vérifiés. Le `aggregateRating`
+   du JSON-LD s'en nourrit — à surveiller, Google déclasse les notes auto-déclarées.
+4. Backlinks et annuaires, avec NAP strictement aligné sur `lib/constants.ts`
+
+---
+
 ## Revue de session — 2026-05-11
 
 **Réalisé** : Migration complète du site HTML monolithique (1404 lignes) vers une app Next.js 15/16 structurée. Arborescence pro : `app/` (routes + SEO), `components/` (layout/sections/ui), `lib/` (data + SEO helpers). Tailwind v4 avec design tokens via `@theme`. SSG sur toutes les pages publiques. SEO complet : metadata API, sitemap dynamique avec 8 services + 8 zones, robots.txt, OG image edge, JSON-LD (LocalBusiness, Service, Breadcrumb).

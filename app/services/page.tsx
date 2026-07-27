@@ -67,7 +67,8 @@ export default function ServicesHubPage() {
             </nav>
 
             <SectionLabel>
-              {SERVICES.length} prestations · Paris &amp; Île-de-France
+              {SERVICES.length}{" "}
+              prestations · Paris &amp; Île-de-France
             </SectionLabel>
             <h1 className="mt-3 font-serif text-[clamp(36px,5.5vw,68px)] font-light leading-[1.05]">
               Nos services de{" "}
@@ -77,8 +78,9 @@ export default function ServicesHubPage() {
             </h1>
 
             <p className="mt-4 max-w-3xl text-lg leading-relaxed text-white/70">
-              TGT Propreté couvre {SERVICES.length} prestations de nettoyage à
-              Paris et en Île-de-France, réparties entre un pôle professionnel
+              TGT Propreté couvre {SERVICES.length}{" "}
+              prestations de nettoyage à Paris et en Île-de-France, réparties
+              entre un pôle professionnel
               (bureaux, copropriétés, commerces, restaurants, cabinets
               médicaux, fin de chantier) et un pôle particuliers (nettoyage
               approfondi, textiles d&apos;ameublement, repassage). {years}+ ans

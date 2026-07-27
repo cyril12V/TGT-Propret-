@@ -1,3 +1,75 @@
 # Leçons apprises
 
 À remplir au fil des sessions. Format : date, contexte, erreur, leçon, règle ajoutée.
+
+---
+
+## 2026-07-28 — Un audit externe n'est pas un état des lieux
+
+**Contexte** : refonte SEO à partir du document `Plan SEO Complet TGT Propreté nettoyagesidffr.md`.
+
+**Erreur évitée de justesse** : le document annonçait une « architecture mono-page critique » et
+demandait de créer 9 pages services. Le code en livrait déjà 12, plus 20 pages arrondissement et
+un sitemap complet. Appliquer le plan à la lettre aurait produit des doublons de pages existantes
+et une cannibalisation de mots-clés.
+
+**Leçon** : lire le code avant d'appliquer un audit externe. Un audit décrit le site tel qu'il était
+au moment de l'analyse, ou tel que son auteur l'a compris depuis l'extérieur. Les recommandations
+restent utiles, le diagnostic est à revérifier.
+
+**Règle** : face à un audit ou à un cahier des charges externe, commencer par établir l'état réel
+(routes, données, sitemap) et signaler les écarts avant de proposer un plan.
+
+---
+
+## 2026-07-28 — Les pages géo se jugent au ratio de contenu unique
+
+**Contexte** : création de 13 pages villes et refonte de 7 autres.
+
+**Constat mesuré** : les pages villes partageaient 46 % de leurs séquences de 6 mots avec leurs
+voisines, essentiellement à cause d'une grille de 12 cartes services reprenant le même `shortDesc`
+sur les 40 pages géo du site. Retirer ce paragraphe des grilles a ramené le chiffre à 36 % sans
+rien perdre en maillage interne, puisque les liens et les ancres restent.
+
+**Leçon** : sur un réseau de pages locales, le nombre de mots ne dit rien. Ce qui compte est la part
+de contenu qui n'existe que sur cette page. Un bloc partagé de 400 mots répété 40 fois pèse plus
+lourd qu'il n'y paraît.
+
+**Règle** : après toute création de pages géo en série, mesurer l'overlap réel entre deux pages
+voisines (shingles de 6 mots) plutôt que de se fier au nombre de mots. Si un paragraphe reste vrai
+en changeant le nom de la ville, il ne compte pas comme contenu local.
+
+---
+
+## 2026-07-28 — Une valeur métier dupliquée finit toujours par diverger
+
+**Contexte** : incohérences trouvées en cours de refonte.
+
+**Constat** : l'ancienneté de l'entreprise existait en quatre endroits avec deux valeurs
+différentes (`SITE.yearsOfExperience: 6`, `STATS` « 8+ », un texte d'engagement « 8+ », et un
+« 6+ ans » codé en dur dans le template zone). Le nombre de prestations était affiché « 13 » et
+« 12 » sur la même page du hub Paris.
+
+**Leçon** : toute donnée affichée à plusieurs endroits doit être dérivée d'une source unique.
+Ces écarts ne cassent aucun test et passent la CI sans bruit, mais ils sont visibles par les
+visiteurs et par Google.
+
+**Règle** : pas de chiffre métier codé en dur dans le JSX. Dériver depuis `lib/constants.ts`
+(`getYearsOfExperience()`) ou depuis la longueur du tableau de données (`SERVICES.length`).
+
+---
+
+## 2026-07-28 — Les liens profonds doivent correspondre aux valeurs du formulaire
+
+**Contexte** : les pages villes pointent vers `/devis?zone={slug}` pour pré-remplir le formulaire.
+
+**Erreur** : le select « zone » de `DevisForm` ne contenait que les 20 arrondissements parisiens,
+`idf` et `autre`. Un slug de commune ne correspondait à aucune option, donc le `defaultValue`
+retombait sur « Sélectionner » — sans erreur, sans avertissement. Le visiteur devait resaisir
+l'information que le lien était censé transmettre.
+
+**Leçon** : un paramètre d'URL qui alimente un `<select>` doit être vérifié contre la liste réelle
+des options. L'échec est silencieux par construction.
+
+**Règle** : quand un lien pré-remplit un formulaire, tester le parcours complet, pas seulement que
+la page cible répond 200.

@@ -220,10 +220,10 @@ export default async function ServicePage({
                     Où intervenons-nous ?
                   </h2>
                   <p className="mt-5 text-[15px] leading-relaxed text-[var(--color-muted)]">
-                    Nous assurons ce service dans les 20 arrondissements de Paris
-                    et dans {ZONES.length} communes d&apos;Île-de-France, depuis
-                    notre siège de Bondy (93140). Devis gratuit sous 24h, quelle
-                    que soit la commune.
+                    Nous assurons ce service dans les 20 arrondissements de
+                    Paris et dans {ZONES.length}{" "}
+                    communes d&apos;Île-de-France, depuis notre siège de Bondy
+                    (93140). Devis gratuit sous 24h, quelle que soit la commune.
                   </p>
                   <ul className="mt-5 flex flex-wrap gap-2">
                     {linkedZones.map((z) => (
