@@ -6,6 +6,7 @@ import { AlertCircle, ArrowRight, CheckCircle2, Send } from "lucide-react";
 import { CONTACT } from "@/lib/constants";
 import { SERVICES } from "@/lib/services";
 import { PARIS_ARRONDISSEMENTS } from "@/lib/zones-paris";
+import { ZONES } from "@/lib/zones";
 
 const TYPE_CLIENT = [
   { value: "particulier", label: "Particulier" },
@@ -165,7 +166,13 @@ export function DevisForm() {
               value: `paris-${a.number}`,
               label: `Paris ${a.number}e — ${a.district}`,
             })),
-            { value: "idf", label: "Île-de-France hors Paris" },
+            // Les pages villes pointent vers /devis?zone={slug} : sans ces options,
+            // le pré-remplissage retomberait silencieusement sur « Sélectionner ».
+            ...ZONES.map((z) => ({
+              value: z.slug,
+              label: `${z.name} (${z.postalCode})`,
+            })),
+            { value: "idf", label: "Île-de-France — autre commune" },
             { value: "autre", label: "Autre" },
           ]}
         />
