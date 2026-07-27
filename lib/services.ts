@@ -35,6 +35,29 @@ export type Pole = {
   tag: string;
 };
 
+/** Bloc H3 à l'intérieur d'une section de contenu. */
+export type ServiceBlock = {
+  h3: string;
+  text?: string;
+  items?: string[];
+};
+
+/**
+ * Section H2 du corps de page.
+ * `intro` doit répondre directement à la question du H2 dès la première phrase :
+ * c'est ce paragraphe que les moteurs de réponse (AI Overviews, Perplexity) extraient.
+ */
+export type ServiceSection = {
+  h2: string;
+  intro?: string;
+  blocks?: ServiceBlock[];
+};
+
+export type ServiceStep = {
+  step: string;
+  text: string;
+};
+
 export type Service = {
   slug: string;
   num: string;
@@ -47,6 +70,14 @@ export type Service = {
   keywords: string[];
   priceRange?: string;
   faqs?: { q: string; a: string }[];
+  /** Résumé autonome affiché en tête de page, compréhensible hors contexte. */
+  tldr?: string;
+  /** Corps de page détaillé. Sans lui, la page retombe sur longDesc seul. */
+  sections?: ServiceSection[];
+  /** Process propre au service. Remplace le bloc « Notre méthode » générique. */
+  process?: ServiceStep[];
+  /** Slugs de services complémentaires, pour le maillage interne. */
+  relatedSlugs?: string[];
 };
 
 // ─── Pôles ────────────────────────────────────────────────────────────────────
@@ -278,7 +309,7 @@ export const SERVICES: readonly Service[] = [
     priceRange: "2,50€ à 4,00€ / m² ou au Forfait",
     faqs: [
       {
-        q: "Intervenez-vous on des vitrages difficiles d'accès ?",
+        q: "Intervenez-vous sur des vitrages difficiles d'accès ?",
         a: "Oui, nous disposons de perches télescopiques et de matériel adapté pour nettoyer en toute sécurité les surfaces vitrées en hauteur.",
       },
       {
@@ -327,7 +358,7 @@ export const SERVICES: readonly Service[] = [
       },
       {
         q: "Proposez-vous le crédit d'impôt de 50 % (Services à la Personne) ?",
-        a: "Malheuresement non. En tant qu'entreprise de nettoyage multisectorielle intervenant principalement auprès des professionnels (B2B), nous ne bénéficions pas de l'agrément Services à la Personne. Nos tarifs incluent l'intégralité de nos charges, nos assurances professionnelles et la fourniture de nos équipements industriels.",
+        a: "Malheureusement non. En tant qu'entreprise de nettoyage multisectorielle intervenant principalement auprès des professionnels (B2B), nous ne bénéficions pas de l'agrément Services à la Personne. Nos tarifs incluent l'intégralité de nos charges, nos assurances professionnelles et la fourniture de nos équipements industriels.",
       },
     ],
   },
@@ -340,7 +371,7 @@ export const SERVICES: readonly Service[] = [
     Icon: Sofa,
     title: "Canapés & Fauteuils",
     shortDesc:
-      "Shampouinage et détachage professionnel par injection-extraction pour éliminer tâches, odeurs et acariens.",
+      "Shampouinage et détachage professionnel par injection-extraction pour éliminer taches, odeurs et acariens.",
     longDesc:
       "Redonnez l'éclat du neuf à vos mobiliers textiles grâce à notre technique professionnelle d'injection-extraction. Idéal pour les canapés, fauteuils, chaises de bureau ou têtes de lit en tissu, notre traitement agit au cœur des fibres pour extraire les saletés incrustées, les auréoles, les odeurs (tabac, animaux) et éliminer 99% des allergènes et acariens. Nous utilisons des produits professionnels non agressifs qui ravivent les couleurs sans altérer la texture de vos meubles.",
     keywords: [
@@ -356,8 +387,8 @@ export const SERVICES: readonly Service[] = [
         a: "Entre 4h et 12h selon le tissu et la température de la pièce.",
       },
       {
-        q: "Pouvez-vous enlever toutes les tâches (vin, sang, café, urine) ?",
-        a: "Nous traitons efficacement la grande majorité des tâches incrustées, les auréoles et les mauvaises odeurs. Cependant, le résultat dépend de l'ancienneté de la tâche et si elle a déjà été frottée avec de mauvais produits. Plus l'intervention est rapide, plus le taux de réussite est proche de 100%.",
+        q: "Pouvez-vous enlever toutes les taches (vin, sang, café, urine) ?",
+        a: "Nous traitons efficacement la grande majorité des taches incrustées, les auréoles et les mauvaises odeurs. Cependant, le résultat dépend de l'ancienneté de la tache et si elle a déjà été frottée avec de mauvais produits. Plus l'intervention est rapide, plus le taux de réussite est proche de 100%.",
       },
     ],
   },
@@ -370,9 +401,9 @@ export const SERVICES: readonly Service[] = [
     Icon: Layers,
     title: "Tapis & Moquettes",
     shortDesc:
-      "Shampouinage, désinfection et traitement anti-tâches de vos tapis et moquettes à Paris. Restauration des fibres en profondeur.",
+      "Shampouinage, désinfection et traitement anti-taches de vos tapis et moquettes à Paris. Restauration des fibres en profondeur.",
     longDesc:
-      "Prolongez la durée de vie de vos revêtements de sol grâce à nos protocoles de nettoyage à haute efficacité. Pour les moquettes de bureaux, de commerces ou de résidences, nous combinons l'aspiration industrielle, le brossage mécanique et l'injection-extraction pour éliminer le trafic, les tâches tenaces et les odeurs incrustées. Pour vos tapis (synthétiques, laine, orientaux), nous adaptons notre méthode après examen de la fibre pour raviver les couleurs d'origine et éliminer acariens et allergènes, sans aucun risque d'altération.",
+      "Prolongez la durée de vie de vos revêtements de sol grâce à nos protocoles de nettoyage à haute efficacité. Pour les moquettes de bureaux, de commerces ou de résidences, nous combinons l'aspiration industrielle, le brossage mécanique et l'injection-extraction pour éliminer le trafic, les taches tenaces et les odeurs incrustées. Pour vos tapis (synthétiques, laine, orientaux), nous adaptons notre méthode après examen de la fibre pour raviver les couleurs d'origine et éliminer acariens et allergènes, sans aucun risque d'altération.",
     keywords: [
       "nettoyage tapis Paris",
       "lavage moquette à domicile",
@@ -492,7 +523,7 @@ export const SERVICES: readonly Service[] = [
     faqs: [
       {
         q: "Proposez-vous le crédit d'impôt de 50 % (Services à la Personne) pour le repassage ?",
-        a: "Malheuresement non. En tant qu'entreprise de nettoyage et de services multisectorielle (SARL), nous ne bénéficions pas de l'agrément Services à la Personne. Nos tarifs affichés sont transparents et incluent l'intégralité de nos charges sociales, nos assurances professionnelles ainsi que la garantie d'un travail rigoureux et encadré.",
+        a: "Malheureusement non. En tant qu'entreprise de nettoyage et de services multisectorielle (SARL), nous ne bénéficions pas de l'agrément Services à la Personne. Nos tarifs affichés sont transparents et incluent l'intégralité de nos charges sociales, nos assurances professionnelles ainsi que la garantie d'un travail rigoureux et encadré.",
       },
       {
         q: "Dois-je fournir le matériel de repassage ?",
@@ -528,4 +559,22 @@ export function getServicesByPole(pole: PoleId): Service[] {
 export function getServiceBackground(slug: string): string | undefined {
   const service = getServiceBySlug(slug);
   return service?.bgImage;
+}
+
+/**
+ * Services complémentaires à afficher en fin de page.
+ * Utilise `relatedSlugs` quand il est renseigné, sinon retombe sur les premiers
+ * services d'un autre pôle pour éviter de proposer quatre variantes du même besoin.
+ */
+export function getRelatedServices(service: Service, limit = 4): Service[] {
+  const explicit = (service.relatedSlugs ?? [])
+    .map(getServiceBySlug)
+    .filter((s): s is Service => Boolean(s) && s!.slug !== service.slug);
+
+  if (explicit.length >= limit) return explicit.slice(0, limit);
+
+  const already = new Set([service.slug, ...explicit.map((s) => s.slug)]);
+  const fillers = SERVICES.filter((s) => !already.has(s.slug));
+
+  return [...explicit, ...fillers].slice(0, limit);
 }
