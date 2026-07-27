@@ -16,8 +16,15 @@ export const SITE = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://nettoyagesidf.fr",
   locale: "fr_FR",
   foundingYear: 2018,
-  yearsOfExperience: 6,
 } as const;
+
+/**
+ * Années d'expérience, dérivées de `SITE.foundingYear`.
+ * Source unique : évite les « 6+ ans » et « 8+ années » divergents d'une page à l'autre.
+ */
+export function getYearsOfExperience(): number {
+  return new Date().getFullYear() - SITE.foundingYear;
+}
 
 export const MALIKA = {
   gérante: "Malika Tlili",
@@ -69,7 +76,7 @@ export const NAV_LINKS = [
 ] as const;
 
 export const STATS: readonly { num: string; label: string }[] = [
-  { num: "8+", label: "Années d'expérience" },
+  { num: `${getYearsOfExperience()}+`, label: "Années d'expérience" },
   { num: "750+", label: "Clients satisfaits" },
   { num: "800+", label: "Interventions réalisées" },
   { num: "100%", label: "Satisfaction garantie" },
@@ -105,7 +112,7 @@ export const ENGAGEMENTS: readonly Engagement[] = [
   {
     Icon: Award,
     title: "Satisfaction garantie",
-    desc: "8+ années d'expérience, des dizaines de clients fidèles, une exigence constante.",
+    desc: `${getYearsOfExperience()}+ années d'expérience, des dizaines de clients fidèles, une exigence constante.`,
   },
 ];
 

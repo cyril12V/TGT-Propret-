@@ -187,6 +187,40 @@ export function serviceJsonLd(service: ServiceJsonLdInput) {
   };
 }
 
+type ZoneServiceJsonLdInput = {
+  name: string;
+  postalCode: string;
+  department: string;
+  slug: string;
+  description: string;
+};
+
+/**
+ * `Service` rattaché à une commune précise.
+ * Complète le `CleaningService` global du layout en déclarant explicitement
+ * la zone desservie, ce que les pages villes n'émettaient pas jusqu'ici.
+ */
+export function zoneServiceJsonLd(zone: ZoneServiceJsonLdInput) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: `Nettoyage professionnel à ${zone.name}`,
+    description: zone.description,
+    serviceType: "Nettoyage professionnel",
+    url: `${SITE.url}/zones/${zone.slug}`,
+    provider: { "@id": `${SITE.url}#business` },
+    areaServed: {
+      "@type": "City",
+      name: zone.name,
+      postalCode: zone.postalCode,
+      containedInPlace: {
+        "@type": "AdministrativeArea",
+        name: zone.department,
+      },
+    },
+  };
+}
+
 export function breadcrumbJsonLd(items: { name: string; url: string }[]) {
   return {
     "@context": "https://schema.org",
