@@ -314,21 +314,18 @@ function useVisibleCount() {
 
 function ReviewsCarousel({ reviews }: { reviews: GoogleReview[] }) {
   const visible = useVisibleCount();
-  const [index, setIndex] = useState(0);
+  const [rawIndex, setRawIndex] = useState(0);
   const total = reviews.length;
   const maxIndex = Math.max(0, total - visible);
 
-  // Reclampe l'index quand le nombre de cartes visibles change (rotation d'écran…)
-  useEffect(() => {
-    setIndex((i) => Math.min(i, maxIndex));
-  }, [maxIndex]);
+  // Reclampe au rendu plutôt que dans un effet : quand `visible` change
+  // (rotation d'écran, redimensionnement), l'index redevient valide sans
+  // déclencher de rendu en cascade.
+  const index = Math.min(rawIndex, maxIndex);
 
-  const prev = useCallback(
-    () => setIndex((i) => Math.max(0, i - 1)),
-    []
-  );
+  const prev = useCallback(() => setRawIndex((i) => Math.max(0, i - 1)), []);
   const next = useCallback(
-    () => setIndex((i) => Math.min(maxIndex, i + 1)),
+    () => setRawIndex((i) => Math.min(maxIndex, i + 1)),
     [maxIndex]
   );
 
@@ -384,7 +381,7 @@ function ReviewsCarousel({ reviews }: { reviews: GoogleReview[] }) {
           {Array.from({ length: maxIndex + 1 }, (_, i) => (
             <button
               key={i}
-              onClick={() => setIndex(i)}
+              onClick={() => setRawIndex(i)}
               aria-label={`Aller à la page ${i + 1}`}
               className="h-1.5 rounded-full transition-all duration-300"
               style={{
@@ -410,22 +407,24 @@ function ReviewsCarousel({ reviews }: { reviews: GoogleReview[] }) {
 
 // ─── Section principale ────────────────────────────────────────────────────────
 
+// Les NEXT_PUBLIC_* sont inlinées au build : la constante est donc stable
+// entre le serveur et le client, sans risque de décalage d'hydratation.
+const GOOGLE_PLACES_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_PLACES_API_KEY;
+const GOOGLE_PLACE_ID = process.env.NEXT_PUBLIC_GOOGLE_PLACE_ID;
+const CAN_FETCH_GOOGLE_REVIEWS = Boolean(
+  GOOGLE_PLACES_API_KEY && GOOGLE_PLACE_ID,
+);
+
 export function Testimonials() {
   const [reviews, setReviews] = useState<GoogleReview[]>(FALLBACK_REVIEWS);
-  const [loading, setLoading] = useState(true);
+  // Sans clé configurée, il n'y a rien à charger : on part directement de l'état final.
+  const [loading, setLoading] = useState(CAN_FETCH_GOOGLE_REVIEWS);
 
   // ── Chargement des avis Google Places ─────────────────────────────────────
   useEffect(() => {
-    const apiKey = process.env.NEXT_PUBLIC_GOOGLE_PLACES_API_KEY;
-    const placeId = process.env.NEXT_PUBLIC_GOOGLE_PLACE_ID;
+    if (!CAN_FETCH_GOOGLE_REVIEWS) return;
 
-    if (!apiKey || !placeId) {
-      // Variables d'env absentes → on garde les avis de secours
-      setLoading(false);
-      return;
-    }
-
-    const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=reviews&language=fr&key=${apiKey}`;
+    const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${GOOGLE_PLACE_ID}&fields=reviews&language=fr&key=${GOOGLE_PLACES_API_KEY}`;
 
     fetch(url)
       .then((res) => res.json())

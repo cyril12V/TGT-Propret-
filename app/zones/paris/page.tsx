@@ -383,7 +383,7 @@ export default function ParisHubPage() {
                             {s.priceRange}
                           </span>
                           <span className="text-[11px] font-medium text-[var(--color-muted)] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            Voir l'offre
+                            Voir l&apos;offre
                           </span>
                         </div>
                       )}
