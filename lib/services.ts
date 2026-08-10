@@ -505,7 +505,7 @@ export const SERVICES: readonly Service[] = [
     slug: "nettoyage-coproprietes-immeubles",
     num: "03",
     pole: "b2b",
-    bgImage: "/images/bg_Copropriétés&Immeubles.jpg",
+    bgImage: "/images/bg_coproprietes-immeubles.jpg",
     Icon: Building2,
     title: "Copropriétés & Immeubles",
     shortDesc:
@@ -779,7 +779,7 @@ export const SERVICES: readonly Service[] = [
     slug: "nettoyage-cabinets-medicaux-cliniques",
     num: "04",
     pole: "b2b",
-    bgImage: "/images/bg_CabinetsMédicaux&Cliniques.jpg",
+    bgImage: "/images/bg_cabinets-medicaux-cliniques.jpg",
     Icon: Stethoscope,
     title: "Cabinets Médicaux & Cliniques",
     shortDesc:
@@ -2470,7 +2470,7 @@ export const SERVICES: readonly Service[] = [
     slug: "desinfection-locaux",
     num: "15",
     pole: "b2b",
-    bgImage: "/images/bg_CabinetsMédicaux&Cliniques.jpg",
+    bgImage: "/images/bg_cabinets-medicaux-cliniques.jpg",
     Icon: ShieldPlus,
     title: "Désinfection de Locaux",
     shortDesc:
