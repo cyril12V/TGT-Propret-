@@ -2144,7 +2144,7 @@ export const SERVICES: readonly Service[] = [
     slug: "nettoyage-commerces-boutiques",
     num: "13",
     pole: "b2b",
-    bgImage: "/images/bg_nettoyage-vitres.jpeg",
+    bgImage: "/images/bg_nettoyage-commerces-boutiques.jpg",
     Icon: Store,
     title: "Commerces & Boutiques",
     shortDesc:
