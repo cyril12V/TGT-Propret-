@@ -165,3 +165,30 @@ des options. L'échec est silencieux par construction.
 
 **Règle** : quand un lien pré-remplit un formulaire, tester le parcours complet, pas seulement que
 la page cible répond 200.
+
+## 2026-08-10 — Une clé d'API se teste avant d'écrire le code qui l'utilise
+
+**Contexte** : le client transmet une clé Google et demande « récupérer les avis GMB ».
+
+**Constat** : trois minutes de `curl` ont évité une demi-journée de fausse piste. La clé
+résout bien la fiche (Place ID `ChIJ8TYHhTIT5kcRTzxSFofsBmk`, note 5,0 / 11 avis) mais ne
+renvoie jamais le champ `reviews` — y compris sur la Tour Eiffel, qui en a des milliers.
+Le champ appartient au SKU « Enterprise + Atmosphere » de la Places API (New) et reste
+muet tant que la facturation n'est pas active sur le projet Google Cloud : Google ne
+renvoie pas d'erreur, il retire simplement le champ de la réponse.
+
+Au passage, le code existant appelait l'ancienne API `maps.googleapis.com/.../place/details/json`
+**depuis le navigateur** : API désactivée par Google, endpoint sans en-têtes CORS, et clé
+exposée dans le bundle via `NEXT_PUBLIC_`. Trois problèmes qu'aucun test unitaire n'aurait
+signalés — seul un appel réel les montre.
+
+**Leçon** : avant d'intégrer une API tierce, l'appeler à la main et vérifier que la
+réponse contient réellement les champs attendus. Un 200 ne veut pas dire que la donnée
+est là. Et un test sur une référence connue (un lieu très commenté) sépare
+« la donnée n'existe pas » de « la clé n'y a pas droit ».
+
+**Règle** : une clé fournie par un client se valide par un appel réel avant tout code, et
+un secret ne prend jamais le préfixe `NEXT_PUBLIC_` — s'il doit rester secret, l'appel
+part du serveur.
+
+---

@@ -334,3 +334,32 @@ et note visible sur toutes les pages testées.
 5. Ajouter favicon.ico dédié (actuellement = logo.png)
 6. Tests Lighthouse (objectif >90 sur tous les critères)
 
+
+---
+
+## Session 2026-08-10 — Retours client (lot 1)
+
+### Fait
+- [x] **Avis Google en direct** — migration vers **Places API (New)**, appel côté serveur
+      (`lib/google-reviews.ts`), cache 6 h, clé hors bundle navigateur.
+      `Testimonials` devient un composant serveur ; l'interactif part dans
+      `TestimonialsView`. Place ID de la fiche : `ChIJ8TYHhTIT5kcRTzxSFofsBmk`.
+- [x] **Prestations en pleine largeur** — une prestation par ligne sur la home
+      (visuel à droite, texte à gauche ; visuel au-dessus sur mobile).
+      Suppression des cartes fantômes et du calcul de colonnes devenus inutiles.
+- [x] **Photo dédiée « Commerces & Boutiques »** — `bg_nettoyage-commerces-boutiques.jpg`
+      (Pexels, licence libre commerciale) ; la prestation ne partage plus la photo des vitres.
+- [x] **Bug images** — deux visuels de prestations ne s'affichaient plus (voir `bugs.md`).
+
+### Bloqué côté client
+- [ ] **Texte des avis Google** — la clé fournie ne renvoie pas le champ `reviews`
+      (note 5,0 et 11 avis remontent bien, le texte non). Facturation à activer sur le
+      projet Google Cloud. Le code est prêt : les avis s'afficheront sans redéploiement,
+      au prochain rafraîchissement du cache.
+- [ ] **Tarifs forfaitaires** — en attente de la grille du client.
+
+### À décider
+- [ ] Appliquer aussi la pleine largeur au hub `/services` (aujourd'hui grille 3 colonnes).
+- [ ] 3 prestations partagent encore un visuel avec une autre :
+      `agences-immobilieres` ↔ `nettoyage-approfondi`, `desinfection-locaux` ↔ `cabinets-medicaux`,
+      `renovation-sols-decapage` ↔ `tapis-moquettes`. Plus visible depuis le passage en pleine largeur.
