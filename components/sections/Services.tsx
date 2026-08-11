@@ -38,10 +38,11 @@ function PoleDivider({ label, tag }: { label: string; tag: string }) {
   );
 }
 
-// ─── Carte service — bandeau pleine largeur ───────────────────────────────────
-// Une prestation occupe toute la largeur : le visuel prend un panneau à droite
-// (au-dessus sur mobile), le texte respire à gauche. Seule la première image de
-// la section est préchargée — les autres restent en lazy loading.
+// ─── Carte service — photo en fond, texte par-dessus, pleine largeur ─────────
+// La carte occupe 100 % de la largeur : la photo couvre tout le fond, un
+// dégradé blanc remonte du bas et le contenu se pose dessus. Le texte est
+// borné en largeur pour rester lisible sur grand écran.
+// Seule la première image de la section est préchargée — le reste est en lazy.
 
 function ServiceCard({
   slug,
@@ -65,31 +66,29 @@ function ServiceCard({
   return (
     <Link
       href={`/services/${slug}`}
-      className="group relative grid w-full overflow-hidden bg-white transition-shadow duration-500 ease-out hover:shadow-[0_20px_40px_rgba(13,34,68,0.15)] md:grid-cols-[1fr_minmax(0,44%)]"
+      className="group relative flex min-h-[340px] w-full flex-col justify-end overflow-hidden bg-white p-7 transition-all duration-500 ease-out hover:shadow-[0_20px_40px_rgba(13,34,68,0.15)] sm:min-h-[380px] sm:p-9 lg:min-h-[420px] lg:p-12"
     >
-      {/* Visuel — au-dessus sur mobile, à droite à partir de md */}
-      <div className="relative order-1 min-h-[200px] overflow-hidden sm:min-h-[240px] md:order-2 md:min-h-[260px]">
-        <Image
-          src={bgImage}
-          alt={title}
-          fill
-          sizes="(max-width: 768px) 100vw, 44vw"
-          className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
-          priority={priority}
-        />
+      {/* Photo de fond — couvre toute la carte */}
+      <Image
+        src={bgImage}
+        alt={title}
+        fill
+        sizes="100vw"
+        className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+        priority={priority}
+      />
 
-        {/* Raccord dégradé vers le bloc texte */}
-        <div
-          className="absolute inset-0 bg-gradient-to-t from-white/70 to-transparent md:bg-gradient-to-r md:from-white/70 md:to-transparent"
-          aria-hidden="true"
-        />
-      </div>
+      {/* Dégradé blanc : lisibilité du texte posé dessus */}
+      <div
+        className="absolute inset-0 bg-gradient-to-t from-white via-white/85 via-50% to-transparent opacity-95"
+        aria-hidden="true"
+      />
 
       {/* Contenu */}
-      <div className="order-2 flex flex-col justify-center gap-4 p-8 md:order-1 md:p-10 lg:p-12">
+      <div className="relative flex max-w-3xl flex-col gap-6">
         <div className="flex items-center gap-4">
           <span
-            className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[var(--color-cream)] text-[var(--color-navy)] shadow-sm transition-all duration-300 group-hover:scale-110 group-hover:bg-[var(--color-gold)] group-hover:text-white"
+            className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-white text-[var(--color-navy)] shadow-md transition-all duration-300 group-hover:scale-110 group-hover:bg-[var(--color-gold)] group-hover:text-white"
             aria-hidden="true"
           >
             <Icon size={26} strokeWidth={1.5} />
@@ -120,7 +119,7 @@ function ServiceCard({
             )}
           </div>
 
-          <p className="max-w-2xl text-sm font-medium leading-relaxed text-[var(--color-muted)] transition-colors duration-300 group-hover:text-[var(--color-navy)] lg:text-[15px]">
+          <p className="text-sm font-medium leading-relaxed text-[var(--color-muted)] transition-colors duration-300 group-hover:text-[var(--color-navy)] lg:text-[15px]">
             {shortDesc}
           </p>
 
