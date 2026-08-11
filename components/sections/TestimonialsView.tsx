@@ -377,12 +377,7 @@ function ReviewsCarousel({ reviews }: { reviews: GoogleReviewItem[] }) {
       <div className="overflow-hidden" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
         <div
           className="carrousel-piste flex gap-6 transition-transform duration-500 ease-in-out"
-          style={
-            {
-              "--index": index,
-              transform: "translateX(calc(-1 * var(--index) * var(--pas)))",
-            } as React.CSSProperties
-          }
+          style={{ "--index": index } as React.CSSProperties}
         >
           {reviews.map((review, i) => (
             <div key={i} className={`min-w-0 shrink-0 grow-0 ${basisClass}`}>
