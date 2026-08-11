@@ -60,10 +60,16 @@ export function BeforeAfter({
     <div
       ref={containerRef}
       className={`group relative w-full select-none overflow-hidden rounded-sm ${className}`}
-      style={{ aspectRatio: ratio, touchAction: "none" }}
+      // `pan-y` et non `none` : en `none`, le navigateur cédait TOUT geste
+      // tactile au composant, y compris le défilement vertical — cinq
+      // comparateurs empilés dans « Réalisations » bloquaient la page sur
+      // mobile. En `pan-y`, le glissement horizontal nous revient et le
+      // défilement vertical reste au navigateur.
+      style={{ aspectRatio: ratio, touchAction: "pan-y" }}
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
+      onPointerCancel={onPointerUp}
       onPointerLeave={onPointerUp}
     >
       {/* Image APRÈS (fond, plein cadre) */}
@@ -106,11 +112,11 @@ export function BeforeAfter({
         aria-valuemax={100}
         aria-valuenow={Math.round(pos)}
         onKeyDown={onKeyDown}
-        className="absolute top-0 z-20 flex h-full w-10 -translate-x-1/2 cursor-ew-resize items-center justify-center outline-none"
+        className="absolute top-0 z-20 flex h-full w-11 -translate-x-1/2 cursor-ew-resize items-center justify-center outline-none"
         style={{ left: `${pos}%` }}
       >
         <span className="absolute h-full w-[2px] bg-white/90 shadow-[0_0_8px_rgba(0,0,0,0.4)]" />
-        <span className="relative flex h-10 w-10 items-center justify-center rounded-full border border-[var(--color-gold)] bg-white shadow-lg transition-transform group-hover:scale-105">
+        <span className="relative flex h-11 w-11 items-center justify-center rounded-full border border-[var(--color-gold)] bg-white shadow-lg transition-transform group-hover:scale-105 sm:h-10 sm:w-10">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M9 6L4 12l5 6M15 6l5 6-5 6" stroke="#0d2244" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>

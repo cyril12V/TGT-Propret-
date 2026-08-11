@@ -49,7 +49,7 @@ export function StickyCTA() {
         href="/devis"
         className="flex flex-[1.4] items-center justify-center gap-2 bg-[var(--color-gold)] px-4 py-3.5 text-xs font-semibold uppercase tracking-[0.15em] text-[var(--color-navy)]"
       >
-       {" "}
+        <span className="whitespace-nowrap">Devis gratuit</span>
         <ArrowRight size={14} strokeWidth={2.2} aria-hidden="true" />
       </Link>
     </div>

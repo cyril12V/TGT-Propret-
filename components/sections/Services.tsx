@@ -9,7 +9,7 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 
 function PoleDivider({ label, tag }: { label: string; tag: string }) {
   return (
-    <div className="col-span-full flex items-center gap-6 px-1 py-4 pt-14">
+    <div className="col-span-full flex items-center gap-3 px-1 py-4 pt-14 sm:gap-6">
       <div
         className="h-px flex-1"
         style={{

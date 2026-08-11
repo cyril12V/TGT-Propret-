@@ -207,7 +207,7 @@ export function DevisForm() {
           name="message"
           rows={4}
           placeholder="Décrivez votre besoin (étages, accès, contraintes, etc.)"
-          className="resize-y border-b border-gray-300 bg-transparent py-3 text-[15px] leading-relaxed outline-none transition-colors focus:border-[var(--color-gold)]"
+          className="resize-y border-b border-gray-300 bg-transparent py-3 text-base md:text-[15px] leading-relaxed outline-none transition-colors focus:border-[var(--color-gold)]"
         />
       </div>
 
@@ -302,7 +302,10 @@ function Field({
   autoComplete,
 }: FieldProps) {
   return (
-    <div className="flex flex-col gap-2">
+    // `min-w-0` + `w-full` : un enfant de grille a une largeur minimale égale à
+    // son contenu intrinsèque. Sans cela, un champ élargit sa colonne au lieu
+    // de s'y adapter, et la grille déborde du conteneur.
+    <div className="flex min-w-0 flex-col gap-2">
       <label
         htmlFor={name}
         className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--color-navy)]"
@@ -317,7 +320,7 @@ function Field({
         placeholder={placeholder}
         required={required}
         autoComplete={autoComplete}
-        className="border-b border-gray-300 bg-transparent py-3 text-[15px] outline-none transition-colors focus:border-[var(--color-gold)]"
+        className="w-full border-b border-gray-300 bg-transparent py-3 text-base outline-none transition-colors focus:border-[var(--color-gold)] md:text-[15px]"
       />
     </div>
   );
@@ -339,7 +342,10 @@ function SelectField({
   options,
 }: SelectFieldProps) {
   return (
-    <div className="flex flex-col gap-2">
+    // Même contrainte que pour `Field`, en plus marqué : la largeur intrinsèque
+    // d'un `select` vaut celle de son option la plus longue (ici « Paris 10e —
+    // Gare du Nord — Gare de l'Est — Canal Saint-Martin », ~450px).
+    <div className="flex min-w-0 flex-col gap-2">
       <label
         htmlFor={name}
         className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--color-navy)]"
@@ -352,7 +358,7 @@ function SelectField({
         name={name}
         required={required}
         defaultValue={defaultValue}
-        className="appearance-none border-b border-gray-300 bg-transparent py-3 text-[15px] outline-none transition-colors focus:border-[var(--color-gold)]"
+        className="w-full appearance-none border-b border-gray-300 bg-transparent py-3 text-base outline-none transition-colors focus:border-[var(--color-gold)] md:text-[15px]"
       >
         {options.map((o) => (
           <option key={o.value} value={o.value} disabled={!o.value && required}>

@@ -103,7 +103,9 @@ export function CandidatureForm() {
           </p>
         </Reveal>
 
-        <Reveal className="mt-15 grid gap-12 md:grid-cols-2 md:gap-16">
+        {/* Deux colonnes seulement à partir de `lg` : en `md`, les grilles de
+            champs imbriquées dans cette colonne tombaient à ~78px de large. */}
+        <Reveal className="mt-15 grid gap-12 lg:grid-cols-2 lg:gap-16">
           <div className="space-y-6">
             <h3 className="font-serif text-3xl font-semibold text-[var(--color-navy)]">
               Ce que nous recherchons
@@ -197,7 +199,7 @@ export function CandidatureForm() {
                 name="poste"
                 required
                 defaultValue=""
-                className="appearance-none border-b border-gray-300 bg-transparent py-3 text-[15px] outline-none transition-colors focus:border-[var(--color-gold)]"
+                className="appearance-none border-b border-gray-300 bg-transparent py-3 text-base md:text-[15px] outline-none transition-colors focus:border-[var(--color-gold)]"
               >
                 <option value="" disabled>
                   Sélectionner un poste
@@ -221,7 +223,7 @@ export function CandidatureForm() {
                 id="disponibilite"
                 name="disponibilite"
                 defaultValue=""
-                className="appearance-none border-b border-gray-300 bg-transparent py-3 text-[15px] outline-none transition-colors focus:border-[var(--color-gold)]"
+                className="appearance-none border-b border-gray-300 bg-transparent py-3 text-base md:text-[15px] outline-none transition-colors focus:border-[var(--color-gold)]"
               >
                 <option value="">Sélectionner</option>
                 {DISPOS.map((d) => (
@@ -279,7 +281,7 @@ export function CandidatureForm() {
                 name="message"
                 placeholder="Parlez-nous de vous, votre expérience et vos motivations..."
                 rows={4}
-                className="resize-y border-b border-gray-300 bg-transparent py-3 text-[15px] leading-relaxed outline-none transition-colors focus:border-[var(--color-gold)]"
+                className="resize-y border-b border-gray-300 bg-transparent py-3 text-base md:text-[15px] leading-relaxed outline-none transition-colors focus:border-[var(--color-gold)]"
               />
             </div>
 
@@ -361,7 +363,7 @@ function Field({
         placeholder={placeholder}
         required={required}
         autoComplete={autoComplete}
-        className="border-b border-gray-300 bg-transparent py-3 text-[15px] outline-none transition-colors focus:border-[var(--color-gold)]"
+        className="border-b border-gray-300 bg-transparent py-3 text-base md:text-[15px] outline-none transition-colors focus:border-[var(--color-gold)]"
       />
     </div>
   );
