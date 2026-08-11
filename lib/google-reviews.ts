@@ -42,8 +42,14 @@ const PLACES_ENDPOINT = "https://places.googleapis.com/v1/places";
  *  se fait au champ le plus cher de la requête. */
 const FIELD_MASK = "reviews";
 
-/** 6 heures : une fiche Google bouge de quelques avis par mois au plus. */
-const REVALIDATE_SECONDS = 21_600;
+/**
+ * 24 heures. Une fiche Google gagne quelques avis par mois au plus, et le champ
+ * `reviews` est facturé au palier le plus cher de la Places API (~40 $ / 1 000
+ * appels) : à ce rythme le site fait ~30 appels par mois, soit une poignée
+ * d'euros au pire. Descendre à 6 h quadruplerait la facture pour gagner une
+ * fraîcheur dont personne n'a besoin ici.
+ */
+const REVALIDATE_SECONDS = 86_400;
 
 /** Note minimale affichée sur le site. */
 const MIN_RATING = 4;
