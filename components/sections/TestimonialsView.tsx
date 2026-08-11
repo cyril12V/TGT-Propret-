@@ -297,40 +297,54 @@ function ClientsTrack() {
 
 // ─── Composant : Carrousel avis ───────────────────────────────────────────────
 
+const GAP_PX = 24; // doit rester synchronisé avec la classe `gap-6` de la piste
+
 /**
- * Nombre de cartes visibles, pour les seuls contrôles (flèches et pastilles).
+ * Mesure la piste : largeur d'un pas (carte + gouttière) et nombre de cartes
+ * visibles, lus sur le DOM réel plutôt que déduits de `window.innerWidth`.
  *
- * La MISE EN PAGE, elle, ne dépend plus de ce hook : elle est pilotée par la
- * variable CSS `--visible`, redéfinie par media queries. Auparavant le rendu
- * serveur partait à 1 carte pleine largeur et basculait à 3 à l'hydratation —
- * un saut de mise en page très visible sur desktop. Désormais le HTML livré est
- * déjà dans la bonne disposition ; seul le nombre de pastilles s'ajuste après
- * l'hydratation, sans rien déplacer.
+ * La largeur des cartes est fixée par des classes `basis-*` responsives, donc
+ * le HTML rendu par le serveur est déjà dans la bonne disposition — plus de
+ * saut de « 1 carte pleine largeur » à « 3 cartes » à l'hydratation. Mesurer
+ * plutôt que redéclarer les seuils évite aussi que JavaScript et CSS ne
+ * divergent le jour où l'un des deux change.
+ *
+ * `ResizeObserver` couvre le redimensionnement, la rotation d'écran et le
+ * changement de palier, sans écouteur de `resize` déclenché à chaque pixel.
  */
-function useVisibleCount() {
-  const [count, setCount] = useState(1);
+function usePisteMetrics(trackRef: React.RefObject<HTMLDivElement | null>) {
+  const [metrics, setMetrics] = useState({ step: 0, visible: 1 });
+
   useEffect(() => {
-    const compute = () =>
-      setCount(window.innerWidth < 640 ? 1 : window.innerWidth < 1024 ? 2 : 3);
-    compute();
-    // `requestAnimationFrame` : sans lui, un redimensionnement déclenchait un
-    // rendu par pixel parcouru.
-    let frame = 0;
-    const onResize = () => {
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(compute);
+    const track = trackRef.current;
+    const window_ = track?.parentElement;
+    if (!track || !window_) return;
+
+    const measure = () => {
+      const first = track.firstElementChild;
+      if (!first) return;
+      const cardWidth = first.getBoundingClientRect().width;
+      if (cardWidth <= 0) return;
+      const step = cardWidth + GAP_PX;
+      const visible = Math.max(
+        1,
+        Math.round((window_.getBoundingClientRect().width + GAP_PX) / step),
+      );
+      setMetrics((m) => (m.step === step && m.visible === visible ? m : { step, visible }));
     };
-    window.addEventListener("resize", onResize);
-    return () => {
-      cancelAnimationFrame(frame);
-      window.removeEventListener("resize", onResize);
-    };
-  }, []);
-  return count;
+
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(window_);
+    return () => observer.disconnect();
+  }, [trackRef]);
+
+  return metrics;
 }
 
 function ReviewsCarousel({ reviews }: { reviews: GoogleReviewItem[] }) {
-  const visible = useVisibleCount();
+  const trackRef = useRef<HTMLDivElement>(null);
+  const { step, visible } = usePisteMetrics(trackRef);
   const [rawIndex, setRawIndex] = useState(0);
   const total = reviews.length;
   const maxIndex = Math.max(0, total - visible);
@@ -372,12 +386,15 @@ function ReviewsCarousel({ reviews }: { reviews: GoogleReviewItem[] }) {
 
   return (
     <div className="relative">
-      {/* Fenêtre. `--visible` est redéfinie par media queries : largeur des
-          cartes et amplitude du défilement restent cohérentes sans JavaScript. */}
+      {/* Fenêtre. La largeur des cartes vient des classes `basis-*` (donc du CSS,
+          correcte dès le rendu serveur) ; seul le décalage est calculé en JS, à
+          partir de la largeur mesurée. À l'index 0 la translation est nulle :
+          le HTML livré est déjà juste, sans attendre l'hydratation. */}
       <div className="overflow-hidden" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
         <div
-          className="carrousel-piste flex gap-6 transition-transform duration-500 ease-in-out"
-          style={{ "--index": index } as React.CSSProperties}
+          ref={trackRef}
+          className="flex gap-6 transition-transform duration-500 ease-in-out"
+          style={{ transform: `translateX(-${index * step}px)` }}
         >
           {reviews.map((review, i) => (
             <div key={i} className={`min-w-0 shrink-0 grow-0 ${basisClass}`}>

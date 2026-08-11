@@ -98,30 +98,7 @@
    Le padding suit un clamp plutôt qu'un saut de 1rem à 2,5rem : le saut se
    cumulait au `px-10` des sections et faisait *rétrécir* le contenu au passage
    de 767px à 768px (695px utiles → 608px). */
-/* Carrousel d'avis — le pas de défilement est défini par media query, comme la
-   largeur des cartes (`basis-*`). La disposition ne dépend donc plus de
-   JavaScript : le HTML livré par le serveur est déjà le bon, sans le saut de
-   mise en page qu'on avait à l'hydratation (1 carte pleine largeur → 3).
-   Le pas vaut « largeur d'une carte + une gouttière », gouttière = gap-6 (24px). */
 @layer components {
-  .carrousel-piste {
-    --pas: calc(100% + 24px);
-    /* La translation est déclarée ici, et non en style inline : en inline, le
-       navigateur ne recalculait pas le `transform` quand React mettait à jour
-       `--index` — le carrousel restait bloqué sur la première vue. */
-    transform: translateX(calc(-1 * var(--index, 0) * var(--pas)));
-  }
-  @media (min-width: 640px) {
-    .carrousel-piste {
-      --pas: calc(50% + 12px);
-    }
-  }
-  @media (min-width: 1024px) {
-    .carrousel-piste {
-      --pas: calc(33.3333% + 8px);
-    }
-  }
-
   .container-tgt {
     max-width: 1200px;
     margin-inline: auto;
