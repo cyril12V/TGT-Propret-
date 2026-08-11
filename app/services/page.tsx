@@ -123,7 +123,7 @@ export default function ServicesHubPage() {
                   {pole.label}
                 </h2>
 
-                <ul className="mt-10 grid gap-px bg-[rgba(13,34,68,0.08)] sm:grid-cols-2 lg:grid-cols-3">
+                <ul className="mt-10 grid gap-px bg-[rgba(13,34,68,0.08)] sm:grid-cols-2 lg:grid-cols-3 [&>li:only-child]:col-span-full">
                   {services.map((s) => {
                     const Icon = s.Icon;
                     return (

@@ -31,14 +31,14 @@ export function ContactBand() {
           <a
             key={p.tel}
             href={`tel:${p.tel}`}
-            className="inline-flex items-center gap-2 border-b border-[var(--color-navy)]/30 pb-0.5 text-sm font-semibold tracking-wide text-[var(--color-navy)] transition-colors hover:border-[var(--color-navy)]"
+            className="inline-flex min-h-11 items-center gap-2 border-b border-[var(--color-navy)]/30 pb-0.5 text-sm font-semibold tracking-wide text-[var(--color-navy)] transition-colors hover:border-[var(--color-navy)]"
           >
             <Phone size={14} strokeWidth={2} aria-hidden="true" /> {p.label}
           </a>
         ))}
         <a
           href={`mailto:${CONTACT.email}`}
-          className="inline-flex items-center gap-2 border-b border-[var(--color-navy)]/30 pb-0.5 text-sm font-semibold tracking-wide text-[var(--color-navy)] transition-colors hover:border-[var(--color-navy)]"
+          className="inline-flex min-h-11 items-center gap-2 border-b border-[var(--color-navy)]/30 pb-0.5 text-sm font-semibold tracking-wide text-[var(--color-navy)] transition-colors hover:border-[var(--color-navy)]"
         >
           <Mail size={14} strokeWidth={2} aria-hidden="true" /> {CONTACT.email}
         </a>

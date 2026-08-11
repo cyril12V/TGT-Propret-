@@ -47,7 +47,7 @@ export default function BlogIndexPage() {
 
         <section className="px-5 py-16 md:px-10 md:py-24">
           <div className="container-tgt">
-            <div className="grid gap-px bg-[rgba(13,34,68,0.08)] sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-px bg-[rgba(13,34,68,0.08)] sm:grid-cols-2 lg:grid-cols-3 sm:[&>*:last-child:nth-child(3n+1)]:col-span-2 lg:[&>*:last-child:nth-child(3n+1)]:col-span-1">
               {sorted.map(({ slug, title, excerpt, category, Icon, publishedAt, readingTime }) => (
                 <Link
                   key={slug}
@@ -84,7 +84,7 @@ export default function BlogIndexPage() {
                     </span>
                   </div>
 
-                  <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--color-gold)] opacity-0 transition-opacity group-hover:opacity-100">
+                  <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--color-gold)] transition-opacity md:opacity-0 md:group-hover:opacity-100">
                     Lire l&apos;article <ArrowRight size={12} aria-hidden="true" />
                   </span>
                 </Link>

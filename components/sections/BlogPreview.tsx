@@ -41,7 +41,7 @@ export function BlogPreview() {
           </Link>
         </Reveal>
 
-        <Reveal className="mt-12 grid gap-px bg-[rgba(13,34,68,0.08)] sm:grid-cols-2 lg:grid-cols-3 md:mt-16">
+        <Reveal className="mt-12 grid gap-px bg-[rgba(13,34,68,0.08)] sm:grid-cols-2 md:mt-16 md:grid-cols-3">
           {articles.map(({ slug, title, excerpt, category, Icon, publishedAt, readingTime }) => (
             <Link
               key={slug}

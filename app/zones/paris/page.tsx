@@ -352,7 +352,7 @@ export default function ParisHubPage() {
                       {/* --- MODIFICATION ICI : Suppression du bloc d'affichage du Badge Spécialité --- */}
 
                       {/* Flèche d'action discrète en haut à droite (toujours affichée maintenant car le badge est supprimé) */}
-                      <div className="absolute top-6 right-6 text-[var(--color-gold)] opacity-0 transform translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">
+                      <div className="absolute top-6 right-6 text-[var(--color-gold)] transform transition-all duration-300 md:translate-x-2 md:opacity-0 md:group-hover:translate-x-0 md:group-hover:opacity-100">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                           <line x1="5" y1="12" x2="19" y2="12"></line>
                           <polyline points="12 5 19 12 12 19"></polyline>
@@ -385,7 +385,7 @@ export default function ParisHubPage() {
                           <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--color-gold)]">
                             {s.priceRange}
                           </span>
-                          <span className="text-[11px] font-medium text-[var(--color-muted)] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <span className="text-[11px] font-medium text-[var(--color-muted)] transition-opacity duration-300 md:opacity-0 md:group-hover:opacity-100">
                             Voir l&apos;offre
                           </span>
                         </div>

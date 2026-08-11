@@ -87,7 +87,7 @@ export function Footer() {
             </h4>
             <Link
               href="/services"
-              className="mb-3 inline-block text-sm font-semibold text-white/80 transition-colors hover:text-[var(--color-gold)]"
+              className="mb-3 inline-flex min-h-11 items-center text-sm font-semibold text-white/80 transition-colors hover:text-[var(--color-gold)]"
             >
               Toutes nos prestations →
             </Link>
@@ -132,18 +132,18 @@ export function Footer() {
             </h4>
             <Link
               href="/zones/paris"
-              className="mb-3 inline-block text-sm font-semibold text-white/80 transition-colors hover:text-[var(--color-gold)]"
+              className="mb-3 inline-flex min-h-11 items-center text-sm font-semibold text-white/80 transition-colors hover:text-[var(--color-gold)]"
             >
               Tous arrondissements →
             </Link>
-            <ul className="columns-2 gap-x-4 space-y-1.5 text-xs text-white/45 sm:columns-2">
+            <ul className="columns-2 gap-x-4 text-[13px] text-white/60 sm:columns-2">
               {[...PARIS_ARRONDISSEMENTS]
                 .sort((a, b) => a.number - b.number)
                 .map((a) => (
                   <li key={a.slug} className="break-inside-avoid">
                     <Link
                       href={`/zones/paris/${a.slug}`}
-                      className="transition-colors hover:text-[var(--color-gold)]"
+                      className="block py-1.5 transition-colors hover:text-[var(--color-gold)]"
                     >
                       Paris {a.number}
                       <sup>e</sup>
@@ -157,16 +157,16 @@ export function Footer() {
             </h4>
             <Link
               href="/zones"
-              className="mb-3 inline-block text-sm font-semibold text-white/80 transition-colors hover:text-[var(--color-gold)]"
+              className="mb-3 inline-flex min-h-11 items-center text-sm font-semibold text-white/80 transition-colors hover:text-[var(--color-gold)]"
             >
               Toutes nos zones →
             </Link>
-            <ul className="columns-2 gap-x-4 space-y-1.5 text-xs text-white/45">
+            <ul className="columns-2 gap-x-4 text-[13px] text-white/60">
               {ZONES.map((z) => (
                 <li key={z.slug} className="break-inside-avoid">
                   <Link
                     href={`/zones/${z.slug}`}
-                    className="transition-colors hover:text-[var(--color-gold)]"
+                    className="block py-1.5 transition-colors hover:text-[var(--color-gold)]"
                   >
                     {z.name}
                   </Link>

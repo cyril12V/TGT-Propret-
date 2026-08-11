@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { CONTACT, MALIKA } from "@/lib/constants";
 import { Reveal } from "@/components/ui/Reveal";
 
@@ -49,10 +50,12 @@ export function About() {
                     className="pointer-events-none absolute -inset-3 rounded-xl border border-[#c9a84c]/40"
                     aria-hidden="true"
                   />
-                  <img
+                  <Image
                     src="/images/ID_photo.jpg"
                     alt="Portrait de Rabah Ammouche"
-                    className="relative w-full h-full object-cover object-top rounded-xl shadow-[0_25px_50px_-12px_rgba(0,0,0,0.55)] border-[2px] border-[#c9a84c]"
+                    fill
+                    sizes="(min-width: 768px) 500px, min(100vw - 4rem, 420px)"
+                    className="relative rounded-xl border-[2px] border-[#c9a84c] object-cover object-top shadow-[0_25px_50px_-12px_rgba(0,0,0,0.55)]"
                   />
                 </div>
               </div>
@@ -126,11 +129,31 @@ export function About() {
                     className="pointer-events-none absolute -inset-3 rounded-xl border border-[#c9a84c]/40"
                     aria-hidden="true"
                   />
-                  <img
-                    src="/images/ID_photo_M.png"
-                    alt="Portrait de Malika Tlili"
-                    className="relative w-full h-full object-cover object-top rounded-xl shadow-[0_25px_50px_-12px_rgba(0,0,0,0.55)] border-[2px] border-[#c9a84c]"
-                  />
+                  {/* Monogramme en attendant une vraie photo. L'image d'origine
+                      (`ID_photo_M.png`) était une silhouette générique de 225×225
+                      étirée jusqu'à 500×667 : à côté du portrait de Rabah, elle
+                      signalait un site inachevé. Un monogramme assumé vaut mieux
+                      qu'un faux portrait. À remplacer dès réception de la photo. */}
+                  <div
+                    className="relative flex h-full w-full items-center justify-center rounded-xl border-[2px] border-[#c9a84c] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.55)]"
+                    style={{
+                      background:
+                        "linear-gradient(150deg, #16305f 0%, #0d2244 60%, #0f2749 100%)",
+                    }}
+                    role="img"
+                    aria-label={`${MALIKA.gérante}, ${MALIKA.role}`}
+                  >
+                    <span
+                      className="font-serif text-[clamp(72px,14vw,128px)] font-light leading-none tracking-[0.08em] text-[var(--color-gold)]"
+                      aria-hidden="true"
+                    >
+                      {MALIKA.initials}
+                    </span>
+                    <span
+                      className="pointer-events-none absolute inset-4 rounded-lg border border-[#c9a84c]/25"
+                      aria-hidden="true"
+                    />
+                  </div>
                 </div>
               </div>
 

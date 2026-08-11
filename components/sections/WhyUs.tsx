@@ -28,7 +28,7 @@ const REASONS = [
 export function WhyUs() {
   return (
     <section
-      id="zones"
+      id="pourquoi-nous"
       className="bg-[var(--color-navy)] px-5 py-20 text-white md:px-10 md:py-25"
     >
       <div className="container-tgt">

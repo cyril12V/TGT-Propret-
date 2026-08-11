@@ -314,7 +314,7 @@ export default async function ServicePage({
                       <li key={z.slug}>
                         <Link
                           href={`/zones/${z.slug}`}
-                          className="inline-block border border-[var(--color-navy)]/15 bg-white px-3 py-1.5 text-[13px] text-[var(--color-navy)] transition-colors hover:border-[var(--color-gold)] hover:text-[var(--color-gold)]"
+                          className="inline-flex min-h-11 items-center border border-[var(--color-navy)]/15 bg-white px-3 py-1.5 text-[13px] text-[var(--color-navy)] transition-colors hover:border-[var(--color-gold)] hover:text-[var(--color-gold)]"
                         >
                           {service.title} à {z.name}
                         </Link>

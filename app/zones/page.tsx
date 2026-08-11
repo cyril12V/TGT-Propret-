@@ -117,7 +117,7 @@ export default function ZonesHubPage() {
                 <li key={a.slug}>
                   <Link
                     href={`/zones/paris/${a.slug}`}
-                    className="inline-flex items-center gap-2 border border-[var(--color-navy)]/15 bg-white px-4 py-2 text-sm text-[var(--color-navy)] transition-colors hover:border-[var(--color-gold)] hover:text-[var(--color-gold)]"
+                    className="inline-flex min-h-11 items-center gap-2 border border-[var(--color-navy)]/15 bg-white px-4 py-2 text-sm text-[var(--color-navy)] transition-colors hover:border-[var(--color-gold)] hover:text-[var(--color-gold)]"
                   >
                     <MapPin size={13} aria-hidden="true" />
                     Paris {a.number}
@@ -156,7 +156,7 @@ export default function ZonesHubPage() {
                 Nettoyage en {dept.name}
               </h2>
 
-              <ul className="mt-8 grid gap-px bg-[rgba(13,34,68,0.08)] sm:grid-cols-2 lg:grid-cols-3">
+              <ul className="mt-8 grid gap-px bg-[rgba(13,34,68,0.08)] sm:grid-cols-2 lg:grid-cols-3 [&>li:only-child]:col-span-full">
                 {dept.zones.map((z) => (
                   <li key={z.slug}>
                     <Link

@@ -73,21 +73,21 @@ export function ZonesBand() {
           </Link>
         </Reveal>
 
-        <Reveal className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <Reveal className="mt-10 columns-1 gap-8 sm:columns-2 lg:columns-3">
           {byDepartment.map((dept) => (
-            <div key={dept.code}>
+            <div key={dept.code} className="mb-8 break-inside-avoid">
               <h3 className="font-serif text-lg font-semibold text-[var(--color-navy)]">
                 {dept.name}{" "}
                 <span className="font-sans text-xs text-[var(--color-gold)]">
                   {dept.code}
                 </span>
               </h3>
-              <ul className="mt-3 space-y-1.5 text-sm text-[var(--color-muted)]">
+              <ul className="mt-3 text-sm text-[var(--color-muted)]">
                 {dept.zones.map((z) => (
                   <li key={z.slug}>
                     <Link
                       href={`/zones/${z.slug}`}
-                      className="transition-colors hover:text-[var(--color-gold)]"
+                      className="block py-2 transition-colors hover:text-[var(--color-gold)]"
                     >
                       Nettoyage à {z.name}
                     </Link>

@@ -297,15 +297,34 @@ function ClientsTrack() {
 
 // ─── Composant : Carrousel avis ───────────────────────────────────────────────
 
-// Nombre de cartes visibles selon la largeur d'écran (responsive)
+/**
+ * Nombre de cartes visibles, pour les seuls contrôles (flèches et pastilles).
+ *
+ * La MISE EN PAGE, elle, ne dépend plus de ce hook : elle est pilotée par la
+ * variable CSS `--visible`, redéfinie par media queries. Auparavant le rendu
+ * serveur partait à 1 carte pleine largeur et basculait à 3 à l'hydratation —
+ * un saut de mise en page très visible sur desktop. Désormais le HTML livré est
+ * déjà dans la bonne disposition ; seul le nombre de pastilles s'ajuste après
+ * l'hydratation, sans rien déplacer.
+ */
 function useVisibleCount() {
   const [count, setCount] = useState(1);
   useEffect(() => {
     const compute = () =>
       setCount(window.innerWidth < 640 ? 1 : window.innerWidth < 1024 ? 2 : 3);
     compute();
-    window.addEventListener("resize", compute);
-    return () => window.removeEventListener("resize", compute);
+    // `requestAnimationFrame` : sans lui, un redimensionnement déclenchait un
+    // rendu par pixel parcouru.
+    let frame = 0;
+    const onResize = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(compute);
+    };
+    window.addEventListener("resize", onResize);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("resize", onResize);
+    };
   }, []);
   return count;
 }
@@ -320,6 +339,16 @@ function ReviewsCarousel({ reviews }: { reviews: GoogleReviewItem[] }) {
   // (rotation d'écran, redimensionnement), l'index redevient valide sans
   // déclencher de rendu en cascade.
   const index = Math.min(rawIndex, maxIndex);
+
+  // Le nombre d'avis est connu dès le rendu serveur : on peut donc borner la
+  // disposition sans risque de décalage. Avec moins d'avis que de colonnes, les
+  // cartes s'étalent au lieu de laisser un trou à droite.
+  const basisClass =
+    total <= 1
+      ? "basis-full"
+      : total === 2
+        ? "basis-full sm:basis-[calc(50%-12px)]"
+        : "basis-full sm:basis-[calc(50%-12px)] lg:basis-[calc(33.333%-16px)]";
 
   const prev = useCallback(() => setRawIndex((i) => Math.max(0, i - 1)), []);
   const next = useCallback(
@@ -343,20 +372,20 @@ function ReviewsCarousel({ reviews }: { reviews: GoogleReviewItem[] }) {
 
   return (
     <div className="relative">
-      {/* Fenêtre */}
+      {/* Fenêtre. `--visible` est redéfinie par media queries : largeur des
+          cartes et amplitude du défilement restent cohérentes sans JavaScript. */}
       <div className="overflow-hidden" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
         <div
-          className="flex gap-6 transition-transform duration-500 ease-in-out"
-          style={{
-            transform: `translateX(calc(-${index} * (100% / ${visible} + ${24 / visible}px)))`,
-          }}
+          className="carrousel-piste flex gap-6 transition-transform duration-500 ease-in-out"
+          style={
+            {
+              "--index": index,
+              transform: "translateX(calc(-1 * var(--index) * var(--pas)))",
+            } as React.CSSProperties
+          }
         >
           {reviews.map((review, i) => (
-            <div
-              key={i}
-              className="min-w-0"
-              style={{ flex: `0 0 calc(${100 / visible}% - ${(24 * (visible - 1)) / visible}px)` }}
-            >
+            <div key={i} className={`min-w-0 shrink-0 grow-0 ${basisClass}`}>
               <ReviewCard review={review} />
             </div>
           ))}
@@ -375,18 +404,26 @@ function ReviewsCarousel({ reviews }: { reviews: GoogleReviewItem[] }) {
         </button>
 
         {/* Indicateurs */}
-        <div className="flex gap-2">
+        <div className="flex items-center">
           {Array.from({ length: maxIndex + 1 }, (_, i) => (
+            // La pastille visible fait 6px de haut : la cible tactile, elle,
+            // doit rester atteignable au doigt — d'où le bouton de 44px de haut
+            // qui l'entoure.
             <button
               key={i}
               onClick={() => setRawIndex(i)}
               aria-label={`Aller à la page ${i + 1}`}
-              className="h-1.5 rounded-full transition-all duration-300"
-              style={{
-                width: i === index ? "2rem" : "0.375rem",
-                background: i === index ? "#c9a84c" : "#d1d5db",
-              }}
-            />
+              aria-current={i === index ? "true" : undefined}
+              className="flex h-11 items-center px-2"
+            >
+              <span
+                className="block h-1.5 rounded-full transition-all duration-300"
+                style={{
+                  width: i === index ? "2rem" : "0.375rem",
+                  background: i === index ? "#c9a84c" : "#d1d5db",
+                }}
+              />
+            </button>
           ))}
         </div>
 
