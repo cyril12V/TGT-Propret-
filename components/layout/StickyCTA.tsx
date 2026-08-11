@@ -24,10 +24,15 @@ export function StickyCTA() {
   const phone = CONTACT.phones[0];
 
   return (
+    // Masqué au clavier autant qu'à l'œil : en `translate-y-full` seul, les deux
+    // liens restaient tabulables sous un `aria-hidden`, et le focus partait hors
+    // écran. Le breakpoint suit celui de la nav (menu horizontal à partir de lg).
     <div
       aria-hidden={!visible}
-      className={`fixed inset-x-0 bottom-0 z-[90] flex gap-px border-t border-[var(--color-gold)]/40 bg-[var(--color-navy)] shadow-[0_-8px_24px_rgba(13,34,68,0.25)] transition-transform duration-300 md:hidden ${
-        visible ? "translate-y-0" : "translate-y-full"
+      className={`fixed inset-x-0 bottom-0 z-[90] flex gap-px border-t border-[var(--color-gold)]/40 bg-[var(--color-navy)] pb-[env(safe-area-inset-bottom)] shadow-[0_-8px_24px_rgba(13,34,68,0.25)] transition-transform duration-300 lg:hidden ${
+        visible
+          ? "translate-y-0"
+          : "invisible translate-y-full pointer-events-none"
       }`}
     >
       {phone && (

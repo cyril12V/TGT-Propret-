@@ -28,7 +28,14 @@
 
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 80px;
+    /* Hauteur réelle de la barre de navigation : ~69px, ~81px en sm, ~89px en
+       md et au-delà. Une ancre visée trop court passe sous la barre. */
+    scroll-padding-top: 5.5rem;
+  }
+  @media (min-width: 768px) {
+    html {
+      scroll-padding-top: 6.5rem;
+    }
   }
 
   body {
@@ -38,6 +45,14 @@
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* Réserve la hauteur de la barre d'appel collante (mobile / tablette),
+       sinon elle recouvre en permanence le bas du pied de page. */
+    padding-bottom: calc(3.25rem + env(safe-area-inset-bottom));
+  }
+  @media (min-width: 1024px) {
+    body {
+      padding-bottom: 0;
+    }
   }
 
   :focus-visible {
@@ -59,15 +74,24 @@
     font-family: var(--font-sans);
   }
 
+}
+
+/* `container-tgt` vit dans la couche `components`, pas `utilities` : déclarée
+   dans `utilities`, elle passait APRÈS les classes générées par Tailwind et
+   gagnait à spécificité égale. Résultat, sur `container-tgt max-w-[760px]`
+   (corps des articles) ou `container-tgt max-w-[820px]` (FAQ), la largeur
+   maximale était silencieusement ramenée à 1200px — soit ~180 caractères par
+   ligne sur grand écran. En couche `components`, toute classe utilitaire posée
+   à côté reprend la main, ce qui est le comportement attendu.
+
+   Le padding suit un clamp plutôt qu'un saut de 1rem à 2,5rem : le saut se
+   cumulait au `px-10` des sections et faisait *rétrécir* le contenu au passage
+   de 767px à 768px (695px utiles → 608px). */
+@layer components {
   .container-tgt {
     max-width: 1200px;
     margin-inline: auto;
-    padding-inline: 1rem;
-  }
-  @media (min-width: 768px) {
-    .container-tgt {
-      padding-inline: 2.5rem;
-    }
+    padding-inline: clamp(1rem, 2vw, 1.5rem);
   }
 }
 

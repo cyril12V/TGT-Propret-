@@ -15,11 +15,22 @@ export function Nav() {
     };
   }, [open]);
 
-
+  // Échap ferme le menu : sans cela, au clavier, on reste piégé derrière le voile.
+  useEffect(() => {
+    if (!open) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [open]);
 
   return (
+    // Le menu horizontal ne tient pas sous 1024 px (contenu incompressible
+    // ~1020 px) : le burger est donc conservé jusqu'à `lg`. En `md:` le CTA
+    // « Devis Gratuit » sortait de l'écran, rogné par l'overflow-x du body.
     <nav
-      className="fixed inset-x-0 top-0 z-[100] flex items-center justify-between gap-3 border-b border-[rgba(201,168,76,0.25)] bg-[rgba(13,34,68,0.97)] px-4 py-3 backdrop-blur-xl sm:px-5 sm:py-3.5 md:justify-evenly md:px-10"
+      className="fixed inset-x-0 top-0 z-[100] flex items-center justify-between gap-3 border-b border-[rgba(201,168,76,0.25)] bg-[rgba(13,34,68,0.97)] px-4 py-3 backdrop-blur-xl sm:px-5 sm:py-3.5 md:px-10"
       aria-label="Navigation principale"
     >
       <Link
@@ -53,7 +64,7 @@ export function Nav() {
         </span>
       </Link>
 
-      <ul className="hidden gap-8 md:flex">
+      <ul className="hidden lg:flex lg:gap-5 xl:gap-8">
         {NAV_LINKS.map((l) => (
           <li key={l.href}>
             <Link
@@ -67,16 +78,17 @@ export function Nav() {
       </ul>
       <Link
         href="/devis"
-        className="hidden rounded-[2px] bg-[var(--color-gold)] px-6 py-2.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--color-navy)] transition-all hover:-translate-y-0.5 hover:bg-[var(--color-gold-2)] md:inline-block"
+        className="hidden rounded-[2px] bg-[var(--color-gold)] px-6 py-2.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--color-navy)] transition-all hover:-translate-y-0.5 hover:bg-[var(--color-gold-2)] lg:inline-block"
       >
         Devis Gratuit
       </Link>
 
       <button
         type="button"
-        className="flex flex-col gap-1.5 p-2 cursor-pointer md:hidden"
+        className="flex h-11 w-11 shrink-0 cursor-pointer flex-col items-center justify-center gap-1.5 lg:hidden"
         aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
         aria-expanded={open}
+        aria-controls="menu-mobile"
         onClick={() => setOpen((o) => !o)}
       >
         <span
@@ -95,23 +107,36 @@ export function Nav() {
 
       {open && (
         <>
-          {/* Voile : un clic à côté ferme le menu */}
+          {/* Voile : un clic à côté ferme le menu.
+              `backdrop-blur` sur la nav en fait le bloc conteneur des enfants
+              `fixed` : un `inset-0` s'y résolvait en un voile de 4 px de haut,
+              donc cliquer à côté ne fermait rien. On part du bas de la nav
+              (`top-full`) sur toute la hauteur de fenêtre. */}
           <button
             type="button"
             aria-label="Fermer le menu"
             tabIndex={-1}
             onClick={() => setOpen(false)}
-            className="fixed inset-0 top-[64px] z-[98] cursor-default bg-black/50 backdrop-blur-sm md:hidden"
+            className="fixed inset-x-0 top-full z-[98] h-[100dvh] cursor-default bg-black/50 backdrop-blur-sm lg:hidden"
           />
 
-          {/* Panneau du menu — fond bleu */}
-          <div className="fixed inset-x-0 top-[64px] z-[99] flex flex-col items-center gap-7 border-b border-[rgba(201,168,76,0.25)] bg-[#013668] px-6 py-10 shadow-[0_24px_40px_rgba(0,0,0,0.35)] md:hidden">
+          {/* Panneau du menu — fond bleu.
+              `max-h` + défilement interne : sans cela, en paysage mobile, les
+              derniers liens et le CTA sortaient de l'écran sans moyen d'y
+              accéder (le body est bloqué en `overflow:hidden`). */}
+          <div
+            id="menu-mobile"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Menu de navigation"
+            className="fixed inset-x-0 top-full z-[99] flex max-h-[calc(100dvh-100%)] flex-col items-center gap-5 overflow-y-auto overscroll-contain border-b border-[rgba(201,168,76,0.25)] bg-[#013668] px-6 py-7 shadow-[0_24px_40px_rgba(0,0,0,0.35)] lg:hidden"
+          >
             {NAV_LINKS.map((l) => (
               <Link
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="text-sm font-medium uppercase tracking-[0.3em] text-white/85 transition-colors hover:text-[var(--color-gold)]"
+                className="flex min-h-11 items-center text-sm font-medium uppercase tracking-[0.3em] text-white/85 transition-colors hover:text-[var(--color-gold)]"
               >
                 {l.label}
               </Link>
