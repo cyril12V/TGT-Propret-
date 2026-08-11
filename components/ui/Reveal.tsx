@@ -22,11 +22,18 @@ export function Reveal({
     const node = ref.current;
     if (!node) return;
 
-    // `threshold: 0` + marge basse négative plutôt qu'un ratio : un seuil en
-    // pourcentage ne peut jamais être atteint par un bloc beaucoup plus haut
-    // que la fenêtre (la grille des prestations dépasse 7 000 px, soit un ratio
-    // maximum de ~12 % sur un écran de 950 px — et moins encore sur un écran
-    // plus court, où le contenu resterait invisible pour toujours).
+    // Deux garde-fous par rapport à un simple `threshold: 0.1` :
+    //
+    // `threshold: 0` — un seuil exprimé en ratio ne peut jamais être atteint
+    // par un bloc bien plus haut que la fenêtre : la grille des prestations
+    // dépasse 7 000 px, soit 12 % au mieux sur un écran de 950 px, et moins
+    // encore sur un écran plus court, où elle resterait invisible à jamais.
+    //
+    // Marge haute énorme — tout ce qui est passé au-dessus de la fenêtre est
+    // considéré comme vu. Sans cela, un saut de défilement (lien d'ancre, molette
+    // rapide, restauration de position) pouvait enjamber un bloc sans qu'aucune
+    // frame ne l'observe visible : il restait masqué définitivement.
+    // La marge basse négative, elle, garde l'apparition progressive.
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry?.isIntersecting) {
@@ -34,7 +41,7 @@ export function Reveal({
           observer.unobserve(node);
         }
       },
-      { threshold: 0, rootMargin: "0px 0px -12% 0px" },
+      { threshold: 0, rootMargin: "100000px 0px -12% 0px" },
     );
 
     observer.observe(node);
