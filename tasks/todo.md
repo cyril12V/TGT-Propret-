@@ -363,3 +363,58 @@ et note visible sur toutes les pages testées.
 - [ ] 3 prestations partagent encore un visuel avec une autre :
       `agences-immobilieres` ↔ `nettoyage-approfondi`, `desinfection-locaux` ↔ `cabinets-medicaux`,
       `renovation-sols-decapage` ↔ `tapis-moquettes`. Plus visible depuis le passage en pleine largeur.
+
+---
+
+## Session 2026-08-11 — Retours client (lot 2)
+
+### Prestations — retour au visuel d'origine
+- [x] Photo en fond sur 100 % de la carte, dégradé blanc, texte par-dessus — mais
+      une prestation par ligne, sur toute la largeur (`min-h` 340 → 420px).
+- [x] Description passée en navy/80 : sur une photo voilée, `--color-muted`
+      ne tenait plus le contraste minimum selon la clarté de la photo.
+- [x] Badge « Spécialité » : texte navy sur fond doré (blanc sur doré = 2,3:1).
+
+### Responsive — défauts corrigés (mesurés au navigateur, pas déduits)
+- [x] **Nav** : le menu horizontal (contenu incompressible ~1020px) s'activait dès
+      768px. Le CTA « Devis Gratuit » finissait hors écran, rogné par
+      l'`overflow-x` du body. Menu horizontal repoussé à `lg`.
+- [x] **Menu mobile** : le voile de fermeture mesurait **4px de haut** — cliquer à
+      côté ne fermait rien. Le `backdrop-blur` de la nav en fait le bloc conteneur
+      de ses enfants `fixed` : `inset-0` s'y résolvait sur la hauteur de la nav.
+- [x] **Menu mobile** : aucune hauteur max ni défilement interne — en paysage, les
+      derniers liens et le CTA étaient inaccessibles (body bloqué en `overflow:hidden`).
+- [x] **Menu mobile** : fermeture par Échap, `role="dialog"`, burger 40×34 → 44×44.
+- [x] **Barre collante** : le bouton principal n'avait **aucun libellé** (une flèche
+      seule) ; restait tabulable une fois masquée ; masquait le bas du pied de page.
+- [x] **Reveal** : seuil à 10 % de visibilité — un bloc plus haut que ~10× la fenêtre
+      ne pouvait jamais l'atteindre. La grille des prestations (7 800px) restait
+      **invisible**. Passé en `threshold: 0` + marge haute, pour qu'un bloc enjambé
+      par un saut de défilement se révèle quand même.
+- [x] **Grilles** : `min-width: auto` sur les enfants — un `select` à option longue
+      élargissait la piste au-delà du conteneur (46 éléments en débordement à 320px
+      sur l'accueil → 0). Règle globale dans `globals.css`.
+- [x] **`container-tgt`** : déclarée dans `@layer utilities`, elle écrasait les
+      `max-w-*` posés à côté. Corps des articles à 1200px au lieu de 760px.
+      Déplacée en `@layer components`.
+- [x] **Formulaires** : police des champs < 16px → zoom automatique iOS au focus.
+- [x] **Candidature** : grille 2 colonnes imbriquée dans une grille 2 colonnes →
+      champs à ~78px de large entre 768 et 1100px.
+- [x] **BeforeAfter** : `touch-action: none` absorbait le défilement vertical —
+      cinq comparateurs empilés bloquaient la page sur mobile.
+- [x] **About** : aucune gouttière entre 768 et 1279px, texte collé au bord.
+- [x] Séparateur de pôle rogné sous 418px ; `w-74` (296px) débordant à 320px ;
+      halo `animate-ping` sortant de l'écran ; `scroll-padding-top` trop court.
+
+**Vérification** : 320 / 390 / 768 / 1024 / 1440 / 1920px sur l'accueil, `/services`,
+`/services/[slug]`, `/zones/paris`, `/devis`, `/blog/[slug]` → **0 débordement**.
+
+### Reste à traiter (remonté par l'audit, non bloquant)
+- [ ] Carrousel d'avis : rendu serveur à 1 carte puis 3 à l'hydratation (saut de
+      mise en page) ; pastilles d'indicateur en cible tactile de 6×6px.
+- [ ] Zones tactiles < 44px sur les listes denses (arrondissements, communes, footer).
+- [ ] Grilles `gap-px` avec un nombre d'items non multiple des colonnes : cellules
+      vides (hub services, zones, blog entre 768 et 1023px).
+- [ ] `ID_photo_M.png` : 225×225px affiché jusqu'à 500×667 → agrandissement ×3.
+- [ ] « Lire l'article » en `opacity-0` sans survol : invisible sur mobile.
+- [ ] `WhyUs.tsx` porte `id="zones"` alors que la vraie section est `zones-intervention`.

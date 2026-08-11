@@ -27,3 +27,40 @@ a rendu le trou évident.
 
 **Leçon** : un nom de fichier d'asset ne doit contenir que de l'ASCII minuscule et des
 tirets. Même famille de bug que la casse du logo YEMA (voir `lessons.md`).
+
+---
+
+## 2026-08-11 — Le voile de fermeture du menu mobile mesurait 4 pixels
+
+**Symptôme** : sur mobile, cliquer à côté du menu ouvert ne le fermait pas.
+
+**Cause** : le voile est `fixed inset-0 top-[64px]`, enfant du `<nav>`. Or la nav
+porte `backdrop-blur-xl`, et un `backdrop-filter` fait de l'élément le **bloc
+conteneur de ses descendants `fixed`**. `inset-0` se résolvait donc sur la boîte de
+la nav (69px de haut) et non sur la fenêtre : `top: 64px` + `bottom: 0` = 5px.
+
+**Fix** : `top-full` + `h-[100dvh]` sur le voile ; `top-full` +
+`max-h-[calc(100dvh-100%)] overflow-y-auto` sur le panneau (le `100%` se résout sur
+la hauteur de la nav, donc la valeur s'ajuste toute seule).
+
+**Leçon** : `backdrop-filter`, `filter` et `transform` créent un bloc conteneur pour
+les descendants positionnés. Un `fixed` à l'intérieur n'est plus relatif à la fenêtre.
+
+---
+
+## 2026-08-11 — La grille des prestations restait invisible
+
+**Symptôme** : après le passage des prestations en pleine largeur, la grille
+n'apparaissait plus du tout sur certaines hauteurs d'écran — fond crème vide.
+
+**Cause** : `Reveal` observait ses enfants avec `threshold: 0.1`. En trois colonnes
+la grille faisait ~2 500px ; en pleine largeur elle est passée à ~7 800px. Sur une
+fenêtre de 950px, le ratio visible plafonne à 12 % — et tombe sous les 10 % requis
+dès qu'on descend sous 780px de haut. Le seuil n'était alors jamais franchi.
+
+**Fix** : `threshold: 0` (déclenchement au premier pixel visible) + marge basse
+négative pour conserver l'apparition progressive, et marge haute de 2000px pour
+qu'un bloc enjambé par un saut de défilement se révèle quand même.
+
+**Leçon** : un seuil d'IntersectionObserver exprimé en ratio est piégeux dès que
+l'élément peut devenir plus haut que la fenêtre. Préférer `threshold: 0` + `rootMargin`.
