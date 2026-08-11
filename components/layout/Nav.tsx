@@ -144,7 +144,7 @@ export function Nav() {
             <Link
               href="/devis"
               onClick={() => setOpen(false)}
-              className="rounded-[2px] bg-[var(--color-gold)] px-8 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-navy)] transition-colors hover:bg-[var(--color-gold-2)]"
+              className="flex min-h-11 items-center rounded-[2px] bg-[var(--color-gold)] px-8 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-navy)] transition-colors hover:bg-[var(--color-gold-2)]"
             >
               Devis Gratuit
             </Link>

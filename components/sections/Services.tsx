@@ -122,7 +122,10 @@ function ServiceCard({
             )}
           </div>
 
-          <p className="text-sm font-medium leading-relaxed text-[var(--color-muted)] transition-colors duration-300 group-hover:text-[var(--color-navy)] lg:text-[15px]">
+          {/* Texte en navy plutôt qu'en `--color-muted` : posé sur une photo,
+              le gris n'offrait plus le contraste minimum une fois le voile
+              blanc translucide (les 16 photos n'ont pas la même clarté). */}
+          <p className="text-sm font-medium leading-relaxed text-[var(--color-navy)]/80 transition-colors duration-300 group-hover:text-[var(--color-navy)] lg:text-[15px]">
             {shortDesc}
           </p>
 
