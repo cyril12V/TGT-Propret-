@@ -55,6 +55,17 @@
     }
   }
 
+  /* Un enfant de grille vaut `min-width: auto` par défaut : il ne peut pas
+     descendre sous la largeur intrinsèque de son contenu. Un `select` dont une
+     option est longue, un bouton très espacé ou un champ suffisent alors à
+     élargir la piste au-delà du conteneur, et la page déborde — masqué par
+     l'`overflow-x: hidden` du body, donc invisible autrement qu'en mesurant.
+     `:where()` garde une spécificité nulle : n'importe quelle classe
+     utilitaire reprend la main si un bloc doit vraiment garder sa taille. */
+  :where(.grid) > * {
+    min-width: 0;
+  }
+
   :focus-visible {
     outline: 2px solid var(--color-gold);
     outline-offset: 3px;

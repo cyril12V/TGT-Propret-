@@ -33,7 +33,10 @@ export function FloatingPhone() {
       }`}
     >
       <span
-        className="absolute inset-0 rounded-full bg-[var(--color-gold)] opacity-60 motion-safe:animate-ping"
+        // `animate-ping` double la taille de l'élément : sur un halo posé à
+        // 16px du bord droit, l'onde sortait de l'écran. Le halo est réduit
+        // pour rester dans le cadre.
+        className="absolute inset-[10%] rounded-full bg-[var(--color-gold)] opacity-60 motion-safe:animate-ping"
         aria-hidden="true"
       />
       <Phone

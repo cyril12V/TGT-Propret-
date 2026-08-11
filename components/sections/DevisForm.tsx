@@ -195,7 +195,7 @@ export function DevisForm() {
         />
       </div>
 
-      <div className="mt-5 flex flex-col gap-2">
+      <div className="mt-5 flex min-w-0 flex-col gap-2">
         <label
           htmlFor="message"
           className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--color-navy)]"
@@ -207,7 +207,7 @@ export function DevisForm() {
           name="message"
           rows={4}
           placeholder="Décrivez votre besoin (étages, accès, contraintes, etc.)"
-          className="resize-y border-b border-gray-300 bg-transparent py-3 text-base md:text-[15px] leading-relaxed outline-none transition-colors focus:border-[var(--color-gold)]"
+          className="w-full min-w-0 resize-y border-b border-gray-300 bg-transparent py-3 text-base md:text-[15px] leading-relaxed outline-none transition-colors focus:border-[var(--color-gold)]"
         />
       </div>
 
@@ -320,7 +320,7 @@ function Field({
         placeholder={placeholder}
         required={required}
         autoComplete={autoComplete}
-        className="w-full border-b border-gray-300 bg-transparent py-3 text-base outline-none transition-colors focus:border-[var(--color-gold)] md:text-[15px]"
+        className="w-full min-w-0 border-b border-gray-300 bg-transparent py-3 text-base outline-none transition-colors focus:border-[var(--color-gold)] md:text-[15px]"
       />
     </div>
   );
@@ -358,7 +358,7 @@ function SelectField({
         name={name}
         required={required}
         defaultValue={defaultValue}
-        className="w-full appearance-none border-b border-gray-300 bg-transparent py-3 text-base outline-none transition-colors focus:border-[var(--color-gold)] md:text-[15px]"
+        className="w-full min-w-0 appearance-none border-b border-gray-300 bg-transparent py-3 text-base outline-none transition-colors focus:border-[var(--color-gold)] md:text-[15px]"
       >
         {options.map((o) => (
           <option key={o.value} value={o.value} disabled={!o.value && required}>

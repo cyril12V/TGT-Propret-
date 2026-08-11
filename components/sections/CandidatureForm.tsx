@@ -138,7 +138,13 @@ export function CandidatureForm() {
               ))}
             </ul>
             <div className="rounded-[10px] bg-[var(--color-navy)] p-6 text-white">
-              <img src="/images/Carte_de_visite.jpg" alt="Carte de visite — Rabah Ammouche" />
+              {/* eslint-disable-next-line @next/next/no-img-element -- visuel décoratif, remplacement par next/image à prévoir */}
+              <img
+                src="/images/Carte_de_visite.jpg"
+                alt="Carte de visite — Rabah Ammouche"
+                className="h-auto w-full"
+                loading="lazy"
+              />
             </div>
           </div>
 
@@ -187,7 +193,7 @@ export function CandidatureForm() {
               />
             </div>
 
-            <div className="mt-5 flex flex-col gap-2">
+            <div className="mt-5 flex min-w-0 flex-col gap-2">
               <label
                 htmlFor="poste"
                 className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--color-navy)]"
@@ -199,7 +205,7 @@ export function CandidatureForm() {
                 name="poste"
                 required
                 defaultValue=""
-                className="appearance-none border-b border-gray-300 bg-transparent py-3 text-base md:text-[15px] outline-none transition-colors focus:border-[var(--color-gold)]"
+                className="w-full min-w-0 appearance-none border-b border-gray-300 bg-transparent py-3 text-base md:text-[15px] outline-none transition-colors focus:border-[var(--color-gold)]"
               >
                 <option value="" disabled>
                   Sélectionner un poste
@@ -212,7 +218,7 @@ export function CandidatureForm() {
               </select>
             </div>
 
-            <div className="mt-5 flex flex-col gap-2">
+            <div className="mt-5 flex min-w-0 flex-col gap-2">
               <label
                 htmlFor="disponibilite"
                 className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--color-navy)]"
@@ -223,7 +229,7 @@ export function CandidatureForm() {
                 id="disponibilite"
                 name="disponibilite"
                 defaultValue=""
-                className="appearance-none border-b border-gray-300 bg-transparent py-3 text-base md:text-[15px] outline-none transition-colors focus:border-[var(--color-gold)]"
+                className="w-full min-w-0 appearance-none border-b border-gray-300 bg-transparent py-3 text-base md:text-[15px] outline-none transition-colors focus:border-[var(--color-gold)]"
               >
                 <option value="">Sélectionner</option>
                 {DISPOS.map((d) => (
@@ -235,7 +241,7 @@ export function CandidatureForm() {
             </div>
 
             {/* CV — PDF uniquement */}
-            <div className="mt-5 flex flex-col gap-2">
+            <div className="mt-5 flex min-w-0 flex-col gap-2">
               <label
                 htmlFor="cv"
                 className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--color-navy)]"
@@ -244,7 +250,7 @@ export function CandidatureForm() {
               </label>
               <label
                 htmlFor="cv"
-                className="flex cursor-pointer items-center gap-3 border border-dashed border-gray-300 bg-transparent px-4 py-3 text-[15px] text-[var(--color-muted)] transition-colors hover:border-[var(--color-gold)]"
+                className="flex min-w-0 cursor-pointer items-center gap-3 border border-dashed border-gray-300 bg-transparent px-4 py-3 text-[15px] text-[var(--color-muted)] transition-colors hover:border-[var(--color-gold)]"
               >
                 <FileText
                   size={18}
@@ -252,7 +258,7 @@ export function CandidatureForm() {
                   className="shrink-0 text-[var(--color-gold)]"
                   aria-hidden="true"
                 />
-                <span className="truncate">
+                <span className="min-w-0 truncate">
                   {cvName || "Joindre votre CV au format PDF"}
                 </span>
               </label>
@@ -269,7 +275,7 @@ export function CandidatureForm() {
               </p>
             </div>
 
-            <div className="mt-5 flex flex-col gap-2">
+            <div className="mt-5 flex min-w-0 flex-col gap-2">
               <label
                 htmlFor="message"
                 className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--color-navy)]"
@@ -281,7 +287,7 @@ export function CandidatureForm() {
                 name="message"
                 placeholder="Parlez-nous de vous, votre expérience et vos motivations..."
                 rows={4}
-                className="resize-y border-b border-gray-300 bg-transparent py-3 text-base md:text-[15px] leading-relaxed outline-none transition-colors focus:border-[var(--color-gold)]"
+                className="w-full min-w-0 resize-y border-b border-gray-300 bg-transparent py-3 text-base md:text-[15px] leading-relaxed outline-none transition-colors focus:border-[var(--color-gold)]"
               />
             </div>
 
@@ -348,7 +354,7 @@ function Field({
   autoComplete,
 }: FieldProps) {
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex min-w-0 flex-col gap-2">
       <label
         htmlFor={name}
         className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--color-navy)]"
@@ -363,7 +369,7 @@ function Field({
         placeholder={placeholder}
         required={required}
         autoComplete={autoComplete}
-        className="border-b border-gray-300 bg-transparent py-3 text-base md:text-[15px] outline-none transition-colors focus:border-[var(--color-gold)]"
+        className="w-full min-w-0 border-b border-gray-300 bg-transparent py-3 text-base md:text-[15px] outline-none transition-colors focus:border-[var(--color-gold)]"
       />
     </div>
   );
