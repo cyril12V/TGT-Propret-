@@ -96,7 +96,7 @@ export function CandidatureForm() {
             Formulaire de{" "}
             <em className="italic text-[var(--color-gold)]">Candidature</em>
           </h2>
-          <div className="mx-auto mt-6 w-74 h-[2px] bg-gradient-to-r from-transparent via-[#c9a84c] to-transparent"></div>
+          <div className="mx-auto mt-6 h-[2px] w-full max-w-[296px] bg-gradient-to-r from-transparent via-[#c9a84c] to-transparent"></div>
           <p className="text-[15px] leading-relaxed text-[var(--color-muted)]">
             Vous êtes motivé, rigoureux et vous aimez le travail bien fait ?
             Rejoignez l&apos;équipe TGT Propreté.

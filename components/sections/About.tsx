@@ -30,7 +30,10 @@ export function About() {
         <div className="mt-6 mx-auto w-26 h-[2px] bg-gradient-to-l from-transparent via-[#c9a84c] to-transparent"></div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto space-y-24">
+      {/* Gouttière explicite : sans elle, de 768px à 1279px le texte des deux
+          blocs venait se coller au bord de l'écran (au-delà, `max-w-7xl`
+          recentrait et masquait le problème). */}
+      <div className="relative mx-auto max-w-7xl space-y-24 px-4 md:px-10">
 
         {/* ---------------- SECTION RABAH AMMOUCHE ---------------- */}
         <div className="w-full">
@@ -55,7 +58,7 @@ export function About() {
               </div>
 
               {/* Côté Droit : Le texte de présentation */}
-              <div className="flex flex-col justify-center text-left px-4 md:px-0">
+              <div className="flex flex-col justify-center text-left">
                 <span className="text-[12px] uppercase tracking-[0.4em] text-[#c9a84c] font-medium mb-3 block">
                   Co-fondateur &amp; Gérant
                 </span>
@@ -64,7 +67,7 @@ export function About() {
                   {CONTACT.manager}
                 </h3>
 
-                <span className="text-[10px] uppercase tracking-[0.2em] text-white/45 mb-6 block font-medium">
+                <span className="text-[11px] uppercase tracking-[0.2em] text-white/70 mb-6 block font-medium">
                   {CONTACT.role}
                 </span>
 
@@ -91,7 +94,7 @@ export function About() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
 
               {/* Côté Gauche : Le texte de présentation */}
-              <div className="flex flex-col justify-center text-left px-4 md:px-0 order-2 md:order-1">
+              <div className="order-2 flex flex-col justify-center text-left md:order-1">
                 <span className="text-[12px] uppercase tracking-[0.4em] text-[#c9a84c] font-medium mb-3 block">
                   Co-fondatrice &amp; Co-gérante
                 </span>
@@ -100,7 +103,7 @@ export function About() {
                   {MALIKA.gérante}
                 </h3>
 
-                <span className="text-[10px] uppercase tracking-[0.2em] text-white/45 mb-6 block font-medium">
+                <span className="text-[11px] uppercase tracking-[0.2em] text-white/70 mb-6 block font-medium">
                   {MALIKA.role}
                 </span>
 

@@ -18,11 +18,14 @@ function PoleDivider({ label, tag }: { label: string; tag: string }) {
         }}
         aria-hidden="true"
       />
-      <div className="flex shrink-0 flex-col items-center gap-1.5 text-center">
-        <span className="rounded-full bg-[var(--color-gold)] px-3 py-1 font-serif text-[11px] sm:text-xs font-semibold uppercase tracking-[0.25em] text-white">
+      {/* `min-w-0 shrink` sous `sm` : en `shrink-0` avec un libellé bloqué à
+          240px, le bloc dépassait la largeur disponible sous 418px et se
+          faisait couper net par l'`overflow-hidden` du cadre. */}
+      <div className="flex min-w-0 shrink flex-col items-center gap-1.5 text-center sm:shrink-0">
+        <span className="rounded-full bg-[var(--color-gold)] px-3 py-1 font-serif text-[11px] font-semibold uppercase tracking-[0.25em] text-[var(--color-navy)] sm:text-xs">
           {tag}
         </span>
-        <span className="font-serif text-2xl sm:text-4xl font-semibold text-[var(--color-navy)] max-w-[240px] sm:max-w-none text-center leading-tight">
+        <span className="max-w-full text-center font-serif text-xl font-semibold leading-tight text-[var(--color-navy)] sm:max-w-none sm:text-4xl">
           {label}
         </span>
       </div>
@@ -73,7 +76,7 @@ function ServiceCard({
         src={bgImage}
         alt={title}
         fill
-        sizes="100vw"
+        sizes="(min-width: 1280px) 1200px, 100vw"
         className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
         priority={priority}
       />
@@ -110,10 +113,10 @@ function ServiceCard({
 
             {isSpecialty && (
               <span
-                className="inline-flex items-center gap-1 rounded-full bg-[var(--color-gold)] px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.15em] text-white"
+                className="inline-flex items-center gap-1 rounded-full bg-[var(--color-gold)] px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.15em] text-[var(--color-navy)]"
                 title="Notre spécialité"
               >
-                <Star size={9} fill="white" strokeWidth={0} aria-hidden="true" />
+                <Star size={9} fill="currentColor" strokeWidth={0} aria-hidden="true" />
                 Spécialité
               </span>
             )}
