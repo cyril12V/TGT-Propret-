@@ -163,7 +163,7 @@ export default function ZonesHubPage() {
                       href={`/zones/${z.slug}`}
                       className="group flex h-full flex-col gap-2 bg-white p-6 transition-all hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(13,34,68,0.08)]"
                     >
-                      <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--color-gold)]">
+                      <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--color-gold-text)]">
                         {z.postalCode}
                       </span>
                       <h3 className="font-serif text-lg font-semibold text-[var(--color-navy)]">

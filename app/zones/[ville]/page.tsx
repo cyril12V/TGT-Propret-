@@ -202,7 +202,7 @@ export default async function ZonePage({
                       {/* Pas de shortDesc ici : répété sur 40 pages géo, il
                           diluait la part de contenu propre à la commune. */}
                       {s.priceRange && (
-                        <span className="mt-auto pt-2 text-[11px] font-semibold uppercase tracking-[0.15em] text-[var(--color-gold)]">
+                        <span className="mt-auto pt-2 text-[11px] font-semibold uppercase tracking-[0.15em] text-[var(--color-gold-text)]">
                           {s.priceRange}
                         </span>
                       )}

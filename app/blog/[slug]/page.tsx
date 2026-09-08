@@ -141,7 +141,7 @@ export default async function ArticlePage({
                           >
                             <Icon size={20} strokeWidth={1.5} />
                           </span>
-                          <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--color-gold)]">
+                          <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--color-gold-text)]">
                             {a.category}
                           </span>
                         </div>

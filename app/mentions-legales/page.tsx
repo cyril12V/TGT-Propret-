@@ -58,7 +58,7 @@ export default function MentionsLegalesPage() {
                 Covina, CA 91723, États-Unis —{" "}
                 <a
                   href="https://vercel.com"
-                  className="text-[var(--color-gold)] underline"
+                  className="text-[var(--color-gold-text)] underline"
                   rel="noopener noreferrer"
                   target="_blank"
                 >
@@ -88,7 +88,7 @@ export default function MentionsLegalesPage() {
                 personnelles, consultez notre{" "}
                 <Link
                   href="/politique-confidentialite"
-                  className="text-[var(--color-gold)] underline"
+                  className="text-[var(--color-gold-text)] underline"
                 >
                   politique de confidentialité
                 </Link>

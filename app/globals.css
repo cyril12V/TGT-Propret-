@@ -10,6 +10,8 @@
      4,9:1 sur crème, tout en restant du doré. Réservée au TEXTE sur fond
      clair ; bordures, aplats et grands titres gardent le doré de marque. */
   --color-gold-text: #7f6614;
+  /* Grands titres sur fond clair : 3,9:1 sur blanc, 3,5:1 sur crème. */
+  --color-gold-title: #9c7c22;
   --color-cream: #f5f0e8;
   --color-light: #fdfcf9;
   --color-ink: #1a1a2e;

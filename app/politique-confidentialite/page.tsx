@@ -85,7 +85,7 @@ export default function ConfidentialitePage() {
                 traitement de vos données. Pour exercer ces droits, contactez :{" "}
                 <a
                   href={`mailto:${CONTACT.email}`}
-                  className="text-[var(--color-gold)] underline"
+                  className="text-[var(--color-gold-text)] underline"
                 >
                   {CONTACT.email}
                 </a>
@@ -96,7 +96,7 @@ export default function ConfidentialitePage() {
                 CNIL —{" "}
                 <a
                   href="https://www.cnil.fr"
-                  className="text-[var(--color-gold)] underline"
+                  className="text-[var(--color-gold-text)] underline"
                   rel="noopener noreferrer"
                   target="_blank"
                 >

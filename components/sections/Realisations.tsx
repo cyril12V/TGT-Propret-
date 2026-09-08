@@ -28,7 +28,7 @@ export function Realisations() {
           <SectionLabel centered>Avant / Après</SectionLabel>
 
           <h2 className="font-serif text-[clamp(40px,5vw,68px)] font-semibold leading-none tracking-tight text-[var(--color-navy)]">
-            Nos <em className="italic text-[var(--color-gold)]">Réalisations</em>
+            Nos <em className="italic text-[var(--color-gold-title)]">Réalisations</em>
           </h2>
 
           <p className="mt-3 text-[15px] leading-relaxed text-[var(--color-muted)]">

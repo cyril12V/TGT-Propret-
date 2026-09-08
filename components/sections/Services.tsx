@@ -167,7 +167,7 @@ export function Services() {
 
           <h2 className="font-serif text-[clamp(40px,5vw,68px)] font-semibold leading-none tracking-tight text-[var(--color-navy)]">
             Nos services de{" "}
-            <em className="italic text-[var(--color-gold)]">
+            <em className="italic text-[var(--color-gold-title)]">
               nettoyage professionnel
             </em>
           </h2>

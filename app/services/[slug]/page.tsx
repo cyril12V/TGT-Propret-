@@ -285,7 +285,7 @@ export default async function ServicePage({
                   <ol className="mt-5 space-y-3 text-[15px] text-[var(--color-muted)]">
                     {process.map((p, i) => (
                       <li key={p.step} className="flex gap-3">
-                        <span className="font-semibold text-[var(--color-gold)]">
+                        <span className="font-semibold text-[var(--color-gold-text)]">
                           {String(i + 1).padStart(2, "0")}.
                         </span>
                         <span>
@@ -323,7 +323,7 @@ export default async function ServicePage({
                     <li>
                       <Link
                         href="/zones"
-                        className="inline-block border border-[var(--color-gold)] bg-white px-3 py-1.5 text-[13px] font-semibold text-[var(--color-gold)] transition-colors hover:bg-[var(--color-gold)] hover:text-white"
+                        className="inline-block border border-[var(--color-gold)] bg-white px-3 py-1.5 text-[var(--color-gold-text)] text-[13px] font-semibold text-[var(--color-gold-text)] transition-colors hover:bg-[var(--color-gold)] hover:text-white"
                       >
                         Toutes nos zones →
                       </Link>

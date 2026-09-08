@@ -52,7 +52,7 @@ export function ParisLinksFooter({
           </div>
           <Link
             href="/zones/paris"
-            className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-gold)] hover:underline"
+            className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-gold-text)] hover:underline"
           >
             Hub Paris <ArrowRight size={14} aria-hidden="true" />
           </Link>
