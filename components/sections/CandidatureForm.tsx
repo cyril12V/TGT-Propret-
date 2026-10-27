@@ -95,7 +95,7 @@ export function CandidatureForm() {
           <SectionLabel centered>Nous Rejoindre</SectionLabel>
           <h2 className="font-serif text-[clamp(36px,5vw,60px)] font-light leading-none">
             Formulaire de{" "}
-            <em className="italic text-[var(--color-gold)]">Candidature</em>
+            <em className="italic text-[var(--color-gold-title)]">Candidature</em>
           </h2>
           <div className="mx-auto mt-6 h-[2px] w-full max-w-[296px] bg-gradient-to-r from-transparent via-[#c9a84c] to-transparent"></div>
           <p className="text-[15px] leading-relaxed text-[var(--color-muted)]">

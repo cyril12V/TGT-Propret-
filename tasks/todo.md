@@ -457,3 +457,64 @@ au clic (aller/retour, bornes), monogramme, cibles tactiles mesurées.
 - [ ] Photo de Malika à demander au client.
 - [ ] Deux `<img>` bruts subsistent (carte de visite, logo de retour en haut) :
       sans impact mesuré, remplacement par `next/image` à faire à l'occasion.
+
+---
+
+## Session 2026-08-11 (suite) — Réalisations, responsive, Lighthouse
+
+### Réalisations — hauteur d'image
+- [x] 5 des 6 réalisations sont en ratio `3 / 4`. En colonnes de ~560px, chaque
+      comparateur faisait **747px de haut**. Hauteur plafonnée à
+      `58vh` sur mobile, `420px` en `sm`, `460px` en `lg` : le cadrage se recentre
+      par `object-cover` au lieu d'étirer la page.
+- [x] Légende : titre et localisation se disputaient la largeur sous ~420px —
+      empilés sous `sm`, côte à côte au-delà.
+
+### Poids des images
+- [x] Sources recompressées et bornées à 2000px : **25,9 Mo → 4,5 Mo** pour les
+      visuels de prestations (une seule photo pesait 4 Mo pour 7008px de large),
+      **3,2 Mo → 2,2 Mo** pour les comparateurs avant/après.
+- [x] `logo.png` était servi **brut, 98 Ko**, pour un affichage de 100px : c'était
+      la plus grosse requête de l'accueil. Passé par `next/image`, comme la carte
+      de visite (53 Ko bruts, sur deux pages).
+- [x] Le premier visuel de prestation était préchargé (`priority`) alors qu'il se
+      trouve ~2 écrans sous la ligne de flottaison : il volait de la bande
+      passante au visuel du hero, qui porte le LCP.
+
+### Lighthouse — mesuré, pas supposé
+Audits réels via Lighthouse 12 en local (`npx lighthouse`, Chrome headless).
+
+**Desktop : 11 pages sur 12 en 100 / 100 / 100 / 100.** L'accueil oscille entre
+99 et 100 (LCP à 0,9 s), le reste est stable.
+
+**Mobile : accessibilité, bonnes pratiques et SEO à 100 sur toutes les pages.**
+La performance mobile de l'accueil mesure entre 78 et 91 d'une passe à l'autre
+**sur la même build** : c'est du bruit de machine, pas du signal. `/services`
+mesure 94. Le chiffre qui fait foi est celui de PageSpeed Insights sur le site
+déployé, où s'appliquent le CDN, Brotli et un matériel de référence.
+
+### Corrections d'accessibilité
+- [x] `aria-label` posé sur des `<div>` sans rôle (barres d'étoiles) → `role="img"`.
+- [x] Ordre des titres : la bande d'engagements posait des `h3` juste après le
+      `h1` du hero ; le pied de page des `h4` après des `h2`.
+- [x] FAQ : `<details>` n'est pas un enfant valide de `<dl>`, ni `<dt>` un enfant
+      valide de `<summary>`. Structure simplifiée — la sémantique FAQ pour Google
+      passe de toute façon par le JSON-LD.
+- [x] Nom accessible du logo : le texte visible « TGTPropreté » n'était pas contenu
+      dans l'`aria-label`.
+- [x] **Contraste** — le doré de marque `#c9a84c` ne donne que **2,3:1 sur blanc**.
+      Deux déclinaisons ont été introduites pour les fonds clairs :
+      `--color-gold-text` (#7f6614, 5,5:1) pour le texte courant et
+      `--color-gold-title` (#9c7c22, 3,9:1) pour les grands titres en italique.
+      Le doré de marque reste inchangé sur fond navy, sur les aplats et les
+      bordures. Une trentaine d'éléments étaient sous le seuil, y compris des
+      libellés de navigation et des liens dans le corps des articles.
+
+### Piste non prise (décision produit)
+- [ ] La performance mobile de l'accueil est bornée par le volume de la page :
+      ~1470 éléments, 16 prestations en pleine largeur, 5 comparateurs, un pied
+      de page très dense. Le levier restant est d'**afficher 6 prestations sur
+      l'accueil** avec un lien vers les 16 — arbitrage éditorial, pas technique.
+- [ ] `content-visibility: auto` a été essayé sur les sections hors écran :
+      **régression nette** (performance 87 → 79, Speed Index 2,4 s → 4,2 s).
+      Écarté, mesures à l'appui.

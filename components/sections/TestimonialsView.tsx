@@ -474,7 +474,7 @@ export function TestimonialsView({ reviews }: { reviews: GoogleReviewItem[] }) {
               label={
                 <>
                   Ils nous font{" "}
-                  <em className="italic text-[var(--color-gold)]">confiance</em>
+                  <em className="italic text-[var(--color-gold-title)]">confiance</em>
                 </>
               }
             />
@@ -513,7 +513,7 @@ export function TestimonialsView({ reviews }: { reviews: GoogleReviewItem[] }) {
                 className="font-serif text-[clamp(30px,4vw,52px)] font-light leading-none"
               >
                 Ce que disent nos{" "}
-                <em className="italic text-[var(--color-gold)]">clients</em>
+                <em className="italic text-[var(--color-gold-title)]">clients</em>
               </h2>
 
               <p className="text-[15px] leading-relaxed text-[var(--color-muted)]">

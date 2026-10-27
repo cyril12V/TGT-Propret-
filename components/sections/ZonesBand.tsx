@@ -29,7 +29,7 @@ export function ZonesBand() {
               className="font-serif text-[clamp(36px,5vw,60px)] font-light leading-none text-[var(--color-navy)]"
             >
               Zones d&apos;intervention{" "}
-              <em className="italic text-[var(--color-gold)]">
+              <em className="italic text-[var(--color-gold-title)]">
                 en Île-de-France
               </em>
             </h2>

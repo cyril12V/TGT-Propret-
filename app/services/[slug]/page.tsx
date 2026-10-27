@@ -65,6 +65,21 @@ export async function generateMetadata({
     keywords: service.keywords,
   });
 }
+function Gold({ text }: { text: string }) {
+  return (
+    <>
+      {text.split(/(\*\*[^*]+\*\*)/g).map((part, i) =>
+        part.startsWith("**") ? (
+          <strong key={i} className="font-semibold text-[var(--color-gold-title)]">
+            {part.slice(2, -2)}
+          </strong>
+        ) : (
+          part
+        )
+      )}
+    </>
+  );
+}
 
 export default async function ServicePage({
   params,
@@ -141,7 +156,7 @@ export default async function ServicePage({
             />
 
             <p className="mt-5 max-w-2xl text-lg leading-relaxed text-white/85">
-              {service.tldr ?? service.shortDesc}
+              <Gold text={service.tldr ?? service.shortDesc} />
             </p>
             {service.priceRange && (
               <div className="mt-5 inline-flex items-center gap-2 border border-[var(--color-gold)]/50 bg-[var(--color-navy)]/40 px-4 py-2 text-sm backdrop-blur-sm">
@@ -165,7 +180,7 @@ export default async function ServicePage({
                   En quoi consiste ce service ?
                 </h2>
                 <p className="text-[15px] leading-relaxed text-[var(--color-muted)]">
-                  {service.longDesc}
+                  <Gold text={service.longDesc} />
                 </p>
 
                 {/* Corps de page détaillé : chaque H2 ouvre sur une réponse directe,
@@ -173,11 +188,11 @@ export default async function ServicePage({
                 {service.sections?.map((section) => (
                   <section key={section.h2} className="pt-6">
                     <h2 className="font-serif relative inline-block after:absolute after:bottom-[2px] after:left-0 after:h-[2px] after:w-full after:bg-[linear-gradient(to_right,transparent,var(--color-gold))] text-3xl font-light text-[var(--color-navy)]">
-                      {section.h2}
+                      <Gold text={section.h2} />
                     </h2>
                     {section.intro && (
                       <p className="mt-5 text-[15px] leading-relaxed text-[var(--color-muted)]">
-                        {section.intro}
+                        <Gold text={section.intro} />
                       </p>
                     )}
                     {section.items && section.items.length > 0 && (
@@ -188,7 +203,7 @@ export default async function ServicePage({
                               className="mt-[9px] h-1 w-3 flex-shrink-0 bg-[var(--color-gold)]"
                               aria-hidden="true"
                             />
-                            <span>{item}</span>
+                            <span><Gold text={item} /></span>
                           </li>
                         ))}
                       </ul>
@@ -197,11 +212,11 @@ export default async function ServicePage({
                     {section.blocks?.map((block) => (
                       <div key={block.h3} className="mt-7">
                         <h3 className="font-serif text-xl font-semibold text-[var(--color-navy)]">
-                          {block.h3}
+                          <Gold text={block.h3} />
                         </h3>
                         {block.text && (
                           <p className="mt-2 text-[15px] leading-relaxed text-[var(--color-muted)]">
-                            {block.text}
+                            <Gold text={block.text} />
                           </p>
                         )}
                         {block.items && block.items.length > 0 && (
@@ -212,7 +227,7 @@ export default async function ServicePage({
                                   className="mt-[9px] h-1 w-3 flex-shrink-0 bg-[var(--color-gold)]"
                                   aria-hidden="true"
                                 />
-                                <span>{item}</span>
+                                <span><Gold text={item} /></span>
                               </li>
                             ))}
                           </ul>
@@ -234,7 +249,7 @@ export default async function ServicePage({
                                     scope="col"
                                     className="py-3 pr-4 text-[11px] font-semibold uppercase tracking-[0.15em] text-[var(--color-navy)]"
                                   >
-                                    {h}
+                                    <Gold text={h} />
                                   </th>
                                 ))}
                               </tr>
@@ -254,7 +269,7 @@ export default async function ServicePage({
                                           : "text-[var(--color-muted)]"
                                       }`}
                                     >
-                                      {cell}
+                                      <Gold text={cell} />
                                     </td>
                                   ))}
                                 </tr>
@@ -264,7 +279,7 @@ export default async function ServicePage({
                         </div>
                         {section.table.note && (
                           <p className="mt-3 text-[13px] italic leading-relaxed text-[var(--color-muted)]">
-                            {section.table.note}
+                            <Gold text={section.table.note} />
                           </p>
                         )}
                       </div>
@@ -272,7 +287,7 @@ export default async function ServicePage({
 
                     {section.outro && (
                       <p className="mt-6 text-[15px] leading-relaxed text-[var(--color-muted)]">
-                        {section.outro}
+                        <Gold text={section.outro} />
                       </p>
                     )}
                   </section>
@@ -285,14 +300,14 @@ export default async function ServicePage({
                   <ol className="mt-5 space-y-3 text-[15px] text-[var(--color-muted)]">
                     {process.map((p, i) => (
                       <li key={p.step} className="flex gap-3">
-                        <span className="font-semibold text-[var(--color-gold)]">
+                        <span className="font-semibold text-[var(--color-gold-text)]">
                           {String(i + 1).padStart(2, "0")}.
                         </span>
                         <span>
                           <strong className="font-semibold text-[var(--color-navy)]">
                             {p.step}
                           </strong>{" "}
-                          — {p.text}
+                          — <Gold text={p.text} />
                         </span>
                       </li>
                     ))}
@@ -323,7 +338,7 @@ export default async function ServicePage({
                     <li>
                       <Link
                         href="/zones"
-                        className="inline-block border border-[var(--color-gold)] bg-white px-3 py-1.5 text-[13px] font-semibold text-[var(--color-gold)] transition-colors hover:bg-[var(--color-gold)] hover:text-white"
+                        className="inline-block border border-[var(--color-gold)] bg-white px-3 py-1.5 text-[var(--color-gold-text)] text-[13px] font-semibold text-[var(--color-gold-text)] transition-colors hover:bg-[var(--color-gold)] hover:text-white"
                       >
                         Toutes nos zones →
                       </Link>

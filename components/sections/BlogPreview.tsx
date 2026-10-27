@@ -24,7 +24,7 @@ export function BlogPreview() {
               className="font-serif text-[clamp(36px,5vw,60px)] font-light leading-none"
             >
               Conseils &amp;{" "}
-              <em className="italic text-[var(--color-gold)]">retours d&apos;expérience</em>
+              <em className="italic text-[var(--color-gold-title)]">retours d&apos;expérience</em>
             </h2>
             <div className="mt-6 h-[2px] w-full max-w-[296px] bg-gradient-to-r from-transparent via-[#c9a84c] to-transparent"></div>
             <p className="text-[15px] leading-relaxed text-[var(--color-muted)]">

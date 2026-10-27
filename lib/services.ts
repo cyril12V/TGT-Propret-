@@ -425,31 +425,38 @@ export const SERVICES: readonly Service[] = [
           },
         ],
       },
-      {
-        h2: "Où et quand intervenons-nous ?",
-        intro:
-          "Nous couvrons Paris intra-muros dans ses 20 arrondissements, ainsi que la proche couronne : Boulogne-Billancourt, Levallois-Perret, Neuilly-sur-Seine, Saint-Denis, Montreuil, Vincennes, Issy-les-Moulineaux. La flexibilité horaire est totale : nos équipes interviennent le matin avant 9h, le soir après 18h, ou la nuit pour les sites sensibles. Aucun agent n'est présent pendant vos heures de bureau si vous le souhaitez. Des interventions 7j/7 sont possibles selon le contrat.",
-      },
-      {
-        h2: "Combien coûte le nettoyage de bureaux à Paris ?",
-        intro:
-          "Le prix dépend de la surface, de la fréquence de passage et des prestations incluses. Voici les fourchettes que nous constatons sur nos contrats parisiens en entretien régulier.",
-        table: {
-          headers: ["Surface", "Fréquence", "Budget mensuel estimé"],
-          rows: [
-            ["Petit bureau, environ 50 m²", "3 × / semaine", "150 – 300 € / mois"],
-            ["Bureau moyen, environ 200 m²", "5 × / semaine", "500 – 900 € / mois"],
-            [
-              "Grand plateau, environ 500 m²",
-              "5 × / semaine",
-              "1 200 – 2 000 € / mois",
-            ],
-          ],
-          note: "Fourchettes indicatives. Le prix final dépend aussi de l'accessibilité du site, des services complémentaires comme les vitres ou les moquettes, et des horaires d'intervention.",
-        },
-        outro:
-          "Le matériel professionnel, les produits et l'encadrement de l'agent sont toujours inclus. Seuls les consommables sanitaires font l'objet d'une option de gestion de stock. Un responsable de secteur se déplace pour évaluer vos locaux avant toute proposition chiffrée : la visite est gratuite et le devis vous parvient sous 24h.",
-      },
+
+{
+  h2: "Où et quand intervenons-nous ?",
+  intro:
+    "Nous sommes basés à **Bondy, en Seine-Saint-Denis**, et nous intervenons dans **toute l'Île-de-France**, avec la même exigence de qualité partout. Certains secteurs sont simplement ceux où nous sommes le plus proches de vous, donc **encore plus réactifs** : **le 93** (Bondy, Bobigny, Pantin, Noisy-le-Sec, Montreuil, Saint-Denis, Aubervilliers, Rosny-sous-Bois, Drancy, Aulnay-sous-Bois…), **Paris (75)** dans tous les arrondissements, et **le Val-d'Oise autour de Cergy** (Cergy-Pontoise, Pontoise, Osny, Saint-Ouen-l'Aumône, Éragny, Jouy-le-Moutier, Herblay, Argenteuil…), où je vis moi-même, Rabah Ammouche, gérant de TGT Propreté. Pour une urgence ou un imprévu dans ces secteurs, nous pouvons être chez vous **très vite**. Nous intervenons aussi **partout ailleurs en Île-de-France** : Hauts-de-Seine et Val-de-Marne (La Défense, Levallois-Perret, Neuilly-sur-Seine, Boulogne-Billancourt, Issy-les-Moulineaux, Nanterre, Vincennes, Créteil), **Yvelines, Essonne et Seine-et-Marne**. Où que vos locaux se trouvent, **vous avez un interlocuteur qui connaît votre dossier et répond rapidement**.",
+},
+{
+  h2: "Combien coûte le nettoyage de bureaux à Paris et en Île-de-France ?",
+  intro:
+    "Nos forfaits sont **mensuels, fixes et sans surprise** : le prix dépend uniquement de la **surface de vos locaux** et de la **fréquence de passage**. Tous les montants ci-dessous sont en € HT par mois, **matériel professionnel et produits inclus**.",
+  table: {
+    headers: [
+      "Surface (tarifs en € HT / mois)",
+      "Essentiel · 1 passage/sem",
+      "Sérénité · 2 passages/sem",
+      "Confort · 3 passages/sem",
+      "Premium · 5 passages/sem",
+    ],
+    rows: [
+      ["30 à 50 m² — Petits bureaux", "180 € / mois", "315 € / mois", "440 € / mois", "740 € / mois"],
+      ["51 à 80 m² — Petits bureaux", "245 € / mois", "440 € / mois", "635 € / mois", "1 025 € / mois"],
+      ["81 à 120 m² — Moyens bureaux", "350 € / mois", "620 € / mois", "880 € / mois", "1 410 € / mois"],
+      ["121 à 160 m² — Moyens bureaux", "460 € / mois", "825 € / mois", "1 175 € / mois", "1 890 € / mois"],
+      ["161 à 200 m² — Grands bureaux", "575 € / mois", "1 025 € / mois", "1 460 € / mois", "2 340 € / mois"],
+      ["201 à 300 m² — Grands bureaux", "750 € / mois", "1 325 € / mois", "1 875 € / mois", "3 025 € / mois"],
+      ["301 à 400 m² — Très grands bureaux", "1 015 € / mois", "1 785 € / mois", "2 520 € / mois", "4 060 € / mois"],
+    ],
+    note: "Tous les prix sont des **forfaits mensuels** en € HT. Minimum de facturation : **180 € HT / mois**. Au-delà de 400 m² (sièges sociaux, plateaux > 500 m²) : **tarification personnalisée sur étude**, dès 2,50 €/m²/mois. Révision annuelle sur indice IOP (indexation professionnelle du nettoyage).",
+  },
+  outro:
+    "**Un seul interlocuteur, quel que soit votre secteur** : vous appelez **Rabah** ou **Malika**, pas une plateforme. Côté horaires, **nous nous adaptons à vous, pas l'inverse** : avant 9h, après 18h, de nuit pour les sites sensibles, et même le week-end selon le contrat. Si vous le souhaitez, **personne n'est présent pendant vos heures de bureau**. Et si votre site est un peu plus éloigné, dites-le-nous : nous trouvons toujours une organisation qui **garde la qualité sans vous faire payer un trajet inutile**. Notre objectif est simple : **que vous n'ayez plus à penser à la propreté de vos locaux**.",
+},
       {
         h2: "Nos engagements",
         items: [
@@ -1847,7 +1854,7 @@ export const SERVICES: readonly Service[] = [
     pole: "B2B & B2C",
     bgImage: "/images/bg_nettoyage-sur-mesure-conciergerie.jpg",
     Icon: Sliders,
-    title: "Prestations Sur-Mesure & Conciergerie",
+    title: "Nettoyage Airbnb Haute Exigence pour Conciergeries",
     shortDesc:
       "Une exigence unique ? Nous concevons votre protocole d'entretien exclusif et entièrement personnalisé.",
     longDesc:
@@ -1858,7 +1865,7 @@ export const SERVICES: readonly Service[] = [
       "menage conciergerie courte duree",
       "blanchisserie conciergerie paris",
     ],
-    priceRange: "Sur étude privée (FORFAITS DISPONIBLES)",
+    priceRange: "Voir grille tarifaire ci-dessous",
     offers: [
       "Ménage de rotation Airbnb",
       "Gestion du linge de location courte durée",
@@ -1928,28 +1935,45 @@ export const SERVICES: readonly Service[] = [
           },
         ],
       },
-      {
-        h2: "Comment fonctionne la tarification en conciergerie ?",
-        intro:
-          "Nous fonctionnons au forfait par typologie de logement, du studio au T4 et plus, plutôt qu'au temps passé. C'est le seul mode compatible avec une gestion locative : vous connaissez votre coût par rotation à l'avance et pouvez le répercuter dans votre calcul de rentabilité.",
-        blocks: [
-          {
-            h3: "Deux niveaux de forfait",
-            items: [
-              "Forfait Light : ménage professionnel complet, hors gestion du linge",
-              "Forfait Premium : ménage, gestion du linge et réassort des consommables",
-            ],
-          },
-          {
-            h3: "Ce qui est inclus sans supplément",
-            text: "Les interventions du samedi et du dimanche sont comprises dans le forfait, sans majoration. C'est un point à vérifier systématiquement lorsque vous comparez des prestataires : le week-end concentre l'essentiel des rotations, et une majoration sur ces jours change complètement l'économie du contrat.",
-          },
-          {
-            h3: "Volume et ajustement",
-            text: "Les tarifs de base sont ajustés selon le volume annuel de rotations. Un parc de plusieurs logements ou une forte saisonnalité se négocient différemment d'un bien unique loué ponctuellement.",
-          },
-        ],
-      },
+     {
+  h2: "Comment fonctionne la tarification en conciergerie ?",
+  intro:
+    "Nous fonctionnons au **forfait par typologie de logement**, du studio au T4 et plus, plutôt qu'au temps passé. C'est le seul mode vraiment compatible avec une gestion locative : vous connaissez **votre coût par rotation à l'avance** et vous pouvez l'intégrer directement dans votre calcul de rentabilité. Tous les tarifs ci-dessous sont en **€ HT par rotation** (un ménage complet entre deux séjours). Ils sont **identiques le samedi et le dimanche, sans surcoût caché**.",
+  blocks: [
+    {
+      h3: "Deux niveaux de forfait",
+      items: [
+        "**Forfait Light** : ménage professionnel complet entre deux séjours, hors gestion du linge",
+        "**Forfait Premium** : ménage, **gestion complète du linge** et **réassort des consommables de base**, pour un logement prêt à accueillir sans que vous ayez à vous en occuper",
+      ],
+    },
+    {
+      h3: "Ce qui est inclus sans supplément",
+      text: "Les interventions du **samedi et du dimanche sont comprises dans le forfait, sans majoration**. C'est un point à vérifier systématiquement lorsque vous comparez des prestataires : le week-end concentre l'essentiel des rotations, et une majoration sur ces jours change complètement l'économie de votre contrat. Chez nous, **le prix annoncé est le prix facturé**.",
+    },
+    {
+      h3: "Volume et ajustement",
+      text: "Nos tarifs de base sont ajustés selon la **superficie exacte**, la **configuration des couchages** et le **volume annuel de rotations**. Un parc de plusieurs logements ou une forte saisonnalité se négocient différemment d'un bien unique : **plus vous nous confiez de rotations, plus nous construisons une offre avantageuse pour vous**.",
+    },
+  ],
+  table: {
+    headers: [
+      "Type de bien (tarifs en € HT / rotation)",
+      "Forfait Light · ménage seul",
+      "Forfait Premium · ménage + linge + réassort",
+    ],
+    rows: [
+      ["Studio / T1", "35 € / rotation", "45 € / rotation"],
+      ["T2", "50 € / rotation", "65 € / rotation"],
+      ["T3", "70 € / rotation", "85 € / rotation"],
+      ["T4", "85 € / rotation", "105 € / rotation"],
+      ["T5 et plus, maisons, villas", "Sur devis", "Sur devis*"],
+    ],
+    note: "Tous les prix sont en **€ HT par rotation**, **week-ends inclus sans majoration**. Le forfait Premium comprend la **gestion du linge standard** et le **réassort des consommables de base**. Tarifs ajustables selon la **superficie, la configuration des lits et le volume annuel de rotations** : **plus votre volume est important, plus nous pouvons faire évoluer le tarif en votre faveur**.",
+  },
+  outro:
+    "Notre objectif n'est pas de multiplier les interventions, mais que **vos voyageurs trouvent un logement impeccable à chaque arrivée** : de bons avis, c'est plus de réservations pour vous. Nous travaillons avec **un interlocuteur unique** (le Gérant ou la Co-Gérante, pas une plateforme) et nous sommes **réactifs sur les changements de dernière minute**, fréquents en conciergerie. Envoyez-nous la liste de vos logements : nous vous répondons avec **un devis personnalisé sous 24h**.",
+},
       {
         h2: "Comment se passe la coordination au quotidien ?",
         intro:

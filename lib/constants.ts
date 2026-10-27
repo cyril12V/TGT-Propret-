@@ -48,8 +48,8 @@ export type GoogleReviews = {
 
 export const GOOGLE_REVIEWS: GoogleReviews | null = {
   ratingValue: 5.0,
-  reviewCount: 11,
-  url: "https://www.google.com/maps/place/TGT+propret%C3%A9/@48.8999832,2.4817104,17z/data=!3m1!4b1!4m6!3m5!1s0x47e61332850736f1:0x6906ec8716523c4f!8m2!3d48.8999832!4d2.4817104",
+  reviewCount: 16,
+  url: "https://www.google.com/maps/place/Entreprise+de+Nettoyage+Paris+IDF+-+TGT+Propret%C3%A9%E2%81%A0/@48.8999832,2.4817104,17z/data=!4m8!3m7!1s0x47e61332850736f1:0x6906ec8716523c4f!8m2!3d48.8999832!4d2.4817104!9m1!1b1!16s%2Fg%2F11ypl9h2vx?entry=ttu&g_ep=EgoyMDI2MTAxMy4wIKXMDSoASAFQAw%3D%3D",
 };
 
 export const MALIKA = {
