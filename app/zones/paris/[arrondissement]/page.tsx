@@ -12,6 +12,8 @@ import { SERVICES } from "@/lib/services";
 import {
   PARIS_ARRONDISSEMENTS,
   getArrondissementBySlug,
+  arrondissementMetaTitle,
+  arrondissementMetaDescription,
 } from "@/lib/zones-paris";
 import {
   breadcrumbJsonLd,
@@ -36,8 +38,8 @@ export async function generateMetadata({
   if (!arr) return { title: "Arrondissement introuvable" };
 
   return buildMetadata({
-    title: `Entreprise de nettoyage Paris ${arr.number} (${arr.postalCode}) — TGT Propreté`,
-    description: `Société de nettoyage professionnel dans le ${arr.number}e arrondissement de Paris (${arr.district}). Bureaux, copropriétés, particuliers, fin de chantier. Devis gratuit sous 24h.`,
+    title: arrondissementMetaTitle(arr),
+    description: arrondissementMetaDescription(arr),
     path: `/zones/paris/${arr.slug}`,
     keywords: arr.keywords,
   });
@@ -55,7 +57,8 @@ export default async function ArrondissementPage({
   const intro = arr.intro;
   const paragraphs = intro.split(/\n\n+/).filter(Boolean);
 
-  const metaDescription = `Société de nettoyage professionnel dans le ${arr.number}e arrondissement de Paris (${arr.district}). Bureaux, copropriétés, particuliers, fin de chantier. Devis gratuit sous 24h.`;
+  // Même chaîne que la balise <meta> : une seule source, pas de divergence possible.
+  const metaDescription = arrondissementMetaDescription(arr);
 
   return (
     <>
@@ -260,7 +263,7 @@ export default async function ArrondissementPage({
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
             webPageJsonLd({
-              title: `Entreprise de nettoyage Paris ${arr.number}e (${arr.postalCode})`,
+              title: arrondissementMetaTitle(arr),
               description: metaDescription,
               path: `/zones/paris/${arr.slug}`,
               speakableSelectors: ["h1"],

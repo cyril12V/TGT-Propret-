@@ -110,10 +110,20 @@ export type Service = {
    * Sans lui, le template retombe sur « {title} à Paris ».
    */
   h1?: { lead: string; accent: string };
-  /** Title tag sur mesure. Sinon composé depuis `title`. */
-  metaTitle?: string;
-  /** Meta description sur mesure. Sinon composée depuis `shortDesc`. */
-  metaDescription?: string;
+  /**
+   * Title tag — OBLIGATOIRE, ≤ 60 caractères, mot-clé métier en tête, sans la
+   * marque (page profonde : Google l'ajoute souvent de lui-même, et les 15
+   * caractères libérés valent mieux en mots-clés).
+   *
+   * Le champ était optionnel avec un repli automatique qui ajoutait 37
+   * caractères de remplissage : 9 titles sur 16 dépassaient la limite de
+   * troncature et 10 ne contenaient pas le mot « nettoyage ». Le rendre
+   * obligatoire fait échouer `npm run typecheck` si un service est ajouté
+   * sans métadonnées — le compilateur remplace la vigilance.
+   */
+  metaTitle: string;
+  /** Meta description — OBLIGATOIRE, ≤ 155 caractères : bénéfice, preuve chiffrée, appel à l'action. */
+  metaDescription: string;
   /** Sources externes citées en fin de page. */
   sources?: ServiceSource[];
 };
@@ -134,6 +144,9 @@ export const SERVICES: readonly Service[] = [
 
   {
     slug: "nettoyage-restaurants-cuisines",
+    metaTitle: "Nettoyage de restaurant et cuisine pro à Paris",
+    metaDescription:
+      "Dégraissage des hottes et remise en état de salle aux normes HACCP. Intervention de nuit ou avant le service, dès 35 €/h. Devis gratuit sous 24h.",
     num: "01",
     pole: "b2b",
     bgImage: "/images/bg-restaurant&cuisine.jpg",
@@ -289,6 +302,9 @@ export const SERVICES: readonly Service[] = [
 
   {
     slug: "nettoyage-bureaux-entreprises",
+    metaTitle: "Nettoyage de bureaux à Paris : entretien professionnel",
+    metaDescription:
+      "Entretien quotidien, ponctuel ou sous contrat de vos locaux. Équipes formées, produits écolabellisés, dès 2,5 €/m². Devis gratuit sous 24h.",
     num: "02",
     pole: "b2b",
     bgImage: "/images/bg-bureaux&entreprise.jpg",
@@ -317,9 +333,6 @@ export const SERVICES: readonly Service[] = [
       lead: "Nettoyage de bureaux à Paris :",
       accent: "service professionnel et fiable",
     },
-    metaTitle: "Nettoyage Bureaux Paris | Entreprise Professionnelle | TGT Propreté",
-    metaDescription:
-      "Nettoyage de bureaux à Paris : entretien quotidien, ponctuel ou sous contrat. Équipes formées, produits écolabellisés, devis gratuit 24h. TGT Propreté.",
     relatedSlugs: [
       "nettoyage-des-vitres",
       "nettoyage-tapis-moquettes",
@@ -510,6 +523,9 @@ export const SERVICES: readonly Service[] = [
 
   {
     slug: "nettoyage-coproprietes-immeubles",
+    metaTitle: "Nettoyage de copropriété et d'immeuble à Paris",
+    metaDescription:
+      "Halls, escaliers, ascenseurs et sortie des containers. Contrat annuel sur mesure, fiche de passage horodatée pour votre syndic. Devis sous 24h.",
     num: "03",
     pole: "b2b",
     bgImage: "/images/bg_coproprietes-immeubles.jpg",
@@ -784,6 +800,9 @@ export const SERVICES: readonly Service[] = [
 
   {
     slug: "nettoyage-cabinets-medicaux-cliniques",
+    metaTitle: "Bionettoyage de cabinet médical et clinique à Paris",
+    metaDescription:
+      "Nettoyage puis désinfection en deux temps contre la contamination croisée. Produits virucides aux normes européennes. Devis gratuit sous 24h.",
     num: "04",
     pole: "b2b",
     bgImage: "/images/bg_cabinets-medicaux-cliniques.jpg",
@@ -915,6 +934,9 @@ export const SERVICES: readonly Service[] = [
 
   {
     slug: "nettoyage-fin-de-chantier",
+    metaTitle: "Nettoyage fin de chantier à Paris : remise en état",
+    metaDescription:
+      "Poussières de plâtre, voile de ciment, traces de peinture et vitrages traités sous 24 à 48h. De 4,50 à 8,50 €/m². Devis gratuit après visite.",
     num: "05",
     pole: "b2b",
     bgImage: "/images/bg_nettoyage-fin-de-chantier.jpg",
@@ -943,9 +965,6 @@ export const SERVICES: readonly Service[] = [
       lead: "Nettoyage fin de chantier à Paris :",
       accent: "remise en état professionnelle",
     },
-    metaTitle: "Nettoyage Fin de Chantier Paris | Remise en État | TGT Propreté",
-    metaDescription:
-      "Nettoyage fin de chantier à Paris et en IDF : gravats, poussières, sols, vitrages. Intervention sous 24 à 48h, équipes formées au BTP. Devis gratuit.",
     relatedSlugs: [
       "nettoyage-des-vitres",
       "renovation-sols-decapage",
@@ -1121,6 +1140,9 @@ export const SERVICES: readonly Service[] = [
 
   {
     slug: "nettoyage-des-vitres",
+    metaTitle: "Nettoyage de vitres et vitrines à Paris : sans trace",
+    metaDescription:
+      "Vitrines, baies vitrées et verrières lavées à l'eau pure, châssis et joints inclus. Finition sans trace, dès 2,50 €/m². Devis gratuit sous 24h.",
     num: "06",
     pole: "b2b",
     bgImage: "/images/bg_nettoyage-vitres.jpeg",
@@ -1265,6 +1287,9 @@ export const SERVICES: readonly Service[] = [
 
   {
     slug: "nettoyage-approfondi",
+    metaTitle: "Nettoyage approfondi à domicile à Paris : grand ménage",
+    metaDescription:
+      "Sols, four, hotte, plinthes et sanitaires détartrés en une seule intervention. À partir de 28 €/h, produits et matériel inclus. Devis sous 24h.",
     num: "07",
     pole: "B2B & B2C",
     bgImage: "/images/bg_nettoyage-approfondi.png",
@@ -1406,6 +1431,9 @@ export const SERVICES: readonly Service[] = [
 
   {
     slug: "nettoyage-canapes-fauteuils",
+    metaTitle: "Nettoyage de canapé et fauteuil à domicile à Paris",
+    metaDescription:
+      "Injection-extraction au cœur des fibres : taches, odeurs et acariens éliminés. Séchage en 4 à 12h. Devis sur simple photo, intervention à domicile.",
     num: "08",
     pole: "B2B & B2C",
     bgImage: "/images/bg_nettoyage-canapes-fauteuils.jpeg",
@@ -1567,6 +1595,9 @@ export const SERVICES: readonly Service[] = [
 
   {
     slug: "nettoyage-tapis-moquettes",
+    metaTitle: "Nettoyage de tapis et moquette à Paris : shampouinage",
+    metaDescription:
+      "Aspiration industrielle, brossage et injection-extraction sur place. Fibres ravivées, séchage en 4 à 8h, tarif au m² ou au forfait. Devis sous 24h.",
     num: "09",
     pole: "B2B & B2C",
     bgImage: "/images/bg_nettoyage-moquettes.png",
@@ -1725,6 +1756,9 @@ export const SERVICES: readonly Service[] = [
 
   {
     slug: "nettoyage-apres-sinistre",
+    metaTitle: "Nettoyage après sinistre à Paris : dégât des eaux",
+    metaDescription:
+      "Aspiration des eaux, assèchement, traitement anti-moisissures et désodorisation. Équipe mobilisée sous 24 à 48h, dossier pour votre assurance.",
     num: "10",
     pole: "B2B & B2C",
     bgImage: "/images/bg_Nettoyage-apres-sinistre.png",
@@ -1850,6 +1884,9 @@ export const SERVICES: readonly Service[] = [
   },
   {
     slug: "prestations-sur-mesure-conciergerie",
+    metaTitle: "Nettoyage Airbnb à Paris pour conciergeries",
+    metaDescription:
+      "Rotation sécurisée entre deux séjours : ménage, linge, consommables et reporting photo. Intervention 7j/7, week-end inclus. Devis sous 24h.",
     num: "12",
     pole: "B2B & B2C",
     bgImage: "/images/bg_nettoyage-sur-mesure-conciergerie.jpg",
@@ -2030,6 +2067,9 @@ export const SERVICES: readonly Service[] = [
 
   {
     slug: "repassage-rangement-domicile",
+    metaTitle: "Repassage et rangement à domicile à Paris",
+    metaDescription:
+      "Repassage du linge, pliage et organisation de vos dressings par un intervenant régulier. À partir de 23 €/h. Devis gratuit sous 24h.",
     num: "11",
     pole: "B2C",
     bgImage: "/images/bg-repassage-rangement-domicile.jpg",
@@ -2166,6 +2206,9 @@ export const SERVICES: readonly Service[] = [
 
   {
     slug: "nettoyage-commerces-boutiques",
+    metaTitle: "Nettoyage de commerce et boutique à Paris",
+    metaDescription:
+      "Sols, vitrines, cabines d'essayage et réserves traités avant l'ouverture, dès 6h. Point de vente prêt dès 9h. Devis gratuit sous 24h.",
     num: "13",
     pole: "b2b",
     bgImage: "/images/bg_nettoyage-commerces-boutiques.jpg",
@@ -2330,6 +2373,9 @@ export const SERVICES: readonly Service[] = [
 
   {
     slug: "nettoyage-agences-immobilieres",
+    metaTitle: "Nettoyage avant état des lieux à Paris : relocation",
+    metaDescription:
+      "Logement remis en état entre deux locataires ou avant visites, sous 24 à 48h. Facturation agence, bailleur ou locataire. Devis gratuit sous 24h.",
     num: "14",
     pole: "b2b",
     bgImage: "/images/bg_nettoyage-approfondi.png",
@@ -2492,6 +2538,9 @@ export const SERVICES: readonly Service[] = [
 
   {
     slug: "desinfection-locaux",
+    metaTitle: "Désinfection de locaux professionnels à Paris",
+    metaDescription:
+      "Points de contact et surfaces traités avec des produits virucides, bactéricides et fongicides aux normes européennes. Devis gratuit sous 24h.",
     num: "15",
     pole: "b2b",
     bgImage: "/images/bg_cabinets-medicaux-cliniques.jpg",
@@ -2659,6 +2708,9 @@ export const SERVICES: readonly Service[] = [
 
   {
     slug: "renovation-sols-decapage",
+    metaTitle: "Rénovation de sols et décapage à Paris : remise en éclat",
+    metaDescription:
+      "Thermoplastique, carrelage, marbre, pierre et béton : décapage, remise en éclat puis nouvelle protection. Devis au m² après visite, gratuit.",
     num: "16",
     pole: "b2b",
     bgImage: "/images/bg_nettoyage-moquettes.png",

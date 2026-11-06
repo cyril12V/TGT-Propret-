@@ -10,9 +10,14 @@ import {
 export const SITE = {
   name: "TGT Propreté",
   brand: "TGT Propreté Soigné",
-  tagline: "Entreprise de Nettoyage Paris & Île-de-France",
+  tagline: "Entreprise de nettoyage Paris & Île-de-France",
+  /**
+   * Meta description de l'accueil — 150 caractères, sous la limite de
+   * troncature SERP (~155). Alimente aussi `localBusinessJsonLd` et le
+   * `webPageJsonLd` de l'accueil : les trois restent ainsi cohérents.
+   */
   description:
-    "Entreprise de nettoyage professionnel à Paris et en Île-de-France. Bureaux, copropriétés, fin de chantier, vitres, canapés, tapis. Devis gratuit sous 24h, sans engagement.",
+    "Entreprise de nettoyage professionnel à Paris et en Île-de-France : bureaux, copropriétés, commerces, fin de chantier, vitres. Devis gratuit sous 24h.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://nettoyagesidf.fr",
   locale: "fr_FR",
   foundingYear: 2018,

@@ -41,9 +41,9 @@ const PARIS_FAQS = [
 ];
 
 export const metadata: Metadata = buildMetadata({
-  title: "Entreprise de Nettoyage Paris — Devis gratuit 24h | TGT Propreté",
+  title: "Nettoyage à Paris : les 20 arrondissements | TGT Propreté",
   description:
-    "Entreprise de nettoyage professionnel à Paris : tous arrondissements. Bureaux, copropriétés, particuliers, fin de chantier, vitres, canapés, tapis. Devis gratuit sous 24h.",
+    "Nettoyage professionnel dans les 20 arrondissements de Paris : bureaux, copropriétés, commerces, chantiers, domicile. Devis gratuit sous 24h.",
   path: "/zones/paris",
   keywords: [
     "entreprise de nettoyage Paris",

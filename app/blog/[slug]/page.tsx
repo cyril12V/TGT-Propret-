@@ -24,9 +24,11 @@ export async function generateMetadata({
   const article = getArticleBySlug(slug);
   if (!article) return { title: "Article introuvable" };
 
+  // Le suffixe « — Blog TGT Propreté » poussait les 6 titles entre 79 et 91
+  // caractères. Page profonde : pas de marque, et un title rédigé pour la SERP.
   return buildMetadata({
-    title: `${article.title} — Blog TGT Propreté`,
-    description: article.excerpt,
+    title: article.metaTitle,
+    description: article.metaDescription,
     path: `/blog/${article.slug}`,
     keywords: article.keywords,
   });

@@ -14,6 +14,10 @@ export type Article = {
   slug: string;
   title: string;
   excerpt: string;
+  /** Title tag — OBLIGATOIRE, ≤ 60 caractères, sans la marque (page profonde). */
+  metaTitle: string;
+  /** Meta description — OBLIGATOIRE, ≤ 155 caractères. */
+  metaDescription: string;
   category: string;
   Icon: LucideIcon;
   author: string;
@@ -31,6 +35,9 @@ const list = "ml-5 list-disc space-y-2 text-[var(--color-muted)]";
 export const ARTICLES: readonly Article[] = [
   {
     slug: "prix-nettoyage-bureaux-paris-2026",
+    metaTitle: "Prix du nettoyage de bureaux à Paris en 2026",
+    metaDescription:
+      "Fourchettes de prix au m² et par fréquence de passage, et les trois facteurs qui font varier un devis de nettoyage de bureaux à Paris.",
     title: "Prix nettoyage bureaux Paris 2026 : fourchettes par m² et par fréquence",
     excerpt:
       "Combien coûte vraiment un contrat d'entretien de bureaux à Paris en 2026 ? Fourchettes par m², par fréquence, par arrondissement, et les pièges à éviter pour ne pas surpayer.",
@@ -217,6 +224,9 @@ export const ARTICLES: readonly Article[] = [
   },
   {
     slug: "nettoyage-copropriete-paris-guide-syndic",
+    metaTitle: "Nettoyage de copropriété à Paris : guide du syndic",
+    metaDescription:
+      "Fréquences, cahier des charges, budget et points de contrôle : ce qu'un syndic doit savoir avant de confier l'entretien d'un immeuble.",
     title: "Nettoyage copropriété Paris : le guide complet pour syndics",
     excerpt:
       "Obligations, tarifs, cadrage du contrat, gestion des déchets : tout ce qu'un syndic ou un conseil syndical parisien doit savoir avant de signer un contrat de nettoyage des parties communes.",
@@ -429,6 +439,9 @@ export const ARTICLES: readonly Article[] = [
   },
   {
     slug: "comment-choisir-entreprise-nettoyage-paris",
+    metaTitle: "Choisir son entreprise de nettoyage à Paris",
+    metaDescription:
+      "Assurances, personnel déclaré, cahier des charges, visite préalable : les critères qui séparent un prestataire fiable des autres.",
     title: "Comment choisir son entreprise de nettoyage à Paris ? Le guide 2026",
     excerpt:
       "Certifications, assurance, équipe interne ou sous-traitance, transparence du devis — voici les 7 critères concrets pour ne pas se tromper en choisissant son prestataire de nettoyage à Paris.",
@@ -553,6 +566,9 @@ export const ARTICLES: readonly Article[] = [
   },
   {
     slug: "cout-nettoyage-professionnel-ile-de-france",
+    metaTitle: "Coût d'un nettoyage professionnel en Île-de-France",
+    metaDescription:
+      "Tarifs horaires et au m² selon le type de local et la fréquence, avec ce que recouvre réellement un devis de nettoyage professionnel.",
     title: "Combien coûte un nettoyage professionnel en Île-de-France ?",
     excerpt:
       "Particuliers ou entreprises, voici les vraies fourchettes de prix d'un service de nettoyage en Île-de-France, et les critères qui font varier la facture.",
@@ -658,6 +674,9 @@ export const ARTICLES: readonly Article[] = [
   },
   {
     slug: "frequence-nettoyage-bureaux-entreprise",
+    metaTitle: "Nettoyage de bureaux : à quelle fréquence ?",
+    metaDescription:
+      "Quotidien, trois fois par semaine ou hebdomadaire : comment choisir selon l'effectif, la surface et l'image que vos locaux renvoient.",
     title: "Nettoyage de bureaux : quelle fréquence choisir pour son entreprise ?",
     excerpt:
       "Quotidien, hebdomadaire ou mensuel ? Le bon rythme de nettoyage dépend de l'activité, de l'effectif et du niveau d'image attendu. Notre guide pour trancher.",
@@ -739,6 +758,9 @@ export const ARTICLES: readonly Article[] = [
   },
   {
     slug: "checklist-nettoyage-fin-de-chantier",
+    metaTitle: "Checklist du nettoyage de fin de chantier",
+    metaDescription:
+      "Les postes à contrôler avant la réception : poussières, voile de ciment, vitrages, sanitaires et sols, pièce par pièce.",
     title: "Fin de chantier : la checklist pour un nettoyage irréprochable",
     excerpt:
       "Plâtre, peinture, poussière de ponçage, traces de ciment… 12 points à vérifier pour livrer un logement vraiment propre après les travaux.",

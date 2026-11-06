@@ -14,6 +14,8 @@ import {
   getZoneBySlug,
   getNearbyZones,
   zonePreposition,
+  zoneMetaTitle,
+  zoneMetaDescription,
 } from "@/lib/zones";
 import { SITE, getYearsOfExperience } from "@/lib/constants";
 import {
@@ -39,8 +41,8 @@ export async function generateMetadata({
   if (!zone) return { title: "Zone introuvable" };
 
   return buildMetadata({
-    title: `Entreprise de nettoyage ${zone.name} (${zone.postalCode}) — TGT Propreté`,
-    description: `Nettoyage professionnel ${zonePreposition(zone)} ${zone.name} : bureaux, copropriétés, fin de chantier, vitres, textiles. Devis gratuit sous 24h. TGT Propreté intervient dans tout le ${zone.department}.`,
+    title: zoneMetaTitle(zone),
+    description: zoneMetaDescription(zone),
     path: `/zones/${zone.slug}`,
     keywords: zone.keywords,
   });
@@ -60,7 +62,8 @@ export default async function ZonePage({
   const prep = zonePreposition(zone); // « à Bondy » vs « en Seine-Saint-Denis »
   const years = getYearsOfExperience();
 
-  const metaDescription = `Nettoyage professionnel ${prep} ${zone.name} (${zone.postalCode}) : bureaux, copropriétés, commerces, fin de chantier, vitres et textiles. Devis gratuit sous 24h.`;
+  // Même chaîne que la balise <meta> : une seule source, pas de divergence possible.
+  const metaDescription = zoneMetaDescription(zone);
 
   return (
     <>
@@ -296,7 +299,7 @@ export default async function ZonePage({
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
             webPageJsonLd({
-              title: `Entreprise de nettoyage ${zone.name} (${zone.postalCode})`,
+              title: zoneMetaTitle(zone),
               description: metaDescription,
               path: `/zones/${zone.slug}`,
               speakableSelectors: ["h1"],

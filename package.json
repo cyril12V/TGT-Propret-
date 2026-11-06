@@ -10,7 +10,8 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "preflight": "npm run typecheck && npm run lint",
-    "ship": "npm run preflight && git add . && git commit -m \"chore: update $(date +%Y-%m-%d-%H%M)\" && git push"
+    "ship": "npm run preflight && git add . && git commit -m \"chore: update $(date +%Y-%m-%d-%H%M)\" && git push",
+    "check:seo": "node scripts/check-seo-lengths.mjs"
   },
   "dependencies": {
     "@types/nodemailer": "^8.0.1",

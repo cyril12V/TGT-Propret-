@@ -31,8 +31,8 @@ const HUB_FAQS = [
 ];
 
 export const metadata: Metadata = buildMetadata({
-  title: "Zones d'intervention — Paris & Île-de-France | TGT Propreté",
-  description: `Entreprise de nettoyage à Paris et en Île-de-France : 20 arrondissements et ${ZONES.length} communes desservies dans le 93, 92, 94, 78 et 91. Devis gratuit sous 24h.`,
+  title: "Zones d'intervention nettoyage Paris & IDF | TGT Propreté",
+  description: `20 arrondissements de Paris et ${ZONES.length} communes d'Île-de-France desservis depuis Bondy : 93, 92, 94, 78 et 91. Devis gratuit sous 24h.`,
   path: "/zones",
   keywords: [
     "zones d'intervention nettoyage Île-de-France",

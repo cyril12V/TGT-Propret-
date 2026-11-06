@@ -34,7 +34,7 @@ const DEVIS_FAQS = [
 export const metadata: Metadata = buildMetadata({
   title: "Devis nettoyage Paris gratuit sous 24h — TGT Propreté",
   description:
-    "Demandez votre devis nettoyage gratuit sous 24h. Bureaux, particuliers, copropriétés, fin de chantier à Paris et en Île-de-France. Sans engagement, réponse rapide.",
+    "Devis de nettoyage gratuit sous 24h, sans engagement : bureaux, copropriétés, commerces, chantiers, domicile. Paris et Île-de-France.",
   path: "/devis",
   keywords: [
     "devis nettoyage Paris",

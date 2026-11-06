@@ -55,12 +55,14 @@ export async function generateMetadata({
   const service = getServiceBySlug(slug);
   if (!service) return { title: "Service introuvable" };
 
+  // Plus de repli : `metaTitle` et `metaDescription` sont obligatoires sur le
+  // type `Service`. L'ancienne composition automatique ajoutait 37 caractères
+  // au title et 52 à la description, par-dessus un `shortDesc` écrit pour les
+  // cartes de l'interface — d'où des balises tronquées en résultats de
+  // recherche sur la majorité des pages.
   return buildMetadata({
-    title:
-      service.metaTitle ?? `${service.title} à Paris — TGT Propreté Île-de-France`,
-    description:
-      service.metaDescription ??
-      `${service.shortDesc} Devis gratuit sous 24h à Paris et en Île-de-France.`,
+    title: service.metaTitle,
+    description: service.metaDescription,
     path: `/services/${service.slug}`,
     keywords: service.keywords,
   });
@@ -520,8 +522,8 @@ export default async function ServicePage({
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
             webPageJsonLd({
-              title: `${service.title} à Paris`,
-              description: service.tldr ?? service.shortDesc,
+              title: service.metaTitle,
+              description: service.metaDescription,
               path: `/services/${service.slug}`,
               speakableSelectors: ["h1"],
             }),

@@ -35,8 +35,8 @@ const HUB_FAQS = [
 ];
 
 export const metadata: Metadata = buildMetadata({
-  title: "Nos Services de Nettoyage à Paris & Île-de-France | TGT Propreté",
-  description: `${SERVICES.length} prestations de nettoyage professionnel à Paris et en Île-de-France : bureaux, copropriétés, fin de chantier, vitres, restaurants, textiles. Devis gratuit sous 24h.`,
+  title: `Nos ${SERVICES.length} services de nettoyage à Paris | TGT Propreté`,
+  description: `${SERVICES.length} prestations de nettoyage à Paris et en Île-de-France : bureaux, copropriétés, restaurants, chantiers, textiles. Devis gratuit sous 24h.`,
   path: "/services",
   keywords: [
     "services de nettoyage Paris",

@@ -7,6 +7,9 @@ export type ParisArrondissement = {
   intro: string;
   highlights: string[];
   keywords: string[];
+  /** Surcharges de métadonnées, si un arrondissement mérite une rédaction propre. */
+  metaTitle?: string;
+  metaDescription?: string;
 };
 
 export const PARIS_ARRONDISSEMENTS: readonly ParisArrondissement[] = [
@@ -473,4 +476,31 @@ export function getArrondissementBySlug(
   slug: string,
 ): ParisArrondissement | undefined {
   return PARIS_ARRONDISSEMENTS.find((a) => a.slug === slug);
+}
+
+/**
+ * Title tag d'une page arrondissement — sans la marque (page profonde), sans
+ * le code postal, et en réinvestissant la place libérée dans l'incitation.
+ *
+ * `slug` porte déjà l'ordinal correct (« 1er », « 2e »…) : le recomposer à
+ * partir de `number` produirait « Paris 1e ».
+ */
+export function arrondissementMetaTitle(arr: ParisArrondissement): string {
+  return arr.metaTitle ?? `Entreprise de nettoyage Paris ${arr.slug} — Devis 24h`;
+}
+
+/**
+ * Source UNIQUE de la description : balise `<meta>` et blocs JSON-LD.
+ *
+ * `district` est volontairement écarté : de 20 à 49 caractères selon
+ * l'arrondissement, il faisait dépasser la limite de façon imprévisible. Il
+ * reste affiché dans le corps de la page.
+ */
+export function arrondissementMetaDescription(
+  arr: ParisArrondissement,
+): string {
+  return (
+    arr.metaDescription ??
+    `Nettoyage professionnel dans le ${arr.slug} arrondissement de Paris (${arr.postalCode}) : bureaux, copropriétés, commerces, fin de chantier. Devis gratuit sous 24h.`
+  );
 }

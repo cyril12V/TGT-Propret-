@@ -28,6 +28,13 @@ export type Zone = {
    * au lieu de City).
    */
   isDepartment?: boolean;
+  /**
+   * Surcharges de métadonnées, pour les quelques zones qui décolleront et
+   * mériteront une rédaction sur mesure. Sans elles, `zoneMetaTitle()` et
+   * `zoneMetaDescription()` composent le gabarit commun aux 21 communes.
+   */
+  metaTitle?: string;
+  metaDescription?: string;
 };
 
 export const ZONES: readonly Zone[] = [
@@ -932,6 +939,56 @@ export function getZoneBySlug(slug: string): Zone | undefined {
 /** « à Bondy » pour une commune, « en Seine-Saint-Denis » pour un département. */
 export function zonePreposition(zone: Zone): "à" | "en" {
   return zone.isDepartment ? "en" : "à";
+}
+
+/**
+ * Accord du département après « dans … ».
+ *
+ * Le gabarit précédent écrivait « dans tout le Seine-Saint-Denis » et
+ * « dans tout le Hauts-de-Seine » : chaque département demande son propre
+ * article, il n'y a pas de règle dérivable du nom.
+ */
+const PORTEE_DEPARTEMENT: Record<string, string> = {
+  "Seine-Saint-Denis": "toute la Seine-Saint-Denis",
+  "Hauts-de-Seine": "tous les Hauts-de-Seine",
+  "Val-de-Marne": "tout le Val-de-Marne",
+  "Val-d'Oise": "tout le Val-d'Oise",
+  "Seine-et-Marne": "toute la Seine-et-Marne",
+  Yvelines: "toutes les Yvelines",
+  Essonne: "toute l'Essonne",
+};
+
+export function zoneDepartmentScope(zone: Zone): string {
+  return PORTEE_DEPARTEMENT[zone.department] ?? `tout le ${zone.department}`;
+}
+
+/**
+ * Title tag d'une page zone — sans la marque (page profonde), et sans le code
+ * postal, qui faisait dépasser les 60 caractères sur les noms longs
+ * (Boulogne-Billancourt). Les caractères libérés portent l'incitation au clic,
+ * seul vrai levier sur un CTR de 0,70 %. Le code postal reste présent dans la
+ * description, le H1, les `keywords` et le JSON-LD.
+ *
+ * « Entreprise de nettoyage {commune} » est conservé mot pour mot : c'est la
+ * requête qui génère les impressions.
+ */
+export function zoneMetaTitle(zone: Zone): string {
+  return zone.metaTitle ?? `Entreprise de nettoyage ${zone.name} — Devis 24h`;
+}
+
+/**
+ * Source UNIQUE de la description d'une page zone : balise `<meta>` et blocs
+ * JSON-LD. Auparavant deux chaînes distinctes cohabitaient dans le même
+ * fichier et avaient divergé.
+ */
+export function zoneMetaDescription(zone: Zone): string {
+  if (zone.metaDescription) return zone.metaDescription;
+
+  const ou = zone.isDepartment
+    ? `dans ${zoneDepartmentScope(zone)} (${zone.postalCode})`
+    : `${zonePreposition(zone)} ${zone.name} (${zone.postalCode})`;
+
+  return `Nettoyage professionnel ${ou} : bureaux, copropriétés, commerces, fin de chantier, vitres. Devis gratuit sous 24h.`;
 }
 
 /** Communes proches déclarées via `nearbySlugs`, pour le maillage géographique. */

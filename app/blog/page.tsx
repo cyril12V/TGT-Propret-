@@ -9,9 +9,9 @@ import { ARTICLES, formatPublishedDate } from "@/lib/articles";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Le journal de TGT Propreté — conseils, prix, retours d'expérience",
+  title: "Blog nettoyage : conseils, prix et méthodes | TGT Propreté",
   description:
-    "Articles pratiques et retours d'expérience sur le nettoyage professionnel en Île-de-France : prix, fréquences, fin de chantier, écologie. Mis à jour régulièrement.",
+    "Conseils, prix et méthodes du nettoyage professionnel en Île-de-France : fréquences, fin de chantier, produits écologiques, budgets.",
   path: "/blog",
   keywords: [
     "blog nettoyage",
