@@ -112,14 +112,9 @@ export type Service = {
   h1?: { lead: string; accent: string };
   /**
    * Title tag — OBLIGATOIRE, ≤ 60 caractères, mot-clé métier en tête, sans la
-   * marque (page profonde : Google l'ajoute souvent de lui-même, et les 15
-   * caractères libérés valent mieux en mots-clés).
-   *
-   * Le champ était optionnel avec un repli automatique qui ajoutait 37
-   * caractères de remplissage : 9 titles sur 16 dépassaient la limite de
-   * troncature et 10 ne contenaient pas le mot « nettoyage ». Le rendre
-   * obligatoire fait échouer `npm run typecheck` si un service est ajouté
-   * sans métadonnées — le compilateur remplace la vigilance.
+   * marque (page profonde). Obligatoire pour que `npm run typecheck` échoue si
+   * un service est ajouté sans métadonnées, au lieu de produire une balise
+   * tronquée en silence.
    */
   metaTitle: string;
   /** Meta description — OBLIGATOIRE, ≤ 155 caractères : bénéfice, preuve chiffrée, appel à l'action. */
@@ -439,37 +434,37 @@ export const SERVICES: readonly Service[] = [
         ],
       },
 
-{
-  h2: "Où et quand intervenons-nous ?",
-  intro:
-    "Nous sommes basés à **Bondy, en Seine-Saint-Denis**, et nous intervenons dans **toute l'Île-de-France**, avec la même exigence de qualité partout. Certains secteurs sont simplement ceux où nous sommes le plus proches de vous, donc **encore plus réactifs** : **le 93** (Bondy, Bobigny, Pantin, Noisy-le-Sec, Montreuil, Saint-Denis, Aubervilliers, Rosny-sous-Bois, Drancy, Aulnay-sous-Bois…), **Paris (75)** dans tous les arrondissements, et **le Val-d'Oise autour de Cergy** (Cergy-Pontoise, Pontoise, Osny, Saint-Ouen-l'Aumône, Éragny, Jouy-le-Moutier, Herblay, Argenteuil…), où je vis moi-même, Rabah Ammouche, gérant de TGT Propreté. Pour une urgence ou un imprévu dans ces secteurs, nous pouvons être chez vous **très vite**. Nous intervenons aussi **partout ailleurs en Île-de-France** : Hauts-de-Seine et Val-de-Marne (La Défense, Levallois-Perret, Neuilly-sur-Seine, Boulogne-Billancourt, Issy-les-Moulineaux, Nanterre, Vincennes, Créteil), **Yvelines, Essonne et Seine-et-Marne**. Où que vos locaux se trouvent, **vous avez un interlocuteur qui connaît votre dossier et répond rapidement**.",
-},
-{
-  h2: "Combien coûte le nettoyage de bureaux à Paris et en Île-de-France ?",
-  intro:
-    "Nos forfaits sont **mensuels, fixes et sans surprise** : le prix dépend uniquement de la **surface de vos locaux** et de la **fréquence de passage**. Tous les montants ci-dessous sont en € HT par mois, **matériel professionnel et produits inclus**.",
-  table: {
-    headers: [
-      "Surface (tarifs en € HT / mois)",
-      "Essentiel · 1 passage/sem",
-      "Sérénité · 2 passages/sem",
-      "Confort · 3 passages/sem",
-      "Premium · 5 passages/sem",
-    ],
-    rows: [
-      ["30 à 50 m² — Petits bureaux", "180 € / mois", "315 € / mois", "440 € / mois", "740 € / mois"],
-      ["51 à 80 m² — Petits bureaux", "245 € / mois", "440 € / mois", "635 € / mois", "1 025 € / mois"],
-      ["81 à 120 m² — Moyens bureaux", "350 € / mois", "620 € / mois", "880 € / mois", "1 410 € / mois"],
-      ["121 à 160 m² — Moyens bureaux", "460 € / mois", "825 € / mois", "1 175 € / mois", "1 890 € / mois"],
-      ["161 à 200 m² — Grands bureaux", "575 € / mois", "1 025 € / mois", "1 460 € / mois", "2 340 € / mois"],
-      ["201 à 300 m² — Grands bureaux", "750 € / mois", "1 325 € / mois", "1 875 € / mois", "3 025 € / mois"],
-      ["301 à 400 m² — Très grands bureaux", "1 015 € / mois", "1 785 € / mois", "2 520 € / mois", "4 060 € / mois"],
-    ],
-    note: "Tous les prix sont des **forfaits mensuels** en € HT. Minimum de facturation : **180 € HT / mois**. Au-delà de 400 m² (sièges sociaux, plateaux > 500 m²) : **tarification personnalisée sur étude**, dès 2,50 €/m²/mois. Révision annuelle sur indice IOP (indexation professionnelle du nettoyage).",
-  },
-  outro:
-    "**Un seul interlocuteur, quel que soit votre secteur** : vous appelez **Rabah** ou **Malika**, pas une plateforme. Côté horaires, **nous nous adaptons à vous, pas l'inverse** : avant 9h, après 18h, de nuit pour les sites sensibles, et même le week-end selon le contrat. Si vous le souhaitez, **personne n'est présent pendant vos heures de bureau**. Et si votre site est un peu plus éloigné, dites-le-nous : nous trouvons toujours une organisation qui **garde la qualité sans vous faire payer un trajet inutile**. Notre objectif est simple : **que vous n'ayez plus à penser à la propreté de vos locaux**.",
-},
+      {
+        h2: "Où et quand intervenons-nous ?",
+        intro:
+          "Nous sommes basés à **Bondy, en Seine-Saint-Denis**, et nous intervenons dans **toute l'Île-de-France**, avec la même exigence de qualité partout. Certains secteurs sont simplement ceux où nous sommes le plus proches de vous, donc **encore plus réactifs** : **le 93** (Bondy, Bobigny, Pantin, Noisy-le-Sec, Montreuil, Saint-Denis, Aubervilliers, Rosny-sous-Bois, Drancy, Aulnay-sous-Bois…), **Paris (75)** dans tous les arrondissements, et **le Val-d'Oise autour de Cergy** (Cergy-Pontoise, Pontoise, Osny, Saint-Ouen-l'Aumône, Éragny, Jouy-le-Moutier, Herblay, Argenteuil…), où je vis moi-même, Rabah Ammouche, gérant de TGT Propreté. Pour une urgence ou un imprévu dans ces secteurs, nous pouvons être chez vous **très vite**. Nous intervenons aussi **partout ailleurs en Île-de-France** : Hauts-de-Seine et Val-de-Marne (La Défense, Levallois-Perret, Neuilly-sur-Seine, Boulogne-Billancourt, Issy-les-Moulineaux, Nanterre, Vincennes, Créteil), **Yvelines, Essonne et Seine-et-Marne**. Où que vos locaux se trouvent, **vous avez un interlocuteur qui connaît votre dossier et répond rapidement**.",
+      },
+      {
+        h2: "Combien coûte le nettoyage de bureaux à Paris et en Île-de-France ?",
+        intro:
+          "Nos forfaits sont **mensuels, fixes et sans surprise** : le prix dépend uniquement de la **surface de vos locaux** et de la **fréquence de passage**. Tous les montants ci-dessous sont en € HT par mois, **matériel professionnel et produits inclus**.",
+        table: {
+          headers: [
+            "Surface (tarifs en € HT / mois)",
+            "Essentiel · 1 passage/sem",
+            "Sérénité · 2 passages/sem",
+            "Confort · 3 passages/sem",
+            "Premium · 5 passages/sem",
+          ],
+          rows: [
+            ["30 à 50 m² — Petits bureaux", "180 € / mois", "315 € / mois", "440 € / mois", "740 € / mois"],
+            ["51 à 80 m² — Petits bureaux", "245 € / mois", "440 € / mois", "635 € / mois", "1 025 € / mois"],
+            ["81 à 120 m² — Moyens bureaux", "350 € / mois", "620 € / mois", "880 € / mois", "1 410 € / mois"],
+            ["121 à 160 m² — Moyens bureaux", "460 € / mois", "825 € / mois", "1 175 € / mois", "1 890 € / mois"],
+            ["161 à 200 m² — Grands bureaux", "575 € / mois", "1 025 € / mois", "1 460 € / mois", "2 340 € / mois"],
+            ["201 à 300 m² — Grands bureaux", "750 € / mois", "1 325 € / mois", "1 875 € / mois", "3 025 € / mois"],
+            ["301 à 400 m² — Très grands bureaux", "1 015 € / mois", "1 785 € / mois", "2 520 € / mois", "4 060 € / mois"],
+          ],
+          note: "Tous les prix sont des **forfaits mensuels** en € HT. Minimum de facturation : **180 € HT / mois**. Au-delà de 400 m² (sièges sociaux, plateaux > 500 m²) : **tarification personnalisée sur étude**, dès 2,50 €/m²/mois. Révision annuelle sur indice IOP (indexation professionnelle du nettoyage).",
+        },
+        outro:
+          "**Un seul interlocuteur, quel que soit votre secteur** : vous appelez **Rabah** ou **Malika**, pas une plateforme. Côté horaires, **nous nous adaptons à vous, pas l'inverse** : avant 9h, après 18h, de nuit pour les sites sensibles, et même le week-end selon le contrat. Si vous le souhaitez, **personne n'est présent pendant vos heures de bureau**. Et si votre site est un peu plus éloigné, dites-le-nous : nous trouvons toujours une organisation qui **garde la qualité sans vous faire payer un trajet inutile**. Notre objectif est simple : **que vous n'ayez plus à penser à la propreté de vos locaux**.",
+      },
       {
         h2: "Nos engagements",
         items: [
@@ -797,7 +792,6 @@ export const SERVICES: readonly Service[] = [
       },
     ],
   },
-
   {
     slug: "nettoyage-cabinets-medicaux-cliniques",
     metaTitle: "Bionettoyage de cabinet médical et clinique à Paris",
@@ -931,12 +925,11 @@ export const SERVICES: readonly Service[] = [
       },
     ],
   },
-
   {
     slug: "nettoyage-fin-de-chantier",
     metaTitle: "Nettoyage fin de chantier à Paris : remise en état",
     metaDescription:
-      "Poussières de plâtre, voile de ciment, traces de peinture et vitrages traités sous 24 à 48h. De 4,50 à 8,50 €/m². Devis gratuit après visite.",
+      "Poussières de plâtre, voile de ciment, traces de peinture et vitrages traités sous 24 à 48h. Forfaits dès 180 € HT. Devis gratuit après visite.",
     num: "05",
     pole: "b2b",
     bgImage: "/images/bg_nettoyage-fin-de-chantier.jpg",
@@ -952,7 +945,8 @@ export const SERVICES: readonly Service[] = [
       "nettoyage post-rénovation",
       "nettoyage fin de chantier Île-de-France",
     ],
-    priceRange: "4,50€ à 8,50€ / m² • Sur Devis (après visite ou plans)",
+    priceRange:
+      "À partir de 180 € HT (studio) • Forfaits par type de logement • Bureaux et grandes surfaces : 4,50 € à 8,50 € / m² sur devis",
     offers: [
       "Remise en état après travaux",
       "Élimination des poussières de plâtre",
@@ -960,7 +954,7 @@ export const SERVICES: readonly Service[] = [
       "Grattage des traces de peinture et de colle",
       "Lavage des vitres de fin de chantier",
     ],
-    tldr: "TGT Propreté prend en charge le nettoyage de fin de chantier à Paris et dans toute l'Île-de-France : évacuation des gravats, dépoussiérage complet, traitement des sols et des vitrages. Nous livrons un espace prêt pour la réception, avec une intervention sous 24 à 48 heures après la fin des travaux.",
+    tldr: "TGT Propreté prend en charge le nettoyage de fin de chantier à Paris et dans toute l'Île-de-France : évacuation des gravats, dépoussiérage complet, traitement des sols et des vitrages, dès 180 € HT pour un studio. Nous livrons un espace prêt pour la réception, avec une intervention sous 24 à 48 heures après la fin des travaux.",
     h1: {
       lead: "Nettoyage fin de chantier à Paris :",
       accent: "remise en état professionnelle",
@@ -1072,10 +1066,26 @@ export const SERVICES: readonly Service[] = [
       {
         h2: "Combien coûte un nettoyage de fin de chantier ?",
         intro:
-          "Notre fourchette indicative va de 4,50 € à 8,50 € du mètre carré. L'écart entre ces deux bornes tient à l'état réel du chantier, que seule une visite ou l'examen des plans permet d'évaluer. Un plateau de bureaux livré propre par les entreprises se situe en bas de fourchette ; un logement rénové avec dépose de cloisons, ponçage et reprise de peinture se situe en haut.",
+          "Pas de mauvaise surprise le jour de la facture : pour les logements, nous travaillons avec **une grille de forfaits clairs, par type de bien**. Le prix est annoncé **avant** l'intervention, et c'est **Rabah** ou **Malika** qui vous le confirment après avoir vu le chantier, pas un standard téléphonique. Les montants ci-dessous sont des **tarifs minimums en € HT**, pour **un nettoyage de fin de chantier standard** (logement vide, dépoussiérage, traces de peinture, vitres intérieures).",
+        table: {
+          headers: [
+            "Type de logement",
+            "Surface estimée",
+            "Tarif minimum (€ HT, forfait unique)",
+          ],
+          rows: [
+            ["Studio / T1", "Jusqu'à 25 m²", "180 € HT"],
+            ["T2", "30 à 45 m²", "280 € HT"],
+            ["T3", "50 à 65 m²", "410 € HT"],
+            ["T4", "70 à 90 m²", "650 € HT"],
+            ["Au-delà du T4", "Plus de 90 m²", "Sur devis personnalisé"],
+          ],
+          note: "Ces tarifs sont des **forfaits minimums en € HT**, calculés pour **un chantier standard**. Ils s'ajustent selon **l'état réel des lieux**, le **volume de gravats** et la **configuration du chantier**. La **durée d'intervention** vous est précisée **après la visite de vérification**, une fois l'état du logement et les conditions d'accès constatés. **Aucun supplément n'est facturé sans votre accord préalable.**",
+        },
         blocks: [
           {
             h3: "Les facteurs qui font varier le devis",
+            text: "Deux chantiers de même surface ne demandent pas le même travail. C'est pourquoi **nous préférons voir avant de chiffrer** : vous payez le juste prix, ni plus, ni moins.",
             items: [
               "La nature des travaux : rénovation légère ou démolition et reconstruction",
               "Le volume de gravats à évacuer et la nécessité éventuelle d'une benne",
@@ -1086,19 +1096,25 @@ export const SERVICES: readonly Service[] = [
           },
           {
             h3: "Ce qui est compris",
-            text: "Le matériel industriel, les produits et la main-d'œuvre sont inclus dans le tarif au mètre carré. L'évacuation des gravats et le tri sélectif font partie de la prestation ; seuls les volumes importants nécessitant la location d'une benne font l'objet d'un supplément, chiffré à l'avance.",
+            text: "Le **matériel industriel**, les **produits** et la **main-d'œuvre** sont inclus dans le forfait. L'**évacuation des gravats** et le **tri sélectif** font partie de la prestation ; seuls les volumes importants nécessitant la location d'une benne font l'objet d'un supplément, **chiffré à l'avance et validé avec vous**, jamais découvert sur la facture.",
+          },
+          {
+            h3: "Bureaux, locaux commerciaux et grandes surfaces",
+            text: "Pour les bureaux, les commerces, les programmes neufs ou les logements de plus de 90 m², nous établissons **un devis personnalisé, généralement entre 4,50 € et 8,50 € du m²** selon l'état du chantier. **La visite est gratuite** et vous recevez votre devis **sous 24h**. Si votre budget est serré, dites-le-nous : nous cherchons toujours **la solution la plus juste pour votre chantier**, quitte à adapter le périmètre de l'intervention.",
           },
         ],
+        outro:
+          "Derrière chaque chantier, il y a **une échéance qui compte** : une remise de clés, une réception, un emménagement. Nous le savons, et c'est pour cela que vous gardez **un seul interlocuteur du premier appel jusqu'à la remise des clés**. Si un point ne vous convient pas à la fin, **nous revenons sans frais supplémentaires**. Notre fierté, c'est que vous receviez **un logement prêt à vivre**, sans avoir à repasser derrière nous.",
       },
       {
         h2: "Pourquoi nous confier votre fin de chantier ?",
         intro:
-          "Nous intervenons en Île-de-France sur des chantiers de toutes tailles : appartements en rénovation, immeubles de bureaux, programmes neufs et locaux commerciaux.",
+          "Nous intervenons en Île-de-France sur des chantiers de toutes tailles : appartements en rénovation, immeubles de bureaux, programmes neufs et locaux commerciaux. Chez TGT Propreté, **vous ne confiez pas votre chantier à un centre d'appels** : vous parlez directement à **Rabah** ou **Malika**, qui connaissent votre dossier et se déplacent pour le voir.",
         items: [
-          "Équipes formées aux spécificités du nettoyage après construction et après rénovation, avec aspirateurs industriels, autolaveuses et produits homologués",
-          "Réactivité : intervention sous 24 à 48h, créneaux week-end disponibles pour les livraisons sous contrainte",
-          "Assurance responsabilité civile professionnelle couvrant les dommages éventuels sur votre chantier",
-          "Contrôle qualité systématique avant remise des clés : si un point ne convient pas, nous revenons sans frais supplémentaires",
+          "**Des équipes formées au BTP**, avec aspirateurs industriels, autolaveuses et produits homologués, pour ne jamais abîmer vos matériaux neufs",
+          "**Réactivité** : intervention sous 24 à 48h, créneaux week-end disponibles pour les livraisons sous contrainte. Votre date de remise de clés, c'est aussi la nôtre",
+          "**Assurance responsabilité civile professionnelle** couvrant les dommages éventuels sur votre chantier : vous êtes protégé",
+          "**Contrôle qualité systématique avant la remise des clés** : si un point ne convient pas, nous revenons sans frais supplémentaires",
         ],
       },
     ],
@@ -1972,45 +1988,45 @@ export const SERVICES: readonly Service[] = [
           },
         ],
       },
-     {
-  h2: "Comment fonctionne la tarification en conciergerie ?",
-  intro:
-    "Nous fonctionnons au **forfait par typologie de logement**, du studio au T4 et plus, plutôt qu'au temps passé. C'est le seul mode vraiment compatible avec une gestion locative : vous connaissez **votre coût par rotation à l'avance** et vous pouvez l'intégrer directement dans votre calcul de rentabilité. Tous les tarifs ci-dessous sont en **€ HT par rotation** (un ménage complet entre deux séjours). Ils sont **identiques le samedi et le dimanche, sans surcoût caché**.",
-  blocks: [
-    {
-      h3: "Deux niveaux de forfait",
-      items: [
-        "**Forfait Light** : ménage professionnel complet entre deux séjours, hors gestion du linge",
-        "**Forfait Premium** : ménage, **gestion complète du linge** et **réassort des consommables de base**, pour un logement prêt à accueillir sans que vous ayez à vous en occuper",
-      ],
-    },
-    {
-      h3: "Ce qui est inclus sans supplément",
-      text: "Les interventions du **samedi et du dimanche sont comprises dans le forfait, sans majoration**. C'est un point à vérifier systématiquement lorsque vous comparez des prestataires : le week-end concentre l'essentiel des rotations, et une majoration sur ces jours change complètement l'économie de votre contrat. Chez nous, **le prix annoncé est le prix facturé**.",
-    },
-    {
-      h3: "Volume et ajustement",
-      text: "Nos tarifs de base sont ajustés selon la **superficie exacte**, la **configuration des couchages** et le **volume annuel de rotations**. Un parc de plusieurs logements ou une forte saisonnalité se négocient différemment d'un bien unique : **plus vous nous confiez de rotations, plus nous construisons une offre avantageuse pour vous**.",
-    },
-  ],
-  table: {
-    headers: [
-      "Type de bien (tarifs en € HT / rotation)",
-      "Forfait Light · ménage seul",
-      "Forfait Premium · ménage + linge + réassort",
-    ],
-    rows: [
-      ["Studio / T1", "35 € / rotation", "45 € / rotation"],
-      ["T2", "50 € / rotation", "65 € / rotation"],
-      ["T3", "70 € / rotation", "85 € / rotation"],
-      ["T4", "85 € / rotation", "105 € / rotation"],
-      ["T5 et plus, maisons, villas", "Sur devis", "Sur devis*"],
-    ],
-    note: "Tous les prix sont en **€ HT par rotation**, **week-ends inclus sans majoration**. Le forfait Premium comprend la **gestion du linge standard** et le **réassort des consommables de base**. Tarifs ajustables selon la **superficie, la configuration des lits et le volume annuel de rotations** : **plus votre volume est important, plus nous pouvons faire évoluer le tarif en votre faveur**.",
-  },
-  outro:
-    "Notre objectif n'est pas de multiplier les interventions, mais que **vos voyageurs trouvent un logement impeccable à chaque arrivée** : de bons avis, c'est plus de réservations pour vous. Nous travaillons avec **un interlocuteur unique** (le Gérant ou la Co-Gérante, pas une plateforme) et nous sommes **réactifs sur les changements de dernière minute**, fréquents en conciergerie. Envoyez-nous la liste de vos logements : nous vous répondons avec **un devis personnalisé sous 24h**.",
-},
+      {
+        h2: "Comment fonctionne la tarification en conciergerie ?",
+        intro:
+          "Nous fonctionnons au **forfait par typologie de logement**, du studio au T4 et plus, plutôt qu'au temps passé. C'est le seul mode vraiment compatible avec une gestion locative : vous connaissez **votre coût par rotation à l'avance** et vous pouvez l'intégrer directement dans votre calcul de rentabilité. Tous les tarifs ci-dessous sont en **€ HT par rotation** (un ménage complet entre deux séjours). Ils sont **identiques le samedi et le dimanche, sans surcoût caché**.",
+        blocks: [
+          {
+            h3: "Deux niveaux de forfait",
+            items: [
+              "**Forfait Light** : ménage professionnel complet entre deux séjours, hors gestion du linge",
+              "**Forfait Premium** : ménage, **gestion complète du linge** et **réassort des consommables de base**, pour un logement prêt à accueillir sans que vous ayez à vous en occuper",
+            ],
+          },
+          {
+            h3: "Ce qui est inclus sans supplément",
+            text: "Les interventions du **samedi et du dimanche sont comprises dans le forfait, sans majoration**. C'est un point à vérifier systématiquement lorsque vous comparez des prestataires : le week-end concentre l'essentiel des rotations, et une majoration sur ces jours change complètement l'économie de votre contrat. Chez nous, **le prix annoncé est le prix facturé**.",
+          },
+          {
+            h3: "Volume et ajustement",
+            text: "Nos tarifs de base sont ajustés selon la **superficie exacte**, la **configuration des couchages** et le **volume annuel de rotations**. Un parc de plusieurs logements ou une forte saisonnalité se négocient différemment d'un bien unique : **plus vous nous confiez de rotations, plus nous construisons une offre avantageuse pour vous**.",
+          },
+        ],
+        table: {
+          headers: [
+            "Type de bien (tarifs en € HT / rotation)",
+            "Forfait Light · ménage seul",
+            "Forfait Premium · ménage + linge + réassort",
+          ],
+          rows: [
+            ["Studio / T1", "35 € / rotation", "45 € / rotation"],
+            ["T2", "50 € / rotation", "65 € / rotation"],
+            ["T3", "70 € / rotation", "85 € / rotation"],
+            ["T4", "85 € / rotation", "105 € / rotation"],
+            ["T5 et plus, maisons, villas", "Sur devis", "Sur devis*"],
+          ],
+          note: "Tous les prix sont en **€ HT par rotation**, **week-ends inclus sans majoration**. Le forfait Premium comprend la **gestion du linge standard** et le **réassort des consommables de base**. Tarifs ajustables selon la **superficie, la configuration des lits et le volume annuel de rotations** : **plus votre volume est important, plus nous pouvons faire évoluer le tarif en votre faveur**.",
+        },
+        outro:
+          "Notre objectif n'est pas de multiplier les interventions, mais que **vos voyageurs trouvent un logement impeccable à chaque arrivée** : de bons avis, c'est plus de réservations pour vous. Nous travaillons avec **un interlocuteur unique** (le Gérant ou la Co-Gérante, pas une plateforme) et nous sommes **réactifs sur les changements de dernière minute**, fréquents en conciergerie. Envoyez-nous la liste de vos logements : nous vous répondons avec **un devis personnalisé sous 24h**.",
+      },
       {
         h2: "Comment se passe la coordination au quotidien ?",
         intro:
