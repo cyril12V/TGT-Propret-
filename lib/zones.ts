@@ -380,6 +380,59 @@ export const ZONES: readonly Zone[] = [
   /* ══════════════════  HAUTS-DE-SEINE (92)  ══════════════════ */
 
   {
+    slug: "hauts-de-seine",
+    name: "Hauts-de-Seine",
+    postalCode: "92",
+    department: "Hauts-de-Seine",
+    departmentCode: "92",
+    isDepartment: true,
+    intro:
+      "Les Hauts-de-Seine sont le deuxième territoire de TGT Propreté après la Seine-Saint-Denis, et c'est le département francilien le plus tertiaire : La Défense à cheval sur Courbevoie et Puteaux, le pôle média et numérique de Boulogne-Billancourt et d'Issy-les-Moulineaux, les sièges sociaux de Neuilly-sur-Seine et de Levallois-Perret, le quartier administratif et universitaire de Nanterre. Ce profil change la nature du travail : les immeubles de bureaux y sont grands, badgés, souvent occupés en continu, et l'entretien se fait en horaires décalés — avant 8h ou après 19h — avec des équipes déclarées et un passage par l'accueil ou le PC sécurité. Le résidentiel du 92 est tout aussi exigeant : haussmanniens de Neuilly et de Boulogne, immeubles de rapport des années 1930 à Levallois et Asnières-sur-Seine, grandes copropriétés des années 1960-1970 à Colombes et Nanterre, propriétés individuelles à Rueil-Malmaison. Les syndics y attendent un agent attitré, stable, qui connaît les codes et le calendrier de collecte. Nous intervenons sur l'ensemble du département auprès d'entreprises, de syndics, de commerçants, d'agences immobilières et de particuliers. Neuf communes disposent de leur page dédiée ; notre couverture ne s'y limite pas. Devis gratuit sous 24h.",
+    highlights: [
+      "La Défense, Boulogne et Issy : plateaux de bureaux en horaires décalés",
+      "Haussmanniens de Neuilly et Boulogne, immeubles 1930 de Levallois",
+      "Sièges sociaux et accueils à forte exigence de discrétion",
+      "Neuf communes avec page dédiée, couverture sur tout le 92",
+    ],
+    keywords: [
+      "société de nettoyage 92",
+      "entreprise de nettoyage Hauts-de-Seine",
+      "nettoyage bureaux Hauts-de-Seine",
+      "nettoyage copropriété 92",
+      "nettoyage La Défense",
+    ],
+    faqs: [
+      {
+        q: "Intervenez-vous dans les tours de La Défense ?",
+        a: "Oui, sur les plateaux de bureaux de Courbevoie et du secteur de La Défense. Ces sites imposent un passage par le PC sécurité, des badges nominatifs et des créneaux d'intervention précis : nous fournissons la liste nominative des agents, leurs attestations et nous nous calons sur le règlement intérieur de l'immeuble.",
+      },
+      {
+        q: "Pouvez-vous intervenir avant l'arrivée des salariés ?",
+        a: "C'est le mode d'intervention le plus fréquent dans le 92. Nous passons avant 8h ou après 19h selon votre organisation, et pour les sites sensibles nous pouvons intervenir de nuit. L'objectif est que personne de notre équipe ne soit présent pendant vos heures de bureau.",
+      },
+      {
+        q: "Quels sont vos délais dans les Hauts-de-Seine ?",
+        a: "Comptez 24 à 48h pour une intervention ponctuelle sur la première couronne — Boulogne, Neuilly, Levallois, Courbevoie, Issy, Asnières, Colombes. Pour Rueil-Malmaison et l'ouest du département, les contrats réguliers se calent sans difficulté, les urgences ponctuelles demandent un peu plus de délai depuis notre siège de Bondy.",
+      },
+      {
+        q: "Travaillez-vous avec les syndics du 92 ?",
+        a: "Oui, avec plusieurs cabinets gérant des résidences sur Boulogne, Levallois, Colombes et Nanterre. Nous fournissons l'attestation de vigilance URSSAF et l'attestation d'assurance RC professionnelle, nous affectons un agent attitré par immeuble et nous présentons un devis au forfait annuel, directement exploitable en assemblée générale.",
+      },
+    ],
+    nearbySlugs: [
+      "boulogne-billancourt",
+      "neuilly-sur-seine",
+      "levallois-perret",
+      "courbevoie",
+      "nanterre",
+      "issy-les-moulineaux",
+      "asnieres-sur-seine",
+      "colombes",
+      "rueil-malmaison",
+    ],
+  },
+
+  {
     slug: "boulogne-billancourt",
     name: "Boulogne-Billancourt",
     postalCode: "92100",
@@ -760,6 +813,49 @@ export const ZONES: readonly Zone[] = [
   /* ══════════════════  VAL-DE-MARNE (94)  ══════════════════ */
 
   {
+    slug: "val-de-marne",
+    name: "Val-de-Marne",
+    postalCode: "94",
+    department: "Val-de-Marne",
+    departmentCode: "94",
+    isDepartment: true,
+    intro:
+      "Le Val-de-Marne est le département francilien où les besoins de propreté sont les plus variés, parce que son tissu économique l'est aussi. On y trouve le marché international de Rungis et sa zone d'activité agroalimentaire, la plateforme d'Orly et les hôtels et sociétés de service qui l'entourent, le pôle administratif, hospitalier et universitaire de Créteil autour du CHU Henri-Mondor et du centre commercial Créteil Soleil, les communes résidentielles bourgeoises de Vincennes et Saint-Mandé en lisière du bois, les anciens secteurs industriels d'Ivry-sur-Seine et de Vitry-sur-Seine devenus quartiers mixtes avec ateliers d'artistes et locaux reconvertis, et un pavillonnaire étendu le long de la Marne. Pour un prestataire, cela signifie des protocoles différents d'un site à l'autre : hygiène alimentaire stricte autour de Rungis, bionettoyage pour les cabinets médicaux et les structures de soins du secteur de Créteil, entretien de parties communes pour les copropriétés de Vincennes et d'Ivry, remise en état de locaux pour les commerces et les restaurants. TGT Propreté intervient sur l'ensemble du département. Deux communes disposent de leur page dédiée ; les autres sont traitées avec le même niveau de service, devis gratuit sous 24h.",
+    highlights: [
+      "Rungis et sa zone agroalimentaire : protocoles d'hygiène alimentaire",
+      "Pôle hospitalier et universitaire de Créteil — bionettoyage",
+      "Copropriétés de Vincennes et Saint-Mandé, pavillonnaire des bords de Marne",
+      "Locaux reconvertis d'Ivry et Vitry : ateliers, bureaux, commerces",
+    ],
+    keywords: [
+      "société de nettoyage 94",
+      "entreprise de nettoyage Val-de-Marne",
+      "nettoyage bureaux Val-de-Marne",
+      "nettoyage copropriété 94",
+      "nettoyage Créteil Vincennes",
+    ],
+    faqs: [
+      {
+        q: "Intervenez-vous sur les sites agroalimentaires du secteur de Rungis ?",
+        a: "Oui, sur les locaux, bureaux, vestiaires, réfectoires et sanitaires des entreprises du secteur. Nous appliquons un protocole conforme aux exigences HACCP sur les zones de production et de stockage, avec traçabilité des passages et des produits utilisés. Le détail du protocole est établi après visite, selon votre plan de maîtrise sanitaire.",
+      },
+      {
+        q: "Prenez-vous en charge les cabinets médicaux du Val-de-Marne ?",
+        a: "Oui. Le bionettoyage des cabinets, laboratoires et structures de soins fait l'objet d'une prestation dédiée : zonage du site, circuits de déchets DASRI, désinfection des surfaces de contact et traçabilité écrite de chaque intervention. Le secteur de Créteil concentre une bonne part de cette demande.",
+      },
+      {
+        q: "Quels sont vos délais dans le Val-de-Marne ?",
+        a: "24 à 48h pour une intervention ponctuelle sur Vincennes, Saint-Mandé, Ivry, Charenton et Créteil, qui sont proches de notre siège de Bondy par la A86 et la A4. Sur le sud du département, vers Villeneuve-Saint-Georges ou Boissy-Saint-Léger, nous groupons les interventions par secteur.",
+      },
+      {
+        q: "Travaillez-vous avec les restaurants et commerces du 94 ?",
+        a: "Oui, c'est une part importante de notre activité sur le département : dégraissage des cuisines, hottes et conduits, plonges, sols antidérapants, vitrines et devantures. Nous intervenons en dehors des heures de service, tôt le matin ou après la fermeture, pour ne jamais gêner l'exploitation.",
+      },
+    ],
+    nearbySlugs: ["vincennes", "creteil"],
+  },
+
+  {
     slug: "vincennes",
     name: "Vincennes",
     postalCode: "94300",
@@ -846,6 +942,49 @@ export const ZONES: readonly Zone[] = [
   /* ══════════════════  YVELINES (78)  ══════════════════ */
 
   {
+    slug: "yvelines",
+    name: "Yvelines",
+    postalCode: "78",
+    department: "Yvelines",
+    departmentCode: "78",
+    isDepartment: true,
+    intro:
+      "Les Yvelines sont le département le plus étendu de l'ouest francilien, et le plus contrasté : Versailles et son centre historique classé, les parcs d'activité de Saint-Quentin-en-Yvelines, les plateaux de bureaux de Vélizy-Villacoublay tournés vers l'automobile et l'aéronautique, le tissu industriel de Poissy et des Mureaux, les communes résidentielles aisées de Saint-Germain-en-Laye, du Vésinet et de Croissy, puis une large frange rurale vers Rambouillet et la vallée de Chevreuse. À Versailles, l'entretien demande une attention particulière : parties communes protégées, immeubles XVIIIe et XIXe aux matériaux anciens — pierre, marbre, parquets, ferronneries — qui ne supportent pas les produits agressifs, et syndics habitués à un niveau d'exigence élevé. Sur les parcs d'activité, la logique est inverse : grandes surfaces, sols techniques, lavage mécanisé, entretien en horaires décalés. TGT Propreté intervient dans tout le département, avec une organisation adaptée à la distance depuis notre siège de Bondy : les contrats réguliers se planifient sans difficulté, les interventions ponctuelles sont groupées par secteur pour ne pas vous faire payer un trajet inutile. Versailles dispose de sa page dédiée. Devis gratuit sous 24h.",
+    highlights: [
+      "Versailles : immeubles XVIIIe-XIXe, matériaux anciens, syndics exigeants",
+      "Saint-Quentin-en-Yvelines et Vélizy : parcs d'activité et plateaux de bureaux",
+      "Communes résidentielles de Saint-Germain-en-Laye et du Vésinet",
+      "Interventions groupées par secteur, pour ne pas facturer le trajet",
+    ],
+    keywords: [
+      "société de nettoyage 78",
+      "entreprise de nettoyage Yvelines",
+      "nettoyage bureaux Yvelines",
+      "nettoyage copropriété 78",
+      "nettoyage Versailles Saint-Quentin",
+    ],
+    faqs: [
+      {
+        q: "Les Yvelines sont loin de Bondy : intervenez-vous vraiment jusque-là ?",
+        a: "Oui, et c'est une part régulière de notre activité. La distance ne change pas le prix de la prestation, elle change l'organisation : un contrat régulier se cale dans une tournée, ce qui le rend parfaitement tenable. Pour une urgence ponctuelle isolée dans l'ouest du département, nous vous donnons un délai honnête plutôt qu'une promesse que nous ne tiendrions pas.",
+      },
+      {
+        q: "Savez-vous traiter les matériaux anciens des immeubles de Versailles ?",
+        a: "Oui. Pierre, marbre, terre cuite, parquets anciens et ferronneries appellent des produits à pH neutre et des méthodes douces : un détergent alcalin ou un détartrant acide mal choisi marque définitivement une pierre calcaire. Nous relevons les matériaux lors de la visite et nous les inscrivons au cahier des charges.",
+      },
+      {
+        q: "Intervenez-vous sur les parcs d'activité et les bureaux du 78 ?",
+        a: "Oui, sur Saint-Quentin-en-Yvelines, Vélizy-Villacoublay, Montigny-le-Bretonneux et Guyancourt notamment. Nous prenons en charge les plateaux de bureaux, les sanitaires collectifs, les réfectoires et les vestiaires, avec un lavage mécanisé pour les grandes surfaces de sol.",
+      },
+      {
+        q: "Quelles communes des Yvelines couvrez-vous ?",
+        a: "L'ensemble du département. Versailles dispose d'une page dédiée sur ce site, mais nous intervenons aussi sur Saint-Germain-en-Laye, Le Vésinet, Chatou, Croissy, Poissy, Saint-Quentin-en-Yvelines, Vélizy et les communes voisines. Donnez-nous votre adresse, nous répondons sous 24h avec un délai réaliste.",
+      },
+    ],
+    nearbySlugs: ["versailles"],
+  },
+
+  {
     slug: "versailles",
     name: "Versailles",
     postalCode: "78000",
@@ -890,6 +1029,49 @@ export const ZONES: readonly Zone[] = [
   /* ══════════════════  ESSONNE (91)  ══════════════════ */
 
   {
+    slug: "essonne",
+    name: "Essonne",
+    postalCode: "91",
+    department: "Essonne",
+    departmentCode: "91",
+    isDepartment: true,
+    intro:
+      "L'Essonne a un profil que l'on ne retrouve nulle part ailleurs en Île-de-France : c'est le département de la recherche et des campus. Le plateau de Saclay y concentre laboratoires, écoles d'ingénieurs et centres de R&D, Orsay et Gif-sur-Yvette prolongent ce tissu universitaire, Les Ulis forme l'un des plus grands parcs d'activité du sud francilien, et Massy est devenue un pôle tertiaire à part entière autour de sa gare TGV. Évry-Courcouronnes apporte la dimension administrative et hospitalière, Corbeil-Essonnes et Brétigny un tissu industriel et logistique, et le sud du département bascule rapidement vers le rural. Cette composition change le travail : sur un site de recherche, l'entretien se négocie zone par zone — bureaux et circulations pour nous, laboratoires et salles techniques selon un protocole défini avec le responsable HSE, locaux interdits sans accompagnement. Sur les parcs d'activité, ce sont de grandes surfaces de sol, des sanitaires collectifs et des réfectoires à traiter en horaires décalés. TGT Propreté intervient dans toute l'Essonne depuis son siège de Bondy, en groupant les interventions par secteur. Massy dispose de sa page dédiée. Devis gratuit sous 24h.",
+    highlights: [
+      "Plateau de Saclay, Orsay, Gif : laboratoires et campus, entretien par zones",
+      "Parc d'activité des Ulis et pôle tertiaire de Massy",
+      "Évry-Courcouronnes : administratif, hospitalier, universitaire",
+      "Interventions groupées par secteur sur le sud du département",
+    ],
+    keywords: [
+      "société de nettoyage 91",
+      "entreprise de nettoyage Essonne",
+      "nettoyage bureaux Essonne",
+      "nettoyage copropriété 91",
+      "nettoyage Massy Saclay",
+    ],
+    faqs: [
+      {
+        q: "Pouvez-vous intervenir sur un site de recherche ou un laboratoire ?",
+        a: "Oui, en nous limitant strictement au périmètre défini avec votre responsable HSE. Nous prenons en charge les bureaux, circulations, sanitaires, réfectoires et salles de réunion. Les zones techniques et les laboratoires relèvent d'un protocole spécifique, et certaines salles ne se nettoient pas sans accompagnement : c'est à vous de fixer cette frontière, nous la respectons à la lettre.",
+      },
+      {
+        q: "Quels sont vos délais en Essonne ?",
+        a: "Massy, Palaiseau, Longjumeau et Chilly-Mazarin sont accessibles rapidement par la A6 et la A86 : comptez 24 à 48h pour une intervention ponctuelle. Sur le sud du département, nous groupons les interventions, ce qui rend les contrats réguliers faciles à planifier et les urgences isolées un peu plus longues à caler.",
+      },
+      {
+        q: "Intervenez-vous sur les parcs d'activité comme Les Ulis ?",
+        a: "Oui. Grandes surfaces de sol en lavage mécanisé, sanitaires collectifs, vestiaires, réfectoires et bureaux rattachés aux sites. Ce sont des prestations que nous réalisons déjà sur les zones d'activité du nord de la Seine-Saint-Denis, avec le même matériel.",
+      },
+      {
+        q: "Quelles communes de l'Essonne couvrez-vous ?",
+        a: "L'ensemble du département. Massy dispose d'une page dédiée sur ce site, et nous intervenons également sur Palaiseau, Orsay, Les Ulis, Évry-Courcouronnes, Longjumeau, Chilly-Mazarin, Savigny-sur-Orge et les communes voisines. Indiquez-nous votre adresse, nous vous répondons sous 24h.",
+      },
+    ],
+    nearbySlugs: ["massy"],
+  },
+
+  {
     slug: "massy",
     name: "Massy",
     postalCode: "91300",
@@ -930,15 +1112,153 @@ export const ZONES: readonly Zone[] = [
     ],
     nearbySlugs: ["issy-les-moulineaux", "creteil", "versailles", "boulogne-billancourt"],
   },
+  /* ══════════════════  VAL-D'OISE (95)  ══════════════════ */
+
+  {
+    slug: "val-d-oise",
+    name: "Val-d'Oise",
+    postalCode: "95",
+    department: "Val-d'Oise",
+    departmentCode: "95",
+    isDepartment: true,
+    intro:
+      "Le Val-d'Oise est le département limitrophe de notre siège : depuis Bondy, le nord de la Seine-Saint-Denis se prolonge directement dans le sud du 95, et nos équipes y circulent sans difficulté par la A1, la A3 et la Francilienne. Le département s'organise autour de trois ensembles très différents. La plateforme de Roissy-Charles-de-Gaulle et sa couronne logistique d'abord, avec ses entrepôts, ses hôtels et ses sociétés de service qui fonctionnent en continu : là, le nettoyage se fait de nuit ou au petit matin, et la régularité compte plus que tout. L'agglomération de Cergy-Pontoise ensuite, avec son quartier d'affaires, sa préfecture et son université : plateaux de bureaux, parties communes de grandes copropriétés, locaux administratifs. Les communes de la vallée de Montmorency enfin — Enghien-les-Bains, Montmorency, Saint-Gratien — au bâti résidentiel plus ancien et aux copropriétés exigeantes, ainsi qu'Argenteuil et Sarcelles, aux grands ensembles des années 1960-1970 dont les parties communes demandent un entretien soutenu. TGT Propreté intervient dans tout le Val-d'Oise auprès d'entreprises, de syndics, de commerçants, d'artisans en fin de chantier et de particuliers. Aucune commune du 95 n'a encore sa page dédiée sur ce site : dites-nous simplement votre adresse, le devis reste gratuit sous 24h.",
+    highlights: [
+      "Département limitrophe de notre siège — accès direct par la A1 et la A3",
+      "Roissy et sa couronne logistique : entrepôts et hôtels, nettoyage de nuit",
+      "Cergy-Pontoise : quartier d'affaires, préfecture, université",
+      "Grands ensembles d'Argenteuil et de Sarcelles, copropriétés de Montmorency",
+    ],
+    keywords: [
+      "société de nettoyage 95",
+      "entreprise de nettoyage Val-d'Oise",
+      "nettoyage bureaux Val-d'Oise",
+      "nettoyage copropriété 95",
+      "nettoyage Cergy Roissy",
+    ],
+    faqs: [
+      {
+        q: "Intervenez-vous vraiment dans le Val-d'Oise ?",
+        a: "Oui, et c'est l'un de nos départements les plus accessibles : le sud du 95 est à quinze à vingt minutes de notre siège de Bondy par la A3 et la A1. Nous y travaillons régulièrement, même si aucune commune du département n'a encore sa page dédiée sur ce site.",
+      },
+      {
+        q: "Pouvez-vous intervenir de nuit sur le secteur de Roissy ?",
+        a: "Oui. Les entrepôts, hôtels et sociétés de service de la plateforme fonctionnent en continu : l'entretien se fait donc de nuit ou tôt le matin, selon vos créneaux. Nous fournissons la liste nominative des agents et leurs attestations, ce que les sites sous contrôle d'accès exigent systématiquement.",
+      },
+      {
+        q: "Travaillez-vous avec les syndics du 95 ?",
+        a: "Oui, sur le même modèle que dans le 93 : un agent attitré par immeuble, l'attestation de vigilance URSSAF et l'attestation d'assurance RC professionnelle fournies, la sortie et la rentrée des containers calées sur le calendrier de collecte de la commune, et un devis au forfait annuel présentable en assemblée générale.",
+      },
+      {
+        q: "Quelles communes du Val-d'Oise couvrez-vous ?",
+        a: "L'ensemble du département : Cergy, Pontoise, Argenteuil, Sarcelles, Garges-lès-Gonesse, Gonesse, Goussainville, Roissy-en-France, Enghien-les-Bains, Montmorency, Sannois, Ermont, Franconville et les communes voisines. Donnez-nous votre adresse, nous vous répondons sous 24h.",
+      },
+    ],
+    nearbySlugs: [],
+  },
+
+  /* ══════════════════  SEINE-ET-MARNE (77)  ══════════════════ */
+
+  {
+    slug: "seine-et-marne",
+    name: "Seine-et-Marne",
+    postalCode: "77",
+    department: "Seine-et-Marne",
+    departmentCode: "77",
+    isDepartment: true,
+    intro:
+      "La Seine-et-Marne est le plus vaste département d'Île-de-France : à elle seule, elle couvre près de la moitié de la région. Pour un prestataire de propreté, cela impose une règle simple et honnête : l'ouest du département se traite comme la proche couronne, l'est se traite en tournée. À l'ouest, Chelles, Noisiel, Champs-sur-Marne, Torcy et Lognes prolongent directement notre zone d'intervention en Seine-Saint-Denis — quelques minutes séparent Bondy de Chelles par la N3 ou le RER E. Le secteur de Marne-la-Vallée et du Val d'Europe, autour de Serris et de Bailly-Romainvilliers, concentre des plateaux de bureaux, des hôtels et des commerces de centre commercial qui demandent un entretien soutenu et des interventions avant ouverture. Melun apporte la dimension administrative et préfectorale, Meaux un centre historique et un tissu de commerces de proximité, et les abords de la A4 une activité logistique marquée, avec de grandes surfaces de sol béton à laver mécaniquement. Au-delà de Melun et de Meaux, le département devient rural : nous y intervenons sur contrat régulier, où la tournée se planifie, plutôt que sur urgence isolée. Aucune commune du 77 n'a encore sa page dédiée. Devis gratuit sous 24h.",
+    highlights: [
+      "Ouest du département — Chelles, Noisiel, Champs-sur-Marne — à quelques minutes de Bondy",
+      "Marne-la-Vallée et Val d'Europe : bureaux, hôtels, commerces",
+      "Entrepôts et plateformes logistiques le long de la A4",
+      "Contrats réguliers sur l'est rural, où la tournée se planifie",
+    ],
+    keywords: [
+      "société de nettoyage 77",
+      "entreprise de nettoyage Seine-et-Marne",
+      "nettoyage bureaux Seine-et-Marne",
+      "nettoyage copropriété 77",
+      "nettoyage Chelles Marne-la-Vallée",
+    ],
+    faqs: [
+      {
+        q: "La Seine-et-Marne est immense : jusqu'où intervenez-vous ?",
+        a: "Sans restriction sur l'ouest du département — Chelles, Vaires-sur-Marne, Noisiel, Champs-sur-Marne, Torcy, Lognes, Bussy-Saint-Georges — qui est à quelques minutes de notre siège. Sur Melun, Meaux et le secteur de Marne-la-Vallée, nous intervenons régulièrement. Au-delà, sur l'est rural, nous privilégions les contrats réguliers : la tournée se planifie, alors qu'une urgence isolée à cent kilomètres n'a de sens pour personne.",
+      },
+      {
+        q: "Intervenez-vous sur les entrepôts et plateformes logistiques du 77 ?",
+        a: "Oui, c'est une demande fréquente le long de la A4. Nous prenons en charge les bureaux rattachés aux sites, les vestiaires, les réfectoires, les sanitaires collectifs, et le lavage mécanisé des grandes surfaces de sol béton. Les créneaux se calent sur vos rotations d'équipes.",
+      },
+      {
+        q: "Pouvez-vous nettoyer un commerce avant son ouverture ?",
+        a: "Oui, c'est le mode d'intervention standard pour les commerces et les boutiques de centre commercial du secteur de Marne-la-Vallée : nous passons avant l'ouverture, vitrines et sols compris, afin que la surface de vente soit prête à la première heure.",
+      },
+      {
+        q: "Quelles communes de Seine-et-Marne couvrez-vous ?",
+        a: "L'ensemble du département, avec les nuances de délai expliquées plus haut : Chelles, Vaires-sur-Marne, Noisiel, Champs-sur-Marne, Torcy, Lognes, Bussy-Saint-Georges, Serris, Melun, Meaux, Pontault-Combault, Roissy-en-Brie et les communes voisines. Donnez-nous votre adresse, nous vous répondons sous 24h avec un délai réaliste.",
+      },
+    ],
+    nearbySlugs: [],
+  },
+
 ] as const;
+
+/**
+ * Codes des départements réellement couverts par une page, énumérés en
+ * français : « 77, 78, 91, 92, 93, 94 et 95 ».
+ *
+ * Dérivé de `ZONES` pour que l'ajout d'une page département n'oublie pas la
+ * description du hub /zones, où la liste était écrite à la main.
+ */
+/**
+ * Nombre de COMMUNES ayant une page dédiée, départements exclus.
+ *
+ * `ZONES.length` mélange les deux depuis l'ajout des sept pages
+ * département : l'utiliser pour annoncer « N communes » est faux.
+ */
+export function communeCount(): number {
+  return ZONES.filter((z) => !z.isDepartment).length;
+}
+
+/** Nombre de pages département. */
+export function departmentCount(): number {
+  return ZONES.filter((z) => z.isDepartment).length;
+}
+
+export function departmentCodesServed(): string {
+  const codes = Array.from(new Set(ZONES.map((z) => z.departmentCode))).sort();
+  if (codes.length <= 1) return codes.join("");
+  return `${codes.slice(0, -1).join(", ")} et ${codes[codes.length - 1]}`;
+}
 
 export function getZoneBySlug(slug: string): Zone | undefined {
   return ZONES.find((z) => z.slug === slug);
 }
 
-/** « à Bondy » pour une commune, « en Seine-Saint-Denis » pour un département. */
-export function zonePreposition(zone: Zone): "à" | "en" {
-  return zone.isDepartment ? "en" : "à";
+/**
+ * Préposition de lieu : « à Bondy », « en Seine-Saint-Denis », « dans les
+ * Hauts-de-Seine », « dans le Val-de-Marne ».
+ *
+ * Un « en » systématique pour les départements marchait tant que seule la
+ * Seine-Saint-Denis avait sa page. Avec les sept départements, il produit
+ * « en Hauts-de-Seine », « en Val-de-Marne » et « en Val-d'Oise », qui sont
+ * des fautes. Rien dans le nom ne permet de dériver l'article : il faut la
+ * table, comme pour `PORTEE_DEPARTEMENT`.
+ */
+const PREPOSITION_DEPARTEMENT: Record<string, string> = {
+  "Seine-Saint-Denis": "en",
+  "Hauts-de-Seine": "dans les",
+  "Val-de-Marne": "dans le",
+  "Val-d'Oise": "dans le",
+  "Seine-et-Marne": "en",
+  Yvelines: "dans les",
+  Essonne: "en",
+};
+
+export function zonePreposition(zone: Zone): string {
+  if (!zone.isDepartment) return "à";
+  return PREPOSITION_DEPARTEMENT[zone.department] ?? "en";
 }
 
 /**
@@ -973,7 +1293,17 @@ export function zoneDepartmentScope(zone: Zone): string {
  * requête qui génère les impressions.
  */
 export function zoneMetaTitle(zone: Zone): string {
-  return zone.metaTitle ?? `Entreprise de nettoyage ${zone.name} — Devis 24h`;
+  if (zone.metaTitle) return zone.metaTitle;
+
+  // Pour un département, le code EST la requête : « société de nettoyage 92 »
+  // (30 rech./mois), « société de nettoyage 94 », « … 78 », « … 91 ». Le nom
+  // seul ne la contient pas. Le plus long reste sous 60 caractères
+  // (Seine-Saint-Denis : 58), et `npm run check:seo` le vérifie au build.
+  if (zone.isDepartment) {
+    return `Entreprise de nettoyage ${zone.name} (${zone.postalCode}) — Devis 24h`;
+  }
+
+  return `Entreprise de nettoyage ${zone.name} — Devis 24h`;
 }
 
 /**

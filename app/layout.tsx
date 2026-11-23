@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Jost } from "next/font/google";
 import { SITE } from "@/lib/constants";
-import { buildMetadata, localBusinessJsonLd } from "@/lib/seo";
+import { buildMetadata, localBusinessJsonLd, webSiteJsonLd } from "@/lib/seo";
 import { StickyCTA } from "@/components/layout/StickyCTA";
 import "./globals.css";
 
@@ -46,9 +46,9 @@ export const metadata: Metadata = {
     ],
   }),
   applicationName: SITE.name,
-  authors: [{ name: SITE.brand }],
-  creator: SITE.brand,
-  publisher: SITE.brand,
+  authors: [{ name: SITE.name }],
+  creator: SITE.name,
+  publisher: SITE.name,
   icons: {
     icon: "/images/logo.png",
     apple: "/images/logo.png",
@@ -91,6 +91,13 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(localBusinessJsonLd()),
+          }}
+        />
+        {/* Entité `#website`, citée par le `isPartOf` de chaque WebPage. */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(webSiteJsonLd()),
           }}
         />
       </body>

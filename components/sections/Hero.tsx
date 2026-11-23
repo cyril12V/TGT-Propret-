@@ -101,7 +101,15 @@ export function Hero() {
                     enableScrollSpy={true}
                     scrollSpyOnce={true}
                   >
-                    {({ countUpRef }) => <span ref={countUpRef}>0</span>}
+                    {/* Valeur finale rendue côté serveur. Avec « 0 » en
+                        contenu initial, le HTML servi affichait
+                        « 0 Interventions réalisées » à côté de « 750+ clients
+                        satisfaits » — ce que voyaient Google et tout visiteur
+                        sans JavaScript. CountUp écrase ce texte dès que la
+                        section entre dans le champ de vision. */}
+                    {({ countUpRef }) => (
+                      <span ref={countUpRef}>{s.num}</span>
+                    )}
                   </CountUp>
                 ) : (
                   // Pour tous les autres (1er, 2ème, 4ème), on affiche le texte fixe normalement

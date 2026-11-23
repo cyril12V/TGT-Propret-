@@ -8,10 +8,12 @@ import { ContactBand } from "@/components/sections/ContactBand";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { ParisLinksFooter } from "@/components/sections/ParisLinksFooter";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { SITE, TESTIMONIALS } from "@/lib/constants";
+import { GOOGLE_MAPS_URL, SITE } from "@/lib/constants";
+import { PRICING } from "@/lib/pricing";
 import { SERVICES } from "@/lib/services";
-import { PARIS_ARRONDISSEMENTS } from "@/lib/zones-paris";
-import { aggregateRatingFromTestimonials, breadcrumbJsonLd, buildMetadata } from "@/lib/seo";
+import { PARIS_ARRONDISSEMENTS, ordinalFr } from "@/lib/zones-paris";
+import { getGoogleReviews } from "@/lib/google-reviews";
+import { breadcrumbJsonLd, buildMetadata, googleRatingBadge } from "@/lib/seo";
 
 const PARIS_FAQS = [
   {
@@ -24,7 +26,7 @@ const PARIS_FAQS = [
   },
   {
     q: "Combien coûte un nettoyage professionnel à Paris ?",
-    a: "Les tarifs dépendent du service. Pour vous donner des ordres de grandeur : ménage à domicile à partir de 28€/h, nettoyage de bureaux à partir de 0,50€/m² par passage, nettoyage de fin de chantier à partir de 4€/m², nettoyage de canapé à partir de 55€ pour un 2 places. Devis détaillé sous 24h.",
+    a: `Les tarifs dépendent du service. Pour vous donner des ordres de grandeur : ménage à domicile à partir de ${PRICING.menageDomicile}, nettoyage de bureaux à partir de ${PRICING.bureauxRecurrent} en contrat régulier et de ${PRICING.bureauxPonctuel} pour une intervention ponctuelle, fin de chantier à partir de ${PRICING.finDeChantierStudio} pour un studio. Le nettoyage de canapé est chiffré à la pièce, sur photo. Devis détaillé sous 24h.`,
   },
   {
     q: "Pouvez-vous intervenir en urgence à Paris ?",
@@ -40,10 +42,14 @@ const PARIS_FAQS = [
   },
 ];
 
+// « entreprise de nettoyage paris » et « société de nettoyage paris » font
+// 590 recherches/mois chacune et sont les requêtes de cette page : l'ancien
+// title (« Nettoyage à Paris : les 20 arrondissements ») ne contenait aucune
+// des deux expressions exactes.
 export const metadata: Metadata = buildMetadata({
-  title: "Nettoyage à Paris : les 20 arrondissements | TGT Propreté",
+  title: "Entreprise de nettoyage à Paris : 20 arrondissements",
   description:
-    "Nettoyage professionnel dans les 20 arrondissements de Paris : bureaux, copropriétés, commerces, chantiers, domicile. Devis gratuit sous 24h.",
+    "Nettoyage de bureaux, copropriétés et commerces dans les 20 arrondissements de Paris. Devis gratuit sous 24h, équipes basées à Bondy (93).",
   path: "/zones/paris",
   keywords: [
     "entreprise de nettoyage Paris",
@@ -56,8 +62,13 @@ export const metadata: Metadata = buildMetadata({
   ],
 });
 
-export default function ParisHubPage() {
-  const rating = aggregateRatingFromTestimonials();
+export default async function ParisHubPage() {
+  const rating = googleRatingBadge();
+
+  // Avis réels de la fiche Google. Tableau vide si la clé Places n'est pas
+  // configurée : la section disparaît alors au lieu d'afficher des
+  // témoignages fabriqués présentés comme des avis Google.
+  const reviews = (await getGoogleReviews()).slice(0, 3);
 
   // Mise en avant visuelle uniquement : les 20 arrondissements ont tous leur page
   // dédiée et sont tous liés depuis ce hub.
@@ -100,8 +111,10 @@ export default function ParisHubPage() {
             <SectionLabel onDark>Zone d&apos;intervention principale</SectionLabel>
 
             <h1 className="mt-4 font-serif text-[clamp(44px,6.5vw,84px)] font-light leading-[1.01]">
-              Entreprise de nettoyage{" "}
-              <em className="italic text-[var(--color-gold)]">à Paris</em>
+              Entreprise de nettoyage à Paris{" "}
+              <em className="italic text-[var(--color-gold)]">
+                et dans les 20 arrondissements
+              </em>
             </h1>
 
             {/* Gold underline under h1 */}
@@ -238,7 +251,7 @@ export default function ParisHubPage() {
                     </div>
 
                     <h3 className="font-serif text-xl font-semibold text-[var(--color-navy)]">
-                      Paris {arr.number}<sup>e</sup>
+                      Paris {ordinalFr(arr.number)}
                     </h3>
                     <p className="text-sm text-[var(--color-muted)] leading-relaxed">{arr.district}</p>
 
@@ -296,7 +309,7 @@ export default function ParisHubPage() {
                       </div>
 
                       <h3 className="font-serif text-xl font-semibold text-[var(--color-navy)]/80">
-                        Paris {arr.number}<sup>e</sup>
+                        Paris {ordinalFr(arr.number)}
                       </h3>
                       <p className="text-sm text-[var(--color-muted)] leading-relaxed">{arr.district}</p>
 
@@ -451,62 +464,83 @@ export default function ParisHubPage() {
           </div>
         </section>
 
-        {/* ── TÉMOIGNAGES ── */}
-        <section className="bg-[var(--color-light)] px-5 py-16 md:px-10 md:py-24">
-          <div className="container-tgt">
-            <SectionLabel>Témoignages clients Paris</SectionLabel>
+        {/* ── AVIS GOOGLE ── */}
+        {/* Avis réels, lus sur la fiche Google via l'API Places. Les anciennes
+            cartes affichaient « Sophie L. », « Karim D. » et « Julien P. »
+            sous le titre « Témoignages clients » : des avis non vérifiables
+            présentés comme réels. Si l'API ne répond pas, la section
+            disparaît — mieux vaut rien que du faux. */}
+        {reviews.length > 0 && (
+          <section className="bg-[var(--color-light)] px-5 py-16 md:px-10 md:py-24">
+            <div className="container-tgt">
+              <SectionLabel>Avis Google</SectionLabel>
 
-            <h2 className="relative mt-3 inline-block font-serif text-[clamp(32px,4.5vw,52px)] font-light leading-tight">
-              Ils nous font{" "}
-              <em className="italic text-[var(--color-gold-title)]">confiance</em>
-              <span
-                aria-hidden="true"
-                className="absolute -bottom-2 left-0 h-px w-full"
-                style={{
-                  background:
-                    "linear-gradient(to right, var(--color-gold), transparent)",
-                }}
-              />
-            </h2>
+              <h2 className="relative mt-3 inline-block font-serif text-[clamp(32px,4.5vw,52px)] font-light leading-tight">
+                Ils nous font{" "}
+                <em className="italic text-[var(--color-gold-title)]">confiance</em>
+                <span
+                  aria-hidden="true"
+                  className="absolute -bottom-2 left-0 h-px w-full"
+                  style={{
+                    background:
+                      "linear-gradient(to right, var(--color-gold), transparent)",
+                  }}
+                />
+              </h2>
 
-            <div className="mt-12 grid gap-6 md:grid-cols-3">
-              {TESTIMONIALS.slice(0, 3).map((t) => (
-                <figure
-                  key={t.name}
-                  className="flex flex-col gap-4 border-t-[3px] border-[var(--color-gold)] bg-white p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_48px_rgba(13,34,68,0.1)]"
-                >
-                  <div className="flex gap-1" role="img" aria-label={`${t.rating} étoiles sur 5`}>
-                    {Array.from({ length: 5 }, (_, i) => (
-                      <Star
-                        key={i}
-                        size={14}
-                        strokeWidth={0}
-                        fill="currentColor"
-                        className={
-                          i < t.rating
-                            ? "text-[var(--color-gold)]"
-                            : "text-gray-200"
-                        }
-                        aria-hidden="true"
-                      />
-                    ))}
-                  </div>
-                  <blockquote className="font-serif text-base italic leading-relaxed text-[var(--color-navy)]">
-                    « {t.text} »
-                  </blockquote>
-                  <figcaption className="border-t border-gray-100 pt-4 text-sm">
-                    <div className="font-serif font-semibold text-[var(--color-navy)]">
-                      {t.name}
+              <div className="mt-12 grid gap-6 md:grid-cols-3">
+                {reviews.map((r) => (
+                  <figure
+                    key={`${r.authorName}-${r.relativeTime}`}
+                    className="flex flex-col gap-4 border-t-[3px] border-[var(--color-gold)] bg-white p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_48px_rgba(13,34,68,0.1)]"
+                  >
+                    <div
+                      className="flex gap-1"
+                      role="img"
+                      aria-label={`${r.rating} étoiles sur 5`}
+                    >
+                      {Array.from({ length: 5 }, (_, i) => (
+                        <Star
+                          key={i}
+                          size={14}
+                          strokeWidth={0}
+                          fill="currentColor"
+                          className={
+                            i < r.rating
+                              ? "text-[var(--color-gold)]"
+                              : "text-gray-200"
+                          }
+                          aria-hidden="true"
+                        />
+                      ))}
                     </div>
-                    <div className="text-xs uppercase tracking-[0.15em] text-[var(--color-muted)]">
-                      {t.role}
-                    </div>
-                  </figcaption>
-                </figure>
-              ))}
+                    <blockquote className="font-serif text-base italic leading-relaxed text-[var(--color-navy)]">
+                      « {r.text} »
+                    </blockquote>
+                    <figcaption className="border-t border-gray-100 pt-4 text-sm">
+                      <div className="font-serif font-semibold text-[var(--color-navy)]">
+                        {r.authorName}
+                      </div>
+                      <div className="text-xs uppercase tracking-[0.15em] text-[var(--color-muted)]">
+                        Avis Google{r.relativeTime ? ` · ${r.relativeTime}` : ""}
+                      </div>
+                    </figcaption>
+                  </figure>
+                ))}
+              </div>
+
+              <a
+                href={GOOGLE_MAPS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-8 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-gold-text)] hover:underline"
+              >
+                Voir tous les avis sur Google{" "}
+                <ArrowRight size={14} aria-hidden="true" />
+              </a>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
 
         {/* ── FAQ ── */}
         <FaqSection

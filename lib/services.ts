@@ -297,9 +297,12 @@ export const SERVICES: readonly Service[] = [
 
   {
     slug: "nettoyage-bureaux-entreprises",
-    metaTitle: "Nettoyage de bureaux à Paris : entretien professionnel",
+    // « nettoyage de bureaux » (720 rech./mois) et « nettoyage bureaux paris »
+    // (390, CPC 6,96 $) : la promesse « tarifs » capte l'intention d'achat,
+    // qui est la raison d'être de ces requêtes.
+    metaTitle: "Nettoyage de bureaux à Paris : tarifs et devis 24h",
     metaDescription:
-      "Entretien quotidien, ponctuel ou sous contrat de vos locaux. Équipes formées, produits écolabellisés, dès 2,5 €/m². Devis gratuit sous 24h.",
+      "Entretien de bureaux à Paris et en Île-de-France : quotidien, ponctuel ou sous contrat, en horaires décalés. Devis gratuit sous 24h.",
     num: "02",
     pole: "b2b",
     bgImage: "/images/bg-bureaux&entreprise.jpg",
@@ -2405,22 +2408,21 @@ export const SERVICES: readonly Service[] = [
       "nettoyage agence immobilière Paris",
       "nettoyage avant état des lieux Paris",
       "remise en état appartement Paris",
-      "nettoyage fin de bail Paris",
       "nettoyage locatif Île-de-France",
+      "remise en état entre deux locataires",
     ],
     priceRange: "Au logement • Sur Devis",
     offers: [
       "Nettoyage avant état des lieux de sortie",
       "Remise en état entre deux locataires",
-      "Nettoyage de fin de bail",
       "Préparation d'un bien avant visites",
       "Remise en état après travaux locatifs",
     ],
     tldr: "Le nettoyage pour agences immobilières remet un logement en état avant un état des lieux, une relocation ou une mise en vente. TGT Propreté intervient sous 24 à 48h à Paris et en Île-de-France, avec facturation à l'agence, au propriétaire ou au locataire selon votre organisation.",
     relatedSlugs: [
-      "nettoyage-approfondi",
+      "nettoyage-fin-de-bail",
+      "nettoyage-apres-demenagement",
       "nettoyage-fin-de-chantier",
-      "nettoyage-tapis-moquettes",
       "prestations-sur-mesure-conciergerie",
     ],
     sections: [
@@ -2879,6 +2881,351 @@ export const SERVICES: readonly Service[] = [
       {
         q: "Intervenez-vous sur les parkings et sols béton ?",
         a: "Oui, avec un matériel de lavage mécanisé dimensionné à la surface, et un traitement spécifique des taches d'huile et d'hydrocarbures. C'est une prestation qui se planifie généralement une à deux fois par an.",
+      },
+    ],
+  },
+
+  /* ══════  IV. REMISE EN ÉTAT DE LOGEMENT  ══════ */
+
+  {
+    slug: "nettoyage-apres-demenagement",
+    // « nettoyage après déménagement » : 260 recherches/mois, CPC 4,57 $, et
+    // aucune page ne la ciblait alors que la prestation était vendue.
+    metaTitle: "Nettoyage après déménagement à Paris : logement vide",
+    metaDescription:
+      "Nettoyage complet d'un logement vide après déménagement à Paris et en Île-de-France : sols, cuisine, sanitaires. Devis gratuit sous 24h.",
+    num: "17",
+    pole: "B2B & B2C",
+    bgImage: "/images/bg_nettoyage-approfondi.png",
+    Icon: PackageOpen,
+    title: "Nettoyage Après Déménagement",
+    shortDesc:
+      "Nettoyage complet d'un logement vidé de ses meubles, à l'arrivée comme au départ. Paris et Île-de-France, sous 24 à 48h.",
+    longDesc:
+      "Un logement vide ne se nettoie pas comme un logement habité : les meubles partis, tout ce qu'ils masquaient devient visible — traces de pieds de lit sur le parquet, marques de cadres sur les murs, poussière accumulée derrière les armoires, intérieur des placards jamais vidé. C'est aussi la seule occasion de traiter l'ensemble des surfaces en une seule intervention, sans rien déplacer. Nous intervenons après le départ du camion, que vous quittiez le logement ou que vous entriez dans le suivant : dégraissage complet de la cuisine et de l'électroménager laissé sur place, détartrage des pièces d'eau, lessivage des murs lavables, plinthes, portes et interrupteurs, nettoyage des vitres et des rebords de fenêtre, traitement des sols selon le revêtement, intérieur des rangements intégrés.",
+    keywords: [
+      "nettoyage après déménagement Paris",
+      "ménage après déménagement",
+      "nettoyage appartement vide Paris",
+      "nettoyage avant emménagement",
+      "nettoyage après déménagement Île-de-France",
+    ],
+    priceRange: "Au logement • Sur Devis",
+    offers: [
+      "Nettoyage d'un logement vide après déménagement",
+      "Nettoyage avant emménagement",
+      "Dégraissage de la cuisine et de l'électroménager",
+      "Détartrage des salles de bain et sanitaires",
+      "Nettoyage des vitres et des rangements intégrés",
+    ],
+    tldr: "Le nettoyage après déménagement traite un logement vidé de ses meubles, à l'arrivée comme au départ : cuisine, sanitaires, sols, vitres, murs lavables et intérieur des rangements. TGT Propreté intervient à Paris et en Île-de-France sous 24 à 48h, avec un devis au logement établi sur description ou après visite.",
+    relatedSlugs: [
+      "nettoyage-fin-de-bail",
+      "nettoyage-approfondi",
+      "nettoyage-fin-de-chantier",
+      "nettoyage-tapis-moquettes",
+    ],
+    sections: [
+      {
+        h2: "Pourquoi un logement vide demande une autre intervention",
+        intro:
+          "Tant que les meubles sont là, une bonne moitié des surfaces est inaccessible. Dès qu'ils partent, le logement change de nature : il n'y a plus de contrainte de déplacement, mais il n'y a plus rien pour masquer ce qui n'a jamais été nettoyé. C'est le moment où un nettoyage complet est le plus efficace, et le seul où il est vraiment possible.",
+        blocks: [
+          {
+            h3: "Ce qui apparaît quand les meubles partent",
+            items: [
+              "Les traces de pieds de meubles et les enfoncements dans les parquets et moquettes",
+              "Les rectangles plus clairs laissés par les cadres et les étagères",
+              "La poussière et les toiles accumulées derrière les armoires et les canapés",
+              "L'intérieur des placards et des rangements intégrés, rarement vidés avant le départ",
+              "Les joints et les silicones des pièces d'eau, jusque-là partiellement cachés",
+            ],
+          },
+          {
+            h3: "Pourquoi le faire faire plutôt que soi-même",
+            text: "Ce n'est pas une question de savoir-faire mais de calendrier. Un déménagement se termine toujours dans l'urgence, souvent le jour même de la remise des clés, et c'est précisément le moment où personne n'a l'énergie de dégraisser un four. Une équipe qui arrive après le camion traite le logement en une demi-journée à une journée selon la surface.",
+          },
+        ],
+      },
+      {
+        h2: "Au départ ou à l'arrivée : deux besoins différents",
+        intro:
+          "La prestation est la même sur le papier, mais l'enjeu n'est pas du tout le même, et cela change l'ordre des priorités.",
+        blocks: [
+          {
+            h3: "Vous quittez le logement",
+            text: "L'objectif est de rendre un logement irréprochable, souvent avant un état des lieux de sortie. Si une date d'état des lieux est fixée, dites-le-nous : la prestation relève alors du nettoyage de fin de bail, que nous traitons en priorité parce que la date ne se reporte pas.",
+          },
+          {
+            h3: "Vous entrez dans le logement",
+            text: "L'objectif est de ne pas s'installer dans la saleté de quelqu'un d'autre. Nous insistons alors sur les pièces d'eau, l'intérieur des placards, l'électroménager laissé sur place et la désodorisation — en particulier s'il y a eu des animaux ou du tabac. L'idéal est d'intervenir avant l'arrivée de vos meubles.",
+          },
+          {
+            h3: "Le cas d'un logement qui sort de travaux",
+            text: "Si une rénovation a précédé le déménagement, la poussière de plâtre, le voile de ciment et les traces de peinture ou de colle relèvent du nettoyage de fin de chantier, qui emploie un matériel et des produits différents. Dites-le-nous : ce n'est pas la même prestation, et un nettoyage classique ne viendra pas à bout d'un voile de ciment.",
+          },
+        ],
+      },
+      {
+        h2: "Que comprend le nettoyage d'un logement vide ?",
+        intro:
+          "La prestation couvre l'intégralité du logement, y compris l'intérieur des rangements et des appareils. Nous travaillons du haut vers le bas et finissons par les sols, pour ne pas repasser deux fois.",
+        blocks: [
+          {
+            h3: "Cuisine",
+            items: [
+              "Dégraissage intérieur et extérieur du four, de la hotte et du micro-ondes",
+              "Plaques, crédence, joints et robinetterie détartrés",
+              "Réfrigérateur vidé, dégivré si nécessaire et désinfecté",
+              "Intérieur et extérieur de tous les placards et tiroirs",
+              "Évier, siphon visible et plan de travail",
+            ],
+          },
+          {
+            h3: "Salle de bain et sanitaires",
+            items: [
+              "Détartrage de la douche, de la baignoire et des parois",
+              "Traitement des joints, des silicones et des coulures",
+              "Robinetteries, pommeaux, flexibles et bondes",
+              "Cuvette, réservoir, abattant et pourtour des WC",
+              "Miroirs, meuble vasque et rangements",
+            ],
+          },
+          {
+            h3: "Pièces de vie et chambres",
+            items: [
+              "Lessivage des plinthes, portes, huisseries et interrupteurs",
+              "Murs lavables, dans la limite de ce que supporte le revêtement",
+              "Vitres, châssis et rebords de fenêtre",
+              "Radiateurs, bouches de ventilation et volets accessibles",
+              "Sols traités selon le revêtement : parquet, carrelage, vinyle, moquette",
+            ],
+          },
+          {
+            h3: "Ce qui ne relève pas du nettoyage",
+            text: "Nous nettoyons, nous ne réparons pas. Un trou de cheville, un parquet rayé, une peinture écaillée ou une moquette brûlée appellent une reprise de travaux, pas un produit. Nous vous le disons avant d'intervenir plutôt que de vous laisser découvrir que le problème était ailleurs.",
+          },
+        ],
+      },
+      {
+        h2: "Combien coûte un nettoyage après déménagement ?",
+        intro:
+          "Nous chiffrons au logement, après description ou visite, jamais au mètre carré seul : deux appartements de même surface peuvent demander un temps très différent.",
+        blocks: [
+          {
+            h3: "Ce qui fait varier le devis",
+            items: [
+              "La surface et surtout le nombre de pièces d'eau, qui concentrent l'essentiel du temps",
+              "L'état de départ : un logement entretenu se traite deux fois plus vite qu'un logement laissé des mois sans entretien",
+              "La présence de moquettes, d'odeurs installées ou de traces de travaux",
+              "L'électroménager laissé sur place, le four étant à lui seul un poste de temps",
+              "L'accès : étage sans ascenseur, stationnement, disponibilité des clés",
+            ],
+          },
+          {
+            h3: "Comment obtenir un devis juste du premier coup",
+            text: "Quelques photos suffisent : la cuisine, chaque pièce d'eau, et une vue d'ensemble par pièce. C'est plus précis qu'une description, et cela nous évite de découvrir sur place un état qui change le temps nécessaire. Nous répondons sous 24h, et nous vous appelons avant de commencer si la réalité ne correspond pas à ce que nous avions estimé.",
+          },
+        ],
+      },
+    ],
+    process: [
+      {
+        step: "Devis sous 24h",
+        text: "Vous décrivez le logement, sa surface et sa date de libération, photos à l'appui si possible. Nous répondons sous 24h avec un prix au logement.",
+      },
+      {
+        step: "Créneau après le camion",
+        text: "Nous intervenons une fois le logement vidé. Si la date est contrainte par un état des lieux, nous la réservons dès votre accord.",
+      },
+      {
+        step: "Nettoyage complet",
+        text: "Du haut vers le bas : rangements et surfaces, puis cuisine et pièces d'eau, vitres, et sols en dernier.",
+      },
+      {
+        step: "Contrôle avec vous",
+        text: "Nous faisons le tour du logement ensemble, ou nous vous envoyons des photos si vous ne pouvez pas être présent.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Faut-il que le logement soit entièrement vide ?",
+        a: "C'est nettement préférable, et c'est tout l'intérêt de cette prestation : sans meubles, nous atteignons toutes les surfaces en une seule passe. Quelques cartons ou un meuble restant ne bloquent rien, mais un logement encore à moitié occupé relève plutôt du nettoyage approfondi.",
+      },
+      {
+        q: "Combien de temps faut-il pour un nettoyage après déménagement ?",
+        a: "Comptez une demi-journée pour un studio ou un deux-pièces en bon état, une journée pour un trois ou quatre-pièces, davantage si le logement a été laissé longtemps sans entretien ou s'il comporte plusieurs salles de bain. Nous vous donnons une durée estimée avec le devis.",
+      },
+      {
+        q: "Intervenez-vous le jour de la remise des clés ?",
+        a: "Oui, à condition de nous prévenir à l'avance : ce sont des journées très demandées, surtout en fin de mois et en période estivale. Donnez-nous la date dès qu'elle est connue, même si l'accès au logement n'est pas encore possible.",
+      },
+      {
+        q: "Et si le logement sort de travaux ?",
+        a: "C'est une autre prestation. La poussière de plâtre, le voile de ciment et les traces de peinture relèvent du nettoyage de fin de chantier, avec un matériel et des produits spécifiques. Signalez-le-nous : un nettoyage classique ne vient pas à bout d'un voile de ciment.",
+      },
+      {
+        q: "Fournissez-vous les produits et le matériel ?",
+        a: "Oui, tout est inclus : produits, aspirateurs, monobrosse si le sol le demande, et nettoyeur vapeur le cas échéant. Vous n'avez rien à prévoir, ce qui est commode un jour de déménagement où tout est déjà dans les cartons.",
+      },
+    ],
+  },
+
+  {
+    slug: "nettoyage-fin-de-bail",
+    // « nettoyage fin de bail » : 50 recherches/mois mais CPC 4,20 $ et une
+    // intention d'achat immédiate — la date de l'état des lieux est fixée.
+    // Angle locataire, distinct de /services/nettoyage-agences-immobilieres
+    // qui traite le même moment du côté de l'agence et du bailleur.
+    metaTitle: "Nettoyage de fin de bail à Paris pour locataires",
+    metaDescription:
+      "Remise en état avant l'état des lieux de sortie à Paris : cuisine, sanitaires, sols, vitres. Intervention sous 24 à 48h. Devis gratuit sous 24h.",
+    num: "18",
+    pole: "B2B & B2C",
+    bgImage: "/images/bg_nettoyage-fin-de-chantier.jpg",
+    Icon: KeyRound,
+    title: "Nettoyage de Fin de Bail",
+    shortDesc:
+      "Remise en état d'un logement avant l'état des lieux de sortie. Date tenue, intervention sous 24 à 48h à Paris et en IDF.",
+    longDesc:
+      "Le nettoyage de fin de bail est la remise en état d'un logement avant l'état des lieux de sortie. Son enjeu n'est pas esthétique mais contractuel : le bail impose de restituer le logement dans l'état où il a été reçu, et l'état des lieux de sortie se compare ligne à ligne à celui d'entrée. Un logement rendu propre déplace la discussion sur les seules dégradations réelles, ce qui raccourcit l'état des lieux et limite les retenues sur le dépôt de garantie. Nous traitons l'intégralité du logement, intérieur des placards et de l'électroménager compris : dégraissage de la cuisine, détartrage des pièces d'eau, lessivage des plinthes, portes et interrupteurs, vitres et châssis, sols selon le revêtement. La date de l'état des lieux ne se reportant pas, ces interventions passent en priorité dans notre planning.",
+    keywords: [
+      "nettoyage fin de bail Paris",
+      "ménage fin de bail",
+      "nettoyage avant état des lieux de sortie",
+      "remise en état location Paris",
+      "nettoyage fin de bail Île-de-France",
+    ],
+    priceRange: "Au logement • Sur Devis",
+    offers: [
+      "Nettoyage avant état des lieux de sortie",
+      "Remise en état de fin de bail",
+      "Dégraissage complet de la cuisine et du four",
+      "Détartrage des salles de bain et des sanitaires",
+      "Nettoyage des vitres, châssis et rangements",
+    ],
+    tldr: "Le nettoyage de fin de bail remet un logement en état avant l'état des lieux de sortie, afin que la discussion ne porte plus que sur les dégradations réelles. TGT Propreté intervient à Paris et en Île-de-France sous 24 à 48h, en priorité sur ces dossiers parce que la date de l'état des lieux ne se reporte pas. Devis au logement, gratuit sous 24h.",
+    relatedSlugs: [
+      "nettoyage-apres-demenagement",
+      "nettoyage-agences-immobilieres",
+      "nettoyage-approfondi",
+      "nettoyage-des-vitres",
+    ],
+    sections: [
+      {
+        h2: "Ce que le bail vous demande vraiment",
+        intro:
+          "La loi impose de rendre le logement dans l'état où il vous a été remis, usure normale déduite. C'est l'état des lieux d'entrée qui sert de référence, pas l'idée que chacun se fait de « propre ». D'où une règle simple : relisez votre état des lieux d'entrée avant de commander quoi que ce soit.",
+        blocks: [
+          {
+            h3: "Ce qui relève du nettoyage",
+            text: "La saleté, le calcaire, le gras, la poussière, les traces et les odeurs. Tout cela est de votre ressort et se traite entièrement : c'est précisément le périmètre de cette prestation, et c'est sur ces postes que les retenues sur dépôt de garantie sont les plus fréquentes parce qu'elles sont les plus faciles à constater.",
+          },
+          {
+            h3: "Ce qui relève de la réparation",
+            text: "Un trou de cheville, un parquet rayé, une vitre fêlée, une peinture écaillée, une moquette brûlée : aucun produit ne les fait disparaître. Ce sont des dégradations, pas de la saleté, et elles se négocient ou se réparent. Nous vous le disons dès le devis plutôt que de vous laisser croire que le nettoyage réglera le problème.",
+          },
+          {
+            h3: "Ce qui relève de l'usure normale",
+            text: "Un logement occupé plusieurs années subit une usure que le bailleur ne peut pas vous imputer : légère patine des peintures, usure des joints, vieillissement d'un revêtement. Un logement propre aide précisément à faire la part entre cette usure et une dégradation.",
+          },
+        ],
+      },
+      {
+        h2: "Les postes qui font échouer un état des lieux",
+        intro:
+          "Après des centaines d'interventions, les mêmes points reviennent. Ce sont ceux qu'un état des lieux de sortie vérifie systématiquement, et ceux qu'un nettoyage fait soi-même laisse presque toujours de côté.",
+        blocks: [
+          {
+            h3: "Les six postes toujours contrôlés",
+            items: [
+              "L'intérieur du four et la hotte — le poste numéro un des retenues",
+              "Le calcaire de la douche, de la baignoire et des parois, joints compris",
+              "Le réfrigérateur et le congélateur, vidés, dégivrés et désinfectés",
+              "L'intérieur des placards, tiroirs et rangements intégrés",
+              "Les vitres, les châssis et les rails de fenêtre",
+              "Les plinthes, les interrupteurs et le dessus des portes",
+            ],
+          },
+          {
+            h3: "Les odeurs, le poste que l'on oublie",
+            text: "Le tabac et les animaux laissent une odeur dans les textiles, les rideaux et parfois les peintures. Elle n'apparaît sur aucune photo mais se remarque en trois secondes à l'ouverture de la porte, et elle fait partie de ce qu'un bailleur relève. Nous traitons la désodorisation en complément, et le lavage des moquettes par injection-extraction lorsqu'elles sont en cause.",
+          },
+        ],
+      },
+      {
+        h2: "Sous quel délai intervenez-vous ?",
+        intro:
+          "Sous 24 à 48 heures sur Paris et l'Île-de-France. Ces demandes passent en priorité dans notre planning, pour une raison simple : une date d'état des lieux ne se reporte pas, alors qu'un ménage courant se décale d'un jour sans conséquence. Le plus utile de votre côté est de nous donner la date dès qu'elle est fixée, même si le logement n'est pas encore vide et même si vous n'avez pas encore les clés en main : cela nous permet de réserver le créneau et de dimensionner l'équipe. Pour les grandes surfaces ou les logements très dégradés, quelques photos suffisent à évaluer le temps nécessaire et à vous confirmer que la date est tenable. S'il est trop tard pour faire les choses correctement, nous vous le disons tout de suite plutôt que de livrer un travail incomplet la veille de l'état des lieux.",
+      },
+      {
+        h2: "Combien coûte un nettoyage de fin de bail ?",
+        intro:
+          "Nous chiffrons au logement, sur description ou après visite. La surface compte, mais elle n'est pas le premier facteur.",
+        blocks: [
+          {
+            h3: "Ce qui fait le prix",
+            items: [
+              "Le nombre de pièces d'eau et de cuisines, qui concentrent l'essentiel du temps",
+              "L'état de départ, qui peut faire varier la durée du simple au double à surface égale",
+              "L'électroménager à reprendre : four, hotte, réfrigérateur, lave-linge",
+              "La présence de moquettes, d'odeurs installées ou de traces de travaux",
+              "L'urgence : une intervention à caler sous 24h mobilise une équipe en priorité",
+            ],
+          },
+          {
+            h3: "Qui paie, et comment",
+            text: "Le plus souvent le locataire sortant, mais nous facturons aussi directement l'agence ou le propriétaire lorsque c'est le montage retenu. Dans tous les cas, devis écrit avant l'intervention et facture détaillée après : c'est ce document qui vous sert de preuve si le bailleur contestait l'état de propreté du logement.",
+          },
+          {
+            h3: "Ce que nous ne promettons pas",
+            text: "Aucun prestataire sérieux ne peut garantir la restitution de votre dépôt de garantie, et nous ne le ferons pas davantage. Nous garantissons un nettoyage de qualité professionnelle et une facture qui l'atteste. La restitution dépend de l'état global du logement et des dégradations constatées, qui ne relèvent pas du nettoyage.",
+          },
+        ],
+      },
+    ],
+    process: [
+      {
+        step: "Donnez-nous la date",
+        text: "Dès que la date de l'état des lieux est connue, même sans accès au logement. Nous réservons le créneau et vous confirmons si le délai est tenable.",
+      },
+      {
+        step: "Devis au logement sous 24h",
+        text: "Sur description ou sur quelques photos — cuisine, pièces d'eau, vue d'ensemble par pièce. Prix ferme avant intervention.",
+      },
+      {
+        step: "Remise en état complète",
+        text: "Cuisine et pièces d'eau en priorité, puis rangements, surfaces, vitres, et sols en dernier. Électroménager repris de l'intérieur.",
+      },
+      {
+        step: "Facture détaillée",
+        text: "Elle atteste du nettoyage réalisé et vous sert de pièce justificative si l'état de propreté est contesté.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Le nettoyage de fin de bail me garantit-il de récupérer mon dépôt de garantie ?",
+        a: "Non, et personne ne peut vous le garantir. Nous garantissons un nettoyage de qualité professionnelle et une facture qui en fait la preuve. La restitution dépend de l'état global du logement : les dégradations — trous, rayures, peinture abîmée — relèvent de la réparation, pas du nettoyage.",
+      },
+      {
+        q: "Quelle différence avec un nettoyage après déménagement ?",
+        a: "Le périmètre technique est très proche, l'enjeu ne l'est pas. Un nettoyage après déménagement se fait pour votre confort, à l'arrivée comme au départ, et sa date est souple. Un nettoyage de fin de bail est contraint par la date de l'état des lieux : il passe en priorité dans notre planning et nous insistons sur les postes qu'un état des lieux contrôle.",
+      },
+      {
+        q: "Pouvez-vous intervenir si je ne peux pas être présent ?",
+        a: "Oui, c'est fréquent quand le déménagement est déjà fait. Nous récupérons les clés auprès de vous, du gardien ou de l'agence selon ce que vous organisez, et nous vous envoyons des photos du logement en fin d'intervention.",
+      },
+      {
+        q: "Faut-il que le logement soit vide ?",
+        a: "C'est préférable, et c'est généralement le cas à ce stade. S'il reste des meubles ou des cartons, dites-le-nous : cela change le temps nécessaire et nous préférons l'intégrer au devis plutôt que de le découvrir sur place.",
+      },
+      {
+        q: "Combien de temps à l'avance faut-il vous appeler ?",
+        a: "Le plus tôt possible, idéalement dès que la date de l'état des lieux est fixée. Nous tenons des interventions sous 24 à 48h, mais les fins de mois et la période estivale sont très demandées : une semaine d'avance vous assure le créneau que vous voulez.",
+      },
+      {
+        q: "Et si l'état des lieux se passe mal malgré le nettoyage ?",
+        a: "Votre devis et votre facture détaillent ce qui a été nettoyé et à quelle date. C'est une pièce opposable si le bailleur invoque un défaut de propreté. En revanche, nous ne pouvons rien attester sur des dégradations qui existaient avant notre passage.",
       },
     ],
   },

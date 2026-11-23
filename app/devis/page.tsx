@@ -1,7 +1,6 @@
 import Image from "next/image";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Suspense } from "react";
 import { Clock, Mail, Phone, ShieldCheck } from "lucide-react";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
@@ -106,9 +105,9 @@ export default function DevisPage() {
 
         <section className="bg-[var(--color-light)] px-5 py-16 md:px-10 md:py-20">
   <div className="container-tgt grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
-    <Suspense fallback={<div className="h-[500px]" />}>
-      <DevisForm />
-    </Suspense>
+    {/* Plus de <Suspense> : le formulaire ne lit plus la query au rendu, il
+        se rend donc côté serveur et ses champs sont dans le HTML servi. */}
+    <DevisForm />
 
     <aside className="space-y-8">
       {/* Section : Pourquoi TGT Propreté ? */}

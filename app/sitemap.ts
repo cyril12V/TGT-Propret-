@@ -1,50 +1,53 @@
 import type { MetadataRoute } from "next";
 import { SITE } from "@/lib/constants";
+import { CONTENT_UPDATED } from "@/lib/content-dates";
 import { SERVICES } from "@/lib/services";
 import { ZONES } from "@/lib/zones";
 import { PARIS_ARRONDISSEMENTS } from "@/lib/zones-paris";
 import { ARTICLES } from "@/lib/articles";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
+  // Dates de contenu, pas date de build : voir lib/content-dates.ts.
+  const statiques = new Date(CONTENT_UPDATED.staticPages);
+  const legales = new Date(CONTENT_UPDATED.legalPages);
   const base = SITE.url;
 
   const staticPages: MetadataRoute.Sitemap = [
-    { url: `${base}/`, lastModified: now, changeFrequency: "monthly", priority: 1 },
+    { url: `${base}/`, lastModified: statiques, changeFrequency: "monthly", priority: 1 },
     {
       url: `${base}/services`,
-      lastModified: now,
+      lastModified: statiques,
       changeFrequency: "monthly",
       priority: 0.95,
     },
     {
       url: `${base}/zones`,
-      lastModified: now,
+      lastModified: statiques,
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${base}/zones/paris`,
-      lastModified: now,
+      lastModified: statiques,
       changeFrequency: "monthly",
       priority: 0.95,
     },
     {
       url: `${base}/devis`,
-      lastModified: now,
+      lastModified: statiques,
       changeFrequency: "monthly",
       priority: 0.95,
     },
-    { url: `${base}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${base}/blog`, lastModified: statiques, changeFrequency: "weekly", priority: 0.9 },
     {
       url: `${base}/mentions-legales`,
-      lastModified: now,
+      lastModified: legales,
       changeFrequency: "yearly",
       priority: 0.3,
     },
     {
       url: `${base}/politique-confidentialite`,
-      lastModified: now,
+      lastModified: legales,
       changeFrequency: "yearly",
       priority: 0.3,
     },
@@ -52,21 +55,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const servicePages: MetadataRoute.Sitemap = SERVICES.map((s) => ({
     url: `${base}/services/${s.slug}`,
-    lastModified: now,
+    lastModified: new Date(CONTENT_UPDATED.services),
     changeFrequency: "monthly" as const,
     priority: 0.8,
   }));
 
   const parisPages: MetadataRoute.Sitemap = PARIS_ARRONDISSEMENTS.map((a) => ({
     url: `${base}/zones/paris/${a.slug}`,
-    lastModified: now,
+    lastModified: new Date(CONTENT_UPDATED.parisArrondissements),
     changeFrequency: "monthly" as const,
     priority: 0.8,
   }));
 
   const zonePages: MetadataRoute.Sitemap = ZONES.map((z) => ({
     url: `${base}/zones/${z.slug}`,
-    lastModified: now,
+    lastModified: new Date(CONTENT_UPDATED.zones),
     changeFrequency: "monthly" as const,
     priority: 0.6,
   }));

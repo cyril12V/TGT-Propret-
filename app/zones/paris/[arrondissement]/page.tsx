@@ -14,6 +14,7 @@ import {
   getArrondissementBySlug,
   arrondissementMetaTitle,
   arrondissementMetaDescription,
+  ordinalFr,
 } from "@/lib/zones-paris";
 import {
   breadcrumbJsonLd,
@@ -86,19 +87,17 @@ export default async function ArrondissementPage({
             </nav>
 
             <SectionLabel onDark>
-              Paris {arr.number}
-              <sup>e</sup> · {arr.postalCode}
+              Paris {ordinalFr(arr.number)} · {arr.postalCode}
             </SectionLabel>
             <h1 className="mt-3 font-serif text-[clamp(36px,5.5vw,68px)] font-light leading-[1.05]">
               Entreprise de nettoyage —{" "}
               <em className="italic text-[var(--color-gold)]">
-                Paris {arr.number}
-                <sup>e</sup> arrondissement
+                Paris {ordinalFr(arr.number)} arrondissement
               </em>
             </h1>
             <p className="mt-4 max-w-3xl text-lg leading-relaxed text-white/70">
-              {arr.district}. TGT Propreté intervient dans le {arr.number}
-              <sup>e</sup> arrondissement de Paris auprès des particuliers,
+              {arr.district}. TGT Propreté intervient dans le{" "}
+              {ordinalFr(arr.number)} arrondissement de Paris auprès des particuliers,
               entreprises, syndics de copropriété et artisans. Devis gratuit
               sous 24h.
             </p>
@@ -108,8 +107,8 @@ export default async function ArrondissementPage({
                 href={`/devis?zone=paris-${arr.number}`}
                 className="inline-flex items-center gap-2 bg-[var(--color-gold)] px-7 py-4 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-navy)] transition-all hover:-translate-y-0.5 hover:bg-[var(--color-gold-2)]"
               >
-                Devis pour Paris {arr.number}
-                <sup>e</sup> <ArrowRight size={14} aria-hidden="true" />
+                Devis pour Paris {ordinalFr(arr.number)}{" "}
+                <ArrowRight size={14} aria-hidden="true" />
               </Link>
               <Link
                 href="/zones/paris"
@@ -125,8 +124,7 @@ export default async function ArrondissementPage({
           <div className="container-tgt grid gap-12 lg:grid-cols-[2fr_1fr] lg:gap-16">
             <div className="space-y-5 text-[16px] leading-relaxed text-[var(--color-muted)]">
               <h2 className="font-serif text-3xl font-light text-[var(--color-navy)] md:text-4xl">
-                Notre intervention à Paris {arr.number}
-                <sup>e</sup>
+                Notre intervention à Paris {ordinalFr(arr.number)}
               </h2>
               {paragraphs.map((p, i) => (
                 <p key={i}>{p}</p>
@@ -155,8 +153,7 @@ export default async function ArrondissementPage({
 
               <div className="bg-[var(--color-navy)] p-6 text-white">
                 <div className="text-[11px] uppercase tracking-[0.2em] text-[var(--color-gold)]">
-                  Devis Paris {arr.number}
-                  <sup>e</sup>
+                  Devis Paris {ordinalFr(arr.number)}
                 </div>
                 <h3 className="mt-2 font-serif text-2xl">Réponse sous 24h</h3>
                 <p className="mt-2 text-sm text-white/70">
@@ -177,10 +174,9 @@ export default async function ArrondissementPage({
 
         <section className="bg-[var(--color-cream)] px-5 py-16 md:px-10 md:py-20">
           <div className="container-tgt">
-            <SectionLabel>Nos services à Paris {arr.number}e</SectionLabel>
+            <SectionLabel>Nos services à Paris {ordinalFr(arr.number)}</SectionLabel>
             <h2 className="mt-3 font-serif text-[clamp(28px,4vw,48px)] font-light leading-tight">
-              Toutes nos prestations dans le {arr.number}
-              <sup>e</sup>
+              Toutes nos prestations dans le {ordinalFr(arr.number)}
             </h2>
 
             <ul className="mt-10 grid gap-px bg-[rgba(13,34,68,0.08)] sm:grid-cols-2 lg:grid-cols-3">
@@ -201,8 +197,7 @@ export default async function ArrondissementPage({
                       <h3 className="font-serif text-lg font-semibold text-[var(--color-navy)]">
                         {s.title}{" "}
                         <span className="font-sans text-xs text-[var(--color-muted)]">
-                          à Paris {arr.number}
-                          <sup>e</sup>
+                          à Paris {ordinalFr(arr.number)}
                         </span>
                       </h3>
                       {/* Pas de shortDesc ici : répété sur 40 pages géo, il
@@ -220,10 +215,14 @@ export default async function ArrondissementPage({
           </div>
         </section>
 
+        {/* `nearbyOnly` : seuls les arrondissements réellement limitrophes.
+            Cette section listait les 19 autres, ce qui rendait le titre faux
+            et noyait le maillage de proximité. */}
         <ParisLinksFooter
-          title={`Autres arrondissements proches de Paris ${arr.number}e`}
-          intro="Nous intervenons également dans les arrondissements voisins, avec le même niveau de service."
+          title={`Arrondissements voisins de Paris ${ordinalFr(arr.number)}`}
+          intro="Nous intervenons également dans les arrondissements limitrophes, avec le même niveau de service."
           excludeSlug={arr.slug}
+          nearbyOnly
           variant="light"
         />
 
@@ -249,7 +248,7 @@ export default async function ArrondissementPage({
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
             zoneServiceJsonLd({
-              name: `Paris ${arr.number}e arrondissement`,
+              name: `Paris ${ordinalFr(arr.number)} arrondissement`,
               postalCode: arr.postalCode,
               department: "Paris",
               slug: `paris/${arr.slug}`,

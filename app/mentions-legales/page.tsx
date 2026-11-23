@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
-import { CONTACT, SITE } from "@/lib/constants";
+import { CONTACT, LEGAL, SITE } from "@/lib/constants";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
@@ -35,18 +35,98 @@ export default function MentionsLegalesPage() {
               <h2 className="font-serif text-2xl text-[var(--color-navy)]">
                 Éditeur du site
               </h2>
-              <p className="mt-3">
-                {SITE.brand}
-                <br />
-                {CONTACT.address.street}, {CONTACT.address.postalCode}{" "}
-                {CONTACT.address.city}, {CONTACT.address.region}, France
-                <br />
-                Téléphone : {CONTACT.phones[0]?.label}
-                <br />
-                Email : {CONTACT.email}
-                <br />
-                Responsable de la publication : {CONTACT.manager}
-              </p>
+              {/* Chaque ligne n'apparaît que si elle est renseignée dans
+                  `LEGAL` (lib/constants.ts) : pas de mention approximative.
+                  Les champs manquants sont ceux à relever sur le Kbis. */}
+              <dl className="mt-3 space-y-1">
+                <div>
+                  <dt className="inline font-semibold text-[var(--color-navy)]">
+                    Dénomination sociale :{" "}
+                  </dt>
+                  <dd className="inline">{LEGAL.denomination}</dd>
+                </div>
+                {LEGAL.formeJuridique && (
+                  <div>
+                    <dt className="inline font-semibold text-[var(--color-navy)]">
+                      Forme juridique :{" "}
+                    </dt>
+                    <dd className="inline">{LEGAL.formeJuridique}</dd>
+                  </div>
+                )}
+                {LEGAL.capitalSocial && (
+                  <div>
+                    <dt className="inline font-semibold text-[var(--color-navy)]">
+                      Capital social :{" "}
+                    </dt>
+                    <dd className="inline">{LEGAL.capitalSocial}</dd>
+                  </div>
+                )}
+                <div>
+                  <dt className="inline font-semibold text-[var(--color-navy)]">
+                    Siège social :{" "}
+                  </dt>
+                  <dd className="inline">
+                    {CONTACT.address.street}, {CONTACT.address.postalCode}{" "}
+                    {CONTACT.address.city}, {CONTACT.address.region}, France
+                  </dd>
+                </div>
+                {LEGAL.siren && (
+                  <div>
+                    <dt className="inline font-semibold text-[var(--color-navy)]">
+                      SIREN :{" "}
+                    </dt>
+                    <dd className="inline">{LEGAL.siren}</dd>
+                  </div>
+                )}
+                {LEGAL.rcsVille && (
+                  <div>
+                    <dt className="inline font-semibold text-[var(--color-navy)]">
+                      Immatriculation :{" "}
+                    </dt>
+                    <dd className="inline">RCS {LEGAL.rcsVille}</dd>
+                  </div>
+                )}
+                {LEGAL.tvaIntracommunautaire && (
+                  <div>
+                    <dt className="inline font-semibold text-[var(--color-navy)]">
+                      TVA intracommunautaire :{" "}
+                    </dt>
+                    <dd className="inline">{LEGAL.tvaIntracommunautaire}</dd>
+                  </div>
+                )}
+                <div>
+                  <dt className="inline font-semibold text-[var(--color-navy)]">
+                    Téléphone :{" "}
+                  </dt>
+                  <dd className="inline">
+                    <a
+                      href={`tel:${CONTACT.phones[0]?.tel}`}
+                      className="hover:text-[var(--color-navy)]"
+                    >
+                      {CONTACT.phones[0]?.label}
+                    </a>
+                  </dd>
+                </div>
+                <div>
+                  <dt className="inline font-semibold text-[var(--color-navy)]">
+                    Email :{" "}
+                  </dt>
+                  <dd className="inline">
+                    <a
+                      href={`mailto:${CONTACT.email}`}
+                      className="hover:text-[var(--color-navy)]"
+                    >
+                      {CONTACT.email}
+                    </a>
+                  </dd>
+                </div>
+                <div>
+                  <dt className="inline font-semibold text-[var(--color-navy)]">
+                    Directeur de la publication :{" "}
+                  </dt>
+                  <dd className="inline">{LEGAL.directeurPublication}</dd>
+                </div>
+              </dl>
             </section>
 
             <section>
@@ -73,7 +153,7 @@ export default function MentionsLegalesPage() {
               </h2>
               <p className="mt-3">
                 L&apos;ensemble du contenu de ce site (textes, images, logos,
-                graphismes) est la propriété exclusive de {SITE.brand}, sauf
+                graphismes) est la propriété exclusive de {SITE.name}, sauf
                 mention contraire. Toute reproduction, totale ou partielle, est
                 strictement interdite sans autorisation préalable écrite.
               </p>

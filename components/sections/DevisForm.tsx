@@ -1,11 +1,10 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
-import { useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { AlertCircle, ArrowRight, CheckCircle2, Send } from "lucide-react";
 import { CONTACT } from "@/lib/constants";
 import { SERVICES } from "@/lib/services";
-import { PARIS_ARRONDISSEMENTS } from "@/lib/zones-paris";
+import { PARIS_ARRONDISSEMENTS, ordinalFr } from "@/lib/zones-paris";
 import { ZONES } from "@/lib/zones";
 
 const TYPE_CLIENT = [
@@ -27,8 +26,25 @@ const FREQUENCES = [
 type Status = "idle" | "submitting" | "success" | "error";
 
 export function DevisForm() {
-  const searchParams = useSearchParams();
-  const initialZone = searchParams.get("zone") ?? "";
+  // `useSearchParams()` faisait basculer tout l'arbre en rendu client
+  // (BAILOUT_TO_CLIENT_SIDE_RENDERING) : le HTML servi ne contenait aucun
+  // champ, et la page de conversion dépendait entièrement du JavaScript.
+  //
+  // La query est désormais lue après le montage et appliquée directement au
+  // <select>, qui reste non piloté. Pas de `setState` dans l'effet — donc
+  // pas de second rendu en cascade — et surtout aucun accès à `window`
+  // pendant le rendu, qui provoquerait une divergence d'hydratation.
+  const zoneRef = useRef<HTMLSelectElement>(null);
+
+  useEffect(() => {
+    const fromUrl = new URLSearchParams(window.location.search).get("zone");
+    const select = zoneRef.current;
+    if (!fromUrl || !select) return;
+    // Ignorer une zone absente de la liste : le champ resterait vide et le
+    // visiteur ne comprendrait pas pourquoi son choix n'a pas été retenu.
+    const existe = Array.from(select.options).some((o) => o.value === fromUrl);
+    if (existe) select.value = fromUrl;
+  }, []);
 
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState<string>("");
@@ -158,13 +174,13 @@ export function DevisForm() {
           name="zone"
           label="Zone d'intervention"
           required
-          defaultValue={initialZone}
+          selectRef={zoneRef}
           options={[
             { value: "", label: "Sélectionner" },
             { value: "paris-all", label: "Paris (tous arrondissements)" },
             ...PARIS_ARRONDISSEMENTS.map((a) => ({
               value: `paris-${a.number}`,
-              label: `Paris ${a.number}e — ${a.district}`,
+              label: `Paris ${ordinalFr(a.number)} — ${a.district}`,
             })),
             // Les pages villes pointent vers /devis?zone={slug} : sans ces options,
             // le pré-remplissage retomberait silencieusement sur « Sélectionner ».
@@ -331,6 +347,8 @@ type SelectFieldProps = {
   label: string;
   required?: boolean;
   defaultValue?: string;
+  /** Accès au <select> pour le pré-remplissage de la zone depuis l'URL. */
+  selectRef?: React.Ref<HTMLSelectElement>;
   options: { value: string; label: string }[];
 };
 
@@ -339,6 +357,7 @@ function SelectField({
   label,
   required = false,
   defaultValue = "",
+  selectRef,
   options,
 }: SelectFieldProps) {
   return (
@@ -356,6 +375,7 @@ function SelectField({
       <select
         id={name}
         name={name}
+        ref={selectRef}
         required={required}
         defaultValue={defaultValue}
         className="w-full min-w-0 appearance-none border-b border-gray-300 bg-transparent py-3 text-base outline-none transition-colors focus:border-[var(--color-gold)] md:text-[15px]"

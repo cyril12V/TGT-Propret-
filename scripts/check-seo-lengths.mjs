@@ -19,6 +19,18 @@ const RACINE = ".next/server/app";
 const MAX_TITLE = 60;
 const MAX_DESCRIPTION = 155;
 
+/**
+ * Filet de securite : nombre de pages attendues dans le build.
+ *
+ * Le 1er novembre, une page service a disparu du site sans que rien ne le
+ * signale — la suppression est passee en meme temps qu'une autre
+ * modification, et le build est reste vert. Ce compte echoue si le nombre de
+ * pages change sans que ce nombre soit mis a jour volontairement.
+ *
+ * -> A ajuster quand on ajoute ou retire une page, dans le meme commit.
+ */
+const PAGES_ATTENDUES = 79;
+
 /** Mots-clés métier : chaque page de service doit en porter un dans son title. */
 const MOTS_METIER = [
   "nettoyage",
@@ -93,6 +105,14 @@ async function main() {
   }
 
   console.log(`${controlees} pages contrôlées.`);
+
+  if (controlees !== PAGES_ATTENDUES) {
+    const sens = controlees < PAGES_ATTENDUES ? "manque" : "pages en plus";
+    problemes.push(
+      `Nombre de pages inattendu : ${controlees} au lieu de ${PAGES_ATTENDUES} (${sens}). ` +
+        `Si c'est voulu, mettre à jour PAGES_ATTENDUES dans ce script.`,
+    );
+  }
 
   if (problemes.length === 0) {
     console.log(

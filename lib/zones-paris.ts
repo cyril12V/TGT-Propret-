@@ -472,6 +472,57 @@ export const PARIS_ARRONDISSEMENTS: readonly ParisArrondissement[] = [
 
 ] as const;
 
+/**
+ * Ordinal français d'un arrondissement : « 1er », « 2e », « 15e ».
+ *
+ * Composer `${n}e` produit « Paris 1e », qui est une faute et qui ne
+ * correspond à aucune requête réelle. Tout affichage d'un numéro
+ * d'arrondissement passe par cette fonction.
+ */
+export function ordinalFr(n: number): string {
+  return n === 1 ? "1er" : `${n}e`;
+}
+
+/**
+ * Arrondissements réellement limitrophes, pour le maillage de proximité.
+ *
+ * Lister les 19 autres arrondissements sous le titre « arrondissements
+ * proches » est faux pour le lecteur et dilue le signal de proximité : un
+ * lien depuis le 15e vers le 19e ne dit rien à Google. Adjacence
+ * géographique réelle, vérifiable sur un plan de Paris.
+ */
+const ARRONDISSEMENTS_VOISINS: Readonly<Record<number, readonly number[]>> = {
+  1: [2, 4, 6, 7, 8],
+  2: [1, 3, 9, 10],
+  3: [2, 4, 10, 11],
+  4: [1, 3, 5, 11, 12],
+  5: [4, 6, 13, 14],
+  6: [1, 5, 7, 14, 15],
+  7: [1, 6, 8, 15, 16],
+  8: [1, 7, 9, 16, 17],
+  9: [2, 8, 10, 18],
+  10: [2, 3, 9, 11, 18, 19],
+  11: [3, 4, 10, 12, 19, 20],
+  12: [4, 5, 11, 13, 20],
+  13: [5, 12, 14],
+  14: [5, 6, 13, 15],
+  15: [6, 7, 14, 16],
+  16: [7, 8, 15, 17],
+  17: [8, 16, 18],
+  18: [9, 10, 17, 19],
+  19: [10, 11, 18, 20],
+  20: [11, 12, 19],
+};
+
+export function getNearbyArrondissements(
+  arr: ParisArrondissement,
+): readonly ParisArrondissement[] {
+  const voisins = ARRONDISSEMENTS_VOISINS[arr.number] ?? [];
+  return voisins
+    .map((n) => PARIS_ARRONDISSEMENTS.find((a) => a.number === n))
+    .filter((a): a is ParisArrondissement => Boolean(a));
+}
+
 export function getArrondissementBySlug(
   slug: string,
 ): ParisArrondissement | undefined {

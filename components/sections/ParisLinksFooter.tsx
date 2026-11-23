@@ -1,12 +1,27 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { PARIS_ARRONDISSEMENTS } from "@/lib/zones-paris";
+import {
+  PARIS_ARRONDISSEMENTS,
+  getArrondissementBySlug,
+  getNearbyArrondissements,
+  ordinalFr,
+  type ParisArrondissement,
+} from "@/lib/zones-paris";
 
 type Props = {
   title?: string;
   intro?: string;
   variant?: "light" | "cream" | "navy";
   excludeSlug?: string;
+  /**
+   * N'afficher que les arrondissements réellement limitrophes de
+   * `excludeSlug`, au lieu des 19 autres.
+   *
+   * Sous un titre « arrondissements proches », lister le 19e depuis la page
+   * du 15e est faux pour le lecteur et noie le signal de proximité dans 19
+   * liens identiques sur chacune des 20 pages.
+   */
+  nearbyOnly?: boolean;
 };
 
 export function ParisLinksFooter({
@@ -14,10 +29,18 @@ export function ParisLinksFooter({
   intro = "TGT Propreté couvre les principaux arrondissements de Paris. Cliquez sur votre arrondissement pour découvrir nos prestations locales.",
   variant = "cream",
   excludeSlug,
+  nearbyOnly = false,
 }: Props) {
-  const items = excludeSlug
-    ? PARIS_ARRONDISSEMENTS.filter((a) => a.slug !== excludeSlug)
-    : PARIS_ARRONDISSEMENTS;
+  const current = excludeSlug ? getArrondissementBySlug(excludeSlug) : undefined;
+
+  let items: readonly ParisArrondissement[];
+  if (nearbyOnly && current) {
+    items = getNearbyArrondissements(current);
+  } else if (excludeSlug) {
+    items = PARIS_ARRONDISSEMENTS.filter((a) => a.slug !== excludeSlug);
+  } else {
+    items = PARIS_ARRONDISSEMENTS;
+  }
 
   const bg =
     variant === "navy"
@@ -68,8 +91,7 @@ export function ParisLinksFooter({
                 <div
                   className={`font-serif text-lg font-semibold ${cardText}`}
                 >
-                  Paris {arr.number}
-                  <sup>e</sup>
+                  Paris {ordinalFr(arr.number)}
                 </div>
                 <div
                   className={`mt-0.5 text-xs ${variant === "navy" ? "text-white/55" : "text-[var(--color-muted)]"}`}

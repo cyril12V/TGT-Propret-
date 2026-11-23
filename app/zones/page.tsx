@@ -6,15 +6,21 @@ import { Footer } from "@/components/layout/Footer";
 import { ContactBand } from "@/components/sections/ContactBand";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { ZONES, getZonesByDepartment } from "@/lib/zones";
-import { PARIS_ARRONDISSEMENTS } from "@/lib/zones-paris";
+import {
+  ZONES,
+  communeCount,
+  departmentCodesServed,
+  departmentCount,
+  getZonesByDepartment,
+} from "@/lib/zones";
+import { PARIS_ARRONDISSEMENTS, ordinalFr } from "@/lib/zones-paris";
 import { SITE, CONTACT } from "@/lib/constants";
 import { breadcrumbJsonLd, buildMetadata, webPageJsonLd } from "@/lib/seo";
 
 const HUB_FAQS = [
   {
     q: "Dans quelles villes d'Île-de-France intervenez-vous ?",
-    a: `TGT Propreté intervient dans les 20 arrondissements de Paris et dans ${ZONES.length} communes d'Île-de-France, réparties sur la Seine-Saint-Denis (93), les Hauts-de-Seine (92), le Val-de-Marne (94), les Yvelines (78) et l'Essonne (91). Notre siège est à Bondy (93140). Les communes non listées sont traitées sur demande, avec le même niveau de service.`,
+    a: `TGT Propreté intervient dans les 20 arrondissements de Paris et dans ${communeCount()} communes d'Île-de-France, et les ${departmentCount()} départements franciliens disposent chacun de leur page : Seine-Saint-Denis (93), Hauts-de-Seine (92), Val-de-Marne (94), Val-d'Oise (95), Seine-et-Marne (77), Yvelines (78) et Essonne (91). Notre siège est à Bondy (93140). Les communes non listées sont traitées sur demande, avec le même niveau de service.`,
   },
   {
     q: "Le délai d'intervention dépend-il de la commune ?",
@@ -32,7 +38,9 @@ const HUB_FAQS = [
 
 export const metadata: Metadata = buildMetadata({
   title: "Zones d'intervention nettoyage Paris & IDF | TGT Propreté",
-  description: `20 arrondissements de Paris et ${ZONES.length} communes d'Île-de-France desservis depuis Bondy : 93, 92, 94, 78 et 91. Devis gratuit sous 24h.`,
+  // Les codes de département sont dérivés de ZONES : ajouter une page
+  // département ne doit pas laisser cette description en arrière.
+  description: `20 arrondissements de Paris et ${communeCount()} communes d'Île-de-France desservis depuis Bondy : ${departmentCodesServed()}. Devis gratuit sous 24h.`,
   path: "/zones",
   keywords: [
     "zones d'intervention nettoyage Île-de-France",
@@ -62,8 +70,7 @@ export default function ZonesHubPage() {
 
             <SectionLabel onDark>
               {PARIS_ARRONDISSEMENTS.length} arrondissements ·{" "}
-              {ZONES.length}{" "}
-              communes
+              {communeCount()} communes · {departmentCount()} départements
             </SectionLabel>
             <h1 className="mt-3 font-serif text-[clamp(36px,5.5vw,68px)] font-light leading-[1.05]">
               Nos zones{" "}
@@ -74,9 +81,9 @@ export default function ZonesHubPage() {
 
             <p className="mt-4 max-w-3xl text-lg leading-relaxed text-white/70">
               TGT Propreté intervient dans les{" "}
-              {PARIS_ARRONDISSEMENTS.length} arrondissements de Paris et dans{" "}
-              {ZONES.length}{" "}
-              communes d&apos;Île-de-France. Notre siège est
+              {PARIS_ARRONDISSEMENTS.length} arrondissements de Paris, dans{" "}
+              {communeCount()} communes d&apos;Île-de-France et dans les{" "}
+              {departmentCount()} départements de la région. Notre siège est
               situé au {CONTACT.address.street}, {CONTACT.address.postalCode}{" "}
               {CONTACT.address.city}. Devis gratuit sous 24h, quelle que soit la
               commune.
@@ -120,8 +127,7 @@ export default function ZonesHubPage() {
                     className="inline-flex min-h-11 items-center gap-2 border border-[var(--color-navy)]/15 bg-white px-4 py-2 text-sm text-[var(--color-navy)] transition-colors hover:border-[var(--color-gold)] hover:text-[var(--color-gold)]"
                   >
                     <MapPin size={13} aria-hidden="true" />
-                    Paris {a.number}
-                    <sup>e</sup>{" "}
+                    Paris {ordinalFr(a.number)}{" "}
                     <span className="text-[var(--color-muted)]">
                       ({a.postalCode})
                     </span>
@@ -209,7 +215,7 @@ export default function ZonesHubPage() {
           __html: JSON.stringify(
             webPageJsonLd({
               title: "Nos zones d'intervention en Île-de-France",
-              description: `${PARIS_ARRONDISSEMENTS.length} arrondissements parisiens et ${ZONES.length} communes d'Île-de-France desservies.`,
+              description: `${PARIS_ARRONDISSEMENTS.length} arrondissements parisiens, ${communeCount()} communes et ${departmentCount()} départements d'Île-de-France desservis.`,
               path: "/zones",
               speakableSelectors: ["h1"],
             }),

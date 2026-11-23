@@ -8,8 +8,13 @@ import {
 } from "lucide-react";
 
 export const SITE = {
+  /**
+   * Nom de marque UNIQUE. Il n'y a volontairement plus d'`alternateName` :
+   * faire cohabiter « TGT Propreté » et « TGT Propreté Soigné » dilue le
+   * signal de marque et empêche Google de rattacher les mentions externes
+   * (annuaires, avis, réseaux) à une seule entité.
+   */
   name: "TGT Propreté",
-  brand: "TGT Propreté Soigné",
   tagline: "Entreprise de nettoyage Paris & Île-de-France",
   /**
    * Meta description de l'accueil — 150 caractères, sous la limite de
@@ -51,11 +56,47 @@ export type GoogleReviews = {
   url: string;
 };
 
+/**
+ * Identifiant Google Maps de la fiche. Toutes les URL Google du site se
+ * composent à partir de lui.
+ *
+ * L'ancien lien était copié depuis la barre d'adresse de Maps : il portait le
+ * nom de la fiche (« Entreprise de Nettoyage Paris IDF - TGT Propreté »), un
+ * caractère invisible U+2060 et des paramètres de session. Un lien construit
+ * sur le `place_id` ne bouge pas quand la fiche est renommée.
+ */
+export const GOOGLE_PLACE_ID = "ChIJ8TYHhTIT5kcRTzxSFofsBmk";
+
+export const GOOGLE_MAPS_URL = `https://www.google.com/maps/place/?q=place_id:${GOOGLE_PLACE_ID}`;
+
 export const GOOGLE_REVIEWS: GoogleReviews | null = {
   ratingValue: 5.0,
   reviewCount: 16,
-  url: "https://www.google.com/maps/place/Entreprise+de+Nettoyage+Paris+IDF+-+TGT+Propret%C3%A9%E2%81%A0/@48.8999832,2.4817104,17z/data=!4m8!3m7!1s0x47e61332850736f1:0x6906ec8716523c4f!8m2!3d48.8999832!4d2.4817104!9m1!1b1!16s%2Fg%2F11ypl9h2vx?entry=ttu&g_ep=EgoyMDI2MTAxMy4wIKXMDSoASAFQAw%3D%3D",
+  url: GOOGLE_MAPS_URL,
 };
+
+/**
+ * Horaires d'ouverture — SOURCE UNIQUE.
+ *
+ * Ces valeurs alimentent le JSON-LD `CleaningService`. Elles doivent être
+ * recopiées à l'identique sur la fiche Google Business Profile, PagesJaunes
+ * et 118712 : Google croise ces sources pour établir la fiche locale, et un
+ * écart entre elles dégrade la confiance accordée à l'établissement.
+ */
+export const OPENING_HOURS = {
+  days: [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ],
+  opens: "08:00",
+  closes: "19:00",
+  /** Libellé affiché aux visiteurs, dérivé des mêmes valeurs. */
+  label: "Du lundi au samedi, 8h – 19h",
+} as const;
 
 export const MALIKA = {
   gérante: "Malika Tlili",
@@ -85,6 +126,43 @@ export const CONTACT = {
     { name: "Facebook", url: "https://www.facebook.com/people/TGTPropret%C3%A9/61582833761269/" },
   ],
 } as const;
+
+/**
+ * Identité légale de l'éditeur du site — à renseigner depuis le Kbis.
+ *
+ * L'article 6-III de la LCEN impose à une société d'afficher sa dénomination,
+ * sa forme juridique, le montant de son capital social, l'adresse de son
+ * siège, son numéro RCS et le nom du directeur de la publication. La page
+ * ne donnait jusqu'ici que l'hébergeur.
+ *
+ * Chaque champ laissé à `null` est simplement omis de la page : aucune
+ * mention inventée. Une seule ligne à remplir par information.
+ *
+ * ⚠ Je ne suis pas juriste : faire relire la page une fois remplie.
+ */
+export const LEGAL: {
+  denomination: string;
+  formeJuridique: string | null;
+  capitalSocial: string | null;
+  siren: string | null;
+  rcsVille: string | null;
+  tvaIntracommunautaire: string | null;
+  directeurPublication: string;
+} = {
+  /** Dénomination sociale exacte, telle qu'inscrite au registre. */
+  denomination: "TGT Propreté",
+  /** « SASU », « SARL », « EURL »… */
+  formeJuridique: null,
+  /** Ex. : « 1 000 € ». */
+  capitalSocial: null,
+  /** 9 chiffres. Le SIRET du siège s'en déduit, il n'est pas obligatoire ici. */
+  siren: null,
+  /** Ville du greffe : « RCS Bobigny ». */
+  rcsVille: null,
+  /** « FR » + 11 chiffres, si l'entreprise est assujettie. */
+  tvaIntracommunautaire: null,
+  directeurPublication: "Rabah Ammouche",
+};
 
 export const IDF_DEPARTMENTS: readonly { code: string; name: string }[] = [
   { code: "77", name: "Seine-et-Marne" },

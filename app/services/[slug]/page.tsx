@@ -16,7 +16,7 @@ import {
   getRelatedServices,
   type ServiceStep,
 } from "@/lib/services";
-import { ZONES } from "@/lib/zones";
+import { ZONES, communeCount } from "@/lib/zones";
 import { getRealisationsByService } from "@/lib/realisations";
 import { SITE } from "@/lib/constants";
 import {
@@ -94,7 +94,9 @@ export default async function ServicePage({
 
   const others = getRelatedServices(service, 4);
   const realisations = getRealisationsByService(service.slug);
-  const linkedZones = ZONES.slice(0, 8);
+  // Maillage géographique : des communes, pas des départements — un lien
+  // « Hauts-de-Seine » depuis une page service n'apporte rien au visiteur.
+  const linkedZones = ZONES.filter((z) => !z.isDepartment).slice(0, 8);
 
   // Process propre au service quand il est renseigné, sinon le parcours standard.
   const process = service.process ?? DEFAULT_PROCESS;
@@ -322,7 +324,7 @@ export default async function ServicePage({
                   </h2>
                   <p className="mt-5 text-[15px] leading-relaxed text-[var(--color-muted)]">
                     Nous assurons ce service dans les 20 arrondissements de
-                    Paris et dans {ZONES.length}{" "}
+                    Paris et dans {communeCount()}{" "}
                     communes d&apos;Île-de-France, depuis notre siège de Bondy
                     (93140). Devis gratuit sous 24h, quelle que soit la commune.
                   </p>

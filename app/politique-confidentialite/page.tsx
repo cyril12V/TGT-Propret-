@@ -34,7 +34,7 @@ export default function ConfidentialitePage() {
 
           <div className="mt-10 space-y-8 text-[15px] leading-relaxed text-[var(--color-muted)]">
             <p>
-              {SITE.brand} accorde une importance particulière à la protection
+              {SITE.name} accorde une importance particulière à la protection
               de vos données personnelles. Cette politique vous informe des
               traitements réalisés conformément au Règlement Général sur la
               Protection des Données (RGPD) et à la loi Informatique et

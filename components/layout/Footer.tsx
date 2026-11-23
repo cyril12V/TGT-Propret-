@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Mail, MapPin, Phone, Star } from "lucide-react";
 import { CONTACT, GOOGLE_REVIEWS, IDF_DEPARTMENTS, SITE } from "@/lib/constants";
 import { SERVICES } from "@/lib/services";
-import { PARIS_ARRONDISSEMENTS } from "@/lib/zones-paris";
+import { PARIS_ARRONDISSEMENTS, ordinalFr } from "@/lib/zones-paris";
 import { ZONES } from "@/lib/zones";
 import { SocialIcon } from "@/components/ui/SocialIcon";
 import { ScrollTopLogo } from "@/components/ui/ScrollTopLogo";
@@ -145,8 +145,7 @@ export function Footer() {
                       href={`/zones/paris/${a.slug}`}
                       className="block py-1.5 transition-colors hover:text-[var(--color-gold)]"
                     >
-                      Paris {a.number}
-                      <sup>e</sup>
+                      Paris {ordinalFr(a.number)}
                     </Link>
                   </li>
                 ))}
@@ -243,7 +242,7 @@ export function Footer() {
         </div>
 
         <div className="flex flex-col items-start gap-2 pt-7 text-xs text-white/65 md:flex-row md:items-center md:justify-between">
-          <span>© {year} {SITE.brand} — Tous droits réservés</span>
+          <span>© {year} {SITE.name} — Tous droits réservés</span>
           <span>
             Siège : {CONTACT.address.city}, {CONTACT.address.postalCode} ·{" "}
             {CONTACT.address.region}
