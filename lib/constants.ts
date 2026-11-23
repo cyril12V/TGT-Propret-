@@ -39,13 +39,13 @@ export function getYearsOfExperience(): number {
 /**
  * Avis Google Business Profile.
  *
- * Ces valeurs alimentent l'`aggregateRating` du JSON-LD `CleaningService` et
- * déclenchent l'affichage des étoiles dans les résultats de recherche.
+ * Ces valeurs alimentent le badge « 5,0 · N avis Google » affiché sur
+ * /zones/paris. Elles ne sont plus émises en `aggregateRating` : voir
+ * `googleRatingBadge()` dans lib/seo.ts.
  *
- * Elles doivent correspondre **exactement** à la fiche Google Business Profile :
- * Google sanctionne les notes agrégées qui ne se retrouvent nulle part. Les
- * `TESTIMONIALS` plus bas sont des témoignages éditoriaux, jamais balisés en
- * `Review` pour cette raison.
+ * Elles doivent correspondre **exactement** à la fiche Google Business Profile.
+ * Aucun témoignage écrit à la main ne subsiste dans le code : les avis
+ * affichés sur le site viennent tous de l'API Places.
  *
  * → À mettre à jour à chaque palier d'avis (relevé du 28/07/2026 : 5,0 sur 11 avis).
  * Passer la constante à `null` retire proprement l'`aggregateRating` du site.
@@ -68,6 +68,11 @@ export type GoogleReviews = {
 export const GOOGLE_PLACE_ID = "ChIJ8TYHhTIT5kcRTzxSFofsBmk";
 
 export const GOOGLE_MAPS_URL = `https://www.google.com/maps/place/?q=place_id:${GOOGLE_PLACE_ID}`;
+
+/** Note formatée à la française : « 5,0 » et non « 5.0 ». */
+export function formatRating(value: number): string {
+  return value.toFixed(1).replace(".", ",");
+}
 
 export const GOOGLE_REVIEWS: GoogleReviews | null = {
   ratingValue: 5.0,
@@ -222,39 +227,5 @@ export const ENGAGEMENTS: readonly Engagement[] = [
     Icon: Award,
     title: "Satisfaction garantie",
     desc: `${getYearsOfExperience()}+ années d'expérience, des dizaines de clients fidèles, une exigence constante.`,
-  },
-];
-
-export type Testimonial = {
-  name: string;
-  role: string;
-  text: string;
-  rating: number;
-};
-
-export const TESTIMONIALS: readonly Testimonial[] = [
-  {
-    name: "Sophie L.",
-    role: "Responsable administrative",
-    text: "Service impeccable ! L'équipe est ponctuelle, discrète et très professionnelle. Nos bureaux n'ont jamais été aussi propres.",
-    rating: 5,
-  },
-  {
-    name: "Karim D.",
-    role: "Gérant de boutique",
-    text: "TGT Propreté s'occupe de notre magasin depuis plusieurs mois. Nous sommes très satisfaits du rendu et du sérieux de l'équipe.",
-    rating: 5,
-  },
-  {
-    name: "Julien P.",
-    role: "Particulier",
-    text: "Une entreprise sérieuse et réactive. Devis clair sous 24h, intervention parfaite. Je recommande sans hésitation.",
-    rating: 5,
-  },
-  {
-    name: "Émilie R.",
-    role: "Architecte d'intérieur",
-    text: "Nettoyage de fin de chantier nickel. Les artisans avaient fait des dégâts, ils ont tout repris en main. Mes clients étaient ravis.",
-    rating: 5,
   },
 ];

@@ -12,6 +12,7 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import type { ReactNode } from "react";
 import { Quote, Star, ChevronLeft, ChevronRight } from "lucide-react";
 import type { GoogleReviewItem } from "@/lib/google-reviews";
+import { GOOGLE_MAPS_URL, GOOGLE_REVIEWS, formatRating } from "@/lib/constants";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 
@@ -41,45 +42,17 @@ const CLIENTS = [
   },
 ] as const;
 
-// ─── Avis de secours (affichés si l'API Google ne renvoie rien) ──────────────
-
-const FALLBACK_REVIEWS: GoogleReviewItem[] = [
-  {
-    authorName: "Sophie M.",
-    rating: 5,
-    text: "Intervention irréprochable dans notre restaurant. L'équipe a respecté nos contraintes horaires et le résultat est à la hauteur des normes HACCP les plus strictes. Je recommande vivement.",
-    relativeTime: "il y a 2 semaines",
-    photoUrl: "",
-  },
-  {
-    authorName: "Alexandre D.",
-    rating: 5,
-    text: "Notre immeuble n'avait jamais été aussi propre. TGT Propreté a pris en charge les parties communes avec un soin remarquable. Les résidents sont unanimes.",
-    relativeTime: "il y a 1 mois",
-    photoUrl: "",
-  },
-  {
-    authorName: "Isabelle R.",
-    rating: 5,
-    text: "Service de nettoyage de fin de chantier exceptionnel. Chaque recoin traité avec une précision chirurgicale. Livraison parfaite pour notre client.",
-    relativeTime: "il y a 3 semaines",
-    photoUrl: "",
-  },
-  {
-    authorName: "Karim B.",
-    rating: 5,
-    text: "Réactivité et professionnalisme au rendez-vous. Notre cabinet médical est désormais entretenu selon des protocoles dignes des plus hauts standards sanitaires.",
-    relativeTime: "il y a 5 jours",
-    photoUrl: "",
-  },
-  {
-    authorName: "Marie-Laure F.",
-    rating: 4,
-    text: "Grand ménage réalisé avec beaucoup d'attention. Les agents sont discrets, ponctuels et utilisent des produits éco-certifiés. Mon appartement est méconnaissable.",
-    relativeTime: "il y a 2 mois",
-    photoUrl: "",
-  },
-];
+// ─── Pas d'avis de secours ────────────────────────────────────────────────────
+//
+// Cinq avis fabriqués s'affichaient ici quand l'API Google ne répondait pas
+// (« Sophie M. », « Alexandre D. »…), avec des dates figées — « il y a 5
+// jours » restait vrai éternellement — sous un chapeau qui annonçait des
+// témoignages laissés « directement sur Google ». Des avis inventés
+// présentés comme réels engagent la responsabilité de l'entreprise, et le
+// risque est le même que sur /zones/paris, où ils ont aussi été retirés.
+//
+// Sans avis réels, la section ne s'affiche pas. Elle revient d'elle-même dès
+// que GOOGLE_PLACES_API_KEY et GOOGLE_PLACE_ID sont renseignées sur Vercel.
 
 // ─── Composant : Initiales avatar (fallback si pas de photo) ─────────────────
 
@@ -455,7 +428,7 @@ function ReviewsCarousel({ reviews }: { reviews: GoogleReviewItem[] }) {
 // ─── Section principale ────────────────────────────────────────────────────────
 
 export function TestimonialsView({ reviews }: { reviews: GoogleReviewItem[] }) {
-  const displayed = reviews.length > 0 ? reviews : FALLBACK_REVIEWS;
+  const hasReviews = reviews.length > 0;
 
   return (
     <>
@@ -533,7 +506,46 @@ export function TestimonialsView({ reviews }: { reviews: GoogleReviewItem[] }) {
           </Reveal>
 
           <Reveal>
-            <ReviewsCarousel reviews={displayed} />
+            {hasReviews ? (
+              <ReviewsCarousel reviews={reviews} />
+            ) : (
+              /* Sans avis réels, on renvoie vers la fiche plutôt que
+                 d'inventer des témoignages — et la section reste en place,
+                 pour que l'ancre « Avis » du menu mène quelque part. */
+              <div className="mx-auto max-w-[560px] border border-[rgba(13,34,68,0.1)] bg-[var(--color-cream)] p-8 text-center">
+                {GOOGLE_REVIEWS && (
+                  <div className="flex items-center justify-center gap-2">
+                    <div className="flex gap-0.5" aria-hidden="true">
+                      {Array.from({ length: 5 }, (_, i) => (
+                        <Star
+                          key={i}
+                          size={16}
+                          strokeWidth={0}
+                          fill="currentColor"
+                          className="text-[var(--color-gold)]"
+                        />
+                      ))}
+                    </div>
+                    <span className="text-sm text-[var(--color-navy)]">
+                      <strong>{formatRating(GOOGLE_REVIEWS.ratingValue)}/5</strong>{" "}
+                      sur {GOOGLE_REVIEWS.reviewCount} avis
+                    </span>
+                  </div>
+                )}
+                <p className="mt-4 text-[15px] leading-relaxed text-[var(--color-muted)]">
+                  Nos clients laissent leurs avis sur notre fiche Google.
+                  Retrouvez-les tous, avec leur date et leur nom.
+                </p>
+                <a
+                  href={GOOGLE_MAPS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-5 inline-flex items-center gap-2 bg-[var(--color-navy)] px-7 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-white transition-colors hover:bg-[var(--color-navy-2)]"
+                >
+                  Lire les avis sur Google
+                </a>
+              </div>
+            )}
           </Reveal>
         </div>
       </section>

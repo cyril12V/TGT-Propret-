@@ -5,6 +5,7 @@ import {
   GOOGLE_REVIEWS,
   OPENING_HOURS,
   SITE,
+  formatRating,
 } from "@/lib/constants";
 import { ZONES } from "@/lib/zones";
 import { PARIS_ARRONDISSEMENTS, ordinalFr } from "@/lib/zones-paris";
@@ -81,7 +82,7 @@ export function buildMetadata({
 export function googleRatingBadge() {
   if (!GOOGLE_REVIEWS) return null;
   return {
-    ratingValue: GOOGLE_REVIEWS.ratingValue.toFixed(1),
+    ratingValue: formatRating(GOOGLE_REVIEWS.ratingValue),
     reviewCount: GOOGLE_REVIEWS.reviewCount,
     url: GOOGLE_REVIEWS.url,
   };
