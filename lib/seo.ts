@@ -2,10 +2,8 @@ import type { Metadata } from "next";
 import {
   CONTACT,
   GOOGLE_MAPS_URL,
-  GOOGLE_REVIEWS,
   OPENING_HOURS,
   SITE,
-  formatRating,
 } from "@/lib/constants";
 import { ZONES } from "@/lib/zones";
 import { PARIS_ARRONDISSEMENTS, ordinalFr } from "@/lib/zones-paris";
@@ -66,25 +64,6 @@ export function buildMetadata({
       description,
       images: [ogImage],
     },
-  };
-}
-
-/**
- * Note Google affichée aux visiteurs — AFFICHAGE SEUL.
- *
- * Elle n'est plus émise en `aggregateRating` dans le JSON-LD : Google
- * n'affiche pas d'étoiles pour une note qu'une entreprise publie sur
- * elle-même, donc la balise ne pouvait rien rapporter, alors qu'une note
- * déclarée qui diverge de la fiche Google expose à une pénalité pour
- * données structurées trompeuses. Les étoiles des résultats de recherche
- * locaux viennent de la fiche Business Profile, pas d'ici.
- */
-export function googleRatingBadge() {
-  if (!GOOGLE_REVIEWS) return null;
-  return {
-    ratingValue: formatRating(GOOGLE_REVIEWS.ratingValue),
-    reviewCount: GOOGLE_REVIEWS.reviewCount,
-    url: GOOGLE_REVIEWS.url,
   };
 }
 
@@ -152,7 +131,7 @@ export function localBusinessJsonLd() {
     url: SITE.url,
     logo: `${SITE.url}/images/logo.png`,
     image: `${SITE.url}/images/logo.png`,
-    foundingDate: String(SITE.foundingYear),
+    foundingDate: SITE.incorporationDate,
     telephone: CONTACT.phones[0]?.tel,
     email: CONTACT.email,
     address: {
@@ -171,17 +150,22 @@ export function localBusinessJsonLd() {
     hasMap: GOOGLE_MAPS_URL,
     areaServed: areaServedList(),
     priceRange: "€€",
-    openingHoursSpecification: [
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: [...OPENING_HOURS.days],
-        opens: OPENING_HOURS.opens,
-        closes: OPENING_HOURS.closes,
-      },
-    ],
-    // Ni `aggregateRating` ni `Review` : voir `googleRatingBadge()`. Les avis
-    // affiches sur le site viennent de l'API Google Places, la fiche Business
-    // Profile reste la seule source de notes pour les moteurs.
+    // Deux plages : la fiche Google déclare des horaires différents le
+    // dimanche. Émettre une seule spécification obligerait à choisir entre
+    // oublier le dimanche et annoncer de faux horaires six jours sur sept.
+    openingHoursSpecification: [OPENING_HOURS.semaine, OPENING_HOURS.dimanche].map(
+      (plage) => ({
+        "@type": "OpeningHoursSpecification" as const,
+        dayOfWeek: [...plage.days],
+        opens: plage.opens,
+        closes: plage.closes,
+      }),
+    ),
+    // Ni `aggregateRating` ni `Review` : Google n'affiche pas d'étoiles pour
+    // une note qu'une entreprise publie sur elle-même, et une note déclarée
+    // qui diverge de la fiche expose à une pénalité. Les avis affichés sur
+    // le site viennent de l'API Places ; la fiche Business Profile reste la
+    // seule source de notes pour les moteurs.
     sameAs: [
       ...CONTACT.socials.map((s) => s.url),
       GOOGLE_MAPS_URL,

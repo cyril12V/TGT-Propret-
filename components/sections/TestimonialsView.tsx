@@ -12,7 +12,7 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import type { ReactNode } from "react";
 import { Quote, Star, ChevronLeft, ChevronRight } from "lucide-react";
 import type { GoogleReviewItem } from "@/lib/google-reviews";
-import { GOOGLE_MAPS_URL, GOOGLE_REVIEWS, formatRating } from "@/lib/constants";
+import { GOOGLE_MAPS_URL, formatRating } from "@/lib/constants";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 
@@ -427,7 +427,15 @@ function ReviewsCarousel({ reviews }: { reviews: GoogleReviewItem[] }) {
 
 // ─── Section principale ────────────────────────────────────────────────────────
 
-export function TestimonialsView({ reviews }: { reviews: GoogleReviewItem[] }) {
+export function TestimonialsView({
+  reviews,
+  rating,
+  reviewCount,
+}: {
+  reviews: GoogleReviewItem[];
+  rating: number | null;
+  reviewCount: number | null;
+}) {
   const hasReviews = reviews.length > 0;
 
   return (
@@ -513,7 +521,7 @@ export function TestimonialsView({ reviews }: { reviews: GoogleReviewItem[] }) {
                  d'inventer des témoignages — et la section reste en place,
                  pour que l'ancre « Avis » du menu mène quelque part. */
               <div className="mx-auto max-w-[560px] border border-[rgba(13,34,68,0.1)] bg-[var(--color-cream)] p-8 text-center">
-                {GOOGLE_REVIEWS && (
+                {rating !== null && reviewCount !== null && (
                   <div className="flex items-center justify-center gap-2">
                     <div className="flex gap-0.5" aria-hidden="true">
                       {Array.from({ length: 5 }, (_, i) => (
@@ -527,8 +535,8 @@ export function TestimonialsView({ reviews }: { reviews: GoogleReviewItem[] }) {
                       ))}
                     </div>
                     <span className="text-sm text-[var(--color-navy)]">
-                      <strong>{formatRating(GOOGLE_REVIEWS.ratingValue)}/5</strong>{" "}
-                      sur {GOOGLE_REVIEWS.reviewCount} avis
+                      <strong>{formatRating(rating)}/5</strong> sur{" "}
+                      {reviewCount} avis
                     </span>
                   </div>
                 )}

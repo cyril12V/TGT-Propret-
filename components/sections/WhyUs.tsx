@@ -1,12 +1,18 @@
 import { Award, MapPinned, Sparkles, Users } from "lucide-react";
+import { getYearsOfExperience } from "@/lib/constants";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+
+const ANS = getYearsOfExperience();
 
 const REASONS = [
   {
     Icon: Award,
-    title: "8 + années d'expérience",
-    desc: "Forts de plus de 8 ans dans le secteur, nous maîtrisons chaque type d'intervention avec rigueur et méthode.",
+    // Années de métier, pas d'existence de la société : voir
+    // `SITE.teamExperienceSince`. L'ancien libellé « 8 + années » portait en
+    // plus une espace parasite et un chiffre codé en dur.
+    title: `${ANS}+ années de métier`,
+    desc: `Forts de plus de ${ANS} ans sur le terrain, nous maîtrisons chaque type d'intervention avec rigueur et méthode.`,
   },
   {
     Icon: Users,

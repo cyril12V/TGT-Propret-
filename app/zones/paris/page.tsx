@@ -8,12 +8,17 @@ import { ContactBand } from "@/components/sections/ContactBand";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { ParisLinksFooter } from "@/components/sections/ParisLinksFooter";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { GOOGLE_MAPS_URL, SITE } from "@/lib/constants";
+import {
+  GOOGLE_MAPS_URL,
+  OPENING_HOURS,
+  SITE,
+  formatRating,
+} from "@/lib/constants";
 import { PRICING } from "@/lib/pricing";
 import { SERVICES } from "@/lib/services";
 import { PARIS_ARRONDISSEMENTS, ordinalFr } from "@/lib/zones-paris";
-import { getGoogleReviews } from "@/lib/google-reviews";
-import { breadcrumbJsonLd, buildMetadata, googleRatingBadge } from "@/lib/seo";
+import { getGooglePlaceData } from "@/lib/google-reviews";
+import { breadcrumbJsonLd, buildMetadata } from "@/lib/seo";
 
 const PARIS_FAQS = [
   {
@@ -63,12 +68,17 @@ export const metadata: Metadata = buildMetadata({
 });
 
 export default async function ParisHubPage() {
-  const rating = googleRatingBadge();
-
-  // Avis réels de la fiche Google. Tableau vide si la clé Places n'est pas
-  // configurée : la section disparaît alors au lieu d'afficher des
-  // témoignages fabriqués présentés comme des avis Google.
-  const reviews = (await getGoogleReviews()).slice(0, 3);
+  // Avis, note et nombre d'avis lus sur la fiche Google au rendu. Tout est
+  // vide si la clé Places n'est pas configurée : la section disparaît alors
+  // au lieu d'afficher des témoignages fabriqués présentés comme des avis
+  // Google, et le badge de note disparaît au lieu d'afficher 5,0 sur 16 —
+  // valeurs recopiées à la main qui avaient dérivé de la fiche réelle.
+  const place = await getGooglePlaceData();
+  const reviews = place.reviews.slice(0, 3);
+  const rating =
+    place.rating !== null && place.reviewCount !== null
+      ? { value: formatRating(place.rating), count: place.reviewCount }
+      : null;
 
   // Mise en avant visuelle uniquement : les 20 arrondissements ont tous leur page
   // dédiée et sont tous liés depuis ce hub.
@@ -151,9 +161,9 @@ export default async function ParisHubPage() {
                 </div>
                 <span>
                   <strong className="text-[var(--color-gold)]">
-                    {rating.ratingValue}/5
+                    {rating.value}/5
                   </strong>{" "}
-                  · {rating.reviewCount} avis Google
+                  · {rating.count} avis Google
                 </span>
               </div>
             )}
@@ -189,7 +199,7 @@ export default async function ParisHubPage() {
               },
               { number: "24h", label: "Délai devis garanti" },
               {
-                number: rating ? `${rating.ratingValue}★` : "24h/24",
+                number: rating ? `${rating.value}★` : "24h/24",
                 label: rating ? "Note moyenne Google" : "Demande en ligne",
               },
             ].map((s) => (
@@ -444,7 +454,7 @@ export default async function ParisHubPage() {
                 {
                   n: "03",
                   title: "Réactivité garantie sous 24h",
-                  desc: "Devis envoyé sous 24h, interventions d'urgence 24-48h. Disponibles 6j/7 par téléphone pour les urgences avérées.",
+                  desc: `Devis envoyé sous 24h, interventions d'urgence 24-48h. Joignables par téléphone ${OPENING_HOURS.label.toLowerCase()}.`,
                 },
               ].map((item) => (
                 <div

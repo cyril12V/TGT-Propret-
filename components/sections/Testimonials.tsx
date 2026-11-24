@@ -10,15 +10,23 @@
 //   GOOGLE_PLACES_API_KEY=<clé Google Cloud, Places API (New) activée>
 //   GOOGLE_PLACE_ID=<Place ID de la fiche Google Business Profile>
 //
-// Sans ces variables — ou si Google ne renvoie aucun avis — la section affiche
-// les témoignages de secours définis dans TestimonialsView.
+// Sans ces variables — ou si Google ne renvoie aucun avis — la section renvoie
+// vers la fiche Google. Il n'y a plus aucun témoignage de secours : des avis
+// écrits à la main et présentés comme laissés « directement sur Google »
+// engagent la responsabilité de l'entreprise.
 // ─────────────────────────────────────────────────────────────────────────────
 
-import { getGoogleReviews } from "@/lib/google-reviews";
+import { getGooglePlaceData } from "@/lib/google-reviews";
 import { TestimonialsView } from "@/components/sections/TestimonialsView";
 
 export async function Testimonials() {
-  const reviews = await getGoogleReviews();
+  const { reviews, rating, reviewCount } = await getGooglePlaceData();
 
-  return <TestimonialsView reviews={reviews} />;
+  return (
+    <TestimonialsView
+      reviews={reviews}
+      rating={rating}
+      reviewCount={reviewCount}
+    />
+  );
 }

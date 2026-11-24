@@ -39,7 +39,7 @@ export default function BlogIndexPage() {
             </h1>
             <p className="mt-4 max-w-2xl text-lg leading-relaxed text-white/65">
               Prix, fréquences, méthodes, produits, anecdotes de chantier — on
-              partage ce qu&apos;on a appris depuis 2018 sur le nettoyage
+              partage ce qu&apos;on a appris sur le terrain du nettoyage
               professionnel en Île-de-France.
             </p>
           </div>

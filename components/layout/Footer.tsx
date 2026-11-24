@@ -1,14 +1,26 @@
 import Link from "next/link";
-import { Mail, MapPin, Phone, Star } from "lucide-react";
-import { CONTACT, GOOGLE_REVIEWS, IDF_DEPARTMENTS, SITE } from "@/lib/constants";
+import { Clock, Mail, MapPin, Phone, Star } from "lucide-react";
+import {
+  CONTACT,
+  GOOGLE_MAPS_URL,
+  IDF_DEPARTMENTS,
+  OPENING_HOURS,
+  SITE,
+  formatRating,
+} from "@/lib/constants";
+import { getGooglePlaceData } from "@/lib/google-reviews";
 import { SERVICES } from "@/lib/services";
 import { PARIS_ARRONDISSEMENTS, ordinalFr } from "@/lib/zones-paris";
 import { ZONES } from "@/lib/zones";
 import { SocialIcon } from "@/components/ui/SocialIcon";
 import { ScrollTopLogo } from "@/components/ui/ScrollTopLogo";
 
-export function Footer() {
+// Composant serveur asynchrone : la note Google est lue au rendu. L'appel est
+// mis en cache 24h par Next et dédupliqué, donc une seule requête couvre tout
+// le build malgré les 79 pages qui affichent ce pied de page.
+export async function Footer() {
   const year = new Date().getFullYear();
+  const { rating, reviewCount } = await getGooglePlaceData();
 
   return (
     <footer className="bg-[var(--color-navy)] px-5 pb-7 pt-15 text-white md:px-10 md:pt-16">
@@ -26,12 +38,14 @@ export function Footer() {
               Devis gratuit sous 24h.
             </p>
 
-            {/* Note Google visible sur toutes les pages : l'`aggregateRating` du
-                JSON-LD est émis site-wide, il doit correspondre à un contenu réel
-                affiché au visiteur. */}
-            {GOOGLE_REVIEWS && (
+            {/* Note lue sur la fiche Google au rendu, mise en cache 24h. Elle
+                était recopiée à la main (« 5,0 sur 16 avis ») et avait dérivé :
+                la fiche affichait 4,8 sur 17 au 24/11/2026. Si Google ne
+                répond pas, le badge disparaît au lieu d'afficher une valeur
+                de remplacement. */}
+            {rating !== null && reviewCount !== null && (
               <a
-                href={GOOGLE_REVIEWS.url}
+                href={GOOGLE_MAPS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-5 inline-flex items-center gap-2.5 border border-white/15 px-4 py-2.5 transition-colors hover:border-[var(--color-gold)]"
@@ -46,9 +60,9 @@ export function Footer() {
                 </span>
                 <span className="text-xs text-white/70">
                   <strong className="font-semibold text-white">
-                    {GOOGLE_REVIEWS.ratingValue.toFixed(1).replace(".", ",")}/5
+                    {formatRating(rating)}/5
                   </strong>{" "}
-                  · {GOOGLE_REVIEWS.reviewCount} avis Google
+                  · {reviewCount} avis Google
                 </span>
               </a>
             )}
@@ -215,6 +229,19 @@ export function Footer() {
                   <br />
                   {CONTACT.address.postalCode} {CONTACT.address.city}
                 </span>
+              </li>
+              {/* Horaires visibles : ils doivent être lisibles sur le site, pas
+                  seulement déclarés en JSON-LD. Google croise le site, la
+                  fiche et les annuaires — les trois doivent dire la même
+                  chose, et c'est la fiche qui fait foi (voir OPENING_HOURS). */}
+              <li className="inline-flex items-start gap-2">
+                <Clock
+                  size={13}
+                  strokeWidth={1.8}
+                  className="mt-0.5"
+                  aria-hidden="true"
+                />
+                <span>{OPENING_HOURS.label}</span>
               </li>
             </ul>
             <h2 className="mb-3 mt-6 text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--color-gold)]">

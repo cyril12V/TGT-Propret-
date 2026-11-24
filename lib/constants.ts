@@ -25,82 +25,103 @@ export const SITE = {
     "Entreprise de nettoyage professionnel à Paris et en Île-de-France : bureaux, copropriétés, commerces, fin de chantier, vitres. Devis gratuit sous 24h.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://nettoyagesidf.fr",
   locale: "fr_FR",
-  foundingYear: 2018,
+
+  /**
+   * Date d'immatriculation de la société, telle qu'inscrite au registre
+   * national des entreprises (SIREN 999 540 651). Alimente le `foundingDate`
+   * du JSON-LD, qui est une affirmation vérifiable sur une base publique.
+   *
+   * ⚠ Ne pas confondre avec `teamExperienceSince` ci-dessous. Le site
+   *   déclarait `foundingYear: 2018`, ce qui faisait dire au JSON-LD que
+   *   l'entreprise existait depuis 2018 alors qu'elle a été immatriculée le
+   *   5 janvier 2026.
+   */
+  incorporationDate: "2026-01-05",
+
+  /**
+   * Année depuis laquelle les fondateurs exercent le métier, sur le terrain.
+   * C'est de cela que parlent les « 8+ ans d'expérience » du site, et c'est
+   * ce que dit déjà la biographie de Malika Tlili : une expertise de plus de
+   * huit ans, puis la création de sa propre structure.
+   *
+   * ⚠ Si cette ancienneté de métier n'est pas établie, c'est ici qu'il faut
+   *   agir : mettre cette valeur à l'année en cours fait disparaître toute
+   *   mention d'ancienneté du site, d'un seul coup.
+   */
+  teamExperienceSince: 2018,
 } as const;
 
 /**
- * Années d'expérience, dérivées de `SITE.foundingYear`.
- * Source unique : évite les « 6+ ans » et « 8+ années » divergents d'une page à l'autre.
+ * Années de MÉTIER des fondateurs, dérivées de `SITE.teamExperienceSince`.
+ *
+ * Ce n'est pas l'âge de la société, qui a été immatriculée le 5 janvier 2026
+ * (voir `SITE.incorporationDate`). Les libellés du site disent donc
+ * « d'expérience terrain » ou « de métier », jamais « d'existence ».
+ *
+ * Source unique : évite les « 6+ ans » et « 8+ années » divergents d'une
+ * page à l'autre.
  */
 export function getYearsOfExperience(): number {
-  return new Date().getFullYear() - SITE.foundingYear;
+  return new Date().getFullYear() - SITE.teamExperienceSince;
 }
-
-/**
- * Avis Google Business Profile.
- *
- * Ces valeurs alimentent le badge « 5,0 · N avis Google » affiché sur
- * /zones/paris. Elles ne sont plus émises en `aggregateRating` : voir
- * `googleRatingBadge()` dans lib/seo.ts.
- *
- * Elles doivent correspondre **exactement** à la fiche Google Business Profile.
- * Aucun témoignage écrit à la main ne subsiste dans le code : les avis
- * affichés sur le site viennent tous de l'API Places.
- *
- * → À mettre à jour à chaque palier d'avis (relevé du 28/07/2026 : 5,0 sur 11 avis).
- * Passer la constante à `null` retire proprement l'`aggregateRating` du site.
- */
-export type GoogleReviews = {
-  ratingValue: number;
-  reviewCount: number;
-  url: string;
-};
 
 /**
  * Identifiant Google Maps de la fiche. Toutes les URL Google du site se
  * composent à partir de lui.
  *
  * L'ancien lien était copié depuis la barre d'adresse de Maps : il portait le
- * nom de la fiche (« Entreprise de Nettoyage Paris IDF - TGT Propreté »), un
- * caractère invisible U+2060 et des paramètres de session. Un lien construit
- * sur le `place_id` ne bouge pas quand la fiche est renommée.
+ * nom de la fiche, un caractère invisible U+2060 et des paramètres de
+ * session. Un lien construit sur le `place_id` ne bouge pas quand la fiche
+ * est renommée.
  */
 export const GOOGLE_PLACE_ID = "ChIJ8TYHhTIT5kcRTzxSFofsBmk";
 
 export const GOOGLE_MAPS_URL = `https://www.google.com/maps/place/?q=place_id:${GOOGLE_PLACE_ID}`;
 
-/** Note formatée à la française : « 5,0 » et non « 5.0 ». */
+/**
+ * Note formatée à la française : « 5,0 » et non « 5.0 ».
+ *
+ * La note et le nombre d'avis ne sont plus écrits ici : ils sont lus sur la
+ * fiche Google au rendu, par `getGooglePlaceData()` (lib/google-reviews.ts).
+ * Les valeurs recopiées à la main — « 5,0 sur 16 avis » — avaient dérivé : la
+ * fiche affichait 4,8 sur 17 au 24/11/2026.
+ */
 export function formatRating(value: number): string {
   return value.toFixed(1).replace(".", ",");
 }
 
-export const GOOGLE_REVIEWS: GoogleReviews | null = {
-  ratingValue: 5.0,
-  reviewCount: 16,
-  url: GOOGLE_MAPS_URL,
-};
-
 /**
- * Horaires d'ouverture — SOURCE UNIQUE.
+ * Horaires d'ouverture — SOURCE UNIQUE, recopiée de la fiche Google.
  *
- * Ces valeurs alimentent le JSON-LD `CleaningService`. Elles doivent être
- * recopiées à l'identique sur la fiche Google Business Profile, PagesJaunes
- * et 118712 : Google croise ces sources pour établir la fiche locale, et un
- * écart entre elles dégrade la confiance accordée à l'établissement.
+ * Relevés sur la fiche le 24/11/2026 via l'API Places : du lundi au samedi
+ * 7h-minuit, dimanche 10h-18h. Le site déclarait « lundi-samedi 8h-19h »,
+ * 118712 « 24h/24 7j/7 » et PagesJaunes des horaires encore différents.
+ * Google croise ces sources pour établir la fiche locale : la fiche fait foi,
+ * et c'est sur elle que tout le reste doit s'aligner.
+ *
+ * `closes: "23:59"` et non "00:00" : en schema.org, une fermeture à minuit
+ * s'écrit à la fin du jour d'ouverture, sinon l'intervalle est de durée nulle.
  */
 export const OPENING_HOURS = {
-  days: [
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ],
-  opens: "08:00",
-  closes: "19:00",
+  semaine: {
+    days: [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ],
+    opens: "07:00",
+    closes: "23:59",
+  },
+  dimanche: {
+    days: ["Sunday"],
+    opens: "10:00",
+    closes: "18:00",
+  },
   /** Libellé affiché aux visiteurs, dérivé des mêmes valeurs. */
-  label: "Du lundi au samedi, 8h – 19h",
+  label: "Du lundi au samedi 7h – minuit, dimanche 10h – 18h",
 } as const;
 
 export const MALIKA = {
@@ -155,16 +176,27 @@ export const LEGAL: {
   directeurPublication: string;
 } = {
   /** Dénomination sociale exacte, telle qu'inscrite au registre. */
-  denomination: "TGT Propreté",
-  /** « SASU », « SARL », « EURL »… */
-  formeJuridique: null,
-  /** Ex. : « 1 000 € ». */
-  capitalSocial: null,
+  denomination: "TGT PROPRETÉ",
+  /**
+   * Catégorie juridique 5499 au registre national des entreprises, soit
+   * « société à responsabilité limitée ». Si Rabah est associé unique, la
+   * mention d'usage est « EURL » — une EURL étant juridiquement une SARL à
+   * associé unique, « SARL » reste exact dans les deux cas.
+   */
+  formeJuridique: "SARL",
+  capitalSocial: "2 000 €",
   /** 9 chiffres. Le SIRET du siège s'en déduit, il n'est pas obligatoire ici. */
-  siren: null,
-  /** Ville du greffe : « RCS Bobigny ». */
-  rcsVille: null,
-  /** « FR » + 11 chiffres, si l'entreprise est assujettie. */
+  siren: "999 540 651",
+  /** Siège à Bondy (93) : greffe du tribunal de commerce de Bobigny. */
+  rcsVille: "Bobigny",
+  /**
+   * « FR » + clé + SIREN. Pour ce SIREN, le numéro serait FR49999540651.
+   *
+   * Volontairement laissé vide : le numéro est calculable, mais il n'est
+   * valable que si l'entreprise est effectivement assujettie à la TVA. Une
+   * société récente peut relever de la franchise en base, et publier un
+   * numéro inactif serait une erreur. → À confirmer avec le comptable.
+   */
   tvaIntracommunautaire: null,
   directeurPublication: "Rabah Ammouche",
 };
@@ -190,7 +222,9 @@ export const NAV_LINKS = [
 ] as const;
 
 export const STATS: readonly { num: string; label: string }[] = [
-  { num: `${getYearsOfExperience()}+`, label: "Années d'expérience" },
+  // « d'expérience terrain » et non « d'existence » : la société a été
+  // immatriculée en 2026, l'ancienneté est celle du métier des fondateurs.
+  { num: `${getYearsOfExperience()}+`, label: "Ans d'expérience terrain" },
   { num: "750+", label: "Clients satisfaits" },
   { num: "800+", label: "Interventions réalisées" },
   { num: "100%", label: "Satisfaction garantie" },
@@ -226,6 +260,6 @@ export const ENGAGEMENTS: readonly Engagement[] = [
   {
     Icon: Award,
     title: "Satisfaction garantie",
-    desc: `${getYearsOfExperience()}+ années d'expérience, des dizaines de clients fidèles, une exigence constante.`,
+    desc: `${getYearsOfExperience()}+ années de métier, des clients fidèles, une exigence constante sur chaque intervention.`,
   },
 ];

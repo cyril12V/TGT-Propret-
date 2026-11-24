@@ -717,7 +717,7 @@ export const SERVICES: readonly Service[] = [
       {
         h2: "Pourquoi choisir TGT Propreté pour votre copropriété ?",
         intro:
-          "Nous travaillons avec des syndics et des conseils syndicaux depuis 2018, sur des immeubles allant du petit collectif ancien à la résidence de plus de cent lots. Notre approche tient en quatre points.",
+          "Nous travaillons avec des syndics et des conseils syndicaux sur des immeubles allant du petit collectif ancien à la résidence de plus de cent lots. Notre approche tient en quatre points.",
         blocks: [
           {
             h3: "Des équipes stables",

@@ -84,7 +84,7 @@ export default function ServicesHubPage() {
               (bureaux, copropriétés, commerces, restaurants, cabinets
               médicaux, fin de chantier) et un pôle particuliers (nettoyage
               approfondi, textiles d&apos;ameublement, repassage). {years}+ ans
-              d&apos;expérience, devis gratuit sous 24h.
+              de métier, devis gratuit sous 24h.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">

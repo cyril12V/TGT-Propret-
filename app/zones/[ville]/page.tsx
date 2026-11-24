@@ -100,8 +100,8 @@ export default async function ZonePage({
                 : `(${zone.postalCode}, ${zone.department})`}{" "}
               auprès des entreprises, syndics de copropriété, commerçants et
               particuliers. {SERVICES.length}{" "}
-              prestations disponibles, {years}+ ans d&apos;expérience, devis
-              gratuit sous 24h.
+              prestations disponibles, {years}+ ans de métier, devis gratuit
+              sous 24h.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">

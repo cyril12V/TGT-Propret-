@@ -18,6 +18,22 @@ import "server-only";
 // retombe proprement sur les témoignages de secours.
 // ─────────────────────────────────────────────────────────────────────────────
 
+/**
+ * Données de la fiche Google exploitées par le site.
+ *
+ * `rating` et `reviewCount` étaient auparavant recopiés à la main dans
+ * `lib/constants.ts` (« 5,0 sur 16 avis »). Au 24/11/2026 la fiche affichait
+ * 4,8 sur 17 avis : une note recopiée dérive forcément, et une note fausse
+ * affichée aux visiteurs est pire que pas de note.
+ */
+export type GooglePlaceData = {
+  reviews: GoogleReviewItem[];
+  /** Note moyenne de la fiche, ou `null` si Google n'en renvoie pas. */
+  rating: number | null;
+  /** Nombre total d'avis sur la fiche, tous textes confondus. */
+  reviewCount: number | null;
+};
+
 /** Avis normalisé, tel que consommé par l'interface. */
 export type GoogleReviewItem = {
   authorName: string;
@@ -39,8 +55,10 @@ type PlacesReview = {
 const PLACES_ENDPOINT = "https://places.googleapis.com/v1/places";
 
 /** Seuls les champs réellement affichés sont demandés : la facturation Google
- *  se fait au champ le plus cher de la requête. */
-const FIELD_MASK = "reviews";
+ *  se fait au champ le plus cher de la requête. `rating` et `userRatingCount`
+ *  sont dans le palier le moins cher, les ajouter à côté de `reviews` ne
+ *  change donc rien à la facture — et évite de recopier la note à la main. */
+const FIELD_MASK = "reviews,rating,userRatingCount";
 
 /**
  * 24 heures. Une fiche Google gagne quelques avis par mois au plus, et le champ
@@ -72,17 +90,19 @@ function normalize(review: PlacesReview): GoogleReviewItem | null {
 }
 
 /**
- * Renvoie les avis Google de la fiche, triés par note décroissante.
+ * Renvoie les avis de la fiche ainsi que sa note et son nombre d'avis.
  *
- * Ne lève jamais : un incident côté Google ne doit pas casser le rendu de la
- * page d'accueil. En cas d'échec, le tableau vide déclenche l'affichage des
- * témoignages de secours.
+ * Ne lève jamais : un incident côté Google ne doit pas casser le rendu d'une
+ * page. En cas d'échec, tout est vide ou nul, et l'interface n'affiche ni
+ * avis ni note — jamais de valeur de remplacement.
  */
-export async function getGoogleReviews(): Promise<GoogleReviewItem[]> {
+export async function getGooglePlaceData(): Promise<GooglePlaceData> {
+  const vide: GooglePlaceData = { reviews: [], rating: null, reviewCount: null };
+
   const apiKey = process.env.GOOGLE_PLACES_API_KEY;
   const placeId = process.env.GOOGLE_PLACE_ID;
 
-  if (!apiKey || !placeId) return [];
+  if (!apiKey || !placeId) return vide;
 
   try {
     const response = await fetch(
@@ -96,15 +116,29 @@ export async function getGoogleReviews(): Promise<GoogleReviewItem[]> {
       },
     );
 
-    if (!response.ok) return [];
+    if (!response.ok) return vide;
 
-    const data = (await response.json()) as { reviews?: PlacesReview[] };
+    const data = (await response.json()) as {
+      reviews?: PlacesReview[];
+      rating?: number;
+      userRatingCount?: number;
+    };
 
-    return (data.reviews ?? [])
-      .map(normalize)
-      .filter((review): review is GoogleReviewItem => review !== null)
-      .sort((a, b) => b.rating - a.rating);
+    return {
+      reviews: (data.reviews ?? [])
+        .map(normalize)
+        .filter((review): review is GoogleReviewItem => review !== null)
+        .sort((a, b) => b.rating - a.rating),
+      rating: typeof data.rating === "number" ? data.rating : null,
+      reviewCount:
+        typeof data.userRatingCount === "number" ? data.userRatingCount : null,
+    };
   } catch {
-    return [];
+    return vide;
   }
+}
+
+/** Avis seuls. Raccourci pour les composants qui n'affichent pas la note. */
+export async function getGoogleReviews(): Promise<GoogleReviewItem[]> {
+  return (await getGooglePlaceData()).reviews;
 }
